@@ -2,10 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.util.Random;
 /**
- * Write a description of class SlotMachines here.
+ * The slot machine subclass of the Game class encompasses the functionality and code for the slot machine games. 
+ * The slot machine games are played by the majority of the Gamblers that are in the simulation, with jackpots/winning runs that are
+ * not determined by skill but by solely luck of the Gambler.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Dorsa Rohani
+ * @version November 8
  */
 public class SlotMachines extends Game
 {
