@@ -3,11 +3,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Roulette here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David Guo
+ * @version 1.0 11/09/2023
  */
 public class Roulette extends Game
 {
+    public Roulette() {
+        
+    }
     /**
      * Act - do whatever the Roulette wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
