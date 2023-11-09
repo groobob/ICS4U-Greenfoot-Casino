@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Roulette
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Roulette\ here.\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.0\ 11/09/2023\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Roulette\ here.\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 0.1\ 11/09/2023\r\n
 comment1.params=
 comment1.target=Roulette()
 comment2.params=
@@ -10,4 +10,6 @@ comment3.params=
 comment3.target=int\ spinWheel()
 comment4.params=
 comment4.target=int\ calculateEarned()
-numComments=5
+comment5.params=
+comment5.target=void\ clearWheel()
+numComments=6
