@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author David Guo & 
  * @version (a version number or a date)
  */
-public class Game extends Actor
+public abstract class Game extends Actor
 {
     public Game() {
         
