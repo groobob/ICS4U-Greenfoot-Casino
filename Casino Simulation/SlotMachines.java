@@ -30,7 +30,6 @@ public class SlotMachines extends Game
         return !gamblers.isEmpty();
     }  
     
-    
     public void stationGambler(){
         // code here for stationing the gambler in front of the slot machine
         

@@ -13,14 +13,13 @@ public class HorseBetting extends Game
     private Random random; // random number generation
     private int moneyWon; // amount of money won
     private int betCost; // cost to participate in the betting
-    private boolean win; // tracks if gambler won
     private int winningHorse; // the horse that wins the betting round
     private int horseBet; // the horse that the gambler bets on to win for the round
     
     public HorseBetting(){
         numberOfHorses = 7; // number of horses involved in the round
         betCost = 10; // cost of bet
-        win = false; // gambler does not win (at least initially)
+        moneyWon = 100;
     }
     /**
      * Act - do whatever the HorseBetting wants to do. This method is called whenever
@@ -32,21 +31,26 @@ public class HorseBetting extends Game
     }
 
     public void stationGambler(){
-        horseBet = random.nextInt(7)+1;
+        horseBet = random.nextInt(numberOfHorses)+1;
         
-        checkIfWin();
+        if(checkIfWin()){
+            winPayout();
+        }
     }
     
     // checks if the gambler won the round
     public boolean checkIfWin(){
-        winningHorse = random.nextInt(7)+1; // random num between 1 and 7
+        winningHorse = random.nextInt(numberOfHorses)+1; // random num between 1 and number of horses present
         
         if(horseBet == winningHorse){
-            win = true;
             return true;
         }
         else{
             return false;
         }
+    }
+    
+    public void winPayout(){
+        // gambler's money += moneyWon;
     }
 }

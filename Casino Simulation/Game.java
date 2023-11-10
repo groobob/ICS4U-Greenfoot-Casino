@@ -18,4 +18,11 @@ public abstract class Game extends Actor
     }
     
     public abstract void stationGambler();
+    
+    public void increaseMoneyEffect(){
+        //
+    }
+    public void decreaseMoneyEffect(){
+        //
+    }
 }
