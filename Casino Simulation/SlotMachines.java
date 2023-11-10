@@ -22,9 +22,7 @@ public class SlotMachines extends Game
     }
     
     public void act(){
-        if(isGamblerInFront()){
-            stationGambler();
-        }
+        //
     }
     
     private boolean isGamblerInFront(){
