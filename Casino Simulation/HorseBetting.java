@@ -17,9 +17,9 @@ public class HorseBetting extends Game
     private int horseBet; // the horse that the gambler bets on to win for the round
     
     public HorseBetting(){
-        numberOfHorses = 7; // number of horses involved in the round
+        numberOfHorses = random.nextInt(7)+1; // number of horses involved in the round
         betCost = 10; // cost of bet
-        moneyWon = 100;
+        moneyWon = 100; // money awarded to gambler if they win
     }
     /**
      * Act - do whatever the HorseBetting wants to do. This method is called whenever
@@ -32,7 +32,6 @@ public class HorseBetting extends Game
 
     public void stationGambler(){
         horseBet = random.nextInt(numberOfHorses)+1;
-        
         if(checkIfWin()){
             winPayout();
         }

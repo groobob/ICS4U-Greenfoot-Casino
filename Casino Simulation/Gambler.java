@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Gambler here.
  * 
@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Gambler extends Actor
 {
+    
     /**
      * Act - do whatever the Gambler wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

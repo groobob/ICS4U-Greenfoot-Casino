@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Ordinary
+comment1.params=
+comment1.target=Ordinary()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ playEffect()
+comment4.params=amount
+comment4.target=void\ gainMoney(int)
+comment5.params=amount
+comment5.target=void\ loseMoney(int)
+comment6.params=text\ color
+comment6.target=void\ showMoneyEffect(java.lang.String,\ greenfoot.Color)
+numComments=7
