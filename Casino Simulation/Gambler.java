@@ -40,9 +40,19 @@ public class Gambler extends Actor
                 unstop();//temp
             }
             else{
-                tx=entranceX;
-                ty=sidewalkY;
-                fx=outMapX;
+                if(Greenfoot.getRandomNumber(3)==0){//temp for testing 1/3 chance of leaving casino
+                    tx=entranceX;
+                    ty=sidewalkY;
+                    fx=outMapX;
+                }
+                else{
+                    CasinoWorld.pos p = CasinoWorld.tempPlaces.get(Greenfoot.getRandomNumber(CasinoWorld.tempPlaces.size()));
+                    tx=entranceX;
+                    ty=p.y+50;
+                    fx=p.x;
+                    down=false;
+                    flag=false;
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ public class CasinoWorld extends World
             this.x=x;this.y=y;
         }
     }
-    List<pos> tempPlaces = new ArrayList<pos>();//temp
+    public static List<pos> tempPlaces = new ArrayList<pos>();//temp
     public CasinoWorld()
     {    
         super(1200, 740, 1, false); 
@@ -24,6 +24,9 @@ public class CasinoWorld extends World
         tempPlaces.add(new pos(250,400));
         tempPlaces.add(new pos(150,400));
         tempPlaces.add(new pos(50,400));
+        tempPlaces.add(new pos(900,100));
+        tempPlaces.add(new pos(900,300));
+        tempPlaces.add(new pos(900,500));
         //tempPlaces.add(new pos(300,200));
         //tempPlaces.add(new pos(300,200));
         //addObject(new DarkTint(),200,400);
