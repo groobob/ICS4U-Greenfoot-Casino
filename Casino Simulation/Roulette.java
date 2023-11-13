@@ -10,6 +10,8 @@ public class Roulette extends Game
 {
     // Declare class variables, some of which may be available for customization
     
+    // Roulette Table sprite
+    GreenfootImage rouletteTable;
     // The number of pockets depends on the type of roulette:
     // 37 pockets in French or European style roulette
     // 38 pockets in American roulette
@@ -26,6 +28,10 @@ public class Roulette extends Game
         numberOfPockets = 38;
         maxBet = 5000;
         currentlySpinning = false;
+        // Set the class to the image
+        rouletteTable = new GreenfootImage("TestRoulette.gif");
+        rouletteTable.scale(80,60);
+        setImage(rouletteTable);
     }
     /**
      * Act - do whatever the Roulette wants to do. This method is called whenever
