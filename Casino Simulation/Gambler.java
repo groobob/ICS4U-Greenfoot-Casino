@@ -14,13 +14,13 @@ public class Gambler extends Actor
     private final int entranceX=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(varyRange):Greenfoot.getRandomNumber(varyRange));//temp
     private final int sidewalkY=700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(varyRange):Greenfoot.getRandomNumber(varyRange));//temp
     private final int outMapX=(Greenfoot.getRandomNumber(2)==0?1250:-50);//temp
-    private int speed=5,tx=entranceX,fx,ty;
-    private boolean stopped=false,flag=false,down=false;
+    private int speed=5,tx=entranceX,fx,ty,yToStation=50;
+    private boolean stopped=false,flag=false,toStation=false;
     public Gambler(int fx, int ty){
         this.fx=fx;
         this.ty=ty;
     }
-    public void act()
+    public void act()//rn only have go up to station. Implement go down to station and no y change to station. Maybe also make y change amount changeable.
     {
         if(!stopped){
             if(Math.abs(tx-getX())>5)setLocation(getX()+speed*Integer.signum(tx-getX()),getY());
@@ -28,13 +28,13 @@ public class Gambler extends Actor
             else if(tx!=fx)tx=fx;
             else if(tx==1250||tx==-50)getWorld().removeObject(this);
             else if(!flag){
-                if(!down)ty-=50;
-                else ty+=50;
+                if(!toStation)ty-=yToStation;
+                else ty+=yToStation;
                 flag=true;
             }
-            else if(!down){
+            else if(!toStation){
                 stopped=true;
-                down=true;
+                toStation=true;
                 flag=false;
                 //station
                 unstop();//temp
@@ -48,9 +48,9 @@ public class Gambler extends Actor
                 else{
                     CasinoWorld.pos p = CasinoWorld.tempPlaces.get(Greenfoot.getRandomNumber(CasinoWorld.tempPlaces.size()));
                     tx=entranceX;
-                    ty=p.y+50;
+                    ty=p.y+yToStation;
                     fx=p.x;
-                    down=false;
+                    toStation=false;
                     flag=false;
                 }
             }
