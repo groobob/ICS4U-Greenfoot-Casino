@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;  // (ArrayList)
 
 /**
  * Write a description of class Roulette here.
@@ -24,6 +25,9 @@ public class Roulette extends Game
     private String pocketColour;
     private int maxBet;
     private boolean currentlySpinning;
+    
+    // List of all gamblers currently playing
+    private ArrayList<Gambler> gamblers;
     public Roulette() {
         numberOfPockets = 38;
         maxBet = 5000;
@@ -32,6 +36,8 @@ public class Roulette extends Game
         rouletteTable = new GreenfootImage("TestRoulette.gif");
         rouletteTable.scale(80,60);
         setImage(rouletteTable);
+        // Initlize arraylist of gamblers
+        gamblers = new ArrayList<Gambler>(6);
     }
     /**
      * Act - do whatever the Roulette wants to do. This method is called whenever
