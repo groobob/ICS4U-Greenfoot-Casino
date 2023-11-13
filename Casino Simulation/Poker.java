@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class Poker here.
  * 
  * @author David Guo
- * @version (a version number or a date)
+ * @version 0.1 11/10/2023
  */
 public class Poker extends Game
 {
