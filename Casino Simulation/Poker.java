@@ -11,7 +11,7 @@ public class Poker extends Game
 {
     private int playersAtTable;
     private int pot;
-    private int actNumber
+    private int actNumber;
     public Poker(){
         playersAtTable = 0;
     }

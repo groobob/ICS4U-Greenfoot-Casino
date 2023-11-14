@@ -10,6 +10,7 @@ public class Game extends Actor
 {
     // Array of all gamblers currently playing
     protected Gambler[] gamblersPlaying;
+    // Array of all seat locations
     /**
      * Act - do whatever the Game wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
