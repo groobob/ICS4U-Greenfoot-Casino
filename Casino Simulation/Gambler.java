@@ -14,11 +14,12 @@ public class Gambler extends Actor
     private final int entranceX=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(varyRange):Greenfoot.getRandomNumber(varyRange));//temp
     private final int sidewalkY=700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(varyRange):Greenfoot.getRandomNumber(varyRange));//temp
     private final int outMapX=(Greenfoot.getRandomNumber(2)==0?1250:-50);//temp
-    private int speed=5,tx=entranceX,fx,ty,yToStation=50;
+    private int speed=Greenfoot.getRandomNumber(3)+3,tx=entranceX,fx,ty,yToStation;
     private boolean stopped=false,flag=false,toStation=false;
-    public Gambler(int fx, int ty){
+    public Gambler(int fx, int ty, int yToStation){
         this.fx=fx;
         this.ty=ty;
+        this.yToStation=yToStation;
     }
     public void act()//rn only have go up to station. Implement go down to station and no y change to station. Maybe also make y change amount changeable.
     {
@@ -28,8 +29,8 @@ public class Gambler extends Actor
             else if(tx!=fx)tx=fx;
             else if(tx==1250||tx==-50)getWorld().removeObject(this);
             else if(!flag){
-                if(!toStation)ty-=yToStation;
-                else ty+=yToStation;
+                if(!toStation)ty+=yToStation;
+                else ty-=yToStation;
                 flag=true;
             }
             else if(!toStation){
@@ -48,7 +49,7 @@ public class Gambler extends Actor
                 else{
                     CasinoWorld.pos p = CasinoWorld.tempPlaces.get(Greenfoot.getRandomNumber(CasinoWorld.tempPlaces.size()));
                     tx=entranceX;
-                    ty=p.y+yToStation;
+                    ty=p.y-yToStation;
                     fx=p.x;
                     toStation=false;
                     flag=false;

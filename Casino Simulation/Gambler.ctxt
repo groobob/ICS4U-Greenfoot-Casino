@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Gambler
 comment0.text=\r\n\ Gambler.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 1111\r\n\ \r\n
-comment1.params=fx\ ty
-comment1.target=Gambler(int,\ int)
+comment1.params=fx\ ty\ yToStation
+comment1.target=Gambler(int,\ int,\ int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

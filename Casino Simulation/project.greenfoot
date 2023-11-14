@@ -1,8 +1,8 @@
 #Greenfoot project file
 class.CasinoWorld.image=CasinoPlanBackground.png
 class.Entrance.image=bread.png
-class.Gambler.image=man01.png
-class.Thing.image=button-red.png
+class.Gambler.image=apple2.png
+class.Thing.image=beeper.png
 dependency1.from=CasinoWorld
 dependency1.to=Entrance
 dependency1.type=UsesDependency
