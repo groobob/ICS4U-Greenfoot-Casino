@@ -1,0 +1,51 @@
+import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
+
+public class Ordinary extends Gambler {
+    private int score = 0;
+    private int test;
+    private int testValue;
+    private int effectCooldown = 0; // Timer for delay between effects
+    private final int effectDelay = 50; // Delay time in frames
+
+    public Ordinary() {
+        // 
+    }
+
+    public void act() {
+        playEffect();
+    }
+
+    private void playEffect(){
+        test = Greenfoot.getRandomNumber(2); // Generate a random number 0 or 1
+        testValue = Greenfoot.getRandomNumber(100); // Generate a random number 0 or 1
+
+        if (effectCooldown > 0) {
+            effectCooldown--; // Decrease the cooldown timer
+        }
+
+        if (effectCooldown <= 0) {
+            if (test == 0) {
+                gainMoney(testValue);
+                effectCooldown = effectDelay; 
+            } else if (test == 1) {
+                loseMoney(testValue);
+                effectCooldown = effectDelay; 
+            }
+        }
+    }
+    
+    private void gainMoney(int amount) {
+        score += amount;
+        showMoneyEffect("+ $" + amount, Color.GREEN);
+    }
+
+    private void loseMoney(int amount) {
+        score -= amount;
+        showMoneyEffect("- $" + amount, Color.RED);
+    }
+
+    private void showMoneyEffect(String text, Color color) {
+        MoneyEffect effect = new MoneyEffect(text, color);
+        getWorld().addObject(effect, getX(), getY() - 30);
+    }
+}
