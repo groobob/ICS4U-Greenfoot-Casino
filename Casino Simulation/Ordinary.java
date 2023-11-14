@@ -7,8 +7,8 @@ public class Ordinary extends Gambler {
     private int effectCooldown = 0; // Timer for delay between effects
     private final int effectDelay = 50; // Delay time in frames
 
-    public Ordinary() {
-        // 
+    public Ordinary(int x, int y, int state) {
+        super(x,y,state);
     }
 
     public void act() {
