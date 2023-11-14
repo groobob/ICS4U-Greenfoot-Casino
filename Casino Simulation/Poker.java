@@ -9,8 +9,9 @@ import java.util.*;  // (ArrayList)
  */
 public class Poker extends Game
 {
+    private int playersAtTable;
     public Poker(){
-        
+        playersAtTable = 0;
     }
     /**
      * Act - do whatever the Poker wants to do. This method is called whenever

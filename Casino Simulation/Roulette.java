@@ -5,7 +5,7 @@ import java.util.*;  // (ArrayList)
  * Write a description of class Roulette here.
  * 
  * @author David Guo
- * @version 0.1 11/09/2023
+ * @version 1.0 11/13/2023
  */
 public class Roulette extends Game
 {
@@ -22,22 +22,33 @@ public class Roulette extends Game
     // The pocket number is from 0 to 36 with 37 pockets, -1 to 36 with 38 pockets, 
     // and -2 to 36 with 39 pockets
     private int pocketNum;
-    private String pocketColour;
     private int maxBet;
     private boolean currentlySpinning;
+    private int actsSpinning;
+    private int cooldown;
     
     // List of all gamblers currently playing
-    private ArrayList<Gambler> gamblers;
+    private Gambler[] gamblersPlaying;
+    private int[] gamblerBets;
+    private int[] moneyBets;
+    
+    // Payout multiplier values
+    private final double NUMBER_PAYOUT = 36;
+    private final double ODD_EVEN_PAYOUT = 2;
+    
     public Roulette() {
         numberOfPockets = 38;
         maxBet = 5000;
         currentlySpinning = false;
+        actsSpinning = 0;
+        cooldown = 300;
         // Set the class to the image
         rouletteTable = new GreenfootImage("TestRoulette.gif");
         rouletteTable.scale(80,60);
         setImage(rouletteTable);
         // Initlize arraylist of gamblers
-        gamblers = new ArrayList<Gambler>(6);
+        gamblersPlaying = new Gambler[6]; // each index is a seat
+        gamblerBets = new int[6]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
     }
     /**
      * Act - do whatever the Roulette wants to do. This method is called whenever
@@ -45,27 +56,58 @@ public class Roulette extends Game
      */
     public void act()
     {
-        // Add your action code here.
+        actsSpinning++;
+        if(actsSpinning > 600){ // 600 acts -> 10 seconds to spin
+            actsSpinning = -cooldown;
+            currentlySpinning = false;
+        } else if (actsSpinning == 0){
+            makeBet();
+        }
     }
     
     private int spinWheel(){
+        currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);
-        // Change numbers above 36 to their negative equivalent for tracking purposes
-        if(randomPocket == 37){randomPocket = -1;}
-        if(randomPocket == 38){randomPocket = -2;}
-        if(randomPocket > 0 && randomPocket % 2 == 0){
-            
-        }
+        // Change numbers above 36 to 0
+        if(randomPocket == 37){randomPocket = 0;}
+        if(randomPocket == 38){randomPocket = 0;}
         return randomPocket;
     }
     
-    private int calculateEarned(){
+    public int calculateEarned(){
+        /*
+        for(int i = 0; i < gamblersPlaying.length; i++){
+            if(gamblerBets[i] == -1 && pocketNum % 2 == 1){
+                return getMoneyBet() * EVEN_ODD_PAYOUT;
+            } else if(gamblerBets[i] == -2 && pocketNum % 2 == 0){
+                return getMoneyBet() * EVEN_ODD_PAYOUT;
+            } else if(gamblerBets[i] == pocketNum){
+                return getMoneyBet() * NUMBER_PAYOUT;
+            }
+        }
+        */
         return 0;
+        
     }
     
     private void clearWheel(){
-        // -1 and -2 represent 00 and 000, therefore -3 will be used to represent undecided
-        pocketNum = -3; 
-        pocketColour = "";
+        // -1 will be used to represent undecided
+        pocketNum = -1;
+    }
+    // When gamblers are ready to make their bet before the wheel starts spinning
+    private void makeBet(){
+        for(int i = 0; i < gamblersPlaying.length; i++){
+            if(gamblersPlaying[i] != null){
+                /*
+                if(gamblersPlaying[i].getSkill() < 50){
+                    gamblerBets[i] = Greenfoot.getRandomNumber(numberOfPockets);
+                } else {
+                    // -1 means betting on odds, -2 means betting on evens
+                    gamblerBets[i] = Greenfoot.getRandomNumber(2)-2;
+                }
+                */
+            }
+        }
+        spinWheel();
     }
 }

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Game here.
+ * The superclass
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David Guo
+ * @version 1.0 11/13/2023
  */
 public class Game extends Actor
 {
