@@ -16,4 +16,15 @@ public class Game extends Actor
     {
         // Add your action code here.
     }
+    
+    public void stationGambler(){
+        //
+    }
+        
+    public void increaseMoneyEffect(){
+        //
+    }
+    public void decreaseMoneyEffect(){
+        //
+    }
 }
