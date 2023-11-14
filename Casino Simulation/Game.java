@@ -17,5 +17,10 @@ public class Game extends Actor
     public void act()
     {
         // Add your action code here.
+        
+    }
+    
+    public void stationGambler(){
+        
     }
 }

@@ -10,6 +10,8 @@ import java.util.*;  // (ArrayList)
 public class Poker extends Game
 {
     private int playersAtTable;
+    private int pot;
+    private int actNumber
     public Poker(){
         playersAtTable = 0;
     }
@@ -20,5 +22,15 @@ public class Poker extends Game
     public void act()
     {
         // Add your action code here.
+    }
+    
+    private void increasePot(){
+        for(int i = 0; i < gamblersPlaying.length; i++){
+            //pot += gamblersPlaying[i].getMoneyBet();
+        }
+    }
+    
+    public int payout(){
+        return pot;
     }
 }
