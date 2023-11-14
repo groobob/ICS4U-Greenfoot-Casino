@@ -5,7 +5,7 @@ import java.util.*;  // (ArrayList)
  * Write a description of class Poker here.
  * 
  * @author David Guo
- * @version 0.2 11/13/2023
+ * @version 1.0 11/14/2023
  */
 public class Poker extends Game
 {

@@ -25,10 +25,8 @@ public class Roulette extends Game
     private int maxBet;
     private boolean currentlySpinning;
     private int actsSpinning;
-    private int cooldown;
     
     // List of all gamblers currently playing
-    private Gambler[] gamblersPlaying;
     private int[] gamblerBets;
     private int[] moneyBets;
     
@@ -41,7 +39,6 @@ public class Roulette extends Game
         maxBet = 5000;
         currentlySpinning = false;
         actsSpinning = 0;
-        cooldown = 300;
         // Set the class to the image
         rouletteTable = new GreenfootImage("TestRoulette.gif");
         rouletteTable.scale(80,60);
@@ -58,7 +55,7 @@ public class Roulette extends Game
     {
         actsSpinning++;
         if(actsSpinning > 600){ // 600 acts -> 10 seconds to spin
-            actsSpinning = -cooldown;
+            actsSpinning = 0;
             currentlySpinning = false;
         } else if (actsSpinning == 0){
             makeBet();
@@ -69,8 +66,7 @@ public class Roulette extends Game
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);
         // Change numbers above 36 to 0
-        if(randomPocket == 37){randomPocket = 0;}
-        if(randomPocket == 38){randomPocket = 0;}
+        if(randomPocket == 37 || randomPocket == 38){randomPocket = 0;}
         return randomPocket;
     }
     
