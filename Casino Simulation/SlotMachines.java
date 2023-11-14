@@ -9,52 +9,48 @@ import java.util.Random;
  * @author Dorsa Rohani
  * @version November 8
  */
-public class SlotMachines extends Game
-{
+public class SlotMachines extends Game {
     private int numberOfReels;
-    private Random random;
     private int[] result;
     private boolean jackpot;
-    
-    public SlotMachines(){
+    private int moneyWon;
+    private Gambler gambler; // Reference to the gambler playing this slot machine
+
+    public SlotMachines() {
         numberOfReels = 3;
         jackpot = false;
-    }
-    
-    public void act(){
-        //
-    }
-    
-    private boolean isGamblerInFront(){
-        List<Gambler> gamblers = getObjectsInRange(50, Gambler.class); // Adjust range as needed
-        return !gamblers.isEmpty();
-    }  
-    
-    public void stationGambler(){
-        // code here for stationing the gambler in front of the slot machine
-        
-        spinReels();
-    }
-    
-    // Spin reels and determine outcome
-    public void spinReels(){
+        moneyWon = 100;
         result = new int[numberOfReels];
-        
-        // Spin each reel (have to check logic for this don tforget
-        for (int i = 0; i < numberOfReels; i++) {
-            result[i] = random.nextInt(7)+1; //random num between 1 and 7
-        }
-        
-        checkIfWin();
     }
 
-    // Calculate payout based on spin outcome
-    public boolean checkIfWin(){
-        for(int i = 1; i < result.length; i++){
-            if(result[i] != result[i-1]){
+    public void assignGambler(Gambler gambler) {
+        this.gambler = gambler;
+        if (gambler != null) {
+            gambler.setPlayingSlot(true); // Set the gambler's state to playing
+        }
+    }
+
+    public void spinReels() {
+        for (int i = 0; i < numberOfReels; i++) {
+            result[i] = Greenfoot.getRandomNumber(7); // Random number between 1 and 7
+        }
+
+        checkIfWin();
+        if (gambler != null) {
+            gambler.setPlayingSlot(false); // Reset the gambler's state when done
+        }
+    }
+
+    public boolean checkIfWin() {
+        System.out.println("1222222testttttttt");
+
+        for (int i = 1; i < result.length; i++) {
+            if (result[i] != result[i - 1]) {
                 jackpot = false;
-            }
-            else{
+                if (gambler != null) {
+                    Gambler.playMoneyEffect(gambler, true, 100);
+                }
+            } else {
                 jackpot = true;
             }
         }
