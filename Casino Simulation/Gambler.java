@@ -10,10 +10,10 @@ public class Gambler extends Actor
 {
     //in: tx:entrance x, fx:game x, ty: game y
     //out: tx: entrace x, fx: out world x, fy: sidewalk y
-    private final int varyRange=40;//temp
+    private final int varyRange=40; // amount of vary in y cooridnate for sidewalk
     private final int entranceX=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(varyRange):Greenfoot.getRandomNumber(varyRange));//temp
     private final int sidewalkY=700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(varyRange):Greenfoot.getRandomNumber(varyRange));//temp
-    private final int outMapX=(Greenfoot.getRandomNumber(2)==0?1250:-50);//temp
+    private final int outMapX=(Greenfoot.getRandomNumber(2)==0?1250:-50); // the x to go outside the map
     private int speed=Greenfoot.getRandomNumber(3)+3,tx=entranceX,fx,ty,yToStation;
     private boolean stopped=false,flag=false,toStation=false;
     public Gambler(int fx, int ty, int yToStation){
@@ -21,6 +21,8 @@ public class Gambler extends Actor
         this.ty=ty;
         this.yToStation=yToStation;
     }
+    
+    
     public void act()//rn only have go up to station. Implement go down to station and no y change to station. Maybe also make y change amount changeable.
     {
         if(!stopped){

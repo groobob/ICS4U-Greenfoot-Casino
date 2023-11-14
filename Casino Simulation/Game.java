@@ -17,6 +17,10 @@ public class Game extends Actor
         // Add your action code here.
     }
     
+    
+    // stationGambler:
+    // array for each time of game seating
+    // keep count of number of gamblers in the entire game    
     public void stationGambler(){
         //
     }

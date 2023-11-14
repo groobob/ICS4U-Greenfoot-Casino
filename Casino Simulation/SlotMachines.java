@@ -31,7 +31,7 @@ public class SlotMachines extends Game
     }  
     
     public void stationGambler(){
-        // Code here for stationing the gambler in front of the slot machine
+        // code here for stationing the gambler in front of the slot machine
         
         spinReels();
     }
