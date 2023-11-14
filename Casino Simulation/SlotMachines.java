@@ -31,16 +31,16 @@ public class SlotMachines extends Game
     }  
     
     public void stationGambler(){
-        // code here for stationing the gambler in front of the slot machine
+        // Code here for stationing the gambler in front of the slot machine
         
         spinReels();
     }
     
-    // spin reels and determine outcome
+    // Spin reels and determine outcome
     public void spinReels(){
         result = new int[numberOfReels];
         
-        // spin each reel
+        // Spin each reel (have to check logic for this don tforget
         for (int i = 0; i < numberOfReels; i++) {
             result[i] = random.nextInt(7)+1; //random num between 1 and 7
         }
@@ -48,7 +48,7 @@ public class SlotMachines extends Game
         checkIfWin();
     }
 
-    // calculate payout based on spin outcome
+    // Calculate payout based on spin outcome
     public boolean checkIfWin(){
         for(int i = 1; i < result.length; i++){
             if(result[i] != result[i-1]){

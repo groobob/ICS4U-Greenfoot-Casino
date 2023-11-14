@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Game extends Actor
+public class Game extends Actor
 {
     /**
      * Act - do whatever the Game wants to do. This method is called whenever
@@ -17,8 +17,10 @@ public abstract class Game extends Actor
         // Add your action code here.
     }
     
-    public abstract void stationGambler();
-    
+    public void stationGambler(){
+        //
+    }
+        
     public void increaseMoneyEffect(){
         //
     }
