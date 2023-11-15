@@ -20,7 +20,7 @@ public class Gambler extends Actor {
     private int test;
     private static int testValue;
     private static int effectCooldown = 0;
-    private static final int effectDelay = 50;
+    private static final int effectDelay = 30;
     
     private boolean isPlayingSlot = false; // Flag to track if the gambler is playing
 
@@ -136,7 +136,6 @@ public class Gambler extends Actor {
         return null;
     }
     
-
 
     public static void unstop() { //temp
         stopped = false;

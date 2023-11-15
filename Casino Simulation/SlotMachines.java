@@ -12,6 +12,7 @@ public class SlotMachines extends Game {
     private int[] result;
     private boolean jackpot;
     private int moneyWon;
+    private int moneyLost;
     private Gambler gambler; // Reference to the gambler playing this slot machine
 
     private boolean isOccupied = false;
@@ -19,7 +20,8 @@ public class SlotMachines extends Game {
     public SlotMachines() {
         numberOfReels = 3;
         jackpot = false;
-        moneyWon = 100;
+        moneyWon = Greenfoot.getRandomNumber(99)+1;
+        moneyLost = Greenfoot.getRandomNumber(50)+1;
         result = new int[numberOfReels];
     }
     
@@ -33,6 +35,8 @@ public class SlotMachines extends Game {
     public void spinReels() {
         if (!isOccupied) {
             setOccupied(true);
+            
+            gamblerPay();
             for (int i = 0; i < numberOfReels; i++) {
                 result[i] = Greenfoot.getRandomNumber(7); // Random number between 1 and 7
             }
@@ -43,6 +47,10 @@ public class SlotMachines extends Game {
             }
             releaseSlot();
         }
+    }
+    
+    public void gamblerPay(){
+        Gambler.playMoneyEffect(gambler, false, moneyLost);
     }
     
     public void releaseSlot() {
@@ -67,7 +75,7 @@ public class SlotMachines extends Game {
             if (result[i] != result[i - 1]) {
                 jackpot = false;
                 if (gambler != null) {
-                    Gambler.playMoneyEffect(gambler, true, 100);
+                    Gambler.playMoneyEffect(gambler, true, moneyWon);
                 }
             } else {
                 jackpot = true;
