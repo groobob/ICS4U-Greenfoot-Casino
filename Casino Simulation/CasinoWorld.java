@@ -52,6 +52,12 @@ public class CasinoWorld extends World
         slotGames.add(new slots(308,213,-20));
         slotGames.add(new slots(391,213,-20));
         
+        slotGames.add(new slots(57,304,-20));
+        slotGames.add(new slots(140,303,-20));
+        slotGames.add(new slots(224,309,-20));
+        slotGames.add(new slots(304,309,-20));
+        slotGames.add(new slots(387,307,-20));
+        
         // POSITION COORDINATES
         //slots___________________________________
         //tempPlaces.add(new pos(58,244,-20));
@@ -132,26 +138,6 @@ public class CasinoWorld extends World
      */
     private void prepare()
     {
-
-        SlotMachines slotMachines = new SlotMachines();
-        //addObject(slotMachines,56,209);
-        SlotMachines slotMachines2 = new SlotMachines();
-        //addObject(slotMachines2,142,210);
-        SlotMachines slotMachines3 = new SlotMachines();
-        //addObject(slotMachines3,224,211);
-        SlotMachines slotMachines4 = new SlotMachines();
-        //addObject(slotMachines4,308,213);
-        SlotMachines slotMachines5 = new SlotMachines();
-        //addObject(slotMachines5,391,213);
-        SlotMachines slotMachines6 = new SlotMachines();
-        addObject(slotMachines6,57,313);
-        SlotMachines slotMachines7 = new SlotMachines();
-        addObject(slotMachines7,142,315);
-        SlotMachines slotMachines8 = new SlotMachines();
-        addObject(slotMachines8,222,313);
-        SlotMachines slotMachines9 = new SlotMachines();
-        addObject(slotMachines9,306,312);
-        SlotMachines slotMachines10 = new SlotMachines();
-        addObject(slotMachines10,392,315);
+    // empty fn
     }
 }
