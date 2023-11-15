@@ -16,12 +16,12 @@ public class Gambler extends Actor
     private final int outMapX=(Greenfoot.getRandomNumber(2)==0?1250:-50);//temp
     private int speed=Greenfoot.getRandomNumber(3)+3,tx=entranceX,fx,ty,yToStation;
     private boolean stopped=false,flag=false,toStation=false;
-    public Gambler(int fx, int ty, int yToStation){
-        this.fx=fx;
-        this.ty=ty;
-        this.yToStation=yToStation;
+    public Gambler(pos p){
+        this.fx=p.x;
+        this.yToStation=p.compensate;
+        this.ty=p.y-yToStation;
     }
-    public void act()//rn only have go up to station. Implement go down to station and no y change to station. Maybe also make y change amount changeable.
+    public void act()
     {
         if(!stopped){
             if(Math.abs(tx-getX())>5)setLocation(getX()+speed*Integer.signum(tx-getX()),getY());

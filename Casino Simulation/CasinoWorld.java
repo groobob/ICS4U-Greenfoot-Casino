@@ -4,10 +4,23 @@ public class CasinoWorld extends World
 {
     int delay=1;//temp
     public class pos{//temp
-        int x,y,compensate;
+        public int x,y,compensate;
         pos(int x, int y, int compensate){
-            this.x=x;this.y=y;this.compensate=compensate;
+            this.x=x;
+            this.y=y;
+            this.compensate=compensate;
         }
+        /*
+        public int getX2(){
+            return x;
+        }
+        public int getY2(){
+            return y;
+        }
+        public int getCompensate(){
+            return compensate;
+        }
+        */
     }
     public static List<pos> tempPlaces = new ArrayList<pos>();//temp
     public CasinoWorld()
@@ -55,7 +68,7 @@ public class CasinoWorld extends World
         if(--delay==0){
             delay=Greenfoot.getRandomNumber(60)+30;
             pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
-            addObject(new Gambler(p.x,p.y-p.compensate,p.compensate),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
+            addObject(new Gambler(new pos(p.x,p.y,p.compensate)),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
         }
     }
 }
