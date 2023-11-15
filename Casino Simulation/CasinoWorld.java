@@ -34,7 +34,7 @@ public class CasinoWorld extends World
         }
     }
 
-    public static List<slots> games = new ArrayList<slots>();    
+    public static List<slots> slotGames = new ArrayList<slots>();    
     
     public static List<pos> tempPlaces = new ArrayList<pos>();//temp
     public CasinoWorld()
@@ -46,11 +46,11 @@ public class CasinoWorld extends World
         
         // GAMES
         //slots__________________________________
-        games.add(new slots(56,209,-20));
-        games.add(new slots(142,210,-20));
-        games.add(new slots(224,211,-20));
-        games.add(new slots(308,213,-20));
-        games.add(new slots(391,213,-20));
+        slotGames.add(new slots(56,209,-20));
+        slotGames.add(new slots(142,210,-20));
+        slotGames.add(new slots(224,211,-20));
+        slotGames.add(new slots(308,213,-20));
+        slotGames.add(new slots(391,213,-20));
         
         // POSITION COORDINATES
         //slots___________________________________
@@ -59,28 +59,29 @@ public class CasinoWorld extends World
         //tempPlaces.add(new pos(224,244,-20));
         //tempPlaces.add(new pos(307,241,-20));
         //tempPlaces.add(new pos(386,242,-20));
-        tempPlaces.add(new pos(57,354,-20));
-        tempPlaces.add(new pos(140,353,-20));
-        tempPlaces.add(new pos(224,349,-20));
-        tempPlaces.add(new pos(304,349,-20));
-        tempPlaces.add(new pos(387,347,-20));
+        
+        //tempPlaces.add(new pos(57,354,-20));
+        //tempPlaces.add(new pos(140,353,-20));
+        //tempPlaces.add(new pos(224,349,-20));
+        //tempPlaces.add(new pos(304,349,-20));
+        //tempPlaces.add(new pos(387,347,-20));
         //____________________________________________
         //thing betting
-        tempPlaces.add(new pos(596,312,-20));
-        tempPlaces.add(new pos(596,312,-20));
-        tempPlaces.add(new pos(647,311,-20));
-        tempPlaces.add(new pos(647,311,-20));
-        tempPlaces.add(new pos(687,312,-20));
-        tempPlaces.add(new pos(724,307,-20));
-        tempPlaces.add(new pos(725,307,-20));
-        tempPlaces.add(new pos(763,309,-20));
-        tempPlaces.add(new pos(763,309,-20));
-        tempPlaces.add(new pos(809,309,-20));
-        tempPlaces.add(new pos(809,309,-20));
-        tempPlaces.add(new pos(855,313,-20));
-        tempPlaces.add(new pos(855,313,-20));
-        tempPlaces.add(new pos(896,311,-20));
-        tempPlaces.add(new pos(896,311,-20));
+        //tempPlaces.add(new pos(596,312,-20));
+        //tempPlaces.add(new pos(596,312,-20));
+        //tempPlaces.add(new pos(647,311,-20));
+        //tempPlaces.add(new pos(647,311,-20));
+        //tempPlaces.add(new pos(687,312,-20));
+        //tempPlaces.add(new pos(724,307,-20));
+        //tempPlaces.add(new pos(725,307,-20));
+        //tempPlaces.add(new pos(763,309,-20));
+        //tempPlaces.add(new pos(763,309,-20));
+        //tempPlaces.add(new pos(809,309,-20));
+        //tempPlaces.add(new pos(809,309,-20));
+        //tempPlaces.add(new pos(855,313,-20));
+        //tempPlaces.add(new pos(855,313,-20));
+        //tempPlaces.add(new pos(896,311,-20));
+        //tempPlaces.add(new pos(896,311,-20));
         //____________________________________________
         //yes
         //____________________________________________
@@ -90,12 +91,30 @@ public class CasinoWorld extends World
     }
 
     public void act(){
-        if(--delay==0){
-            delay=Greenfoot.getRandomNumber(60)+30;
-            slots p = games.get(Greenfoot.getRandomNumber(games.size()));
-            addObject(new Gambler(p.x,p.y-p.compensate,p.compensate),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
+        //if(--delay==0){
+            //delay=Greenfoot.getRandomNumber(60)+30;
+            //slots p = slotGames.get(Greenfoot.getRandomNumber(slotGames.size()));
+            //addObject(new Gambler(p.x,p.y-p.compensate,p.compensate),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
         
+        //}
+        
+        if (--delay == 0) {
+            delay = Greenfoot.getRandomNumber(60) + 30;
+            slots selectedSlotContainer = selectAvailableSlotMachine();
+            if (selectedSlotContainer != null) {
+                addObject(new Gambler(selectedSlotContainer.x, selectedSlotContainer.y - selectedSlotContainer.compensate, selectedSlotContainer.compensate),(Greenfoot.getRandomNumber(2) == 0 ? 1250 : -50),700 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(40) : Greenfoot.getRandomNumber(40)));
+            }
         }
+    }
+    
+    private slots selectAvailableSlotMachine() {
+        Collections.shuffle(slotGames); // shuffle for random slot
+        for (slots slotContainer : slotGames) {
+            if (!slotContainer.slot.isOccupied()) {
+                return slotContainer;
+            }
+        }
+        return null; // null if no available slot machine is found
     }
     
     public void temp(){

@@ -12,7 +12,8 @@ public class Gambler extends Actor {
     private final int sidewalkY = 700 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int outMapX = (Greenfoot.getRandomNumber(2) == 0 ? 1250 : -50);
     private int speed = Greenfoot.getRandomNumber(3) + 3, tx = entranceX, fx, ty, yToStation;
-    private boolean stopped = false, flag = false, toStation = false;
+    private static boolean stopped = false;
+    private boolean flag = false, toStation = false;
 
     public static int money;
     private static int score = 0;
@@ -69,6 +70,10 @@ public class Gambler extends Actor {
 
     public void act() {
         if (!stopped  &&!isPlayingSlot) {
+            if (getWorld() == null) {
+            return; // exit if gambler has been removed
+            }
+        
             if (Math.abs(tx - getX()) > 5) {
                 setLocation(getX() + speed * Integer.signum(tx - getX()), getY());
             } else if (Math.abs(ty - getY()) > 5) {
@@ -77,6 +82,7 @@ public class Gambler extends Actor {
                 tx = fx;
             } else if (tx == 1250 || tx == -50) {
                 getWorld().removeObject(this);
+                return;
             } else if (!flag) {
                 if (!toStation) {
                     ty += yToStation;
@@ -88,14 +94,14 @@ public class Gambler extends Actor {
                 stopped = true;
                 toStation = true;
                 flag = false;
-                unstop(); //temp
+                //unstop(); //temp
             } else {
                 if (Greenfoot.getRandomNumber(3) == 0) { //temp for testing 1/3 chance of leaving casino
                     tx = entranceX;
                     ty = sidewalkY;
                     fx = outMapX;
                 } else {
-                    CasinoWorld.pos p = CasinoWorld.tempPlaces.get(Greenfoot.getRandomNumber(CasinoWorld.tempPlaces.size()));
+                    CasinoWorld.slots p = CasinoWorld.slotGames.get(Greenfoot.getRandomNumber(CasinoWorld.slotGames.size()));
                     tx = entranceX;
                     ty = p.y - yToStation;
                     fx = p.x;
@@ -103,10 +109,36 @@ public class Gambler extends Actor {
                     flag = false;
                 }
             }
+            if (reachedSlotMachine()) {
+                SlotMachines slotMachine = getIntersectingSlotMachine();
+                if (slotMachine != null && !slotMachine.isOccupied()) {
+                    slotMachine.assignGambler(this);
+                    slotMachine.spinReels();
+                }
+            }
         }
     }
+    private boolean reachedSlotMachine() {
+        if (getWorld() == null) {
+            return false; 
+        }
+        return Math.abs(getX() - fx) < 10 && Math.abs(getY() - ty) < 10;
+    }
+    
+    private SlotMachines getIntersectingSlotMachine() {
+        if(getWorld() == null){
+            return null; // return null if gambler was removed
+        }
+        java.util.List<SlotMachines> intersectingSlots = getIntersectingObjects(SlotMachines.class);
+        if (!intersectingSlots.isEmpty()) {
+            return intersectingSlots.get(0); // Return the first intersecting slot machine
+        }
+        return null;
+    }
+    
 
-    public void unstop() { //temp
+
+    public static void unstop() { //temp
         stopped = false;
     }
 }
