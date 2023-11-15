@@ -22,7 +22,7 @@ public class Gambler extends Actor {
     private static int effectCooldown = 0;
     private static final int effectDelay = 30;
     
-    private boolean isPlayingSlot = false; // Flag to track if the gambler is playing
+    private boolean isPlayingSlot = false; // track if gamber is playing
 
     public Gambler(int fx, int ty, int yToStation) {
         this.fx = fx;
@@ -131,7 +131,7 @@ public class Gambler extends Actor {
         }
         java.util.List<SlotMachines> intersectingSlots = getIntersectingObjects(SlotMachines.class);
         if (!intersectingSlots.isEmpty()) {
-            return intersectingSlots.get(0); // Return the first intersecting slot machine
+            return intersectingSlots.get(0); // returns first intersecting slot machine
         }
         return null;
     }

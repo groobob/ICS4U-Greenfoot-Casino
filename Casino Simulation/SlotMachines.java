@@ -13,7 +13,7 @@ public class SlotMachines extends Game {
     private boolean jackpot;
     private int moneyWon;
     private int moneyLost;
-    private Gambler gambler; // Reference to the gambler playing this slot machine
+    private Gambler gambler; 
 
     private boolean isOccupied = false;
     
@@ -38,12 +38,12 @@ public class SlotMachines extends Game {
             
             gamblerPay();
             for (int i = 0; i < numberOfReels; i++) {
-                result[i] = Greenfoot.getRandomNumber(7); // Random number between 1 and 7
+                result[i] = Greenfoot.getRandomNumber(7); // random num 1-7
             }
     
             checkIfWin();
             if (gambler != null) {
-                gambler.setPlayingSlot(false); // Reset the gambler's state when done
+                gambler.setPlayingSlot(false); // reset gambler state
             }
             releaseSlot();
         }
@@ -64,7 +64,7 @@ public class SlotMachines extends Game {
     public void assignGambler(Gambler gambler) {
         this.gambler = gambler;
         if (gambler != null) {
-            gambler.setPlayingSlot(true); // Set the gambler's state to playing
+            gambler.setPlayingSlot(true); // change gambler state to playing
         }
     }
 
