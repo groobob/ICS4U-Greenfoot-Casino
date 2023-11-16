@@ -17,7 +17,7 @@ import java.util.*;  // (ArrayList)
  * =================================================
  * 
  * @author David Guo
- * @version 0.1 11/10/2023
+ * @version 1.0 11/14/2023
  */
 public class Blackjack extends Game
 {
@@ -31,10 +31,32 @@ public class Blackjack extends Game
      */
     public void act()
     {
-        // Add your action code here.
+        actNumber++;
     }
     
-    private int calculateOdds(){
-        return 0;
+    // odds of winning the hand calculated based on luck and skill
+    private double calculateOdds(Gambler g){
+        // The percent chance of winning the hand for this gambler by default
+        double tempPercentChance = 48;
+        // The chance of them winning is decided by luck, then skill
+        //tempPercentChance += gamblersPlaying[i].getLuck()/2; // max 98% chance
+        // reduces the chance from 0.01 to 1
+        //tempPercentChance *= (double)gamblersPlaying[i].getSkill()/100;
+        return tempPercentChance;
     }
+    
+    public int playHand(Gambler g, int moneyBet){
+        int randChance = Greenfoot.getRandomNumber(100);
+        double tempPercentChance = calculateOdds(g);
+        if(tempPercentChance <= randChance){
+            return moneyBet * 2;
+        } else{
+            return 0;
+        }
+    }
+    
+    public void stationGambler(){
+        
+    }
+    
 }

@@ -5,13 +5,12 @@ import java.util.*;  // (ArrayList)
  * Write a description of class Poker here.
  * 
  * @author David Guo
- * @version 1.0 11/14/2023
+ * @version 1.0 11/15/2023
  */
 public class Poker extends Game
 {
     private int playersAtTable;
     private int pot;
-    private int actNumber;
     public Poker(){
         playersAtTable = 0;
     }
@@ -21,16 +20,26 @@ public class Poker extends Game
      */
     public void act()
     {
-        // Add your action code here.
+        actNumber++;
+        // A hand is playing every 600 acts
+        if(actNumber % 600 == 0){
+            for(int i = 0; i < gamblersPlaying.length; i++){
+                if(gamblersPlaying[i] != null){
+                    increasePot(gamblersPlaying[i]);
+                }
+            }
+        }
     }
     
-    private void increasePot(){
-        for(int i = 0; i < gamblersPlaying.length; i++){
-            //pot += gamblersPlaying[i].getMoneyBet();
-        }
+    private void increasePot(Gambler g){
+        //pot += g.getMoneyBet();
     }
     
     public int payout(){
         return pot;
+    }
+    
+    public void stationGambler(){
+        
     }
 }

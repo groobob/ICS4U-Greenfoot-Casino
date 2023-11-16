@@ -6,8 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author David Guo
  * @version 1.0 11/13/2023
  */
-public class Game extends Actor
+public abstract class Game extends Actor
 {
+    // Act number to be used in subclasses
+    protected int actNumber;
     // Array of all gamblers currently playing
     protected Gambler[] gamblersPlaying;
     // Array of all seat locations
@@ -21,7 +23,5 @@ public class Game extends Actor
         
     }
     
-    public void stationGambler(){
-        
-    }
+    public abstract void stationGambler();
 }

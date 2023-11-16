@@ -111,4 +111,8 @@ public class Roulette extends Game
     private void animateRoulette(){
         // animation
     }
+    
+    public void stationGambler(){
+        
+    }
 }
