@@ -8,66 +8,42 @@ import java.util.Random;
  * @version (a version number or a date)
  */
 public class SlotMachines extends Game {
+    private int tempGamingTime;
     private int numberOfReels;
     private int[] result;
     private boolean jackpot;
     private int moneyWon;
     private int moneyLost;
     private Gambler gambler; 
-
-    private boolean isOccupied = false;
-    
-    public SlotMachines() {
+    private boolean clapZSort=false;
+    public SlotMachines(CasinoWorld.pos[] cwp) {
+        super(cwp);
         numberOfReels = 3;
         jackpot = false;
         moneyWon = Greenfoot.getRandomNumber(99)+1;
         moneyLost = Greenfoot.getRandomNumber(50)+1;
         result = new int[numberOfReels];
     }
-    
-    public boolean isOccupied() {
-        return isOccupied;
-    }
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
-
-    public void spinReels() {
-        if (!isOccupied) {
-            setOccupied(true);
-            
-            gamblerPay();
-            for (int i = 0; i < numberOfReels; i++) {
-                result[i] = Greenfoot.getRandomNumber(7); // random num 1-7
-            }
-    
-            checkIfWin();
-            if (gambler != null) {
-                gambler.setPlayingSlot(false); // reset gambler state
-            }
-            releaseSlot();
+       public void addedToWorld(World w){
+        if(!clapZSort){//prevent z sort problems
+            clapZSort=true;
+            CasinoWorld.gs.add(this);
         }
     }
-    
     public void gamblerPay(){
         Gambler.playMoneyEffect(gambler, false, moneyLost);
     }
-    
-    public void releaseSlot() {
-        setOccupied(false);
-        if (gambler != null) {
-            gambler.setPlayingSlot(false);
-            Gambler.unstop();
+    public void act(){
+        //rn for testing gambler dips immediately
+        if(playing[0]){
+            bababooey();
+            playing[0]=false;
         }
     }
-    
-    public void assignGambler(Gambler gambler) {
-        this.gambler = gambler;
-        if (gambler != null) {
-            gambler.setPlayingSlot(true); // change gambler state to playing
-        }
+    public void bababooey(){
+        g[0].unstop();
+        g[0]=null;
     }
-
     public boolean checkIfWin() {
         System.out.println("1222222testttttttt");
 

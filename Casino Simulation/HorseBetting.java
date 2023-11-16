@@ -14,7 +14,8 @@ public class HorseBetting extends Game
     private int winningHorse; // the horse that wins the betting round
     private int horseBet; // the horse that the gambler bets on to win for the round
     
-    public HorseBetting(){
+    public HorseBetting(CasinoWorld.pos[] cwp){
+        super(cwp);
         numberOfHorses = Greenfoot.getRandomNumber(7)+1; // number of horses involved in the round
         betCost = 10; // cost of bet
         moneyWon = 100; // money awarded to gambler if they win
