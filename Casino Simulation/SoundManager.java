@@ -1,30 +1,48 @@
+import greenfoot.*;
+import java.util.*;
 /**
- * Write a description of class SoundManager here.
+ * Class that manages sound.
+ * Recommended to add sounds in world constructor.
+ * @author Jimmy Zhu
+ * @version 1.0 11/16/23
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class SoundManager  
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    private static Map<String,Queue<GreenfootSound>> sounds = new HashMap<String,Queue<GreenfootSound>>();
+    private static Map<String,GreenfootSound> currentlyLooping = new HashMap<String,GreenfootSound>();
     /**
-     * Constructor for objects of class SoundManager
+     *Plays sound
      */
-    public SoundManager()
-    {
+    //Note: when a sound that is being looped is played with the playSound method, the sound will stop looping. This is intentional.
+    public static void playSound(String name){
+        sounds.get(name).peek().play();
+        sounds.get(name).add(sounds.get(name).poll());
+        stopLooped(name);
     }
-
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     *Looped play
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public static void playLooped(String name){
+        currentlyLooping.put(name,sounds.get(name).peek());
+        currentlyLooping.get(name).playLoop();
+    }
+    /**
+     *Stops looped sound
+     */
+    public static void stopLooped(String name){
+        if(currentlyLooping.get(name)!=null)currentlyLooping.remove(name).stop();
+    }
+    /**
+     *Add sounds
+     */
+    public static void addSound(int maxSimultaneousActive, String name, String type){
+        sounds.put(name,createFilledQueue(maxSimultaneousActive,name+"."+type));
+    }
+    //adds n copies of a GreenFootSound denoted by name
+    private static Queue<GreenfootSound> createFilledQueue(int n, String name){
+        Queue<GreenfootSound> q = new LinkedList<GreenfootSound>();
+        for(int i = 0; i<n; i++)q.add(new GreenfootSound(name));
+        return q;
     }
 }

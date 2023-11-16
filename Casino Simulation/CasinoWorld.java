@@ -11,10 +11,36 @@ public class CasinoWorld extends World
     int delay=1;//temp
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 720;
-
-    public static List<slots> slotGames = new ArrayList<slots>();    
+    
+    public class pos{//temp
+        int x,y,compensate;
+        pos(int x, int y, int compensate){
+            this.x=x;this.y=y;this.compensate=compensate;
+        }
+    }
+    
+    public class slots{
+        SlotMachines slot;
+        int x,y,compensate;
+        slots(int x, int y, int compensate) {
+            this.slot = new SlotMachines();
+            addObject(slot, x, y);
+            this.x = x;
+            this.y = y;
+            this.compensate = compensate;   
+            
+            playSlots();
+        }
+        
+        public void playSlots() {
+            slot.spinReels();
+        }
+    }
+    
+    public static List<Game> slotGames = new ArrayList<Game>();    
     
     public static List<pos> tempPlaces = new ArrayList<pos>();//temp
+    
     public CasinoWorld()
     {    
         super(WIDTH, HEIGHT, 1, false); 
@@ -24,17 +50,17 @@ public class CasinoWorld extends World
         
         // GAMES
         //slots__________________________________
-        slotGames.add(new slots(56,209,-20));
-        slotGames.add(new slots(142,210,-20));
-        slotGames.add(new slots(224,211,-20));
-        slotGames.add(new slots(308,213,-20));
-        slotGames.add(new slots(391,213,-20));
+        //slotGames.add(new slots(56,209,-20));
+        //slotGames.add(new slots(142,210,-20));
+        //slotGames.add(new slots(224,211,-20));
+        //slotGames.add(new slots(308,213,-20));
+        //slotGames.add(new slots(391,213,-20));
         
-        slotGames.add(new slots(57,304,-20));
-        slotGames.add(new slots(140,303,-20));
-        slotGames.add(new slots(224,309,-20));
-        slotGames.add(new slots(304,309,-20));
-        slotGames.add(new slots(387,307,-20));
+        //slotGames.add(new slots(57,304,-20));
+        //slotGames.add(new slots(140,303,-20));
+        //slotGames.add(new slots(224,309,-20));
+        //slotGames.add(new slots(304,309,-20));
+        //slotGames.add(new slots(387,307,-20));
         
         // POSITION COORDINATES
         //slots___________________________________
@@ -92,6 +118,7 @@ public class CasinoWorld extends World
     }
     
     private slots selectAvailableSlotMachine() {
+        /*
         Collections.shuffle(slotGames); // shuffle for random slot
         for (slots slotContainer : slotGames) {
             if (!slotContainer.slot.isOccupied()) {
@@ -99,31 +126,7 @@ public class CasinoWorld extends World
             }
         }
         return null; // null if no available slot machine is found
-    }
-    
-    public class pos{//temp
-        int x,y,compensate;
-        pos(int x, int y, int compensate){
-            this.x=x;this.y=y;this.compensate=compensate;
-        }
-    }
-    
-    public class slots{
-        SlotMachines slot;
-        int x,y,compensate;
-        slots(int x, int y, int compensate) {
-            this.slot = new SlotMachines();
-            addObject(slot, x, y);
-            this.x = x;
-            this.y = y;
-            this.compensate = compensate;   
-            
-            playSlots();
-        }
-        
-        public void playSlots() {
-            slot.spinReels();
-        }
+        */
     }
     
     public void temp(){
