@@ -2,59 +2,82 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.util.Random;
 /**
- * The slot machine subclass of the Game class encompasses the functionality and code for the slot machine games. 
- * The slot machine games are played by the majority of the Gamblers that are in the simulation, with jackpots/winning runs that are
- * not determined by skill but by solely luck of the Gambler.
+ * Write a description of class Game here.
  * 
- * @author Dorsa Rohani
- * @version November 8
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class SlotMachines extends Game
-{
+public class SlotMachines extends Game {
     private int numberOfReels;
-    private Random random;
     private int[] result;
     private boolean jackpot;
+    private int moneyWon;
+    private int moneyLost;
+    private Gambler gambler; 
+
+    private boolean isOccupied = false;
     
-    public SlotMachines(){
+    public SlotMachines() {
         numberOfReels = 3;
         jackpot = false;
-    }
-    
-    public void act(){
-        //
-    }
-    
-    private boolean isGamblerInFront(){
-        List<Gambler> gamblers = getObjectsInRange(50, Gambler.class); // Adjust range as needed
-        return !gamblers.isEmpty();
-    }  
-    
-    public void stationGambler(){
-        // Code here for stationing the gambler in front of the slot machine
-        
-        spinReels();
-    }
-    
-    // Spin reels and determine outcome
-    public void spinReels(){
+        moneyWon = Greenfoot.getRandomNumber(99)+1;
+        moneyLost = Greenfoot.getRandomNumber(50)+1;
         result = new int[numberOfReels];
-        
-        // Spin each reel (have to check logic for this don tforget
-        for (int i = 0; i < numberOfReels; i++) {
-            result[i] = random.nextInt(7)+1; //random num between 1 and 7
-        }
-        
-        checkIfWin();
+    }
+    
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+    public void setOccupied(boolean occupied) {
+        isOccupied = occupied;
     }
 
-    // Calculate payout based on spin outcome
-    public boolean checkIfWin(){
-        for(int i = 1; i < result.length; i++){
-            if(result[i] != result[i-1]){
-                jackpot = false;
+    public void spinReels() {
+        if (!isOccupied) {
+            setOccupied(true);
+            
+            gamblerPay();
+            for (int i = 0; i < numberOfReels; i++) {
+                result[i] = Greenfoot.getRandomNumber(7); // random num 1-7
             }
-            else{
+    
+            checkIfWin();
+            if (gambler != null) {
+                gambler.setPlayingSlot(false); // reset gambler state
+            }
+            releaseSlot();
+        }
+    }
+    
+    public void gamblerPay(){
+        Gambler.playMoneyEffect(gambler, false, moneyLost);
+    }
+    
+    public void releaseSlot() {
+        setOccupied(false);
+        if (gambler != null) {
+            gambler.setPlayingSlot(false);
+            Gambler.unstop();
+        }
+    }
+    
+    public void assignGambler(Gambler gambler) {
+        this.gambler = gambler;
+        if (gambler != null) {
+            gambler.setPlayingSlot(true); // change gambler state to playing
+        }
+    }
+
+    public boolean checkIfWin() {
+        System.out.println("1222222testttttttt");
+
+        for (int i = 1; i < result.length; i++) {
+            if (result[i] != result[i - 1]) {
+                jackpot = false;
+                if (gambler != null) {
+                    Gambler.playMoneyEffect(gambler, true, moneyWon);
+                }
+            } else {
                 jackpot = true;
             }
         }
