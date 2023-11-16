@@ -22,6 +22,4 @@ public abstract class Game extends Actor
         // Add your action code here.
         
     }
-    
-    public abstract void stationGambler();
 }
