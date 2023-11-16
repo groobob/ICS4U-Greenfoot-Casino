@@ -20,19 +20,27 @@ C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulatio
 UTF-8
 -charset
 UTF-8
-C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\SoundManager.java
+C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\TitleScreen.java
 <---- end of javadoc command ---->
-Loading source file C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\SoundManager.java...
+Loading source file C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\TitleScreen.java...
 Constructing Javadoc information...
-Standard Doclet version 11.0.14.1
-Building tree for all the packages and classes...
-Generating C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\doc\SoundManager.html...
-C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\SoundManager.java:6: warning - invalid usage of tag &
-Generating C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\doc\package-summary.html...
-Generating C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\doc\constant-values.html...
-Building index for all the packages and classes...
-Building index for all classes...
-Generating C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\doc\allclasses.html...
-Generating C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\doc\allclasses.html...
-Generating C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\doc\index.html...
-1 warning
+C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\TitleScreen.java:13: error: cannot find symbol
+    private Fader fader;
+            ^
+  symbol:   class Fader
+  location: class TitleScreen
+C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\TitleScreen.java:15: error: cannot find symbol
+    private GifImage bg;
+            ^
+  symbol:   class GifImage
+  location: class TitleScreen
+C:\Users\aweso\OneDrive\Documents\GitHub\ICS4U-Greenfoot-Casino\Casino Simulation\TitleScreen.java:17: error: cannot find symbol
+    private Button playButton, htpButton;
+            ^
+  symbol:   class Button
+  location: class TitleScreen
+warning: unknown enum constant Tag.Any
+  reason: class file for threadchecker.Tag not found
+warning: unknown enum constant Tag.Any
+3 errors
+2 warnings
