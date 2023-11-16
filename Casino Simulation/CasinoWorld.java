@@ -34,7 +34,7 @@ public class CasinoWorld extends World
         }
     }
 
-    public static List<slots> slotGames = new ArrayList<slots>();    
+    public static List<Game> slotGames = new ArrayList<Game>();    
     
     public static List<pos> tempPlaces = new ArrayList<pos>();//temp
     public CasinoWorld()
