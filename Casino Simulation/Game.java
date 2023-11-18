@@ -1,30 +1,28 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class Game here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import greenfoot.*;
 public class Game extends Actor
 {
-    /**
-     * Act - do whatever the Game wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    Gambler[] g;
-    CasinoWorld.pos[] cwp;
-    int len;
-    boolean playing[];
-    public CasinoWorld.posWithID station(Gambler gt){
-        int len=g.length, use=-1;
-        for(int i = 0; i<len; i++)if(g[i]==null&&(use==-1||(use!=-1&&Greenfoot.getRandomNumber(2)==0)))use=i;
-        if(use!=-1){
-            g[use]=gt;
-            //System.out.println((g[use]==null)+"aifjowwfaoiafwioj");
+    protected Gambler[] gamblers;
+    private SeatManager.Seat[] seats;
+    private int len;
+    private boolean isNew=false;
+    public Game(SeatManager.Seat[] seats){
+        this.seats=seats;
+        len=seats.length;
+        gamblers=new Gambler[len];
+    }
+    public void addedToWorld(World w){
+        if(!isNew){//prevent z sort problems
+            isNew=true;
+            SeatManager.addGame(this);
         }
-        System.out.println(use);
-        return (use==-1?null:(new CasinoWorld.posWithID(cwp[use],use)));
+    }
+    public SeatManager.Seat station(){
+        int use=-1;
+        for(int i = 0; i<len; i++)if(gamblers[i]==null&&(use==-1||(use!=-1&&Greenfoot.getRandomNumber(2)==0)))use=i;
+        return (use==-1?null:(seats[use]));
+    }
+    public void placeGambler(Gambler g, int seatNumber){
+        gamblers[seatNumber]=g;
     }
     /*
     public boolean openSeats(){
@@ -33,15 +31,7 @@ public class Game extends Actor
         return false;
     }
     */
-    public Game(CasinoWorld.pos[] cwp){
-        this.cwp=cwp;
-        len=cwp.length;
-        g=new Gambler[len];
-        playing=new boolean[len];
-    }
-    public void playing(int i){
-        playing[i]=true;
-    }
+    /*
     public void act()
     {
         
@@ -59,4 +49,5 @@ public class Game extends Actor
     public void decreaseMoneyEffect(){
         //
     }
+    */
 }

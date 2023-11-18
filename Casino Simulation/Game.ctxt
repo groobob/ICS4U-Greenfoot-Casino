@@ -1,19 +1,11 @@
 #BlueJ class context
 comment0.target=Game
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Game\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=gt
-comment1.target=CasinoWorld.posWithID\ station(Gambler)
-comment2.params=cwp
-comment2.target=Game(CasinoWorld.pos[])
-comment2.text=\r\n\ \ \ \ public\ boolean\ openSeats(){\r\n\ \ \ \ \ \ \ \ System.out.println(g[0]\=\=null);\r\n\ \ \ \ \ \ \ \ for(Gambler\ gt\ \:\ g)if(gt\=\=null)return\ true;\r\n\ \ \ \ \ \ \ \ return\ false;\r\n\ \ \ \ }\r\n
-comment3.params=i
-comment3.target=void\ playing(int)
-comment4.params=
-comment4.target=void\ act()
-comment5.params=
-comment5.target=void\ stationGambler()
-comment6.params=
-comment6.target=void\ increaseMoneyEffect()
-comment7.params=
-comment7.target=void\ decreaseMoneyEffect()
-numComments=8
+comment1.params=seats
+comment1.target=Game(StationManager.Seat[])
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=StationManager.Seat\ station()
+comment4.params=g\ seatNumber
+comment4.target=void\ placeGambler(Gambler,\ int)
+numComments=5

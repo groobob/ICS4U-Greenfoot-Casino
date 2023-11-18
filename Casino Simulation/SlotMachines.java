@@ -14,44 +14,31 @@ public class SlotMachines extends Game {
     private boolean jackpot;
     private int moneyWon;
     private int moneyLost;
-    private Gambler gambler; 
-    private boolean clapZSort=false;
-    public SlotMachines(CasinoWorld.pos[] cwp) {
-        super(cwp);
+    public SlotMachines(SeatManager.Seat[] seats) {
+        super(seats);
         numberOfReels = 3;
         jackpot = false;
         moneyWon = Greenfoot.getRandomNumber(99)+1;
         moneyLost = Greenfoot.getRandomNumber(50)+1;
         result = new int[numberOfReels];
     }
-       public void addedToWorld(World w){
-        if(!clapZSort){//prevent z sort problems
-            clapZSort=true;
-            CasinoWorld.gs.add(this);
-        }
-    }
     public void gamblerPay(){
-        Gambler.playMoneyEffect(gambler, false, moneyLost);
+        gamblers[0].playMoneyEffect(gamblers[0], false, moneyLost);
     }
     public void act(){
         //rn for testing gambler dips immediately
-        if(playing[0]){
-            bababooey();
-            playing[0]=false;
+        if(gamblers[0]!=null&&gamblers[0].isPlaying()){
+            gamblers[0].stopPlaying();
+            gamblers[0]=null;
         }
-    }
-    public void bababooey(){
-        g[0].unstop();
-        g[0]=null;
     }
     public boolean checkIfWin() {
         System.out.println("1222222testttttttt");
-
         for (int i = 1; i < result.length; i++) {
             if (result[i] != result[i - 1]) {
                 jackpot = false;
-                if (gambler != null) {
-                    Gambler.playMoneyEffect(gambler, true, moneyWon);
+                if (gamblers[0] != null) {
+                    gamblers[0].playMoneyEffect(gamblers[0], true, moneyWon);
                 }
             } else {
                 jackpot = true;

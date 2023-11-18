@@ -11,27 +11,27 @@ public class Gambler extends Actor {
     private final int entranceX = 600 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int sidewalkY = 700 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int outMapX = (Greenfoot.getRandomNumber(2) == 0 ? 1250 : -50);
-    private int speed = Greenfoot.getRandomNumber(3) + 3, tx = entranceX, fx, ty, yToStation;
-    private static boolean stopped = false;
-    private boolean flag = false, toStation = false;
+    private int speed = Greenfoot.getRandomNumber(3) + 3, tx = entranceX, fx=0, ty=0, yToSeat=0;
+    private boolean playing = false;
+    private boolean flag = false, toSeat = false;
 
-    public static int money;
-    private static int score = 0;
+    public int money;
+    private int score = 0;
     private int test;
-    private static int testValue;
-    private static int effectCooldown = 0;
-    private static final int effectDelay = 30;
-    private int gameID,stationID;
-    private boolean clapZSort=false;
+    private int testValue;
+    private int effectCooldown = 0;
+    private final int effectDelay = 30;
+    private boolean isNew=false;
     public Gambler() {
-        money = 0;//money 0 temp becuz gambler leave when no money and that nice for testing
+        money = 10;
     }
     public void addedToWorld(World w){
-        if(!clapZSort){//prevent z sort problems
-            clapZSort=true;
-            if(!attemptFind())getWorld().removeObject(this);
+        if(!isNew){//prevent z sort problems
+            isNew=true;
+            if(!SeatManager.attemptTarget(this))getWorld().removeObject(this);
         }
     }
+    /*
     private boolean attemptFind(){
         boolean found=false;
         int i = 0;
@@ -40,7 +40,7 @@ public class Gambler extends Actor {
             if(curP!=null){
                 fx = curP.p.x;
                 ty = curP.p.y-curP.p.compensate;
-                yToStation = curP.p.compensate;
+                yToSeat = curP.p.compensate;
                 found=true;
                 gameID=i;
                 stationID=curP.ID;
@@ -50,7 +50,8 @@ public class Gambler extends Actor {
         }
         return found;
     }
-    public static void playMoneyEffect(Gambler gambler, boolean won, int moneyAmount) {
+    */
+    public void playMoneyEffect(Gambler gambler, boolean won, int moneyAmount) {
         if (effectCooldown > 0) {
             effectCooldown--; // decrease the cooldown timer
         }
@@ -65,72 +66,67 @@ public class Gambler extends Actor {
             }
         }
     }
-    private static void gainMoney(Gambler gambler, int amount) {
+    private void gainMoney(Gambler gambler, int amount) {
         score += amount;
         showMoneyEffect(gambler, "+ $" + amount, Color.GREEN);
     }
 
-    private static void loseMoney(Gambler gambler, int amount) {
+    private void loseMoney(Gambler gambler, int amount) {
         score -= amount;
         showMoneyEffect(gambler, "- $" + amount, Color.RED);
     }
-    private static void showMoneyEffect(Gambler gambler, String text, Color color) {
+    private void showMoneyEffect(Gambler gambler, String text, Color color) {
         if (gambler != null && gambler.getWorld() != null) {
             MoneyEffect effect = new MoneyEffect(text, color);
             gambler.getWorld().addObject(effect, gambler.getX(), gambler.getY() - 30);
         }
     }
     public void act() {
-        if (!stopped) {
+        if (!playing) {
             if(Math.abs(tx - getX()) > 5)setLocation(getX() + speed * Integer.signum(tx - getX()), getY());
             else if (Math.abs(ty - getY()) > 5)setLocation(getX(), getY() + speed * Integer.signum(ty - getY()));
             else if (tx != fx)tx = fx;
             else if (tx == 1250 || tx == -50)getWorld().removeObject(this);
             else if(!flag) {
-                if (!toStation)ty += yToStation;
-                else ty -= yToStation;
+                if (!toSeat)ty += yToSeat;
+                else ty -= yToSeat;
                 flag = true;
             } 
-            else if (!toStation) {
-                stopped = true;
-                toStation = true;
+            else if (!toSeat) {
+                playing = true;
+                toSeat = true;
                 flag = false;
-                CasinoWorld.gs.get(gameID).playing(stationID);
-                //unstop(); //temp
             } 
-            else {
-                if (money==0||Greenfoot.getRandomNumber(5)==0||!attemptFind()) {//dip when no money or 20% chance or no more seats
-                    tx = entranceX;
-                    ty = sidewalkY;
-                    fx = outMapX;
-                } 
-                else {
-                    toStation = false;
-                    flag = false;
-                }
+            else if(SeatManager.attemptTarget(this)) {
+                toSeat = false;
+                flag = false;
+            } 
+            else{
+                tx = entranceX;
+                ty = sidewalkY;
+                fx = outMapX;
             }
         }
     }
-    private boolean reachedSlotMachine() {
-        if (getWorld() == null) {
-            return false; 
-        }
-        return Math.abs(getX() - fx) < 10 && Math.abs(getY() - ty) < 10;
+    public void target(int x, int y, int compensate){
+        if(Math.abs(ty+yToSeat-y)>100)tx=entranceX;
+        fx = x;
+        ty = y-compensate;
+        yToSeat = compensate;
     }
-    
-    private SlotMachines getIntersectingSlotMachine() {
-        if(getWorld() == null){
-            return null; // return null if gambler was removed
-        }
-        java.util.List<SlotMachines> intersectingSlots = getIntersectingObjects(SlotMachines.class);
-        if (!intersectingSlots.isEmpty()) {
-            return intersectingSlots.get(0); // returns first intersecting slot machine
-        }
-        return null;
+    public int getTargetX(){
+        return tx;
     }
-    
-
-    public static void unstop() { //temp
-        stopped = false;
+    public int getTargetY(){
+        return ty;
+    }
+    public void stopPlaying(){
+        playing=false;
+    }
+    public boolean isPlaying(){
+        return playing;
+    }
+    public int getMoney(){
+        return money;
     }
 }

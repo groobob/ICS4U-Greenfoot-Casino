@@ -8,34 +8,20 @@ import java.util.*;
  */
 public class CasinoWorld extends World
 {
-    int delay=1;//temp
-    public static class pos{//temp
-        int x,y,compensate;
-        pos(int x, int y, int compensate){
-            this.x=x;this.y=y;this.compensate=compensate;
-        }
-    }
-    public static class posWithID{//temp
-        pos p; int ID;
-        posWithID(pos p, int ID){
-            this.p=p;this.ID=ID;
-        }
-    }
-    public static List<Game> gs = new ArrayList<Game>();    
-    public static List<pos[]> stationGroupCoords = new ArrayList<pos[]>();
-    public static List<pos> tempPlaces = new ArrayList<pos>();//temp
+    int delay=1;//temp 
     public CasinoWorld()
     {    
         super(1200, 740, 1, false); 
         setBackground("casinobg.png");
-        System.out.println("___________________________");
+        System.out.println("_______________________________________________________");
         Greenfoot.setSpeed(50);
-        stationGroupCoords.clear();
-        gs.clear();
+        SeatManager.resetIndex();
         // GAMES
         //slots__________________________________
         // POSITION COORDINATES
         //slots___________________________________
+        //addObject(new SlotMachines(new station[]{new station(58,244,-20,0)}),58,244);
+        /*
         stationGroupCoords.add(new pos[]{new pos(58,244,-20)});
         stationGroupCoords.add(new pos[]{new pos(141,245,-20)});
         stationGroupCoords.add(new pos[]{new pos(224,244,-20)});
@@ -47,6 +33,7 @@ public class CasinoWorld extends World
         stationGroupCoords.add(new pos[]{new pos(224,349,-20)});
         stationGroupCoords.add(new pos[]{new pos(304,349,-20)});
         stationGroupCoords.add(new pos[]{new pos(387,347,-20)});
+        */
         //tempPlaces.add(new pos(58,244,-20));
         //tempPlaces.add(new pos(141,245,-20));
         //tempPlaces.add(new pos(224,244,-20));
@@ -59,34 +46,12 @@ public class CasinoWorld extends World
         //tempPlaces.add(new pos(304,349,-20));
         //tempPlaces.add(new pos(387,347,-20));
         //____________________________________________
-        //thing betting
-        //tempPlaces.add(new pos(596,312,-20));
-        //tempPlaces.add(new pos(596,312,-20));
-        //tempPlaces.add(new pos(647,311,-20));
-        //tempPlaces.add(new pos(647,311,-20));
-        //tempPlaces.add(new pos(687,312,-20));
-        //tempPlaces.add(new pos(724,307,-20));
-        //tempPlaces.add(new pos(725,307,-20));
-        //tempPlaces.add(new pos(763,309,-20));
-        //tempPlaces.add(new pos(763,309,-20));
-        //tempPlaces.add(new pos(809,309,-20));
-        //tempPlaces.add(new pos(809,309,-20));
-        //tempPlaces.add(new pos(855,313,-20));
-        //tempPlaces.add(new pos(855,313,-20));
-        //tempPlaces.add(new pos(896,311,-20));
-        //tempPlaces.add(new pos(896,311,-20));
-        //____________________________________________
-        //yes
-        //____________________________________________
-        System.out.println(stationGroupCoords);
-        addObject(new Entrance(),600,600);
-        for(pos[] pa : stationGroupCoords)addObject(new SlotMachines(pa),pa[0].x,pa[0].y);//this supports slots. currently only supporting slots.
+        addObject(new Entrance(),600,600);//temp
         prepare();
     }
-
     public void act(){
         if(--delay==0){
-            delay=Greenfoot.getRandomNumber(60)+30;
+            delay=Greenfoot.getRandomNumber(120)+60;
             //pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
             //Game tempGame=null;
             //if(emptyGame())
@@ -99,21 +64,16 @@ public class CasinoWorld extends World
         return false;
     }
     */
-    public void temp(){
-        if(--delay==0){
-            delay=Greenfoot.getRandomNumber(60)+30;
-            pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
-            //addObject(new Gambler(p.x,p.y-p.compensate,p.compensate),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
-        
-        }
-    }
-    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-    // empty fn
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,58,244,-20)}),58,244);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,141,245,-20)}),141,245);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,224,244,-20)}),224,244);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,57,354,-20)}),57,354);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,140,353,-20)}),140,353);
     }
 }
