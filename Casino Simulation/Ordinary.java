@@ -13,7 +13,7 @@ public class Ordinary extends Gambler {
     private final int effectDelay = 50; // delay time in frames
 
     public Ordinary(int fx, int ty, int yToStation){
-        //super(fx, ty, yToStation);
+        super(fx, ty, yToStation);
     }
 
     public void act() {

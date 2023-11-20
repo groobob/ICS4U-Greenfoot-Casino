@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=SeatManager
-comment1.params=
-comment1.target=void\ resetIndex()
-comment2.params=g
-comment2.target=void\ addGame(Game)
-comment3.params=gb
-comment3.target=boolean\ attemptTarget(Gambler)
-numComments=4
