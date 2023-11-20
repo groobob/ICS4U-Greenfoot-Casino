@@ -1,11 +1,10 @@
-import greenfoot.*; // imports Actor, World, Greenfoot, GreenfootImage
+import greenfoot.*;
 /**
- * Write a description of class Game here.
+ * The gambler
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Jimmy Zhu
+ * @1118
  */
-
 public class Gambler extends Actor {
     private final int varyRange = 40;
     private final int entranceX = 600 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));

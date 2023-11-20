@@ -70,10 +70,10 @@ public class CasinoWorld extends World
      */
     private void prepare()
     {
-        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,58,244,-20)}),58,244);
-        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,141,245,-20)}),141,245);
-        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,224,244,-20)}),224,244);
-        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,57,354,-20)}),57,354);
-        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(0,140,353,-20)}),140,353);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(58,244,-20)}),58,244);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(141,245,-20)}),141,245);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(224,244,-20)}),224,244);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(57,354,-20)}),57,354);
+        addObject(new SlotMachines(new SeatManager.Seat[]{new SeatManager.Seat(140,353,-20)}),140,353);
     }
 }

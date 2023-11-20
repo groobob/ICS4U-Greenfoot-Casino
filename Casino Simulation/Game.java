@@ -16,10 +16,11 @@ public class Game extends Actor
             SeatManager.addGame(this);
         }
     }
-    public SeatManager.Seat station(){
-        int use=-1;
-        for(int i = 0; i<len; i++)if(gamblers[i]==null&&(use==-1||(use!=-1&&Greenfoot.getRandomNumber(2)==0)))use=i;
-        return (use==-1?null:(seats[use]));
+    public Gambler[] getGamblers(){
+        return gamblers;
+    }
+    public SeatManager.Seat[] getSeats(){
+        return seats;
     }
     public void placeGambler(Gambler g, int seatNumber){
         gamblers[seatNumber]=g;
