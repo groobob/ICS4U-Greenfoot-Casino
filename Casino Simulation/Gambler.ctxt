@@ -15,7 +15,6 @@ comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=gambler\ won\ moneyAmount
 comment3.target=void\ playMoneyEffect(Gambler,\ boolean,\ int)
-comment3.text=\r\n\ \ \ \ private\ boolean\ attemptFind(){\r\n\ \ \ \ \ \ \ \ boolean\ found\=false;\r\n\ \ \ \ \ \ \ \ int\ i\ \=\ 0;\r\n\ \ \ \ \ \ \ \ for(Game\ ga\ \:\ CasinoWorld.gs){\r\n\ \ \ \ \ \ \ \ \ \ \ \ CasinoWorld.posWithID\ curP\=ga.station(this);\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(curP\!\=null){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fx\ \=\ curP.p.x;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ty\ \=\ curP.p.y-curP.p.compensate;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ yToSeat\ \=\ curP.p.compensate;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\=true;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameID\=i;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stationID\=curP.ID;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ i++;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ found;\r\n\ \ \ \ }\r\n
 comment4.params=gambler\ amount
 comment4.target=void\ gainMoney(Gambler,\ int)
 comment5.params=gambler\ amount

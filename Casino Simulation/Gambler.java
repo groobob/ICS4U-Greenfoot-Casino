@@ -10,10 +10,9 @@ public class Gambler extends Actor {
     private final int entranceX = 600 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int sidewalkY = 700 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int outMapX = (Greenfoot.getRandomNumber(2) == 0 ? 1250 : -50);
-    private int speed = Greenfoot.getRandomNumber(3) + 3, tx = entranceX, fx=0, ty=0, yToSeat=0;
+    private int speed = Greenfoot.getRandomNumber(3) + 3, tx = entranceX, fx=0, ty=0, yToSpot=0;
     private boolean playing = false;
-    private boolean flag = false, toSeat = false;
-
+    private boolean flag = false, toSpot = false;
     public int money;
     private int score = 0;
     private int test;
@@ -27,29 +26,9 @@ public class Gambler extends Actor {
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
-            if(!SeatManager.attemptTarget(this))getWorld().removeObject(this);
+            if(!SpotManager.attemptTarget(this))getWorld().removeObject(this);
         }
     }
-    /*
-    private boolean attemptFind(){
-        boolean found=false;
-        int i = 0;
-        for(Game ga : CasinoWorld.gs){
-            CasinoWorld.posWithID curP=ga.station(this);
-            if(curP!=null){
-                fx = curP.p.x;
-                ty = curP.p.y-curP.p.compensate;
-                yToSeat = curP.p.compensate;
-                found=true;
-                gameID=i;
-                stationID=curP.ID;
-                break;
-            }
-            i++;
-        }
-        return found;
-    }
-    */
     public void playMoneyEffect(Gambler gambler, boolean won, int moneyAmount) {
         if (effectCooldown > 0) {
             effectCooldown--; // decrease the cooldown timer
@@ -87,17 +66,17 @@ public class Gambler extends Actor {
             else if (tx != fx)tx = fx;
             else if (tx == 1250 || tx == -50)getWorld().removeObject(this);
             else if(!flag) {
-                if (!toSeat)ty += yToSeat;
-                else ty -= yToSeat;
+                if (!toSpot)ty += yToSpot;
+                else ty -= yToSpot;
                 flag = true;
             } 
-            else if (!toSeat) {
+            else if (!toSpot) {
                 playing = true;
-                toSeat = true;
+                toSpot = true;
                 flag = false;
             } 
-            else if(SeatManager.attemptTarget(this)) {
-                toSeat = false;
+            else if(SpotManager.attemptTarget(this)) {
+                toSpot = false;
                 flag = false;
             } 
             else{
@@ -108,10 +87,10 @@ public class Gambler extends Actor {
         }
     }
     public void target(int x, int y, int compensate){
-        if(Math.abs(ty+yToSeat-y)>100)tx=entranceX;
+        if(Math.abs(ty+yToSpot-y)>100)tx=entranceX;
         fx = x;
         ty = y-compensate;
-        yToSeat = compensate;
+        yToSpot = compensate;
     }
     public int getTargetX(){
         return tx;

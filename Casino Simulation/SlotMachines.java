@@ -14,8 +14,8 @@ public class SlotMachines extends Game {
     private boolean jackpot;
     private int moneyWon;
     private int moneyLost;
-    public SlotMachines(SeatManager.Seat[] seats) {
-        super(seats);
+    public SlotMachines(SpotManager.Spot[] spots) {
+        super(spots);
         numberOfReels = 3;
         jackpot = false;
         moneyWon = Greenfoot.getRandomNumber(99)+1;

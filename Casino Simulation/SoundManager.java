@@ -5,7 +5,6 @@ import java.util.*;
  * Recommended to add sounds in world constructor.
  * @author Jimmy Zhu
  * @version 1111
- * 
  */
 public class SoundManager  
 {

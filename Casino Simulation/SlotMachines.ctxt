@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=SlotMachines
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Game\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=seats
-comment1.target=SlotMachines(SeatManager.Seat[])
+comment1.params=spots
+comment1.target=SlotMachines(SpotManager.Spot[])
 comment2.params=
 comment2.target=void\ gamblerPay()
 comment3.params=
