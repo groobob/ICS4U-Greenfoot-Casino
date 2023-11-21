@@ -7,15 +7,16 @@ public class SlotMachines extends Game {
     private static final int cost = 5;
     private static final int minWinAmount = 100;
     private static final int maxWinAmount = 500;
-    private static final int delay = 20;
-    private int maxPlays = Greenfoot.getRandomNumber(5)+3;
+    private static final int delay = 80;
+    //private int maxPlays = Greenfoot.getRandomNumber(5)+3;
+    private int maxPlays = 10;
     private int delayCounter;
     private int playCounter; // counter for number of plays
     private int winAmount;
 
     public SlotMachines(SeatManager.Seat[] seats) {
         super(seats);
-        delayCounter = delay;
+        delayCounter = 0;
         playCounter = 0;
     }
 
@@ -25,21 +26,22 @@ public class SlotMachines extends Game {
 
     private void playGameCycle() {
         if (isGamblerAvailable()) {
-            spinReels();
             if (delayCounter >= delay) {
                 deductGameCost();
-            
-                delayCounter = 0;
-
+                spinReels();
+                System.out.println("test");
                 playCounter++; // increment play counter after each play
                 if (playCounter >= maxPlays) {
                     endGamblerSession(); // end session after maxPlay plays
                 }
+                delayCounter = 0;
+                
             } else {
                 delayCounter++;
             }
         } else {
             resetForNewGambler();
+            playCounter = 0;
         }
     }
 
@@ -50,7 +52,7 @@ public class SlotMachines extends Game {
     }
 
     private void spinReels() {
-        if (isGamblerAvailable() && Greenfoot.getRandomNumber(2) == 0) {
+        if (isGamblerAvailable()) {
             winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
             gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
         }
