@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The slot machines
  * Author: Dorsa
  */
-public class SlotMachines extends Game {
+public class HorseBetting extends Game {
     private static final int cost = 5;
     private static final int minWinAmount = 100;
     private static final int maxWinAmount = 500;
@@ -12,7 +12,7 @@ public class SlotMachines extends Game {
     private int playCounter; // counter for number of plays
     private int winAmount;
 
-    public SlotMachines(SpotManager.Spot[] spots) {
+    public HorseBetting(SpotManager.Spot[] spots) {
         super(spots);
         playCounter = 0;
     }
@@ -25,9 +25,7 @@ public class SlotMachines extends Game {
                 winMoney();
                 System.out.println("cool");
             }
-            if(--delay>=0){
-               return; 
-            }
+            if(--delay>=0)return;
             deductGameCost();
             //winMoney();
             playCounter++;

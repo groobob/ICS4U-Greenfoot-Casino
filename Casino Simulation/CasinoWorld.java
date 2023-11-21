@@ -75,5 +75,10 @@ public class CasinoWorld extends World
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(224,244,-20)}),224,244);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(57,354,-20)}),57,354);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(140,353,-20)}),140,353);
+        
+        
+        addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(600,312,-20)}),600,312);
+        addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(680,312,-20)}),680,312);
+
     }
 }
