@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Game
 comment1.params=spots
-comment1.target=Game(SeatManager.Spot[])
+comment1.target=Game(SpotManager.Spot[])
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=
 comment3.target=Gambler[]\ getGamblers()
 comment4.params=
-comment4.target=SeatManager.Spot[]\ getSpots()
+comment4.target=SpotManager.Spot[]\ getSpots()
 comment5.params=g\ SpotNumber
 comment5.target=void\ placeGambler(Gambler,\ int)
 numComments=6

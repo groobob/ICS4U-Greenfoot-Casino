@@ -29,35 +29,9 @@ public class Gambler extends Actor {
             if(!SpotManager.attemptTarget(this))getWorld().removeObject(this);
         }
     }
-    public void playMoneyEffect(Gambler gambler, boolean won, int moneyAmount) {
-        if (effectCooldown > 0) {
-            effectCooldown--; // decrease the cooldown timer
-        }
-
-        if (effectCooldown <= 0) {
-            if (won) {
-                gainMoney(gambler, moneyAmount);
-                effectCooldown = effectDelay;
-            } else {
-                loseMoney(gambler, moneyAmount);
-                effectCooldown = effectDelay;
-            }
-        }
-    }
-    private void gainMoney(Gambler gambler, int amount) {
-        score += amount;
-        showMoneyEffect(gambler, "+ $" + amount, Color.GREEN);
-    }
-
-    private void loseMoney(Gambler gambler, int amount) {
-        score -= amount;
-        showMoneyEffect(gambler, "- $" + amount, Color.RED);
-    }
-    private void showMoneyEffect(Gambler gambler, String text, Color color) {
-        if (gambler != null && gambler.getWorld() != null) {
-            MoneyEffect effect = new MoneyEffect(text, color);
-            gambler.getWorld().addObject(effect, gambler.getX(), gambler.getY() - 30);
-        }
+    public void playMoneyEffect(int money) {
+        score+=money;
+        getWorld().addObject(new MoneyEffect((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
     public void act() {
         if (!playing) {
