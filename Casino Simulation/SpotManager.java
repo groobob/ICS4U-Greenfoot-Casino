@@ -5,9 +5,8 @@ import java.util.*;
  * Recommended to add sounds in world constructor.
  * @author Jimmy Zhu
  * @version 1120
- * 
  */
-public class SeatManager  
+public class SpotManager  
 {
     private static final int numberOfGames=5;//increase when more games are made
     private static Game[] games = new Game[numberOfGames];
@@ -18,9 +17,9 @@ public class SeatManager
     public static void resetIndex(){
         i=0;
     }
-    public static class Seat{
+    public static class Spot{
         private int x,y,compensate;
-        public Seat(int x, int y, int compensate){
+        public Spot(int x, int y, int compensate){
             this.x=x;
             this.y=y;
             this.compensate=compensate;
@@ -42,32 +41,32 @@ public class SeatManager
         games[i++]=g;
     }
     /**
-     *Targets random empty seat
+     *Targets random empty spot
      */
     public static boolean attemptTarget(Gambler gb){
         if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return false;//dip when no money or 20% chance
-        Seat targetSeat=null;
-        int targetGameIndex=-1, targetSeatIndex=-1;
+        Spot targetSpot=null;
+        int targetGameIndex=-1, targetSpotIndex=-1;
         for(int i = 0; i<numberOfGames; i++){
-            Seat curSeat=null;
-            Seat[] currentGameSeats=games[i].getSeats();
+            Spot curSpot=null;
+            Spot[] currentGameSpots=games[i].getSpots();
             Gambler[] currentGameGamblers=games[i].getGamblers();
-            int len = currentGameGamblers.length, curSeatIndex=-1;
-            for(int j = 0; j<len; j++)if(currentGameGamblers[j]==null&&(curSeat==null||(curSeat!=null&&Greenfoot.getRandomNumber(2)==0))){
-                curSeat=currentGameSeats[j];
-                curSeatIndex=j;
+            int len = currentGameGamblers.length, curSpotIndex=-1;
+            for(int j = 0; j<len; j++)if(currentGameGamblers[j]==null&&(curSpot==null||(curSpot!=null&&Greenfoot.getRandomNumber(2)==0))){
+                curSpot=currentGameSpots[j];
+                curSpotIndex=j;
             }
-            if(curSeat==null||(curSeat.getHorizontal()==gb.getTargetX()&&curSeat.getVertical()-curSeat.getCompensate()==gb.getTargetY()))continue;
-            if(targetSeat==null||(targetSeat!=null&&Greenfoot.getRandomNumber(2)==0)){
+            if(curSpot==null||(curSpot.getHorizontal()==gb.getTargetX()&&curSpot.getVertical()-curSpot.getCompensate()==gb.getTargetY()))continue;
+            if(targetSpot==null||(targetSpot!=null&&Greenfoot.getRandomNumber(2)==0)){
                 targetGameIndex=i;
-                targetSeatIndex=curSeatIndex;
-                targetSeat=curSeat;
+                targetSpotIndex=curSpotIndex;
+                targetSpot=curSpot;
             }
         }
-        if(targetSeat==null)return false;
+        if(targetSpot==null)return false;
         else{
-            gb.target(targetSeat.getHorizontal(),targetSeat.getVertical(),targetSeat.getCompensate());
-            games[targetGameIndex].placeGambler(gb,targetSeatIndex);
+            gb.target(targetSpot.getHorizontal(),targetSpot.getVertical(),targetSpot.getCompensate());
+            games[targetGameIndex].placeGambler(gb,targetSpotIndex);
             return true;
         }
     }

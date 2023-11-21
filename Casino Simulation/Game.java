@@ -2,53 +2,27 @@ import greenfoot.*;
 public class Game extends Actor
 {
     protected Gambler[] gamblers;
-    private SeatManager.Seat[] seats;
+    private SpotManager.Spot[] spots;
     private int len;
     private boolean isNew=false;
-    public Game(SeatManager.Seat[] seats){
-        this.seats=seats;
-        len=seats.length;
+    public Game(SpotManager.Spot[] spots){
+        this.spots=spots;
+        len=spots.length;
         gamblers=new Gambler[len];
     }
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
-            SeatManager.addGame(this);
+            SpotManager.addGame(this);
         }
     }
     public Gambler[] getGamblers(){
         return gamblers;
     }
-    public SeatManager.Seat[] getSeats(){
-        return seats;
+    public SpotManager.Spot[] getSpots(){
+        return spots;
     }
-    public void placeGambler(Gambler g, int seatNumber){
-        gamblers[seatNumber]=g;
+    public void placeGambler(Gambler g, int SpotNumber){
+        gamblers[SpotNumber]=g;
     }
-    /*
-    public boolean openSeats(){
-        System.out.println(g[0]==null);
-        for(Gambler gt : g)if(gt==null)return true;
-        return false;
-    }
-    */
-    /*
-    public void act()
-    {
-        
-    }
-    
-    // stationGambler:
-    // array for each time of game seating
-    // keep count of number of gamblers in the entire game    
-    public void stationGambler(){
-        //
-    }
-    public void increaseMoneyEffect(){
-        //
-    }
-    public void decreaseMoneyEffect(){
-        //
-    }
-    */
 }
