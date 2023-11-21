@@ -1,13 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.Random;
-
+/**
+ * Author: Dorsa
+ */
 public class SlotMachines extends Game {
     private static final int cost = 5; // cost of a bet for the gambler
     private static final int minWinAmount = 100; // min amount of money gamblers can win by slots
     private static final int maxWinAmount = 500; // max amount of money gamblers can win by slots
     private static final int delay = 20; // delay time in act cycles
     private int delayCounter; // counter for the delay
-    private Random random = new Random(); // for randomized booleans
 
     public SlotMachines(SeatManager.Seat[] seats) {
         super(seats);
@@ -40,14 +40,14 @@ public class SlotMachines extends Game {
     }
 
     private void checkWinAndAwardPrize() {
-        if (isGamblerAvailable() && random.nextBoolean()) {
-            int winAmount = minWinAmount + random.nextInt(maxWinAmount - minWinAmount + 1);
+        if (isGamblerAvailable() && Greenfoot.getRandomNumber(2)==0) {
+            int winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
             gamblers[0].playMoneyEffect(gamblers[0], true, winAmount);
         }
     }
-
+    
     private boolean decidesToContinuePlaying() {
-        return isGamblerAvailable() && random.nextBoolean();
+        return isGamblerAvailable() && Greenfoot.getRandomNumber(2)==0;
     }
 
     private void endGamblerSession() {
