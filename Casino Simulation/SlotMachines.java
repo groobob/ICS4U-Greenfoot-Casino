@@ -13,7 +13,7 @@ public class SlotMachines extends Game {
     private int playCounter; // counter for number of plays
     private int winAmount;
 
-    public SlotMachines(SeatManager.Seat[] seats) {
+    public SlotMachines(SpotManager.Seat[] seats) {
         super(seats);
         delayCounter = delay;
         playCounter = 0;
