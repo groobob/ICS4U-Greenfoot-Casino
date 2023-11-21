@@ -1,5 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+/**
+ * The slot machines
+ * Author: Dorsa
+ */
 public class SlotMachines extends Game {
     private static final int cost = 5;
     private static final int minWinAmount = 100;
@@ -7,12 +10,13 @@ public class SlotMachines extends Game {
     private static final int delay = 20;
     private int maxPlays = Greenfoot.getRandomNumber(5)+3;
     private int delayCounter;
-    private int playCounter; // Counter for number of plays
+    private int playCounter; // counter for number of plays
+    private int winAmount;
 
     public SlotMachines(SeatManager.Seat[] seats) {
         super(seats);
         delayCounter = delay;
-        playCounter = 0; // Initialize play counter
+        playCounter = 0;
     }
 
     public void act() {
@@ -29,7 +33,7 @@ public class SlotMachines extends Game {
 
                 playCounter++; // increment play counter after each play
                 if (playCounter >= maxPlays) {
-                    endGamblerSession(); // end session after 10 plays
+                    endGamblerSession(); // end session after maxPlay plays
                 }
             } else {
                 delayCounter++;
@@ -47,7 +51,7 @@ public class SlotMachines extends Game {
 
     private void spinReels() {
         if (isGamblerAvailable() && Greenfoot.getRandomNumber(2) == 0) {
-            int winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
+            winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
             gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
         }
     }
@@ -55,12 +59,12 @@ public class SlotMachines extends Game {
     private void endGamblerSession() {
         gamblers[0].stopPlaying();
         gamblers[0] = null;
-        playCounter = 0; // Reset play counter for next gambler
+        playCounter = 0; // reset play counter for next gambler
     }
 
     private void resetForNewGambler() {
         delayCounter = delay;
-        playCounter = 0; // Reset play counter for new gambler
+        playCounter = 0; // reset play counter for new gambler
     }
 
     private boolean isGamblerAvailable() {
