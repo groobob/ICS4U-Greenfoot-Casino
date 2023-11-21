@@ -1,49 +1,73 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.*;
-import java.util.Random;
 /**
- * Write a description of class Game here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * The slot machines
+ * Author: Dorsa
  */
 public class SlotMachines extends Game {
-    private int tempGamingTime;
-    private int numberOfReels;
-    private int[] result;
-    private boolean jackpot;
-    private int moneyWon;
-    private int moneyLost;
-    public SlotMachines(SpotManager.Spot[] spots) {
-        super(spots);
-        numberOfReels = 3;
-        jackpot = false;
-        moneyWon = Greenfoot.getRandomNumber(99)+1;
-        moneyLost = Greenfoot.getRandomNumber(50)+1;
-        result = new int[numberOfReels];
+    private static final int cost = 5;
+    private static final int minWinAmount = 100;
+    private static final int maxWinAmount = 500;
+    private static final int delay = 20;
+    private int maxPlays = Greenfoot.getRandomNumber(5)+3;
+    private int delayCounter;
+    private int playCounter; // counter for number of plays
+    private int winAmount;
+
+    public SlotMachines(SeatManager.Seat[] seats) {
+        super(seats);
+        delayCounter = delay;
+        playCounter = 0;
     }
-    public void gamblerPay(){
-        gamblers[0].playMoneyEffect(gamblers[0], false, moneyLost);
+
+    public void act() {
+        playGameCycle();
     }
-    public void act(){
-        //rn for testing gambler dips immediately
-        if(gamblers[0]!=null&&gamblers[0].isPlaying()){
-            gamblers[0].stopPlaying();
-            gamblers[0]=null;
-        }
-    }
-    public boolean checkIfWin() {
-        System.out.println("1222222testttttttt");
-        for (int i = 1; i < result.length; i++) {
-            if (result[i] != result[i - 1]) {
-                jackpot = false;
-                if (gamblers[0] != null) {
-                    gamblers[0].playMoneyEffect(gamblers[0], true, moneyWon);
+
+    private void playGameCycle() {
+        if (isGamblerAvailable()) {
+            spinReels();
+            if (delayCounter >= delay) {
+                deductGameCost();
+            
+                delayCounter = 0;
+
+                playCounter++; // increment play counter after each play
+                if (playCounter >= maxPlays) {
+                    endGamblerSession(); // end session after maxPlay plays
                 }
             } else {
-                jackpot = true;
+                delayCounter++;
             }
+        } else {
+            resetForNewGambler();
         }
-        return jackpot;
+    }
+
+    private void deductGameCost() {
+        if (isGamblerAvailable()) {
+            gamblers[0].playMoneyEffect(gamblers[0], false, cost);
+        }
+    }
+
+    private void spinReels() {
+        if (isGamblerAvailable() && Greenfoot.getRandomNumber(2) == 0) {
+            winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
+            gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
+        }
+    }
+
+    private void endGamblerSession() {
+        gamblers[0].stopPlaying();
+        gamblers[0] = null;
+        playCounter = 0; // reset play counter for next gambler
+    }
+
+    private void resetForNewGambler() {
+        delayCounter = delay;
+        playCounter = 0; // reset play counter for new gambler
+    }
+
+    private boolean isGamblerAvailable() {
+        return gamblers[0] != null && gamblers[0].isPlaying();
     }
 }
