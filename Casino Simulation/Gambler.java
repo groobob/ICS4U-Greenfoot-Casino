@@ -6,7 +6,7 @@ import greenfoot.*;
  * @1118
  */
 public class Gambler extends Actor {
-    private final int varyRange = 40;
+    private final int varyRange = 20;
     private final int entranceX = 600 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int sidewalkY = 700 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int outMapX = (Greenfoot.getRandomNumber(2) == 0 ? 1250 : -50);
