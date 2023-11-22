@@ -49,7 +49,7 @@ public class SlotMachines extends Game {
 
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
-        casinoProfit += cost;
+        HorizontalBar.casinoProfit += cost;
     }
     
     public void winMoney() {

@@ -3,17 +3,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class HorizontalBar here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Richard, Dorsa
+ * @version 11/20
  */
 public class HorizontalBar extends Actor
 {
+    public static int casinoProfit;
     /**
      * Act - do whatever the HorizontalBar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){
-        showText(Game.casinoProfit + "", Color.RED, 1, 2);
+        showText(casinoProfit + "", Color.RED, 405, 35);
     }
     
     private void showText(String text, Color color, int x, int y){
