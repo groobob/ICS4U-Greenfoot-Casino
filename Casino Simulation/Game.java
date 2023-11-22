@@ -6,7 +6,6 @@ public class Game extends Actor
     private int len;
     private boolean isNew=false;
     protected int actNumber;
-    protected Gambler[] gamblersPlaying;
     public Game(SpotManager.Spot[] spots){
         this.spots=spots;
         len=spots.length;

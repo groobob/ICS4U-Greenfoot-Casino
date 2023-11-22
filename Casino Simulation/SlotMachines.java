@@ -23,7 +23,7 @@ public class SlotMachines extends Game {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
             if(delay==20){
                 winMoney();
-                System.out.println("cool");
+                //System.out.println("cool");
             }
             if(--delay>=0)return;
             deductGameCost();

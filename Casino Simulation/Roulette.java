@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;  // (ArrayList)
 
 /**
- * Write a description of class Roulette here.
+ * A roulette table which where gamblers can choose a number to bet their money on
  * 
  * @author David Guo
- * @version 1.0 11/13/2023
+ * @version 1.1 11/22/2023
  */
 public class Roulette extends Game
 {
@@ -37,7 +37,6 @@ public class Roulette extends Game
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
         numberOfPockets = 38;
-        maxBet = 5000;
         currentlySpinning = false;
         actsSpinning = 0;
         // Set the class to the image
@@ -45,7 +44,6 @@ public class Roulette extends Game
         rouletteTable.scale(80,60);
         setImage(rouletteTable);
         // Initlize arraylist of gamblers
-        gamblersPlaying = new Gambler[6]; // each index is a seat
         gamblerBets = new int[6]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
     }
     /**
@@ -74,7 +72,7 @@ public class Roulette extends Game
     
     public int calculateEarned(){
         /*
-        for(int i = 0; i < gamblersPlaying.length; i++){
+        for(int i = 0; i < gamblers.length; i++){
             if(gamblerBets[i] == -1 && pocketNum % 2 == 1){
                 return getMoneyBet() * EVEN_ODD_PAYOUT;
             } else if(gamblerBets[i] == -2 && pocketNum % 2 == 0){
@@ -94,10 +92,10 @@ public class Roulette extends Game
     }
     // When gamblers are ready to make their bet before the wheel starts spinning
     private void makeBet(){
-        for(int i = 0; i < gamblersPlaying.length; i++){
-            if(gamblersPlaying[i] != null){
+        for(int i = 0; i < gamblers.length; i++){
+            if(gamblers[i] != null){
                 /*
-                if(gamblersPlaying[i].getSkill() < 50){
+                if(gamblers[i].getSkill() < 50){
                     gamblerBets[i] = Greenfoot.getRandomNumber(numberOfPockets);
                 } else {
                     // -1 means betting on odds, -2 means betting on evens

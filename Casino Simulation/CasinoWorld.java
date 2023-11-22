@@ -75,5 +75,10 @@ public class CasinoWorld extends World
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(224,244,-20)}),224,244);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(57,354,-20)}),57,354);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(140,353,-20)}),140,353);
+        
+        //Spawn Blackjack, Poker, and Roulette games along with their repsective seats
+        addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(81,445,20), new SpotManager.Spot(127,445,20), new SpotManager.Spot(181,445,20), new SpotManager.Spot(252,445,20), new SpotManager.Spot(305,461,0), new SpotManager.Spot(305,526,0)}),175,500);
+        addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(900,517,0), new SpotManager.Spot(900,472,0), new SpotManager.Spot(938,435,0), new SpotManager.Spot(1000,435,0), new SpotManager.Spot(1040,435,0), new SpotManager.Spot(1090,435,0)}),1020,500);
+        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,0), new SpotManager.Spot(1014,342,0), new SpotManager.Spot(1148,298,0), new SpotManager.Spot(1116,342,0), new SpotManager.Spot(1068,344,0), new SpotManager.Spot(976,302,0)}),1060,270);
     }
 }

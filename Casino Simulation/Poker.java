@@ -24,9 +24,9 @@ public class Poker extends Game
         actNumber++;
         // A hand is playing every 600 acts
         if(actNumber % 600 == 0){
-            for(int i = 0; i < gamblersPlaying.length; i++){
-                if(gamblersPlaying[i] != null){
-                    increasePot(gamblersPlaying[i]);
+            for(int i = 0; i < gamblers.length; i++){
+                if(gamblers[i] != null){
+                    increasePot(gamblers[i]);
                 }
             }
         }

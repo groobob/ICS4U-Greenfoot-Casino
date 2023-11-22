@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Roulette
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Roulette\ here.\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.0\ 11/13/2023\r\n
+comment0.text=\r\n\ A\ roulette\ table\ which\ where\ gamblers\ can\ choose\ a\ number\ to\ bet\ their\ money\ on\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.1\ 11/22/2023\r\n
 comment1.params=spots
 comment1.target=Roulette(SpotManager.Spot[])
 comment2.params=
