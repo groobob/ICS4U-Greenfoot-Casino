@@ -76,9 +76,10 @@ public class CasinoWorld extends World
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(57,354,-20)}),57,354);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(140,353,-20)}),140,353);
         
-        //Spawn Blackjack, Poker, and Roulette games along with their repsective seats
-        addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(81,445,20), new SpotManager.Spot(127,445,20), new SpotManager.Spot(181,445,20), new SpotManager.Spot(252,445,20), new SpotManager.Spot(305,461,0), new SpotManager.Spot(305,526,0)}),175,500);
-        addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(900,517,0), new SpotManager.Spot(900,472,0), new SpotManager.Spot(938,435,0), new SpotManager.Spot(1000,435,0), new SpotManager.Spot(1040,435,0), new SpotManager.Spot(1090,435,0)}),1020,500);
-        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-100), new SpotManager.Spot(1014,330,-50), new SpotManager.Spot(1148,290,-20), new SpotManager.Spot(1116,320,-20), new SpotManager.Spot(1068,335,-20), new SpotManager.Spot(976,302,0)}),1060,270);
+        // Spawn Blackjack, Poker, and Roulette games along with their repsective seats
+        // Note: Carpet compensates from top/down to left/right are 265, 375, 375
+        addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
+        addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);
+        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
     }
 }
