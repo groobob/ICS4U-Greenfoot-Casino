@@ -20,6 +20,7 @@ public class Gambler extends Actor {
     private int effectCooldown = 0;
     private final int effectDelay = 30;
     private boolean isNew=false;
+    
     public Gambler() {
         money = 10;
     }

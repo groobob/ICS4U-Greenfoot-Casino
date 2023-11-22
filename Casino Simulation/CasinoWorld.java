@@ -70,16 +70,17 @@ public class CasinoWorld extends World
      */
     private void prepare()
     {
+
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(58,244,-20)}),58,244);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(141,245,-20)}),141,245);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(224,244,-20)}),224,244);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(57,354,-20)}),57,354);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(140,353,-20)}),140,353);
-        
-        
+
         addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(680,312,-20)}),680,312);
         addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(760,312,-20)}),760,312);
         addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(840,312,-20)}),840,312);
-
+        
+        addObject(new HorizontalBar(),600,60);
     }
 }

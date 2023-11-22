@@ -1,14 +1,23 @@
 import greenfoot.*;
+/*
+ * Game class
+ * @author: Dorsa Rohani, David Guo
+ * @version: 11/20
+ */
 public class Game extends Actor
 {
     protected Gambler[] gamblers;
     private SpotManager.Spot[] spots;
     private int len;
     private boolean isNew=false;
+    public static int casinoProfit;
+    
     public Game(SpotManager.Spot[] spots){
         this.spots=spots;
         len=spots.length;
         gamblers=new Gambler[len];
+        
+        casinoProfit = 0;
     }
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
