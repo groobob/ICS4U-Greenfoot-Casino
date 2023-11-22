@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The slot machines
- * Author: Dorsa
+ * Author: Dorsa Rohani
+ * @version 11/20
  */
 public class HorseBetting extends Game {
     private static final int cost = 5;
@@ -16,9 +17,11 @@ public class HorseBetting extends Game {
         super(spots);
         playCounter = 0;
     }
+    
     public void act() {
         playGameCycle();
     }
+    
     private void playGameCycle() {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
             if(delay==20){
@@ -44,6 +47,7 @@ public class HorseBetting extends Game {
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
     }
+    
     public void winMoney() {
         //if (Greenfoot.getRandomNumber(2)==0) {
             int actuallyWinningMoney=50;

@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class SpotManager  
 {
-    private static final int numberOfGames=7;//increase when more games are made
+    private static final int numberOfGames=8;//increase when more games are made
     private static Game[] games = new Game[numberOfGames];
     private static int i=0;
     /**

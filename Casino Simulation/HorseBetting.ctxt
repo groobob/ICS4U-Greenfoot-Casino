@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=HorseBetting
-comment0.text=\r\n\ The\ slot\ machines\r\n\ Author\:\ Dorsa\r\n
+comment0.text=\r\n\ The\ slot\ machines\r\n\ Author\:\ Dorsa\ Rohani\r\n\ @version\ 11/20\r\n
 comment1.params=spots
 comment1.target=HorseBetting(SpotManager.Spot[])
 comment2.params=
