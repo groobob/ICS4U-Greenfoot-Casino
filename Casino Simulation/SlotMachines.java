@@ -21,24 +21,23 @@ public class SlotMachines extends Game {
     }
     private void playGameCycle() {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
-            if(delay==20){
-                winMoney();
-                System.out.println("cool");
-            }
+            if(delay%22==0)setImage(ImageManager.getImage("slots",1,delay/22));
+            if(delay==20)winMoney();
             if(--delay>=0)return;
             deductGameCost();
             //winMoney();
             playCounter++;
-            delay=120;
+            delay=132;
             if(playCounter>=maxPlays)endGamblerSession();
         }
         else{
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
+            setImage(ImageManager.getImage("slotsIdle"));
         }
     }
-
+    
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
     }

@@ -35,7 +35,7 @@ public class Gambler extends Actor {
     }
     public void act() {
         if (!playing) {
-            if(Math.abs(tx - getX()) > 5)setLocation(getX() + speed * Integer.signum(tx - getX()), getY());
+            if(Math.abs(tx - getX()) > 2)setLocation(getX() + speed * Integer.signum(tx - getX()), getY());
             else if (Math.abs(ty - getY()) > 5)setLocation(getX(), getY() + speed * Integer.signum(ty - getY()));
             else if (tx != fx)tx = fx;
             else if (tx == 1250 || tx == -50)getWorld().removeObject(this);
