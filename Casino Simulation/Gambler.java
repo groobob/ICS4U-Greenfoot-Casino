@@ -61,7 +61,7 @@ public class Gambler extends Actor {
         }
     }
     public void target(int x, int y, int compensate){
-        if(Math.abs(ty+yToSpot-y)>100)tx=entranceX;
+        if(Math.abs(ty+yToSpot-y)>50)tx=entranceX;
         fx = x;
         ty = y-compensate;
         yToSpot = compensate;

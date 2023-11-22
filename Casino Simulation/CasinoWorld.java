@@ -46,7 +46,7 @@ public class CasinoWorld extends World
         //tempPlaces.add(new pos(304,349,-20));
         //tempPlaces.add(new pos(387,347,-20));
         //____________________________________________
-        ImageManager.addImages("slotsIdle");
+        ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
         addObject(new Entrance(),600,600);//temp
         prepare();

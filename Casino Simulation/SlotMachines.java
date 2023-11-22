@@ -21,7 +21,7 @@ public class SlotMachines extends Game {
     }
     private void playGameCycle() {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
-            if(delay%22==0)setImage(ImageManager.getImage("slots",1,delay/22));
+            if(delay%22==0)setImage(ImageManager.getImage("slots",delay/22+1));
             if(delay==20)winMoney();
             if(--delay>=0)return;
             deductGameCost();
@@ -34,7 +34,7 @@ public class SlotMachines extends Game {
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
-            setImage(ImageManager.getImage("slotsIdle"));
+            setImage(ImageManager.getImage("slotsidle"));
         }
     }
     
