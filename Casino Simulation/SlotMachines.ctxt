@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=SlotMachines
-comment0.text=\r\n\ The\ slot\ machine\ subclass\ of\ the\ Game\ class\ encompasses\ the\ functionality\ and\ code\ for\ the\ slot\ machine\ games.\ \r\n\ The\ slot\ machine\ games\ are\ played\ by\ the\ majority\ of\ the\ Gamblers\ that\ are\ in\ the\ simulation,\ with\ jackpots/winning\ runs\ that\ are\r\n\ not\ determined\ by\ skill\ but\ by\ solely\ luck\ of\ the\ Gambler.\r\n\ \r\n\ @author\ Dorsa\ Rohani\r\n\ @version\ November\ 8\r\n
-comment1.params=
-comment1.target=SlotMachines()
+comment0.text=\r\n\ The\ slot\ machines\r\n\ Author\:\ Dorsa\ Rohani\r\n\ @version\ 11/20\r\n
+comment1.params=spots
+comment1.target=SlotMachines(SpotManager.Spot[])
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=boolean\ isGamblerInFront()
+comment3.target=void\ playGameCycle()
 comment4.params=
-comment4.target=void\ stationGambler()
+comment4.target=void\ deductGameCost()
 comment5.params=
-comment5.target=void\ spinReels()
+comment5.target=void\ winMoney()
 comment6.params=
-comment6.target=boolean\ checkIfWin()
+comment6.target=void\ endGamblerSession()
 numComments=7

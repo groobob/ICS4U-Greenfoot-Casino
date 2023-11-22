@@ -1,63 +1,70 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.*;
-import java.util.Random;
 /**
- * The slot machine subclass of the Game class encompasses the functionality and code for the slot machine games. 
- * The slot machine games are played by the majority of the Gamblers that are in the simulation, with jackpots/winning runs that are
- * not determined by skill but by solely luck of the Gambler.
- * 
- * @author Dorsa Rohani
- * @version November 8
+ * The slot machines
+ * Author: Dorsa Rohani
+ * @version 11/20
  */
-public class SlotMachines extends Game
-{
-    private int numberOfReels;
-    private Random random;
-    private int[] result;
-    private boolean jackpot;
-    
-    public SlotMachines(){
-        numberOfReels = 3;
-        jackpot = false;
+public class SlotMachines extends Game {
+    private static final int cost = 5;
+    private static final int minWinAmount = 100;
+    private static final int maxWinAmount = 500;
+    private int maxPlays = Greenfoot.getRandomNumber(5)+3;
+    private int delay=0;
+    private int playCounter; // counter for number of plays
+    private int winAmount;
+    private int actuallyWinningMoney;
+
+    public SlotMachines(SpotManager.Spot[] spots) {
+        super(spots);
+        playCounter = 0;
     }
     
-    public void act(){
-        //
+    public void act() {
+        playGameCycle();
     }
     
-    private boolean isGamblerInFront(){
-        List<Gambler> gamblers = getObjectsInRange(50, Gambler.class); // Adjust range as needed
-        return !gamblers.isEmpty();
-    }  
-    
-    public void stationGambler(){
-        // Code here for stationing the gambler in front of the slot machine
-        
-        spinReels();
-    }
-    
-    // Spin reels and determine outcome
-    public void spinReels(){
-        result = new int[numberOfReels];
-        
-        // Spin each reel (have to check logic for this don tforget
-        for (int i = 0; i < numberOfReels; i++) {
-            result[i] = random.nextInt(7)+1; //random num between 1 and 7
+    private void playGameCycle() {
+        if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
+            if(delay==20){
+                winMoney();
+                System.out.println("cool");
+            }
+            if(--delay>=0){
+               return; 
+            }
+            deductGameCost();
+            //winMoney();
+            playCounter++;
+            delay=120;
+            if(playCounter>=maxPlays){
+                endGamblerSession();
+            }
         }
-        
-        checkIfWin();
+        else{
+            delay=0;
+            playCounter=0;
+            maxPlays = Greenfoot.getRandomNumber(5)+3;
+        }
     }
 
-    // Calculate payout based on spin outcome
-    public boolean checkIfWin(){
-        for(int i = 1; i < result.length; i++){
-            if(result[i] != result[i-1]){
-                jackpot = false;
-            }
-            else{
-                jackpot = true;
-            }
-        }
-        return jackpot;
+    private void deductGameCost() {
+        gamblers[0].playMoneyEffect(-cost);
+        HorizontalBar.casinoProfit += cost;
+    }
+    
+    public void winMoney() {
+        //if (Greenfoot.getRandomNumber(2)==0) {
+            actuallyWinningMoney=50;
+            //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
+            //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
+            winAmount = actuallyWinningMoney;
+            gamblers[0].playMoneyEffect(winAmount);
+       // }
+    }
+
+    private void endGamblerSession() {
+        gamblers[0].stopPlaying();
+        gamblers[0] = null;
+        //playCounter = 0; // reset play counter for next gambler
     }
 }

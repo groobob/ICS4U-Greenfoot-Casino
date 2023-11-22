@@ -1,14 +1,19 @@
 import greenfoot.*;  // imports Actor, World, Greenfoot, GreenfootImage
-
+/**
+ * Write a description of class Game here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class Ordinary extends Gambler {
     private int score = 0;
     private int test;
     private int testValue;
-    private int effectCooldown = 0; // Timer for delay between effects
-    private final int effectDelay = 50; // Delay time in frames
+    private int effectCooldown = 0; // Ttimer for delay between effects
+    private final int effectDelay = 50; // delay time in frames
 
-    public Ordinary() {
-        // 
+    public Ordinary(int fx, int ty, int yToStation){
+        //super(fx, ty, yToStation);
     }
 
     public void act() {
@@ -16,11 +21,11 @@ public class Ordinary extends Gambler {
     }
 
     private void playEffect(){
-        test = Greenfoot.getRandomNumber(2); // Generate a random number 0 or 1
-        testValue = Greenfoot.getRandomNumber(100); // Generate a random number 0 or 1
+        test = Greenfoot.getRandomNumber(2); // generate a random number 0 or 1
+        testValue = Greenfoot.getRandomNumber(100); // gnerate a random number 0 or 1
 
         if (effectCooldown > 0) {
-            effectCooldown--; // Decrease the cooldown timer
+            effectCooldown--; // decrease the cooldown timer
         }
 
         if (effectCooldown <= 0) {

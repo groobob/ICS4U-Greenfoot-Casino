@@ -1,9 +1,14 @@
 #BlueJ class context
 comment0.target=Game
-comment0.text=\r\n\ The\ superclass\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.0\ 11/13/2023\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Game\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=
-comment2.target=void\ stationGambler()
-numComments=3
+comment0.text=\r\n\ Game\ class\r\n\ @author\:\ Dorsa\ Rohani,\ David\ Guo\r\n\ @version\:\ 11/20\r\n
+comment1.params=spots
+comment1.target=Game(SpotManager.Spot[])
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=Gambler[]\ getGamblers()
+comment4.params=
+comment4.target=SpotManager.Spot[]\ getSpots()
+comment5.params=g\ SpotNumber
+comment5.target=void\ placeGambler(Gambler,\ int)
+numComments=6

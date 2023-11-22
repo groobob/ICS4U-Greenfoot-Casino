@@ -1,15 +1,16 @@
 #BlueJ class context
 comment0.target=HorseBetting
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ HorseBetting\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=HorseBetting()
+comment0.text=\r\n\ The\ slot\ machines\r\n\ Author\:\ Dorsa\ Rohani\r\n\ @version\ 11/20\r\n
+comment1.params=spots
+comment1.target=HorseBetting(SpotManager.Spot[])
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ HorseBetting\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
-comment3.target=void\ stationGambler()
+comment3.target=void\ playGameCycle()
 comment4.params=
-comment4.target=boolean\ checkIfWin()
+comment4.target=void\ deductGameCost()
 comment5.params=
-comment5.target=void\ winPayout()
-numComments=6
+comment5.target=void\ winMoney()
+comment6.params=
+comment6.target=void\ endGamblerSession()
+numComments=7

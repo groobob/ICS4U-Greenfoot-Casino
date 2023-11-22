@@ -1,27 +1,37 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * The superclass
- * 
- * @author David Guo
- * @version 1.0 11/13/2023
+import greenfoot.*;
+/*
+ * Game class
+ * @author: Dorsa Rohani, David Guo
+ * @version: 11/20
  */
 public class Game extends Actor
 {
-    // Array of all gamblers currently playing
-    protected Gambler[] gamblersPlaying;
-    // Array of all seat locations
-    /**
-     * Act - do whatever the Game wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
-        
-    }
+    protected Gambler[] gamblers;
+    private SpotManager.Spot[] spots;
+    private int len;
+    private boolean isNew=false;
     
-    public void stationGambler(){
+    
+    public Game(SpotManager.Spot[] spots){
+        this.spots=spots;
+        len=spots.length;
+        gamblers=new Gambler[len];
         
+        HorizontalBar.casinoProfit = 0;
+    }
+    public void addedToWorld(World w){
+        if(!isNew){//prevent z sort problems
+            isNew=true;
+            SpotManager.addGame(this);
+        }
+    }
+    public Gambler[] getGamblers(){
+        return gamblers;
+    }
+    public SpotManager.Spot[] getSpots(){
+        return spots;
+    }
+    public void placeGambler(Gambler g, int SpotNumber){
+        gamblers[SpotNumber]=g;
     }
 }
