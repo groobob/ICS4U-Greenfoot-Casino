@@ -40,9 +40,9 @@ public class Roulette extends Game
         currentlySpinning = false;
         actsSpinning = 0;
         // Set the class to the image
-        rouletteTable = new GreenfootImage("TestRoulette.gif");
-        rouletteTable.scale(80,60);
-        setImage(rouletteTable);
+        //rouletteTable = new GreenfootImage("TestRoulette.gif");
+        //rouletteTable.scale(80,60);
+        //setImage(rouletteTable);
         // Initlize arraylist of gamblers
         gamblerBets = new int[6]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
     }
