@@ -21,6 +21,7 @@ import java.util.*;  // (ArrayList)
  */
 public class Blackjack extends Game
 {
+    // A rough imitation of card counting statistics
     private int trueCount;
     public Blackjack(SpotManager.Spot[] spots){
         super(spots);
@@ -60,10 +61,6 @@ public class Blackjack extends Game
         } else{
             return 0;
         }
-    }
-    
-    public void stationGambler(){
-        
     }
     
 }

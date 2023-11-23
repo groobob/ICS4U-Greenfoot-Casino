@@ -12,6 +12,4 @@ comment4.params=g
 comment4.target=double\ calculateOdds(Gambler)
 comment5.params=g\ moneyBet
 comment5.target=int\ playHand(Gambler,\ int)
-comment6.params=
-comment6.target=void\ stationGambler()
-numComments=7
+numComments=6
