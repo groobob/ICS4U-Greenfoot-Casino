@@ -23,6 +23,7 @@ public class MoneyEffect extends Actor {
             img.setTransparency(transparency);
             lifespan--;
         } else {
+            //System.out.println("asd");
             getWorld().removeObject(this);
         }
     }

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SpotManager
-comment0.text=\r\n\ Class\ that\ manages\ sound.\r\n\ Recommended\ to\ add\ sounds\ in\ world\ constructor.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 1120\r\n
+comment0.text=\r\n\ Class\ that\ manages\ spots.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 1120\r\n
 comment1.params=
 comment1.target=void\ resetIndex()
 comment1.text=\r\nResets\ index\r\n

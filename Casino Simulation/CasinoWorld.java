@@ -57,7 +57,7 @@ public class CasinoWorld extends World
             //pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
             //Game tempGame=null;
             //if(emptyGame())
-            addObject(new Gambler(),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
+            addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
         }
     }
     /*

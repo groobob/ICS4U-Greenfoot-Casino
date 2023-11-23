@@ -1,16 +1,8 @@
 #BlueJ class context
 comment0.target=Ordinary
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Game\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=fx\ ty\ yToStation
-comment1.target=Ordinary(int,\ int,\ int)
+comment0.text=\r\n\ Ordinary\ gambler\r\n\ @Jimmy\ Zhu\r\n\ @1123\r\n
+comment1.params=
+comment1.target=Ordinary()
 comment2.params=
 comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ playEffect()
-comment4.params=amount
-comment4.target=void\ gainMoney(int)
-comment5.params=amount
-comment5.target=void\ loseMoney(int)
-comment6.params=text\ color
-comment6.target=void\ showMoneyEffect(java.lang.String,\ greenfoot.Color)
-numComments=7
+numComments=3

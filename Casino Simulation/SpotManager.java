@@ -1,8 +1,7 @@
 import greenfoot.*;
 import java.util.*;
 /**
- * Class that manages sound.
- * Recommended to add sounds in world constructor.
+ * Class that manages spots.
  * @author Jimmy Zhu
  * @version 1120
  */
