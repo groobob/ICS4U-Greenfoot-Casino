@@ -10,15 +10,13 @@ public class Game extends Actor
     private SpotManager.Spot[] spots;
     private boolean isNew=false;
     protected int actNumber;
+    private int len;
     public Game(SpotManager.Spot[] spots){
         this.spots=spots;
-<<<<<<< HEAD
         len=spots.length;
         gamblers=new Gambler[len];
         actNumber = 0;
-=======
         gamblers=new Gambler[spots.length];
->>>>>>> Jimmy
     }
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems

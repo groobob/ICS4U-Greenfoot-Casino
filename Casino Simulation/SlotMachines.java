@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The slot machines
- * Author: Dorsa
+ * Author: Dorsa Rohani
  */
 public class SlotMachines extends Game {
     private static final int cost = 5;
