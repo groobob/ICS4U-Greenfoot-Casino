@@ -17,7 +17,7 @@ import java.util.*;  // (ArrayList)
  * =================================================
  * 
  * @author David Guo
- * @version 1.0 11/14/2023
+ * @version 1.1 11/22/2023
  */
 public class Blackjack extends Game
 {
@@ -32,8 +32,15 @@ public class Blackjack extends Game
     public void act()
     {
         actNumber++;
+        int timeBetweenDeals = 100;
+        if(actNumber % timeBetweenDeals == 0){
+            dealCards();
+        }
     }
-    
+    // The dealer is "dealing" cards, making every player at the table put down a bet
+    private void dealCards(){
+        
+    }
     // odds of winning the hand calculated based on luck and skill
     private double calculateOdds(Gambler g){
         // The percent chance of winning the hand for this gambler by default
