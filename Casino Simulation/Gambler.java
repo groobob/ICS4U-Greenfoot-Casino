@@ -82,4 +82,8 @@ public class Gambler extends Actor {
     public int getMoney(){
         return money;
     }
+    public int getSkill(){
+        int hi = Greenfoot.getRandomNumber(100);
+        return hi;
+    }
 }

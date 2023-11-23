@@ -24,6 +24,7 @@ public class MoneyEffect extends Actor {
             lifespan--;
         } else {
             getWorld().removeObject(this);
+            
         }
     }
 }

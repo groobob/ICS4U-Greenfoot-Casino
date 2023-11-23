@@ -2,7 +2,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;  // (ArrayList)
 
 /**
- * A roulette table which where gamblers can choose a number to bet their money on
+ * A roulette table which where gamblers can choose a number to bet their money on.
+ * 
+ * People with a higher skill value than 50 (very easy to get) will choose to bet
+ * on even or odd to actually earn money. People with less skill will blindly pick
+ * a number, hoping to win.
+ * 
+ * The roulette spins every  few hundred or so acts.
  * 
  * @author David Guo
  * @version 1.2 11/23/2023
@@ -81,7 +87,7 @@ public class Roulette extends Game
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);
         // Change numbers above 36 to 0
-        if(randomPocket == 37 || randomPocket == 38){randomPocket = 0;}
+        if(randomPocket == 37 || randomPocket == 38)randomPocket = 0;
         
         for(int i = 0; i < gamblers.length; i++){
             if(gamblers[i] != null && gamblers[i].isPlaying()){
@@ -110,17 +116,15 @@ public class Roulette extends Game
     private void makeBet(){
         for(int i = 0; i < gamblers.length; i++){
             if(gamblers[i] != null && gamblers[i].isPlaying()){
-                /*
                 if(gamblers[i].getSkill() < 50){
-                    gamblerBets[i] = Greenfoot.getRandomNumber(numberOfPockets);
+                    gamblerBets[i] = Greenfoot.getRandomNumber(37); // Won't ever change
                 } else {
                     // -1 means betting on odds, -2 means betting on evens
                     gamblerBets[i] = Greenfoot.getRandomNumber(2)-2;
                 }
-                */
-               // Give all players a bet
-               moneyBets[i] = getMoneyBet(gamblers[i]);
-               gamblers[i].playMoneyEffect(moneyBets[i]);
+                // Give all players a bet
+                moneyBets[i] = getMoneyBet(gamblers[i]);
+                gamblers[i].playMoneyEffect(-moneyBets[i]);
             }
         }
         spinWheel();

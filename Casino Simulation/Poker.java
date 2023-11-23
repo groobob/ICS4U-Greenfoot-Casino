@@ -6,16 +6,20 @@ import java.util.*;  // (ArrayList)
  * 
  * Casinos make money from poker tables by taking in a "rake", or a percentage of the players
  * winnings. Due to this, although the amount that poker tables make is quite little, it is a
- * very safe source of income for the casino.
+ * very safe source of income for the casino.\
+ * 
+ * A minimum of 2 players is required for the game to start
+ * Huge price to play, huge payouts -> One winner, a ton of losers
  * 
  * @author David Guo
- * @version 1.1 11/22/2023
+ * @version 1.2 11/23/2023
  */
 public class Poker extends Game
 {
     private int playersAtTable;
     private int pot;
     private int minBet;
+    private int leaveChance;
     // Integers to count acts between betting phases and the hand
     private int maxDelay;
     private int delay;
@@ -30,6 +34,8 @@ public class Poker extends Game
         playersAtTable = 0;
         // Players must bet a minimum of this number per hand
         minBet = 10;
+        // Chance for a player to leave the game after a pot is paid out in %
+        leaveChance = 25;
         // Rake is a percentage in decimal form. Most commonly from 2%-10
         rake = 0.05;
         // Pot is worth 0 at the start
@@ -60,7 +66,24 @@ public class Poker extends Game
         if(delay <= 0 && phase <= 0){
             phase = maxPhase;
             delay = maxDelay;
-            payout(gamblers[0]); // FIX
+            int highestSkillPlayer = -1; // Will be changed by the for loop
+            for(int i = 0; i < gamblers.length; i++){
+                if(gamblers[i] != null && gamblers[i].isPlaying()){
+                    // To ensure there is not a null pointer error for the following lines
+                    if(highestSkillPlayer == -1)highestSkillPlayer = i;
+                    // Player with highest skill gets their index stored in highestSkillPlayer
+                    if(gamblers[i].getSkill() >= gamblers[highestSkillPlayer].getSkill()){
+                        highestSkillPlayer = i;
+                    }
+                }
+            }
+            payout(gamblers[highestSkillPlayer]);
+            for(int i = 0; i < gamblers.length; i++){
+                if(gamblers[i] != null && gamblers[i].isPlaying()){
+                    int randomChance = Greenfoot.getRandomNumber(100);
+                    if(randomChance < leaveChance)leaveTable(i);
+                }
+            }
         } else if(delay <= 0){
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
@@ -85,8 +108,9 @@ public class Poker extends Game
         }
     }
     
-    private void leaveTable(Gambler g){
-        g.stopPlaying();
+    private void leaveTable(int gIndex){
+        gamblers[gIndex].stopPlaying();
+        gamblers[gIndex] = null;
     }
     
     private void payout(Gambler g){
