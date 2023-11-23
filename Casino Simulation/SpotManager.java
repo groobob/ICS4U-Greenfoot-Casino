@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class SpotManager  
 {
-    private static final int numberOfGames=8;//increase when more games are made
+    private static final int numberOfGames = CasinoWorld.numGames;//increase when more games are made
     private static Game[] games = new Game[numberOfGames];
     private static int i=0;
     /**
@@ -38,7 +38,9 @@ public class SpotManager
      *Add game
      */
     public static void addGame(Game g){
-        games[i++]=g;
+        if(i < games.length){
+            games[i++] = g;
+        }
     }
     /**
      *Targets random empty spot
@@ -47,7 +49,8 @@ public class SpotManager
         if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return false;//dip when no money or 20% chance
         Spot targetSpot=null;
         int targetGameIndex=-1, targetSpotIndex=-1;
-        for(int i = 0; i<numberOfGames; i++){
+        for (int i = 0; i < numberOfGames; i++) {
+            if (games[i] == null) continue;
             Spot curSpot=null;
             Spot[] currentGameSpots=games[i].getSpots();
             Gambler[] currentGameGamblers=games[i].getGamblers();

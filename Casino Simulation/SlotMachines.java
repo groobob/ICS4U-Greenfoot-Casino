@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The slot machines
- * Author: Dorsa Rohani
- * @version 11/20
+ * Author: Dorsa
  */
 public class SlotMachines extends Game {
     private static final int cost = 5;
@@ -18,43 +17,37 @@ public class SlotMachines extends Game {
         super(spots);
         playCounter = 0;
     }
-    
     public void act() {
         playGameCycle();
     }
-    
     private void playGameCycle() {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
-            if(delay==20){
-                winMoney();
-                System.out.println("cool");
+            if(delay%6==0&&delay!=0){
+                setImage(ImageManager.getImage("slots",delay/6+1));
+                if(delay==114)winMoney();
+                else if(delay==12)deductGameCost();
             }
-            if(--delay>=0){
-               return; 
-            }
-            deductGameCost();
+            if(++delay<132)return;
             //winMoney();
             playCounter++;
-            delay=120;
-            if(playCounter>=maxPlays){
-                endGamblerSession();
-            }
+            delay=0;
+            if(playCounter>=maxPlays)endGamblerSession();
         }
         else{
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
+            setImage(ImageManager.getImage("slotsidle"));
         }
     }
-
+    
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
         HorizontalBar.casinoProfit += cost;
     }
-    
     public void winMoney() {
         //if (Greenfoot.getRandomNumber(2)==0) {
-            actuallyWinningMoney=50;
+            actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
             //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
             //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
             winAmount = actuallyWinningMoney;
