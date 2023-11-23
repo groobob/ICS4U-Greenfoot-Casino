@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Roulette
-comment0.text=\r\n\ A\ roulette\ table\ which\ where\ gamblers\ can\ choose\ a\ number\ to\ bet\ their\ money\ on\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.1\ 11/22/2023\r\n
+comment0.text=\r\n\ A\ roulette\ table\ which\ where\ gamblers\ can\ choose\ a\ number\ to\ bet\ their\ money\ on\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.2\ 11/23/2023\r\n
 comment1.params=spots
 comment1.target=Roulette(SpotManager.Spot[])
 comment2.params=
@@ -9,11 +9,13 @@ comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Roulette\ wants\ to\ do.\ This\ m
 comment3.params=
 comment3.target=void\ playGame()
 comment4.params=
-comment4.target=int\ spinWheel()
-comment5.params=
-comment5.target=int\ calculateEarned()
+comment4.target=void\ spinWheel()
+comment5.params=gamblerIndex
+comment5.target=int\ calculateEarned(int)
 comment6.params=
 comment6.target=void\ clearWheel()
 comment7.params=
 comment7.target=void\ makeBet()
-numComments=8
+comment8.params=g
+comment8.target=int\ getMoneyBet(Gambler)
+numComments=9

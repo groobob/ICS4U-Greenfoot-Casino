@@ -21,6 +21,7 @@ import java.util.*;  // (ArrayList)
  */
 public class Blackjack extends Game
 {
+    private int timeBetweenDeals = 100;
     // A rough imitation of card counting statistics
     private int trueCount;
     public Blackjack(SpotManager.Spot[] spots){
@@ -32,15 +33,13 @@ public class Blackjack extends Game
      */
     public void act()
     {
-        actNumber++;
-        int timeBetweenDeals = 100;
-        if(actNumber % timeBetweenDeals == 0){
-            dealCards();
-        }
+        dealCards();
     }
     // The dealer is "dealing" cards, making every player at the table put down a bet
     private void dealCards(){
-        
+        for(int i = 0; i < gamblers.length; i++){
+            
+        }
     }
     // odds of winning the hand calculated based on luck and skill
     private double calculateOdds(Gambler g){

@@ -24,7 +24,7 @@ public class Poker extends Game
     // The percentage the casino takes from poker table hands
     private double rake;
     // Array to match the gamblers[] array, boolean to see if the gambler is "in game"
-    private boolean[] inGame;
+    //private boolean[] inGame;
     public Poker(SpotManager.Spot[] spots){
         super(spots);
         playersAtTable = 0;
@@ -41,7 +41,7 @@ public class Poker extends Game
         maxPhase = 4;
         phase = maxPhase;
         // inGame array initialization
-        inGame = new boolean[gamblers.length];
+        //inGame = new boolean[gamblers.length];
     }
     /**
      * Act - do whatever the Poker wants to do. This method is called whenever
@@ -57,7 +57,7 @@ public class Poker extends Game
     
     private void playHand(){
         // Delay between betting phases
-        if(getPlayersInGame() == 1 || (delay <= 0 && phase <= 0)){
+        if(delay <= 0 && phase <= 0){
             phase = maxPhase;
             delay = maxDelay;
             payout(gamblers[0]); // FIX
@@ -87,16 +87,6 @@ public class Poker extends Game
     
     private void leaveTable(Gambler g){
         g.stopPlaying();
-    }
-    
-    private int getPlayersInGame(){
-        int playersInGame = 0;
-        for(int i = 0; i < inGame.length; i++){
-            if(inGame[i]){
-                playersInGame++;
-            }
-        }
-        return playersInGame;
     }
     
     private void payout(Gambler g){
