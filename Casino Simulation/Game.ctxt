@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Game
-comment0.text=\r\n\ Game\ class\r\n\ @author\:\ Dorsa\ Rohani,\ David\ Guo\r\n\ @version\:\ 11/20\r\n
 comment1.params=spots
 comment1.target=Game(SpotManager.Spot[])
 comment2.params=w
