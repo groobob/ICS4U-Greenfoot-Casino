@@ -33,7 +33,7 @@ public class HorseBetting extends Game
     }
     
     private void conductRace() {
-        if (raceDuration > 300) {
+        if (raceDuration > 600) {
             raceDuration = 0;
             raceInProgress = false;
             for (int i = 0; i < gamblers.length; i++) {
@@ -51,7 +51,6 @@ public class HorseBetting extends Game
     private void startRace() {
         raceInProgress = true;
         winningHorse = Greenfoot.getRandomNumber(numberOfHorses) + 1;
-        // No need to calculate payout here
     }
     
     public int calculatePayout(int gamblerIndex) {
@@ -70,7 +69,7 @@ public class HorseBetting extends Game
             if (gamblers[i] != null && gamblers[i].isPlaying()) {
                 gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
                 gamblerStakes[i] = determineStake(gamblers[i]);
-                gamblers[i].playMoneyEffect(-gamblerStakes[i]); // Gamblers place their bets
+                gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
             }
         }
         startRace();
