@@ -1,7 +1,6 @@
 import greenfoot.*;
 /**
- * The gambler
- * 
+ * Gambler superclass
  * @Jimmy Zhu
  * @1118
  */
