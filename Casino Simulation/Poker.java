@@ -54,7 +54,7 @@ public class Poker extends Game
             payout(gamblers[0]);
         } else if(delay <= 0){
             for(int i = 0; i < gamblers.length; i++){
-                if(gamblers[i] != null){
+                if(gamblers[i] != null && gamblers[i].isPlaying()){
                     increasePot(gamblers[i]);
                 }
             }
@@ -85,7 +85,7 @@ public class Poker extends Game
     private int getPlayersAtTable(){
         int currPlayers = 0;
         for(int i = 0; i < gamblers.length; i++){
-            if(gamblers[i] != null){
+            if(gamblers[i] != null && gamblers[i].isPlaying()){
                 currPlayers++;
             }
         }
