@@ -24,7 +24,7 @@ public class Poker extends Game
     private double rake;
     public Poker(SpotManager.Spot[] spots){
         super(spots);
-        playersAtTable = gamblers.length;
+        playersAtTable = 0;
         // Rake is a percentage in decimal form. Most commonly from 2%-10
         rake = 0.05;
         // Delay between betting phases
@@ -40,8 +40,8 @@ public class Poker extends Game
      */
     public void act()
     {
-        playersAtTable = gamblers.length;
-        if(playersAtTable > 1){ // DOESNT WORK RN
+        playersAtTable = getPlayersAtTable();
+        if(playersAtTable > 1){
             playHand();
         }
     }
@@ -82,7 +82,15 @@ public class Poker extends Game
     //    gamblers[0] = null;
         //playCounter = 0; // reset play counter for next gambler
     //}
-    
+    private int getPlayersAtTable(){
+        int currPlayers = 0;
+        for(int i = 0; i < gamblers.length; i++){
+            if(gamblers[i] != null){
+                currPlayers++;
+            }
+        }
+        return currPlayers;
+    }
     private int getMoneyBet(Gambler g){
         // Gamblers will bet somewhere between 5-25% of their total money
         int randomPercentBet = Greenfoot.getRandomNumber(20)+5;

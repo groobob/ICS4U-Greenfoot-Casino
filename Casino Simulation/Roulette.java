@@ -58,7 +58,6 @@ public class Roulette extends Game
             currentlySpinning = false;
         } else if (actsSpinning == 0){
             makeBet();
-            animateRoulette();
         }
     }
     
@@ -107,11 +106,4 @@ public class Roulette extends Game
         spinWheel();
     }
     
-    private void animateRoulette(){
-        // animation
-    }
-    
-    public void stationGambler(){
-        
-    }
 }

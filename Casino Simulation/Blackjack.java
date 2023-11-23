@@ -14,7 +14,7 @@ import java.util.*;  // (ArrayList)
  * Played: 3 rounds of blackjack (40 chips) with Liyu <br>
  * Result: Liyu: 0 chips, House: 40 chips <br>
  * <br>
- * =================================================
+ * ============================================
  * 
  * @author David Guo
  * @version 1.1 11/22/2023
