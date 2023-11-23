@@ -52,13 +52,17 @@ public class Roulette extends Game
      */
     public void act()
     {
-        actsSpinning++;
-        if(actsSpinning > 600){ // 600 acts -> 10 seconds to spin
+        playGame();        
+    }
+    
+    private void playGame(){
+        if(actsSpinning > 300){ // 600 acts -> 5 seconds to spin
             actsSpinning = 0;
             currentlySpinning = false;
-        } else if (actsSpinning == 0){
+        } else if (actsSpinning == 100){
             makeBet();
         }
+        actsSpinning++;
     }
     
     private int spinWheel(){
