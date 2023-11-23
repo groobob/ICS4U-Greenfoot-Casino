@@ -4,6 +4,7 @@ import java.util.*;
 /**
  * Horsebetting game
  * 
+ * @author: dorsa
  * @version 1.2 11-23-2023
  */
 public class HorseBetting extends Game

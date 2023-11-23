@@ -76,7 +76,8 @@ public class CasinoWorld extends World
             progressLevel++;
             
             // add horsebetting
-           // addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(781,187,-80)}),781,187);
+            addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),781,187);
+
         }
         if(progressLevel==2 && 30 == (HorizontalBar.casinoProfit*100)/casinoTarget){
             numGames++;
@@ -145,7 +146,6 @@ public class CasinoWorld extends World
         addObject(new HorizontalBar(),600,60);
         
         addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
-        addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),781,187);
 
     }
     
