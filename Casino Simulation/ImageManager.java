@@ -4,7 +4,7 @@ import java.util.*;
  * Class that manages images.
  * Recommended to add images in world constructor.
  * @author Jimmy Zhu
- * @version 1120
+ * @version 1122
  */
 public class ImageManager  
 {
