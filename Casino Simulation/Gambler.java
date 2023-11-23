@@ -21,7 +21,7 @@ public class Gambler extends Actor {
     private boolean isNew=false;
     
     public Gambler() {
-        money = 10;
+        money = 1000;
     }
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
