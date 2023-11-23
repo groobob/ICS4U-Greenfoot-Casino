@@ -44,7 +44,7 @@ public class Roulette extends Game
         //rouletteTable.scale(80,60);
         //setImage(rouletteTable);
         // Initlize arraylist of gamblers
-        gamblerBets = new int[6]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
+        gamblerBets = new int[spots.length]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
     }
     /**
      * Act - do whatever the Roulette wants to do. This method is called whenever
