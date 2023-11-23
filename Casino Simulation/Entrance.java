@@ -18,7 +18,7 @@ public class Entrance extends Actor
                 MouseInfo mouse = Greenfoot.getMouseInfo();
         if(mouse!=null){
             if(Greenfoot.isKeyDown("f")&&up){
-                System.out.println("tempPlaces.add(new pos("+mouse.getX()+","+mouse.getY()+"));");
+                System.out.println(mouse.getX()+","+mouse.getY());
                 up=false;
             }
             else if(Greenfoot.isKeyDown("g"))up=true;
