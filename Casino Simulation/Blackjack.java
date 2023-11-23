@@ -21,11 +21,12 @@ import java.util.*;  // (ArrayList)
  */
 public class Blackjack extends Game
 {
-    private int timeBetweenDeals = 100;
+    private int timeBetweenDeals;
     // A rough imitation of card counting statistics
     private int trueCount;
     public Blackjack(SpotManager.Spot[] spots){
         super(spots);
+        timeBetweenDeals = 300;
     }
     /**
      * Act - do whatever the Blackjack wants to do. This method is called whenever
@@ -41,16 +42,6 @@ public class Blackjack extends Game
             
         }
     }
-    // odds of winning the hand calculated based on luck and skill
-    private double calculateOdds(Gambler g){
-        // The percent chance of winning the hand for this gambler by default
-        double tempPercentChance = 48;
-        // The chance of them winning is decided by luck, then skill
-        //tempPercentChance += gamblersPlaying[i].getLuck()/2; // max 98% chance
-        // reduces the chance from 0.01 to 1
-        //tempPercentChance *= (double)gamblersPlaying[i].getSkill()/100;
-        return tempPercentChance;
-    }
     
     public int playHand(Gambler g, int moneyBet){
         int randChance = Greenfoot.getRandomNumber(100);
@@ -60,6 +51,16 @@ public class Blackjack extends Game
         } else{
             return 0;
         }
+    }
+    // odds of winning the hand calculated based on luck and skill
+    private double calculateOdds(Gambler g){
+        // The percent chance of winning the hand for this gambler by default
+        double tempPercentChance = 48;
+        // The chance of them winning is decided by luck, then skill
+        //tempPercentChance += gamblersPlaying[i].getLuck()/2; // max 98% chance
+        // reduces the chance from 0.01 to 1
+        tempPercentChance *= (double)g.getSkill()/100;
+        return tempPercentChance;
     }
     
 }
