@@ -21,13 +21,15 @@ public class SlotMachines extends Game {
     }
     private void playGameCycle() {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
-            if(delay%22==0)setImage(ImageManager.getImage("slots",delay/22+1));
-            if(delay==20)winMoney();
-            if(--delay>=0)return;
-            deductGameCost();
+            if(delay%6==0&&delay!=0){
+                setImage(ImageManager.getImage("slots",delay/6+1));
+                if(delay==114)winMoney();
+                else if(delay==12)deductGameCost();
+            }
+            if(++delay<132)return;
             //winMoney();
             playCounter++;
-            delay=132;
+            delay=0;
             if(playCounter>=maxPlays)endGamblerSession();
         }
         else{
