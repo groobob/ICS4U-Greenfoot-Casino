@@ -21,6 +21,8 @@ import java.util.*;  // (ArrayList)
  */
 public class Blackjack extends Game
 {
+    // Chance to leave after every hand
+    private int chanceToLeave;
     // The time in acts between hands played
     private int timeBetweenDeals;
     // A rough imitation of card counting statistics
@@ -28,6 +30,8 @@ public class Blackjack extends Game
     public Blackjack(SpotManager.Spot[] spots){
         super(spots);
         timeBetweenDeals = 300;
+        // Chance leave in %
+        chanceToLeave = 25;
     }
     /**
      * Act - do whatever the Blackjack wants to do. This method is called whenever
@@ -40,8 +44,13 @@ public class Blackjack extends Game
     // The dealer is "dealing" cards, making every player at the table put down a bet
     private void dealCards(){
         for(int i = 0; i < gamblers.length; i++){
-            
-        }
+                if(gamblers[i] != null && gamblers[i].isPlaying()){
+                    // In order to prevent playMoneyEffect printing +0
+                    //if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
+                    int leaveChance = Greenfoot.getRandomNumber(100);
+                    if(leaveChance < chanceToLeave)endGamblerSession(i);
+                }
+            }
     }
     
     public int playHand(Gambler g, int moneyBet){

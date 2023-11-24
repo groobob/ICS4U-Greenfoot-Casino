@@ -80,6 +80,6 @@ public class CasinoWorld extends World
         // Note: Carpet compensates from top/down to left/right are 265, 375, 375
         addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
         addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);
-        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1150,240,-120), new SpotManager.Spot(1150,290,-80), new SpotManager.Spot(1115,320,-45), new SpotManager.Spot(1070,335,-30), new SpotManager.Spot(1015,330,-40), new SpotManager.Spot(975,300,-60)}),1060,270);
+        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1150,240,-120), new SpotManager.Spot(1150,290,-80), new SpotManager.Spot(1115,320,-45), new SpotManager.Spot(1015,330,-40), new SpotManager.Spot(975,300,-60), new SpotManager.Spot(960,250,-110)}),1060,270);
     }
 }
