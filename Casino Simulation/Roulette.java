@@ -48,7 +48,7 @@ public class Roulette extends Game
         currentlySpinning = false;
         actsSpinning = 0;
         // Chance to leave in percent
-        chanceToLeave = 5;
+        chanceToLeave = 30;
         // Set the class to the image
         //rouletteTable = new GreenfootImage("TestRoulette.gif");
         //rouletteTable.scale(80,60);
@@ -72,9 +72,10 @@ public class Roulette extends Game
             currentlySpinning = false;
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
-                    gamblers[i].playMoneyEffect(calculateEarned(i));
+                    // In order to prevent playMoneyEffect printing +0
+                    if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
                     int leaveChance = Greenfoot.getRandomNumber(100);
-                    
+                    if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
         } else if (actsSpinning == 100){
@@ -89,11 +90,6 @@ public class Roulette extends Game
         // Change numbers above 36 to 0
         if(randomPocket == 37 || randomPocket == 38)randomPocket = 0;
         
-        for(int i = 0; i < gamblers.length; i++){
-            if(gamblers[i] != null && gamblers[i].isPlaying()){
-                calculateEarned(i);
-            }
-        }
     }
     
     public int calculateEarned(int gamblerIndex){

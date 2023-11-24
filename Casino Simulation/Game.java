@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class Game extends Actor
+public abstract class Game extends Actor
 {
     protected Gambler[] gamblers;
     private SpotManager.Spot[] spots;
@@ -17,6 +17,11 @@ public class Game extends Actor
             isNew=true;
             SpotManager.addGame(this);
         }
+    }
+    // All classes need a way for gamblers to leave the game
+    protected void endGamblerSession(int gamblerIndex){
+        gamblers[gamblerIndex].stopPlaying();
+        gamblers[gamblerIndex] = null;
     }
     public Gambler[] getGamblers(){
         return gamblers;

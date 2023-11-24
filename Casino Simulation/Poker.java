@@ -35,7 +35,7 @@ public class Poker extends Game
         // Players must bet a minimum of this number per hand
         minBet = 10;
         // Chance for a player to leave the game after a pot is paid out in %
-        leaveChance = 25;
+        leaveChance = 20;
         // Rake is a percentage in decimal form. Most commonly from 2%-10
         rake = 0.05;
         // Pot is worth 0 at the start
@@ -81,13 +81,13 @@ public class Poker extends Game
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
                     int randomChance = Greenfoot.getRandomNumber(100);
-                    if(randomChance < leaveChance)leaveTable(i);
+                    if(randomChance < leaveChance)endGamblerSession(i);
                 }
             }
         } else if(delay <= 0){
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
-                    increasePot(gamblers[i]);
+                    increasePot(i);
                 }
             }
             delay = maxDelay;
@@ -96,25 +96,21 @@ public class Poker extends Game
         delay--;
     }
     
-    private void increasePot(Gambler g){
-        int moneyBet =  getMoneyBet(g);
+    private void increasePot(int gamblerIndex){
+        int moneyBet =  getMoneyBet(gamblers[gamblerIndex]);
         int rakeProfit = (int)(moneyBet*rake);
         if(moneyBet < minBet){
-            g.stopPlaying();
+            endGamblerSession(gamblerIndex);
         } else {
-            g.playMoneyEffect(-moneyBet);
+            gamblers[gamblerIndex].playMoneyEffect(-moneyBet);
             pot += moneyBet-rakeProfit;
             HorizontalBar.casinoProfit += rakeProfit;
         }
     }
     
-    private void leaveTable(int gIndex){
-        gamblers[gIndex].stopPlaying();
-        gamblers[gIndex] = null;
-    }
-    
     private void payout(Gambler g){
-        g.playMoneyEffect(pot);
+        // In order to prevent playMoneyEffect printing +0
+        if(pot != 0)g.playMoneyEffect(pot);
         pot = 0;
     }
     

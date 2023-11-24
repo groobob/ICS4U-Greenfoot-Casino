@@ -37,7 +37,7 @@ public class SlotMachines extends Game {
             playCounter++;
             delay=120;
             if(playCounter>=maxPlays){
-                endGamblerSession();
+                endGamblerSession(0);
             }
         }
         else{
@@ -60,11 +60,5 @@ public class SlotMachines extends Game {
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
        // }
-    }
-
-    private void endGamblerSession() {
-        gamblers[0].stopPlaying();
-        gamblers[0] = null;
-        //playCounter = 0; // reset play counter for next gambler
     }
 }
