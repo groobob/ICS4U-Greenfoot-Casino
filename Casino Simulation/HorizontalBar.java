@@ -13,11 +13,11 @@ public class HorizontalBar extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act(){
-        showText("test", Color.RED);
+        //showText("test", Color.RED);
     }
     
     private void showText(String text, Color color){
-        Text texts = new Text(text, color);
-        getWorld().addObject(texts, getX(), getY() - 30);
+        //Text texts = new Text(text, color);
+        //getWorld().addObject(texts, getX(), getY() - 30);
     }
 }

@@ -14,22 +14,15 @@ public class Text extends Actor
         this.h=h;
         this.s=s;
         this.font=font;
-        setImage(createText(text));
+        changeText(text);
         this.type=type;
+        UIManager.attachText(type);
     }
-    public void act() {
-        switch(type){
-            case 0:setImage(createText("yeah0"));break;
-            case 1:setImage(createText("yeah1"));break;
-            case 2:setImage(createText("yeah2"));break;
-            case 3:setImage(createText("yeah3"));break;
-        }
-    }
-    private GreenfootImage createText(String text){
+    public void changeText(String text){
         GreenfootImage gfi = new GreenfootImage(w, h);
         gfi.setColor(Color.BLACK);
         gfi.setFont(new Font(font, true, false, s/text.length())); 
         gfi.drawString(text, w/4, h/2);
-        return gfi;
+        setImage(text);
     }
 }
