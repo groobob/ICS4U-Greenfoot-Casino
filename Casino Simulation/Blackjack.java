@@ -21,6 +21,7 @@ import java.util.*;  // (ArrayList)
  */
 public class Blackjack extends Game
 {
+    // The time in acts between hands played
     private int timeBetweenDeals;
     // A rough imitation of card counting statistics
     private int trueCount;
