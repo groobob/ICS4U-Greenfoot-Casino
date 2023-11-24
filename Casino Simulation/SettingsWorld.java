@@ -6,13 +6,13 @@ import java.util.*;
  * @author: dorsa
  */
 
-public class MainScreen extends World
+public class SettingsWorld extends World
 {
     private int variable2;// placeholder
     private int variable3;// placeholder
     private int variable4;// placeholder
 
-    public MainScreen() {    
+    public SettingsWorld() {    
         super(1200, 740, 1);
 
         // Adjust the values according to your need

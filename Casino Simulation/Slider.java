@@ -27,7 +27,7 @@ public class Slider extends Actor {
             MouseInfo mouse = Greenfoot.getMouseInfo();
             setLocation(mouse.getX(), getY());
             value = calculateValue(mouse.getX());
-            ((MainScreen)getWorld()).updateVar(sliderID, value);
+            ((SettingsWorld)getWorld()).updateVar(sliderID, value);
         }
     }
 
