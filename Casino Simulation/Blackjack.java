@@ -25,11 +25,13 @@ public class Blackjack extends Game
     private int chanceToLeave;
     // The time in acts between hands played
     private int timeBetweenDeals;
+    private int dealTime;
     // A rough imitation of card counting statistics
     private int trueCount;
     public Blackjack(SpotManager.Spot[] spots){
         super(spots);
         timeBetweenDeals = 300;
+        dealTime = timeBetweenDeals;
         // Chance leave in %
         chanceToLeave = 25;
     }
@@ -39,18 +41,21 @@ public class Blackjack extends Game
      */
     public void act()
     {
-        dealCards();
+        dealTime--;
+        if(dealTime <= 0)dealCards();
+        
     }
     // The dealer is "dealing" cards, making every player at the table put down a bet
     private void dealCards(){
         for(int i = 0; i < gamblers.length; i++){
-                if(gamblers[i] != null && gamblers[i].isPlaying()){
-                    // In order to prevent playMoneyEffect printing +0
-                    //if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
-                    int leaveChance = Greenfoot.getRandomNumber(100);
-                    if(leaveChance < chanceToLeave)endGamblerSession(i);
-                }
+            if(gamblers[i] != null && gamblers[i].isPlaying()){
+                // In order to prevent playMoneyEffect printing +0
+                //if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
+                int leaveChance = Greenfoot.getRandomNumber(100);
+                if(leaveChance < chanceToLeave)endGamblerSession(i);
             }
+        }
+        dealTime = timeBetweenDeals;
     }
     
     public int playHand(Gambler g, int moneyBet){
