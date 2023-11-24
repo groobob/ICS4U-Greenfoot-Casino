@@ -15,6 +15,7 @@ public class HorizontalBar extends Actor
      */
     
     public HorizontalBar(){
+        this.setImage("ui.png");
         casinoProfit = 0;
     }
     public void act(){
