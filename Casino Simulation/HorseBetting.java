@@ -1,66 +1,85 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-/**
- * The slot machines
- * Author: Dorsa Rohani
- * @version 11/20
- */
-public class HorseBetting extends Game {
-    private static final int cost = 5;
-    private static final int minWinAmount = 100;
-    private static final int maxWinAmount = 500;
-    private int maxPlays = Greenfoot.getRandomNumber(5)+3;
-    private int delay=0;
-    private int playCounter; // counter for number of plays
-    private int winAmount;
+import greenfoot.*;  // (world, actor, greenfootImage, greenfoot and mouseInfo)
+import java.util.*;
 
+/**
+ * Horsebetting game
+ * 
+ * @author: dorsa
+ * @version 1.2 11-23-2023
+ */
+public class HorseBetting extends Game
+{
+    private int raceDuration;
+    private int numberOfHorses;
+    private int winningHorse;
+    private int payout;
+    private boolean raceInProgress;
+    private int[] gamblerSelections;
+    private int[] gamblerStakes;
+    private final int winMultiplier = 5;
+    private final int oddMultiplier = 2;
+    private final int evenMultiplier = 2;
+    private double betPercentage;
+    
     public HorseBetting(SpotManager.Spot[] spots) {
         super(spots);
-        playCounter = 0;
+        numberOfHorses = 7; // 7 horses in the race
+        raceInProgress = false;
+        raceDuration = 0;
+        gamblerSelections = new int[gamblers.length]; 
+        gamblerStakes = new int[gamblers.length];
     }
-    
+
     public void act() {
-        playGameCycle();
+        conductRace();        
     }
     
-    private void playGameCycle() {
-        if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
-            if(delay==20){
-                winMoney();
-                System.out.println("cool");
+    private void conductRace() {
+        if (raceDuration > 600) {
+            raceDuration = 0;
+            raceInProgress = false;
+            for (int i = 0; i < gamblers.length; i++) {
+                if (gamblers[i] != null && gamblers[i].isPlaying()) {
+                    payout = calculatePayout(i);
+                    HorizontalBar.casinoProfit += payout;
+                    gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
+                }
             }
-            if(--delay>=0)return;
-            deductGameCost();
-            //winMoney();
-            playCounter++;
-            delay=120;
-            if(playCounter>=maxPlays){
-                endGamblerSession();
-            }
+        } else if (raceDuration == 100) {
+            placeBets();
         }
-        else{
-            delay=0;
-            playCounter=0;
-            maxPlays = Greenfoot.getRandomNumber(5)+3;
-        }
-    }
-
-    private void deductGameCost() {
-        gamblers[0].playMoneyEffect(-cost);
+        raceDuration++;
     }
     
-    public void winMoney() {
-        //if (Greenfoot.getRandomNumber(2)==0) {
-            int actuallyWinningMoney=50;
-            //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
-            //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
-            winAmount = actuallyWinningMoney;
-            gamblers[0].playMoneyEffect(winAmount);
-       // }
+    private void startRace() {
+        raceInProgress = true;
+        winningHorse = Greenfoot.getRandomNumber(numberOfHorses) + 1;
     }
-
-    private void endGamblerSession() {
-        gamblers[0].stopPlaying();
-        gamblers[0] = null;
-        //playCounter = 0; // reset play counter for next gambler
+    
+    public int calculatePayout(int gamblerIndex) {
+        if (gamblerSelections[gamblerIndex] == -1 && winningHorse % 2 == 1) {
+            return gamblerStakes[gamblerIndex] * oddMultiplier;
+        } else if (gamblerSelections[gamblerIndex] == -2 && winningHorse % 2 == 0) {
+            return gamblerStakes[gamblerIndex] * evenMultiplier;
+        } else if (gamblerSelections[gamblerIndex] == winningHorse) {
+            return gamblerStakes[gamblerIndex] * winMultiplier;
+        }
+        return 0; // no payout
+    }
+    
+    private void placeBets() {
+        for (int i = 0; i < gamblers.length; i++) {
+            if (gamblers[i] != null && gamblers[i].isPlaying()) {
+                gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+                gamblerStakes[i] = determineStake(gamblers[i]);
+                gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+            }
+        }
+        startRace();
+    }
+    
+    private int determineStake(Gambler g) {
+        betPercentage = (double)(Greenfoot.getRandomNumber(20) + 5) / 100;
+        return (int)(g.getMoney() * betPercentage);
     }
 }

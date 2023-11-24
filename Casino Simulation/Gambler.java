@@ -6,7 +6,7 @@ import greenfoot.*;
  * @1118
  */
 public class Gambler extends Actor {
-    private final int varyRange = 20;
+    private final int varyRange = 40;
     private final int entranceX = 600 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int sidewalkY = 700 + (Greenfoot.getRandomNumber(2) == 0 ? -Greenfoot.getRandomNumber(varyRange) : Greenfoot.getRandomNumber(varyRange));
     private final int outMapX = (Greenfoot.getRandomNumber(2) == 0 ? 1250 : -50);
@@ -22,7 +22,7 @@ public class Gambler extends Actor {
     private boolean isNew=false;
     
     public Gambler() {
-        money = 10;
+        money = 1000;
     }
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
@@ -36,7 +36,7 @@ public class Gambler extends Actor {
     }
     public void act() {
         if (!playing) {
-            if(Math.abs(tx - getX()) > 2)setLocation(getX() + speed * Integer.signum(tx - getX()), getY());
+            if(Math.abs(tx - getX()) > 5)setLocation(getX() + speed * Integer.signum(tx - getX()), getY());
             else if (Math.abs(ty - getY()) > 5)setLocation(getX(), getY() + speed * Integer.signum(ty - getY()));
             else if (tx != fx)tx = fx;
             else if (tx == 1250 || tx == -50)getWorld().removeObject(this);
@@ -62,7 +62,7 @@ public class Gambler extends Actor {
         }
     }
     public void target(int x, int y, int compensate){
-        if(Math.abs(ty+yToSpot-y)>50)tx=entranceX;
+        if(Math.abs(ty+yToSpot-y)>100)tx=entranceX;
         fx = x;
         ty = y-compensate;
         yToSpot = compensate;
@@ -81,5 +81,9 @@ public class Gambler extends Actor {
     }
     public int getMoney(){
         return money;
+    }
+    public int getSkill(){
+        int hi = Greenfoot.getRandomNumber(100);
+        return hi;
     }
 }
