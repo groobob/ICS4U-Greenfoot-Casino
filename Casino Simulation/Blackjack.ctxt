@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Blackjack
+comment0.text=\r\n\ \r\n\ \r\n\ <p>\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\ Experimental\ Data\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=</p>\r\n\ \r\n\ 11/10/2023\ <br>\r\n\ Played\:\ ~20\ rounds\ of\ blackjack\ (40\ chips)\ with\ Mr.\ Cohen\ <br>\r\n\ Result\:\ Cohen\:\ 40\ chips,\ House\:\ 0\ chips\ <br>\r\n\ <br>\r\n\ 11/10/2023\ <br>\r\n\ Played\:\ 3\ rounds\ of\ blackjack\ (40\ chips)\ with\ Liyu\ <br>\r\n\ Result\:\ Liyu\:\ 0\ chips,\ House\:\ 40\ chips\ <br>\r\n\ <br>\r\n\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.1\ 11/22/2023\r\n
+comment1.params=spots
+comment1.target=Blackjack(SpotManager.Spot[])
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Blackjack\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ dealCards()
+comment4.params=g\ moneyBet
+comment4.target=int\ playHand(Gambler,\ int)
+comment5.params=g
+comment5.target=double\ calculateOdds(Gambler)
+numComments=6
