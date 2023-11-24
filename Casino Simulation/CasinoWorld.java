@@ -11,7 +11,7 @@ public class CasinoWorld extends World
     int delay=1;//temp 
     private int progressLevel = 0;
     int casinoTarget = 100;
-    public static int numGames = 28; // number of games tracker for spotmanager
+    public static int numGames = 20; // number of games tracker for spotmanager
 
     public CasinoWorld()
     {    
