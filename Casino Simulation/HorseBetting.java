@@ -12,6 +12,7 @@ public class HorseBetting extends Game
     private int raceDuration;
     private int numberOfHorses;
     private int winningHorse;
+    private int payout;
     private boolean raceInProgress;
     private int[] gamblerSelections;
     private int[] gamblerStakes;
@@ -39,7 +40,8 @@ public class HorseBetting extends Game
             raceInProgress = false;
             for (int i = 0; i < gamblers.length; i++) {
                 if (gamblers[i] != null && gamblers[i].isPlaying()) {
-                    int payout = calculatePayout(i);
+                    payout = calculatePayout(i);
+                    HorizontalBar.casinoProfit += payout;
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
                 }
             }

@@ -71,7 +71,7 @@ public class CasinoWorld extends World
             progressLevel++;
         }
         if(progressLevel==1 && 20 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
+            numGames+=2;
             addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(140,353,-20)}),140,353);
             progressLevel++;
             
@@ -80,7 +80,7 @@ public class CasinoWorld extends World
 
         }
         if(progressLevel==2 && 30 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
+            numGames+=2;
             addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(224,244,-20)}),224,244);
             progressLevel++;
             
@@ -95,12 +95,13 @@ public class CasinoWorld extends World
             
         }
         if(progressLevel==4 && 50 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
+            numGames+=2;
             addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(306,245,-20)}),306,245);
             progressLevel++;
             
             // add roulette
-        
+            addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
+
         }
         if(progressLevel==5 && 60 == (HorizontalBar.casinoProfit*100)/casinoTarget){
             numGames++;
@@ -108,7 +109,7 @@ public class CasinoWorld extends World
             progressLevel++;
         }
         if(progressLevel==6 && 70 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
+            numGames+=2;
             addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(399,245,-20)}),399,245); 
             progressLevel++;
             
@@ -145,8 +146,6 @@ public class CasinoWorld extends World
         
         addObject(new HorizontalBar(),600,60);
         
-        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
-
     }
     
 }
