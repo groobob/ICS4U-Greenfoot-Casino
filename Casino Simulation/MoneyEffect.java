@@ -1,4 +1,8 @@
 import greenfoot.*;
+/*
+ * money effect
+ * @author: dorsa
+ */
 
 public class MoneyEffect extends Actor {
     private int lifespan = 50; // increased lifespan for a slower fade-out

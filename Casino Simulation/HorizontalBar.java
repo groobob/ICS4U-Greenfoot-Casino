@@ -13,6 +13,10 @@ public class HorizontalBar extends Actor
      * Act - do whatever the HorizontalBar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    public HorizontalBar(){
+        casinoProfit = 0;
+    }
     public void act(){
         showText(casinoProfit + "", Color.RED, 405, 35);
     }
