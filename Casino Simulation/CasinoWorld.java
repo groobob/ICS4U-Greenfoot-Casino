@@ -12,6 +12,9 @@ public class CasinoWorld extends World
     private int progressLevel = 0;
     int casinoTarget = 100;
     public static int numGames = 20; // number of games tracker for spotmanager
+    
+    public static int WIDTH = 1200;
+    public static int HEIGHT = 740;
 
     public CasinoWorld()
     {    
