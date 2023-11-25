@@ -14,8 +14,6 @@ public class SettingsWorld extends World
 
     public SettingsWorld() {    
         super(1200, 740, 1);
-
-        // Adjust the values according to your need
         Slider slider1 = new Slider(1, 50, 550, 0, 100);
         Slider slider2 = new Slider(2, 50, 550, 0, 100);
         Slider slider3 = new Slider(3, 50, 550, 0, 100);
