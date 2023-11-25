@@ -6,6 +6,7 @@ import greenfoot.*;
  */
 public class Ordinary extends Gambler {
     public Ordinary(){
+        character=Greenfoot.getRandomNumber(5)+1;
         money=Greenfoot.getRandomNumber(2001)+1000;
     }
     public void act() {

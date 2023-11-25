@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * The slot machines
- * Author: Dorsa
+ * Author: Dorsa Rohani
  */
 public class SlotMachines extends Game {
     private static final int cost = 5;
@@ -11,6 +11,7 @@ public class SlotMachines extends Game {
     private int delay=0;
     private int playCounter; // counter for number of plays
     private int winAmount;
+    private int actuallyWinningMoney;
 
     public SlotMachines(SpotManager.Spot[] spots) {
         super(spots);
@@ -42,10 +43,11 @@ public class SlotMachines extends Game {
     
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
+        //HorizontalBar.casinoProfit += cost;
     }
     public void winMoney() {
         //if (Greenfoot.getRandomNumber(2)==0) {
-            int actuallyWinningMoney=50;
+            actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
             //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
             //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
             winAmount = actuallyWinningMoney;
