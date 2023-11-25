@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CasinoWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Game\ here.\r\n\ \r\n\ @author\ Jimmy\ Zhu,\ Dorsa\ Rohani,\ David\ Guo\r\n\ @version\ 1.0\ 11/24/2023\r\n\ \r\n\ Program\ features\ include\:\r\n\ \=>\ \r\n\ \r\n\ Credit\:\r\n\ \=>\ Code\r\n\ \ \ ->\ Button\ and\ TextSizeFinder\ [Alex\ Li]\r\n\ \ \ \r\n\ \=>\ Visuals\r\n\ \ \ ->\ \r\n\ \ \ \r\n\ \=>\ Music\ &\ SFX\r\n\ \ \ ->\ Background\ Music\ \r\n\ \r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Game\ here.\r\n\ \r\n\ @author\ Jimmy\ Zhu,\ Dorsa\ Rohani,\ David\ Guo\r\n\ @version\ 1.0\ 11/24/2023\r\n\ \r\n\ \r\n\ \r\n\ Program\ features\ include\:\r\n\ \=>\ \r\n\ \r\n\ Credit\:\r\n\ \=>\ Code\r\n\ \ \ ->\ Button\ and\ TextSizeFinder\ [Alex\ Li]\r\n\ \ \ \r\n\ \=>\ Visuals\r\n\ \ \ ->\ \r\n\ \ \ \r\n\ \=>\ Music\ &\ SFX\r\n\ \ \ ->\ TitleScreen\ Background\ Music\ [KingsCollegeChoir\ on\ Youtube]\r\n\ \ \ ->\ CasinoWorld\ Background\ Music\ [Alternative\ Jazz\ Lounge\ -\ Topic\ on\ Youtube]\r\n\ \r\n
 comment1.params=
 comment1.target=CasinoWorld()
 comment2.params=

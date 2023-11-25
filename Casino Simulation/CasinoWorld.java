@@ -6,6 +6,8 @@ import java.util.*;
  * @author Jimmy Zhu, Dorsa Rohani, David Guo
  * @version 1.0 11/24/2023
  * 
+ * 
+ * 
  * Program features include:
  * => 
  * 
@@ -17,7 +19,8 @@ import java.util.*;
  *   -> 
  *   
  * => Music & SFX
- *   -> Background Music 
+ *   -> TitleScreen Background Music [KingsCollegeChoir on Youtube]
+ *   -> CasinoWorld Background Music [Alternative Jazz Lounge - Topic on Youtube]
  * 
  */
 public class CasinoWorld extends World
