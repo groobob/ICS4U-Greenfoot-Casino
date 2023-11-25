@@ -2,8 +2,8 @@ import greenfoot.*;
 /**
  * The gambler
  * 
- * @Jimmy Zhu
- * @1118
+ * @author Jimmy Zhu
+ * @version 1118
  */
 public class Gambler extends Actor {
     private final int varyRange = 40;
@@ -32,6 +32,7 @@ public class Gambler extends Actor {
     }
     public void playMoneyEffect(int money) {
         score+=money;
+        money+=money;
         getWorld().addObject(new MoneyEffect((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
     public void act() {

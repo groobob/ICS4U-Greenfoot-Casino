@@ -6,10 +6,13 @@ import java.util.*;  // (ArrayList)
  * 
  * Casinos make money from poker tables by taking in a "rake", or a percentage of the players
  * winnings. Due to this, although the amount that poker tables make is quite little, it is a
- * very safe source of income for the casino.\
+ * very safe source of income for the casino.
  * 
  * A minimum of 2 players is required for the game to start
  * Huge price to play, huge payouts -> One winner, a ton of losers
+ * Winner of the game is the one with the highest skill stat at the table
+ * Poker is known to be one of the most skill-based gambling games since it is played
+ * against other players, not the house
  * 
  * @author David Guo
  * @version 1.2 11/23/2023
@@ -128,7 +131,7 @@ public class Poker extends Game
         }
         return currPlayers;
     }
-    // Problem: money is too low
+    
     private int getMoneyBet(Gambler g){
         // Gamblers will bet somewhere between 5-25% of their total money
         double randomPercentBet = (double)(Greenfoot.getRandomNumber(20)+5)/100;

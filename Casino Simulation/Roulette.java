@@ -9,15 +9,14 @@ import java.util.*;  // (ArrayList)
  * a number, hoping to win.
  * 
  * The roulette spins every  few hundred or so acts.
- * <p><strong>@author :</strong> Dorsa Rohani<br>
- * <strong>@version :</strong> 1.2<br>
+ * 
+ * @author David Guo
+ * @version 1.2 11/23/2023
  */
 public class Roulette extends Game
 {
     // Declare class variables, some of which may be available for customization
     
-    // Roulette Table sprite
-    GreenfootImage rouletteTable;
     // The number of pockets depends on the type of roulette:
     // 37 pockets in French or European style roulette
     // 38 pockets in American roulette
@@ -48,10 +47,6 @@ public class Roulette extends Game
         actsSpinning = 0;
         // Chance to leave in percent
         chanceToLeave = 30;
-        // Set the class to the image
-        //rouletteTable = new GreenfootImage("TestRoulette.gif");
-        //rouletteTable.scale(80,60);
-        //setImage(rouletteTable);
         // Initlize arraylist of gamblers
         gamblerBets = new int[gamblers.length]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
         moneyBets = new int[gamblers.length];
@@ -83,12 +78,12 @@ public class Roulette extends Game
         actsSpinning++;
     }
     
-    private void spinWheel(){
+    private int spinWheel(){
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);
         // Change numbers above 36 to 0
         if(randomPocket == 37 || randomPocket == 38)randomPocket = 0;
-        
+        return randomPocket;
     }
     
     public int calculateEarned(int gamblerIndex){
@@ -103,10 +98,6 @@ public class Roulette extends Game
         
     }
     
-    private void clearWheel(){
-        // -1 will be used to represent undecided
-        pocketNum = -1;
-    }
     // When gamblers are ready to make their bet before the wheel starts spinning
     private void makeBet(){
         for(int i = 0; i < gamblers.length; i++){
@@ -122,7 +113,7 @@ public class Roulette extends Game
                 gamblers[i].playMoneyEffect(-moneyBets[i]);
             }
         }
-        spinWheel();
+        pocketNum = spinWheel();
     }
     
     private int getMoneyBet(Gambler g){

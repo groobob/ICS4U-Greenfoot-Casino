@@ -14,8 +14,6 @@ public class TitleScreen extends World
     private Button startButton;
     // MP3 file for the title screen music
     private GreenfootSound music;
-
-    
     /**
      * Constructor for objects of class TitleScreen.
      * 
@@ -23,14 +21,14 @@ public class TitleScreen extends World
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1200, 740, 1);
+        super(CasinoWorld.WIDTH, CasinoWorld.HEIGHT, 1);
         // Set bg to background image
-        //bg = new GreenfootImage ("titlescreenpixel.png");
+        bg = new GreenfootImage ("titlescreenpixel.png");
         setBackground(bg);
         // Create new buttons for the variables
         startButton = new Button("START", 80, 126, 125, 223, 234, 122, 67);
         // Add buttons to the world
-        addObject(startButton, 1200/2, 740/4*3);
+        addObject(startButton, CasinoWorld.WIDTH/2, CasinoWorld.HEIGHT/4*3);
         // Assign the variable to the sound file name in folder & adjust volume
         music = new GreenfootSound("stmatthewpassion.mp3");
         music.setVolume(50);
