@@ -5,7 +5,7 @@ import greenfoot.*;
  * @1118
  */
 public class Gambler extends Actor {
-    private int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50);
+    private int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),t=0;
     private boolean playing = false, flag = false, toSpot = false, isNew=false;
     protected int money;
     public void addedToWorld(World w){
@@ -19,9 +19,17 @@ public class Gambler extends Actor {
         getWorld().addObject(new MoneyEffect((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
     public void act() {
+        if(++t==45)t=0;
         if (!playing) {
-            if(Math.abs(tx-getX())>2)setLocation(getX()+speed*Integer.signum(tx-getX()),getY());
-            else if (Math.abs(ty-getY())>5)setLocation(getX(),getY()+speed*Integer.signum(ty-getY()));
+            if(Math.abs(tx-getX())>2){
+                setImage(ImageManager.getImage("ordinary",1,(Integer.signum(tx-getX())==-1?2:4),t/5+1));
+                setLocation(getX()+speed*Integer.signum(tx-getX()),getY());
+            }
+            else if (Math.abs(ty-getY())>5){
+                System.out.println(t/5+1);
+                setImage(ImageManager.getImage("ordinary",1,(Integer.signum(ty-getY())==-1?1:3),t/5+1));
+                setLocation(getX(),getY()+speed*Integer.signum(ty-getY()));
+            }
             else if (tx!=fx)tx=fx;
             else if (tx==1250||tx==-50)getWorld().removeObject(this);
             else if(!flag) {
@@ -46,7 +54,7 @@ public class Gambler extends Actor {
         }
     }
     public void target(int x, int y, int compensate){
-        if(Math.abs(ty+yToSpot-y)>50)tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));;
+        if(Math.abs(ty+yToSpot-y)>25)tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));;
         fx=x;
         ty=y-compensate;
         yToSpot=compensate;

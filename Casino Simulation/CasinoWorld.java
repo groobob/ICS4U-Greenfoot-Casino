@@ -48,6 +48,7 @@ public class CasinoWorld extends World
         //____________________________________________
         ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
+        ImageManager.addImages("ordinary",1,4,9);
         addObject(new Entrance(),600,600);//temp
         prepare();
     }
@@ -82,12 +83,13 @@ public class CasinoWorld extends World
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(240,350,-20)}),240,325);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(320,350,-20)}),320,325);
         addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(400,350,-20)}),400,325);
+        
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 0), 200, 100);
         //System.out.println("ASDFAFF");
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 1), 200, 100);
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 2), 200, 100);
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 3), 200, 100);
-        //addObject(new HorizontalBar(),600,60);
+        addObject(new HorizontalBar(),600,60);
         //HorizontalBar.updateText();
     }
 }

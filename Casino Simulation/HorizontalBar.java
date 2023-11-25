@@ -10,16 +10,16 @@ public class HorizontalBar extends Actor
 {
     private static int casinoTarget = 0, gamblerLoss = 0, casinoProfit = 0, gamblerWinRatio = 0;
     private static Text[] textBoxes = new Text[4];
-    public HorizontalBar()
-    {
-        updateText();
-    }
+    private boolean isNew=false;
     public void addedToWorld(World w){
-        getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 0), 200, 100);
-        getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 1), 200, 100);
-        getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 2), 200, 100);
-        getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 3), 200, 100);
-        updateText();
+        if(!isNew){
+            isNew=true;
+            getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 0), 200, 100);
+            getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 1), 200, 100);
+            getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 2), 200, 100);
+            getWorld().addObject(new Text(50, 10, 10, "Segoe UI", "0", 3), 200, 100);
+            updateText();
+        }
     }
     public static void attachText(Text text, int type)
     {
