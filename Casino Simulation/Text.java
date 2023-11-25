@@ -16,7 +16,7 @@ public class Text extends Actor
         this.font=font;
         changeText(text);
         this.type=type;
-        UIManager.attachText(type);
+        HorizontalBar.attachText(this, type);
     }
     public void changeText(String text){
         GreenfootImage gfi = new GreenfootImage(w, h);
