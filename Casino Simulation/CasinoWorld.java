@@ -3,11 +3,28 @@ import java.util.*;
 /**
  * Write a description of class Game here.
  * 
- * @author Jimmy Zhu, Dorsa Rohani
- * @version 11/20
+ * @author Jimmy Zhu, Dorsa Rohani, David Guo
+ * @version 1.0 11/24/2023
+ * 
+ * Program features include:
+ * => 
+ * 
+ * Credit:
+ * => Code
+ *   -> Button and TextSizeFinder [Alex Li]
+ *   
+ * => Visuals
+ *   -> 
+ *   
+ * => Music & SFX
+ *   -> Background Music 
+ * 
  */
 public class CasinoWorld extends World
 {
+    // FINAL VARIABLES TO WIDTH AND HEIGHT TO BE CONSISTENT THROUGHOUT ALL WORLDS
+    public static final int WIDTH = 1200;
+    public static final int HEIGHT = 740;
     int delay=1;//temp 
     private int progressLevel = 0;
     int casinoTarget = 100;
@@ -15,7 +32,7 @@ public class CasinoWorld extends World
 
     public CasinoWorld()
     {    
-        super(1200, 740, 1, false); 
+        super(WIDTH, HEIGHT, 1, false); 
         setBackground("casinobg.png");
         System.out.println("---");
         Greenfoot.setSpeed(50);

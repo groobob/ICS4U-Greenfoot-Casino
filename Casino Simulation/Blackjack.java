@@ -72,20 +72,21 @@ public class Blackjack extends Game
         for(int i = 0; i < gamblers.length; i++){
             if(gamblers[i] != null && gamblers[i].isPlaying()){
                 int gBet = getMoneyBet(gamblers[i]);
-                // Did this player win?
-                if(handValues[i] > dealersHand)gamblers[i].playMoneyEffect(gBet);
-                // Did they lose?
-                else if(handValues[i] < dealersHand)gamblers[i].playMoneyEffect(-gBet);
+                // Did the player lose by busting or having a lower hand?
+                if(handValues[i] > 21 || handValues[i] < dealersHand)gamblers[i].playMoneyEffect(-gBet);
+                // Did they win?
+                else if(handValues[i] > dealersHand)gamblers[i].playMoneyEffect(gBet);
                 // If neither, it is a tie. Therefore no money earned/lost
                 // Chance for gambler to leave
                 int leaveChance = Greenfoot.getRandomNumber(100);
                 if(leaveChance < chanceToLeave)endGamblerSession(i);
             }
+            // Reset some variables for next round
+            handValues[i] = 0;
         }
         // Reset some variables for next round
         dealTime = timeBetweenDeals;
         dealersHand = 0;
-        for(int i = 0; i < handValues.length; i++)handValues[i] = 0;
     }
     
     public int playHand(Gambler g, int hand){
