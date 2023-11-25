@@ -1,16 +1,19 @@
 #BlueJ class context
 comment0.target=HorseBetting
-comment0.text=\r\n\ Horsebetting\ game\r\n\ \r\n\ @author\:\ dorsa\r\n\ @version\ 1.2\ 11-23-2023\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p><strong>HorseBetting</strong>\ is\ a\ <em>Game</em>\ subclass\ that\ creates\ and\ runs\ the\ game\ logic\ for\ accurate\ real-world\ horse\ betting.</p>\r\n\ <p>This\ class\ is\ a\ part\ of\ the\ Greenfoot\ game\ development\ framework,\ designed\ to\ simulate\ a\ horse\ betting\ scenario.\ It\ manages\ horse\ races,\ including\ setting\ up\ races,\ accepting\ gambler\ bets,\ and\ calculating\ payouts\ based\ on\ the\ race\ outcomes.</p>\r\n\ \r\n\ <h3>Usage\:</h3>\r\n\ <p>To\ use\ the\ <code>HorseBetting</code>\ class,\ instantiate\ it\ with\ an\ array\ of\ <code>SpotManager.Spot</code>\ objects\ representing\ the\ locations\ in\ the\ game.\ The\ class\ automatically\ handles\ the\ logistics\ of\ horse\ racing\ and\ interactions\ with\ gamblers.\ Gamblers\ can\ place\ bets\ on\ horses,\ which\ are\ processed\ and\ paid\ out\ based\ on\ the\ results\ of\ the\ races.</p>\r\n\r\n\ <h3>Version\ Changes\:</h3>\r\n\ <ul>\r\n\ \ \ <li>Version\ 1.2\ (11-23-2023)\:\ Improved\ race\ duration\ handling\ and\ payout\ calculation\ accuracy.\ Fixed\ minor\ bugs\ related\ to\ gambler\ array\ indexing.</li>\r\n\ </ul>\r\n\r\n\ <h3>Additional\ Information\:</h3>\r\n\ <p>The\ <code>HorseBetting</code>\ class\ is\ designed\ for\ educational\ purposes\ within\ the\ Greenfoot\ framework\ and\ is\ not\ intended\ for\ actual\ betting.\ It\ can\ be\ extended\ to\ include\ horse\ statistics,\ dynamic\ odds\ calculation,\ and\ sophisticated\ gambler\ AI\ for\ a\ more\ realistic\ experience.</p>\r\n\ \r\n\ <p><strong>@author\ \:</strong>\ Dorsa\ Rohani<br>\r\n\ <strong>@version\ \:</strong>\ 1.2<br>\r\n\ <strong>Date\:</strong>\ 11-24-2023</p>\r\n\ <h3>Additional\ Information\:</h3>\r\n\ <p>The\ <code>HorseBetting</code>\ class\ is\ designed\ for\ educational\ purposes\ within\ the\ Greenfoot\ framework\ and\ is\ not\ intended\ for\ actual\ betting.\ It\ can\ be\ extended\ to\ include\ horse\ statistics,\ dynamic\ odds\ calculation,\ and\ sophisticated\ gambler\ AI\ for\ a\ more\ realistic\ experience.</p>\r\n\ \r\n\ </body>\r\n\ </html>\r\n
 comment1.params=spots
 comment1.target=HorseBetting(SpotManager.Spot[])
+comment1.text=\r\n\ *\ <h2>Constructor</h2>\r\n\ <p><strong>HorseBetting(SpotManager.Spot[]\ spots)</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>@param\ spots</strong>\ -\ An\ array\ of\ <code>SpotManager.Spot</code>\ objects\ representing\ the\ locations\ for\ the\ game.</li>\r\n\ </ul>\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ *\ <p><strong>void\ act()</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li>No\ parameters.</li>\r\n\ \ \ \ \ <li>No\ return\ value.</li>\r\n\ \ \ \ \ <li>This\ method\ conducts\ the\ main\ game\ loop,\ triggering\ the\ race\ conduct\ process.</li>\r\n\ </ul>\r\n
 comment3.params=
 comment3.target=void\ conductRace()
 comment4.params=
 comment4.target=void\ startRace()
 comment5.params=gamblerIndex
 comment5.target=int\ calculatePayout(int)
+comment5.text=\r\n\ *\ <p><strong>int\ calculatePayout(int\ gamblerIndex)</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>@param\ gamblerIndex</strong>\ -\ Index\ of\ the\ gambler\ in\ the\ <code>gamblers</code>\ array.</li>\r\n\ \ \ \ \ <li><strong>@return\ int</strong>\ -\ The\ calculated\ payout\ amount\ for\ the\ specified\ gambler\ based\ on\ the\ race\ outcome.</li>\r\n\ \ \ \ \ <li>This\ method\ calculates\ the\ payout\ for\ a\ gambler\ based\ on\ their\ bet\ and\ the\ result\ of\ the\ race.</li>\r\n\ </ul>\r\n\ \r\n
 comment6.params=
 comment6.target=void\ placeBets()
 comment7.params=g

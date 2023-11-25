@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=MoneyEffect
-comment0.text=\r\n\ money\ effect\r\n\ @author\:\ dorsa\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p><strong>MoneyEffect</strong>\ is\ an\ <em>Actor</em>\ subclass\ in\ Greenfoot\ used\ for\ creating\ visual\ effects\ representing\ monetary\ changes.</p>\r\n\ <p>It\ displays\ text\ (such\ as\ a\ change\ in\ money\ amount)\ in\ a\ specified\ color,\ moving\ upward\ and\ gradually\ fading\ out\ over\ its\ lifespan.</p>\r\n\ \r\n\ <h3>Usage\:</h3>\r\n\ <p>Create\ an\ instance\ of\ MoneyEffect\ with\ the\ desired\ text\ and\ color.\ The\ effect\ will\ display\ the\ text,\ move\ it\ upwards,\ and\ fade\ it\ out\ gradually.\ For\ example,\ <code>new\ MoneyEffect("+100",\ Color.GREEN)</code>\ creates\ an\ effect\ showing\ "+100"\ in\ green.</p>\r\n\r\n\ <h3>Constructor</h3>\r\n\ <p><strong>MoneyEffect(String\ text,\ Color\ color)</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>@param\ text</strong>\ -\ The\ text\ to\ be\ displayed.</li>\r\n\ \ \ \ \ <li><strong>@param\ color</strong>\ -\ The\ color\ of\ the\ text.</li>\r\n\ </ul>\r\n\ \r\n\ <p><strong>@author\ \:</strong>\ Dorsa\ Rohani<br>\r\n\ <strong>@version\ \:</strong>\ 1.2<br>\r\n\ <strong>Date\:</strong>\ 11-24-2023</p>\r\n
 comment1.params=text\ color
 comment1.target=MoneyEffect(java.lang.String,\ greenfoot.Color)
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ <p><strong>void\ act()</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li>Calls\ the\ update\ method\ to\ handle\ the\ effect's\ animation.</li>\r\n\ </ul>\r\n\ \r\n
 comment3.params=
 comment3.target=void\ update()
 numComments=4
