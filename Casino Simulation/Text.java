@@ -25,4 +25,11 @@ public class Text extends Actor
         gfi.drawString(text, w/4, h/2);
         setImage(gfi);
     }
+    public void changeText(String text, Color c){
+        GreenfootImage gfi = new GreenfootImage(w,h);
+        gfi.setColor(c);
+        gfi.setFont(new Font(font, true, false, s/text.length())); 
+        gfi.drawString(text, w/4, h/2);
+        setImage(gfi);
+    }
 }
