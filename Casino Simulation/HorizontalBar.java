@@ -3,26 +3,60 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class HorizontalBar here.
  * 
- * @author Richard, Dorsa
+ * @author Richard
  * @version 11/20
  */
 public class HorizontalBar extends Actor
 {
-    public static int casinoProfit;
-    /**
-     * Act - do whatever the HorizontalBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    public HorizontalBar(){
-        casinoProfit = 0;
+    private static int casinoTarget = 0, gamblerLoss = 0, casinoProfit = 0, gamblerWins = 0, gamblerLosses = 0;
+    private static Text[] textBoxes = new Text[4];
+    private boolean isNew=false;
+    public void addedToWorld(World w){
+        if(!isNew){
+            isNew=true;
+            getWorld().addObject(new Text(200, 100, 25, "Segoe UI", "0", 0), 425, 35);
+            getWorld().addObject(new Text(200, 100, 25, "Segoe UI", "0", 1), 880, 35);
+            getWorld().addObject(new Text(200, 100, 25, "Segoe UI", "0", 2), 425, 85);
+            getWorld().addObject(new Text(200, 100, 25, "Segoe UI", "0", 3), 880, 85);
+            updateText();
+        }
     }
-    public void act(){
-        showText(casinoProfit + "", Color.RED, 405, 35);
+    
+    private void updateText()
+    {
+        textBoxes[0].changeText(casinoTarget + "");
+        textBoxes[1].changeText(gamblerLoss + "");
+        textBoxes[2].changeText(casinoProfit + "");
+        textBoxes[3].changeText(gamblerWins + "/" + gamblerLosses);
     }
     
-    private void showText(String text, Color color, int x, int y){
-        Text texts = new Text(text, color);
-        getWorld().addObject(texts, x, y);
+    public static void attachText(Text text, int type)
+    {
+        textBoxes[type] = text;
+    }
+    
+    public void setCasinoTarget(int num)
+    {
+        casinoTarget = num;
+        updateText();
+    }
+    
+    public void incrementGamblerLoss(int num)
+    {
+        gamblerLoss += num;
+        updateText();
+    }
+    
+    public void incrementcasinoProfit(int num)
+    {
+        casinoProfit += num;
+        updateText();
+    }
+    
+    public void incrementGamblerWL(boolean win)
+    {
+        if(win) gamblerWins++;
+        else gamblerLosses++;
+        updateText();
     }
 }
