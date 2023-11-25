@@ -1,9 +1,13 @@
 #BlueJ class context
 comment0.target=EndScreen
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ EndScreen\ here.\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.0\ 11/24/2023\r\n
+comment0.text=\r\n\ End\ Screen\ world\ with\ two\ possible\ endings\ which\ will\ change\ the\ bankground\ and\ music\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.0\ 11/24/2023\r\n
 comment1.params=casinoRich
 comment1.target=EndScreen(boolean)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ EndScreen.\r\n\ \r\n
+comment1.text=\r\n\ Constructor\ for\ the\ end\ screen\r\n\ @param\ casinoRich\ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ two\ different\ endings,\ with\ true\ being\ the\ casino\ getting\ wealthy\ and\ false\ being\ bankrupt\r\n
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=
+comment3.target=void\ started()
+comment4.params=
+comment4.target=void\ stopped()
+numComments=5

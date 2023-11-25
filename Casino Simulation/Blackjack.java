@@ -4,7 +4,13 @@ import java.util.*;  // (ArrayList)
 /**
  * The blackjack table class.
  * 
+ * Players verse the dealer based on who has the highest hand without passing 21.
+ * Players will lose their bet if they bust.
+ * If they tie, they will go even
+ * If they win, they will double their bet.
  * 
+ * Players decide when to hit based on their skill level
+ * Dealer hits until 17 or above
  * 
  * <p>=============== Experimental Data ===============</p>
  * 
@@ -69,6 +75,8 @@ public class Blackjack extends Game
     private void revealCards(){
         // Dealer must hit until 17 or above
         while(dealersHand < 17)dealersHand += hit(dealersHand);
+        // If dealer busts, their hand is worse than 0
+        if(dealersHand > 21)dealersHand = -1;
         for(int i = 0; i < gamblers.length; i++){
             if(gamblers[i] != null && gamblers[i].isPlaying()){
                 int gBet = getMoneyBet(gamblers[i]);

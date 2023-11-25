@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EndScreen here.
+ * End Screen world with two possible endings which will change the bankground and music
  * 
  * @author David Guo
  * @version 1.0 11/24/2023
@@ -15,8 +15,8 @@ public class EndScreen extends World
     // Play again button
     private Button restartButton;
     /**
-     * Constructor for objects of class EndScreen.
-     * 
+     * Constructor for the end screen
+     * @param casinoRich              The two different endings, with true being the casino getting wealthy and false being bankrupt
      */
     public EndScreen(boolean casinoRich)
     {    
