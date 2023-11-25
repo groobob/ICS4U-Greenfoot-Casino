@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SlotMachines
-comment0.text=\r\n\ The\ slot\ machines\r\n\ Author\:\ Dorsa\ Rohani\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p><strong>SlotMachines</strong>\ is\ a\ <em>Game</em>\ subclass\ that\ simulates\ the\ operation\ of\ slot\ machines\ within\ a\ Greenfoot\ gaming\ environment.</p>\r\n\ <p>This\ class\ handles\ the\ logic\ and\ interface\ for\ slot\ machine\ games,\ including\ managing\ betting\ amounts,\ play\ cycles,\ random\ win\ calculations,\ and\ session\ management\ for\ players.</p>\r\n\ \r\n\ <h3>Usage\:</h3>\r\n\ <p>To\ use\ the\ <code>SlotMachines</code>\ class,\ instantiate\ it\ with\ an\ array\ of\ <code>SpotManager.Spot</code>\ objects\ representing\ the\ positions\ for\ the\ game.\ The\ class\ handles\ game\ sessions,\ deducting\ costs\ for\ playing,\ and\ calculating\ wins,\ making\ it\ a\ complete\ simulation\ of\ a\ slot\ machine\ experience.</p>\r\n\r\n\ <h3>Version\ Changes\ and\ Known\ Issues\:</h3>\r\n\ <ul>\r\n\ \ \ <li>Initial\ Version\:\ Basic\ functionality\ for\ slot\ machine\ simulation\ including\ cost\ deduction,\ win\ calculation,\ and\ session\ management.</li>\r\n\ \ \ <li>Known\ Issues\:\ The\ randomness\ of\ wins\ may\ not\ accurately\ reflect\ real-world\ slot\ machine\ odds,\ and\ there\ is\ no\ implementation\ for\ varied\ betting\ strategies\ or\ player\ profiles.</li>\r\n\ </ul>\r\n\r\n\ <h3>Additional\ Information\:</h3>\r\n\ <p>The\ <code>SlotMachines</code>\ class\ is\ intended\ for\ educational\ and\ simulation\ purposes\ within\ the\ Greenfoot\ framework.\ For\ a\ more\ comprehensive\ simulation,\ future\ enhancements\ could\ include\ diverse\ betting\ strategies,\ player\ profiles,\ and\ more\ sophisticated\ win\ calculation\ algorithms.</p>\r\n\ \r\n\ <p><strong>Author\:</strong>\ Dorsa\ Rohani</p>\r\n\ </body>\r\n\ </html>\r\n
 comment1.params=spots
 comment1.target=SlotMachines(SpotManager.Spot[])
 comment2.params=
@@ -11,4 +11,8 @@ comment4.params=
 comment4.target=void\ deductGameCost()
 comment5.params=
 comment5.target=void\ winMoney()
-numComments=6
+comment5.text=\r\n\ <p><strong>void\ winMoney()</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li>No\ parameters.</li>\r\n\ \ \ \ \ <li>No\ return\ value.</li>\r\n\ \ \ \ \ <li>Calculates\ and\ awards\ a\ random\ winning\ amount\ to\ the\ gambler.</li>\r\n\ </ul>\r\n\ \r\n
+comment6.params=
+comment6.target=void\ endGamblerSession()
+comment6.text=\r\n\r\n\ <p><strong>void\ endGamblerSession()</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li>No\ parameters.</li>\r\n\ \ \ \ \ <li>No\ return\ value.</li>\r\n\ \ \ \ \ <li>Ends\ the\ current\ gambler's\ session\ and\ resets\ the\ slot\ machine\ for\ the\ next\ player.</li>\r\n\ </ul>\r\n\ \r\n
+numComments=7
