@@ -30,8 +30,8 @@ public class TitleScreen extends World
         // Add buttons to the world
         addObject(startButton, CasinoWorld.WIDTH/2, CasinoWorld.HEIGHT/4*3);
         // Assign the variable to the sound file name in folder & adjust volume
-        //music = new GreenfootSound("");
-        //music.setVolume(25);
+        music = new GreenfootSound("stmatthewpassion.mp3");
+        music.setVolume(50);
         // Add the title of the game
         //addObject(new TitlePic("TitlePic.png"), getWidth()/2, getHeight()/4);
     }
@@ -39,16 +39,16 @@ public class TitleScreen extends World
     public void act(){
         // checks if the player has clicked play and puts them into the game if they did
         if(Greenfoot.mouseClicked(startButton)){
-            //music.stop(); // stops the title screen music
+            music.stop(); // stops the title screen music
             Greenfoot.setWorld(new CasinoWorld());
         }
     }
     // Play song when the game starts
     public void started() {
-        //music.playLoop();
+        music.playLoop();
     }
     // Pause song if they stop the program
     public void stopped() {
-        //music.pause();
+        music.pause();
     }
 }

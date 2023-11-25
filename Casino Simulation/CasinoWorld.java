@@ -29,11 +29,17 @@ public class CasinoWorld extends World
     private int progressLevel = 0;
     int casinoTarget = 100;
     public static int numGames = 20; // number of games tracker for spotmanager
-
+    // Music
+    private GreenfootSound music;
     public CasinoWorld()
     {    
         super(WIDTH, HEIGHT, 1, false); 
         setBackground("casinobg.png");
+        // Music
+        music = new GreenfootSound("CasinoJazz.mp3");
+        music.setVolume(50);
+        music.playLoop();
+        // Misc.
         System.out.println("---");
         Greenfoot.setSpeed(50);
         SpotManager.resetIndex();
@@ -167,11 +173,11 @@ public class CasinoWorld extends World
     
     // Play song when the game starts
     public void started() {
-        //music.playLoop();
+        music.playLoop();
     }
     // Pause song if they stop the program
     public void stopped() {
-        //music.pause();
+        music.pause();
     }
     
 }
