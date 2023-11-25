@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Slider
+comment0.text=\r\n\ Slider\ for\ main\ screen.\r\n\ \r\n\ @author\:\ dorsa\ \r\n
+comment1.params=id\ minX\ maxX\ minRange\ maxRange
+comment1.target=Slider(int,\ int,\ int,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=xPosition
+comment3.target=int\ calculateValue(int)
+numComments=4

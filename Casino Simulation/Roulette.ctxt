@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Roulette
+comment0.text=\r\n\ A\ roulette\ table\ which\ where\ gamblers\ can\ choose\ a\ number\ to\ bet\ their\ money\ on.\r\n\ \r\n\ People\ with\ a\ higher\ skill\ value\ than\ 50\ (very\ easy\ to\ get)\ will\ choose\ to\ bet\r\n\ on\ even\ or\ odd\ to\ actually\ earn\ money.\ People\ with\ less\ skill\ will\ blindly\ pick\r\n\ a\ number,\ hoping\ to\ win.\r\n\ \r\n\ The\ roulette\ spins\ every\ \ few\ hundred\ or\ so\ acts.\r\n\ \r\n\ @author\ David\ Guo\r\n\ @version\ 1.2\ 11/23/2023\r\n
+comment1.params=spots
+comment1.target=Roulette(SpotManager.Spot[])
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Roulette\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ playGame()
+comment4.params=
+comment4.target=int\ spinWheel()
+comment5.params=gamblerIndex
+comment5.target=int\ calculateEarned(int)
+comment6.params=
+comment6.target=void\ makeBet()
+comment7.params=g
+comment7.target=int\ getMoneyBet(Gambler)
+numComments=8

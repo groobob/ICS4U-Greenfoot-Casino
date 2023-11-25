@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MoneyEffect
+comment0.text=\r\n\ money\ effect\r\n\ @author\:\ dorsa\r\n
+comment1.params=text\ color
+comment1.target=MoneyEffect(java.lang.String,\ greenfoot.Color)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ update()
+numComments=4

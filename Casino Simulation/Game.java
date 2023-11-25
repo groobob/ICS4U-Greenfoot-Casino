@@ -1,19 +1,33 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class Game here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Game extends Actor
+import greenfoot.*;
+public abstract class Game extends Actor
 {
-    /**
-     * Act - do whatever the Game wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+    protected Gambler[] gamblers;
+    private SpotManager.Spot[] spots;
+    private int len;
+    private boolean isNew=false;
+    public Game(SpotManager.Spot[] spots){
+        this.spots=spots;
+        len=spots.length;
+        gamblers=new Gambler[len];
+    }
+    public void addedToWorld(World w){
+        if(!isNew){//prevent z sort problems
+            isNew=true;
+            SpotManager.addGame(this);
+        }
+    }
+    // All classes need a way for gamblers to leave the game
+    protected void endGamblerSession(int gamblerIndex){
+        gamblers[gamblerIndex].stopPlaying();
+        gamblers[gamblerIndex] = null;
+    }
+    public Gambler[] getGamblers(){
+        return gamblers;
+    }
+    public SpotManager.Spot[] getSpots(){
+        return spots;
+    }
+    public void placeGambler(Gambler g, int SpotNumber){
+        gamblers[SpotNumber]=g;
     }
 }

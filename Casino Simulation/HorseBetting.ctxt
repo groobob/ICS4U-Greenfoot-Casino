@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=HorseBetting
+comment0.text=\r\n\ Horsebetting\ game\r\n\ \r\n\ @author\:\ dorsa\r\n\ @version\ 1.2\ 11-23-2023\r\n
+comment1.params=spots
+comment1.target=HorseBetting(SpotManager.Spot[])
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ conductRace()
+comment4.params=
+comment4.target=void\ startRace()
+comment5.params=gamblerIndex
+comment5.target=int\ calculatePayout(int)
+comment6.params=
+comment6.target=void\ placeBets()
+comment7.params=g
+comment7.target=int\ determineStake(Gambler)
+numComments=8
