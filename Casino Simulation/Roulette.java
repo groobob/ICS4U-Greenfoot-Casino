@@ -9,9 +9,8 @@ import java.util.*;  // (ArrayList)
  * a number, hoping to win.
  * 
  * The roulette spins every  few hundred or so acts.
- * 
- * @author David Guo
- * @version 1.2 11/23/2023
+ * <p><strong>@author :</strong> Dorsa Rohani<br>
+ * <strong>@version :</strong> 1.2<br>
  */
 public class Roulette extends Game
 {

@@ -9,25 +9,17 @@ import java.util.*;
  * <h3>Usage:</h3>
  * <p>To use the <code>HorseBetting</code> class, instantiate it with an array of <code>SpotManager.Spot</code> objects representing the locations in the game. The class automatically handles the logistics of horse racing and interactions with gamblers. Gamblers can place bets on horses, which are processed and paid out based on the results of the races.</p>
  *
- * <h3>Version Changes and Known Issues:</h3>
+ * <h3>Version Changes:</h3>
  * <ul>
  *   <li>Version 1.2 (11-23-2023): Improved race duration handling and payout calculation accuracy. Fixed minor bugs related to gambler array indexing.</li>
- *   <li>Known Issues: Currently, the race outcome does not consider horse statistics or historical performance, which may affect betting realism.</li>
  * </ul>
  *
  * <h3>Additional Information:</h3>
  * <p>The <code>HorseBetting</code> class is designed for educational purposes within the Greenfoot framework and is not intended for actual betting. It can be extended to include horse statistics, dynamic odds calculation, and sophisticated gambler AI for a more realistic experience.</p>
  * 
- * <p><strong>Author:</strong> Dorsa Rohani<br>
- * <strong>Version:</strong> 1.2<br>
- * <strong>Date:</strong> 11-23-2023</p>
- * 
- * * <h3>Version Changes and Known Issues:</h3>
- * <ul>
- *   <li>Version 1.2 (11-23-2023): Improved race duration handling and payout calculation accuracy. Fixed minor bugs related to gambler array indexing.</li>
- *   <li>Known Issues: Currently, the race outcome does not consider horse statistics or historical performance, which may affect betting realism.</li>
- * </ul>
- *
+ * <p><strong>@author :</strong> Dorsa Rohani<br>
+ * <strong>@version :</strong> 1.2<br>
+ * <strong>Date:</strong> 11-24-2023</p>
  * <h3>Additional Information:</h3>
  * <p>The <code>HorseBetting</code> class is designed for educational purposes within the Greenfoot framework and is not intended for actual betting. It can be extended to include horse statistics, dynamic odds calculation, and sophisticated gambler AI for a more realistic experience.</p>
  * 

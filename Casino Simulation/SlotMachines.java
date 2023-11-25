@@ -8,16 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * <h3>Usage:</h3>
  * <p>To use the <code>SlotMachines</code> class, instantiate it with an array of <code>SpotManager.Spot</code> objects representing the positions for the game. The class handles game sessions, deducting costs for playing, and calculating wins, making it a complete simulation of a slot machine experience.</p>
  *
- * <h3>Version Changes and Known Issues:</h3>
+ * <h3>Version Changes</h3>
  * <ul>
  *   <li>Initial Version: Basic functionality for slot machine simulation including cost deduction, win calculation, and session management.</li>
- *   <li>Known Issues: The randomness of wins may not accurately reflect real-world slot machine odds, and there is no implementation for varied betting strategies or player profiles.</li>
  * </ul>
  *
  * <h3>Additional Information:</h3>
  * <p>The <code>SlotMachines</code> class is intended for educational and simulation purposes within the Greenfoot framework. For a more comprehensive simulation, future enhancements could include diverse betting strategies, player profiles, and more sophisticated win calculation algorithms.</p>
- * 
- * <p><strong>Author:</strong> Dorsa Rohani</p>
+ * <p><strong>@author :</strong> Dorsa Rohani<br>
+ * <strong>@version :</strong> 1.2<br>
  * </body>
  * </html>
  */
