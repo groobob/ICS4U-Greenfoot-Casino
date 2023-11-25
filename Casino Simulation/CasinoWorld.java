@@ -9,18 +9,30 @@ import java.util.*;
  * 
  * 
  * Program features include:
- * => 
+ * => Gamblers 
+ *   -> Ordinary people walk into the casino ready to spend their hard earned cash in order to get rich
+ * => Slot machines where gamblers can pay a flat fee for a chance to win big
+ * => Blackjack where gamblers play against an imaginary dealer
+ * => Horse betting where people can bet on their favourite horses
+ * => Roulette where the roulette rolls for a number and everyone who bets on it wins big (or they can be on even/odd)
+ * => Poker where gamblers play against each other. The casino takes a cut and a single player wins the pot
+ * => One things for sure... the house always wins. Unless it doesn't.
+ *   -> Rich Ending -> Casino reaches a certain level or wealth
+ *   -> Poor Ending -> Casino goes bankrupt before it can get big
  * 
  * Credit:
  * => Code
  *   -> Button and TextSizeFinder [Alex Li]
  *   
  * => Visuals
- *   -> 
+ *   -> PFC Sprite Creator [All credits on credit google doc in our google folder]
+ *   -> All Game Sprits [Richard Zhang]
+ *   -> Casino World Background [Richard Zhang]
  *   
  * => Music & SFX
  *   -> TitleScreen Background Music [KingsCollegeChoir on Youtube]
  *   -> CasinoWorld Background Music [Alternative Jazz Lounge - Topic on Youtube]
+ *   -> Kaching, Failfare, Slots Rolling SFX [pixabay]
  * 
  */
 public class CasinoWorld extends World

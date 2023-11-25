@@ -2,8 +2,8 @@ import greenfoot.*;
 /**
  * The gambler
  * 
- * @Jimmy Zhu
- * @1118
+ * @author Jimmy Zhu
+ * @version 1118
  */
 public class Gambler extends Actor {
     private final int varyRange = 40;
