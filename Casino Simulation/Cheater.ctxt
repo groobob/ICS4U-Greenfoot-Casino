@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Cheater
-comment0.text=\r\n\ cheater\r\n\ @Jimmy\ Zhu\r\n\ @1123\r\n
+comment0.text=\r\n\ Cheater\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
 comment1.params=
-comment1.target=Cheater()
+comment1.target=int\ checkCheating()
 comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment2.target=Cheater()
+comment3.params=
+comment3.target=void\ act()
+numComments=4

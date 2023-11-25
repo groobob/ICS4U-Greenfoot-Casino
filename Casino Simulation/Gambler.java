@@ -4,10 +4,12 @@ import greenfoot.*;
  * @Jimmy Zhu
  * @1118
  */
-public class Gambler extends Actor {
+public abstract class Gambler extends Actor {
     private int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,animationStep=0,mostRecentDirection=1;
     private boolean playing = false, flag = false, toSpot = false, isNew=false;
     protected int money,character,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50);
+    protected boolean leaving=false;
+    public abstract int checkCheating();
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
@@ -15,8 +17,14 @@ public class Gambler extends Actor {
         }
     }
     public void playMoneyEffect(int money) {
+        if(money==0)return;
         this.money+=money;
-        getWorld().addObject(new MoneyEffect((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
+        UIManager.incrementcasinoProfit(-money);
+        UIManager.incrementGamblerWL(money>0);
+        getWorld().addObject(new Message((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
+    }
+    public void playDialogue(String text){
+        getWorld().addObject(new Message(text,Color.WHITE,100,3),getX(),getY()-30);
     }
     public void act() {
         if (!playing) {
@@ -44,7 +52,7 @@ public class Gambler extends Actor {
                 toSpot=true;
                 flag=false;
             } 
-            else if(SpotManager.attemptTarget(this)) {
+            else if(SpotManager.attemptTarget(this)&&!leaving) {
                 toSpot=false;
                 flag=false;
             } 

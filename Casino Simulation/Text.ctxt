@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=Text
 comment0.text=\r\n\ Text\r\n\ \r\n\ @Jimmy\ Zhu\r\n\ @1124\r\n
-comment1.params=w\ h\ s\ font\ text\ type
-comment1.target=Text(int,\ int,\ int,\ java.lang.String,\ java.lang.String,\ int)
-comment2.params=text
-comment2.target=void\ changeText(java.lang.String)
-comment3.params=text\ c
-comment3.target=void\ changeText(java.lang.String,\ greenfoot.Color)
-numComments=4
+comment1.params=size\ font\ text\ type
+comment1.target=Text(int,\ java.lang.String,\ java.lang.String,\ int)
+comment2.params=size\ font\ text
+comment2.target=Text(int,\ java.lang.String,\ java.lang.String)
+comment3.params=text
+comment3.target=void\ changeText(java.lang.String)
+comment4.params=text\ c
+comment4.target=void\ changeText(java.lang.String,\ greenfoot.Color)
+numComments=5

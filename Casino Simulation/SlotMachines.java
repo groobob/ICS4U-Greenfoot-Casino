@@ -28,10 +28,12 @@ public class SlotMachines extends Game {
                 else if(delay==12)deductGameCost();
             }
             if(++delay<132)return;
-            //winMoney();
             playCounter++;
             delay=0;
-            if(playCounter>=maxPlays)endGamblerSession();
+            if(playCounter>=maxPlays){
+                if(Greenfoot.getRandomNumber(3)==0&&gamblers[0].checkCheating()==1)gamblers[0].playDialogue((Greenfoot.getRandomNumber(2)==0?"I got caught.":"I messed up."));
+                endGamblerSession();
+            }
         }
         else{
             delay=0;
@@ -54,7 +56,7 @@ public class SlotMachines extends Game {
             gamblers[0].playMoneyEffect(winAmount);
        // }
     }
-
+    
     private void endGamblerSession() {
         gamblers[0].stopPlaying();
         gamblers[0] = null;

@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=SpotManager
-comment0.text=\r\n\ Class\ that\ manages\ spots.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 1120\r\n
+comment0.text=\r\n\ Class\ that\ manages\ spots.\r\n\ <p>\r\n\ Guide\ gamblers\ to\ spots.\r\n\ Allows\ easy\ creation\ of\ spots.\r\n\ Keeps\ track\ of\ games\ and\ therefore\ their\ spots.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/20\r\n
 comment1.params=
 comment1.target=void\ resetIndex()
-comment1.text=\r\nResets\ index\r\n
+comment1.text=\r\nResets\ index.\ Needed\ because\ it's\ static\ so\ it\ doesn't\ automatically\ reset\ when\ simulation\ is\ reset.\r\n\r\n
 comment2.params=g
 comment2.target=void\ addGame(Game)
 comment2.text=\r\nAdd\ game\r\n

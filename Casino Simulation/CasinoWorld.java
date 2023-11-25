@@ -52,6 +52,7 @@ public class CasinoWorld extends World
         ImageManager.addImages("betting",12);
         addObject(new Entrance(),600,600);//temp
         prepare();
+        setPaintOrder(Message.class,Text.class);
     }
     public void act(){
         if(--delay==0){
@@ -59,7 +60,7 @@ public class CasinoWorld extends World
             //pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
             //Game tempGame=null;
             //if(emptyGame())
-            addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
         }
         zSort((ArrayList<Actor>)(getObjects(Actor.class)), this);
     }
@@ -88,13 +89,13 @@ public class CasinoWorld extends World
         addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
         addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);
         addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
-        addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),781,187);
+        addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),780,196);
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 0), 200, 100);
         //System.out.println("ASDFAFF");
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 1), 200, 100);
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 2), 200, 100);
         //addObject(new Text(50, 10, 10, "Segoe UI", "0", 3), 200, 100);
-        addObject(new HorizontalBar(),600,60);
+        addObject(new UIManager(123456),600,60);
         //HorizontalBar.updateText();
     }
     public static void zSort (ArrayList<Actor> actorsToSort, World world){

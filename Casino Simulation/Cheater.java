@@ -1,10 +1,14 @@
 import greenfoot.*; 
 /**
- * cheater
- * @Jimmy Zhu
- * @1123
+ * Cheater
+ * @author Jimmy Zhu
+ * @version 11/23
  */
 public class Cheater extends Gambler {
+    public int checkCheating(){
+        leaving=true;
+        return 1;
+    }
     public Cheater(){
         character=Greenfoot.getRandomNumber(5)+1;
         money=Greenfoot.getRandomNumber(2001)+1000;
