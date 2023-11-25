@@ -9,17 +9,48 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EndScreen extends World
 {
     // Make greenfoot images for all possible endings
-    private GreenfootImage bankruptEnd, wealthEnd;
+    private GreenfootImage bg;
     // Sound for both endings
-    private GreenfootSound happyMusic, sadMusic;
+    private GreenfootSound music;
+    // Play again button
+    private Button restartButton;
     /**
      * Constructor for objects of class EndScreen.
      * 
      */
-    public EndScreen()
+    public EndScreen(boolean casinoRich)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(CasinoWorld.WIDTH, CasinoWorld.HEIGHT, 1); 
+        // Create new buttons for the variables
+        restartButton = new Button("RESTART", 80, 126, 125, 223, 234, 122, 67);
+        // Add buttons to the world
+        addObject(restartButton, CasinoWorld.WIDTH/2, CasinoWorld.HEIGHT/4*3);
+        // Depending on ending, change background and music
+        if(casinoRich){
+            //bg =
+            //music =
+        } else {
+            // bg =
+            // music =
+        }
+    }
+    
+    public void act(){
+        // Checks if the player has clicked restart and puts them into the game if they did
+        if(Greenfoot.mouseClicked(restartButton)){
+            //music.stop(); // stops the title screen music
+            Greenfoot.setWorld(new SettingsWorld());
+        }
+    }
+    
+    // Play song when the game starts
+    public void started() {
+        //music.playLoop();
+    }
+    // Pause song if they stop the program
+    public void stopped() {
+        //music.pause();
     }
     
 }

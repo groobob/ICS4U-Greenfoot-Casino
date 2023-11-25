@@ -165,4 +165,13 @@ public class CasinoWorld extends World
         
     }
     
+    // Play song when the game starts
+    public void started() {
+        //music.playLoop();
+    }
+    // Pause song if they stop the program
+    public void stopped() {
+        //music.pause();
+    }
+    
 }

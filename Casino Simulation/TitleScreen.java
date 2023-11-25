@@ -23,8 +23,8 @@ public class TitleScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(CasinoWorld.WIDTH, CasinoWorld.HEIGHT, 1);
         // Set bg to background image
-        //bg = new GreenfootImage ("");
-        //setBackground(bg);
+        bg = new GreenfootImage ("titlescreen.png");
+        setBackground(bg);
         // Create new buttons for the variables
         startButton = new Button("START", 80, 126, 125, 223, 234, 122, 67);
         // Add buttons to the world
