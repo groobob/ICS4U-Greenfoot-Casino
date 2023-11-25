@@ -76,7 +76,7 @@ public class HorseBetting extends Game
             for (int i = 0; i < gamblers.length; i++) {
                 if (gamblers[i] != null && gamblers[i].isPlaying()) {
                     payout = calculatePayout(i);
-                    HorizontalBar.casinoProfit += payout;
+                    //HorizontalBar.casinoProfit += payout;
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
                 }
             }

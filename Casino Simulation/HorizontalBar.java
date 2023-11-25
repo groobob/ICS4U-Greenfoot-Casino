@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HorizontalBar extends Actor
 {
-    private static int casinoTarget = 0, gamblerLoss = 0, casinoProfit = 0, gamblerWins = 0, gamblerLosses = 0;
+    public static int casinoTarget = 0, gamblerLoss = 0, casinoProfit = 0, gamblerWins = 0, gamblerLosses = 0;
     private static Text[] textBoxes = new Text[4];
     private boolean isNew=false;
     public void addedToWorld(World w){

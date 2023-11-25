@@ -15,16 +15,31 @@ public class SettingsWorld extends World
     public SettingsWorld() {    
         super(1200, 740, 1);
 
-        // Adjust the values according to your need
         Slider slider1 = new Slider(1, 50, 550, 0, 100);
         Slider slider2 = new Slider(2, 50, 550, 0, 100);
         Slider slider3 = new Slider(3, 50, 550, 0, 100);
         Slider slider4 = new Slider(4, 50, 550, 0, 100);
 
-        addObject(slider1, 100, 100);
-        addObject(slider2, 100, 150);
-        addObject(slider3, 100, 200);
-        addObject(slider4, 100, 250);
+        addObject(new Text(Color.WHITE, 400, 200, 25, "Segoe UI", "Settings", 0), 425, 35);
+        //addObject(new Text(200, 100, 25, "Segoe UI", "Casino Target", 0), 425, 35);
+        
+        showText("Settings", 600, 300);
+        showText("Casino Target", 440, 417);
+        addObject(slider1, 620, 417);
+        
+        showText("Ordinary Gambler Starting Money", 440, 497);
+        addObject(slider2, 620, 497);
+        
+        showText("VIP Gambler Starting Money", 440, 577);
+        addObject(slider3, 620, 577);
+        
+        showText("Roulette Style ", 440, 647);
+        addObject(slider4, 620, 647);
+        
+        
+        // casino target
+        // money that gamblers have access too
+        // roulette
     }
 
     // update vars
