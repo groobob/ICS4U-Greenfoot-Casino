@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;  // (ArrayList)
 
 /**
+ * The blackjack table class.
+ * 
  * 
  * 
  * <p>=============== Experimental Data ===============</p>
@@ -17,7 +19,7 @@ import java.util.*;  // (ArrayList)
  * ============================================
  * 
  * @author David Guo
- * @version 1.1 11/22/2023
+ * @version 1.2 11/24/2023
  */
 public class Blackjack extends Game
 {
@@ -26,14 +28,21 @@ public class Blackjack extends Game
     // The time in acts between hands played
     private int timeBetweenDeals;
     private int dealTime;
-    // A rough imitation of card counting statistics
-    private int trueCount;
+    // Gambler hand values
+    private int handValues[];
+    // Dealers hand value
+    private int dealersHand;
     public Blackjack(SpotManager.Spot[] spots){
         super(spots);
         timeBetweenDeals = 300;
         dealTime = timeBetweenDeals;
         // Chance leave in %
         chanceToLeave = 25;
+        // Array to store gambler hand values; initialize and populate so it does not error
+        handValues = new int[gamblers.length];
+        for(int i = 0; i < handValues.length; i++)handValues[i] = 0;
+        // Dealers hand value is decided at the start of each hand
+        dealersHand = 0;
     }
     /**
      * Act - do whatever the Blackjack wants to do. This method is called whenever
@@ -42,40 +51,68 @@ public class Blackjack extends Game
     public void act()
     {
         dealTime--;
-        if(dealTime <= 0)dealCards();
-        
+        if(dealTime <= 0)revealCards();
+        if(dealTime == timeBetweenDeals/2)dealCards();
     }
     // The dealer is "dealing" cards, making every player at the table put down a bet
     private void dealCards(){
+        // Dealers hand
+        dealersHand += hit(dealersHand);
+        dealersHand += hit(dealersHand);
         for(int i = 0; i < gamblers.length; i++){
             if(gamblers[i] != null && gamblers[i].isPlaying()){
-                // In order to prevent playMoneyEffect printing +0
-                //if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
+                handValues[i] = playHand(gamblers[i], handValues[i]);
+            }
+        }
+    }
+    
+    private void revealCards(){
+        // Dealer must hit until 17 or above
+        while(dealersHand < 17)dealersHand += hit(dealersHand);
+        for(int i = 0; i < gamblers.length; i++){
+            if(gamblers[i] != null && gamblers[i].isPlaying()){
+                int gBet = getMoneyBet(gamblers[i]);
+                // Did this player win?
+                if(handValues[i] > dealersHand)gamblers[i].playMoneyEffect(gBet);
+                // Did they lose?
+                else if(handValues[i] < dealersHand)gamblers[i].playMoneyEffect(-gBet);
+                // If neither, it is a tie. Therefore no money earned/lost
+                // Chance for gambler to leave
                 int leaveChance = Greenfoot.getRandomNumber(100);
                 if(leaveChance < chanceToLeave)endGamblerSession(i);
             }
         }
+        // Reset some variables for next round
         dealTime = timeBetweenDeals;
+        dealersHand = 0;
+        for(int i = 0; i < handValues.length; i++)handValues[i] = 0;
     }
     
-    public int playHand(Gambler g, int moneyBet){
-        int randChance = Greenfoot.getRandomNumber(100);
-        double tempPercentChance = calculateOdds(g);
-        if(tempPercentChance <= randChance){
-            return moneyBet * 2;
-        } else{
-            return 0;
-        }
+    public int playHand(Gambler g, int hand){
+        int skill = g.getSkill();
+        hand += hit(hand);
+        // Everyone knows you hit before and at 11
+        while(hand <= 11)hand += hit(hand);
+        // A bunch of if statements to determine if the player will continue hitting
+        if(skill < 10)hand+=hit(hand);
+        if(hand <= 13 && dealersHand > 13 && skill > 30)hand += hit(hand);
+        if(hand <= 16 && dealersHand > 16 && skill > 45)hand += hit(hand);
+        if(hand <= 18 && dealersHand > 18 && skill > 60)hand += hit(hand);
+        return hand;
     }
-    // odds of winning the hand calculated based on luck and skill
-    private double calculateOdds(Gambler g){
-        // The percent chance of winning the hand for this gambler by default
-        double tempPercentChance = 48;
-        // The chance of them winning is decided by luck, then skill
-        //tempPercentChance += gamblersPlaying[i].getLuck()/2; // max 98% chance
-        // reduces the chance from 0.01 to 1
-        tempPercentChance *= (double)g.getSkill()/100;
-        return tempPercentChance;
+    // An imitation of hitting, aka drawing a card (equal chance for all 13 different cards)
+    private int hit(int currHand){
+        // Ace = 1, can also double as 11
+        int card = Greenfoot.getRandomNumber(13)+1;
+        if(card > 10)card = 10;
+        if(card == 1 && currHand <= 10)card = 11;
+        return card;
+    }
+
+    private int getMoneyBet(Gambler g){
+        // Gamblers will bet somewhere between 5-25% of their total money
+        double randomPercentBet = (double)(Greenfoot.getRandomNumber(20)+5)/100;
+        return (int)(g.getMoney()*randomPercentBet);
     }
     
 }

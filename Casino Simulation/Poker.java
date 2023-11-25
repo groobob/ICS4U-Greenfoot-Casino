@@ -128,7 +128,7 @@ public class Poker extends Game
         }
         return currPlayers;
     }
-    // Problem: money is too low
+    
     private int getMoneyBet(Gambler g){
         // Gamblers will bet somewhere between 5-25% of their total money
         double randomPercentBet = (double)(Greenfoot.getRandomNumber(20)+5)/100;
