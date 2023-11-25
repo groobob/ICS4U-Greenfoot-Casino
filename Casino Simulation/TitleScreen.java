@@ -40,7 +40,7 @@ public class TitleScreen extends World
         // checks if the player has clicked play and puts them into the game if they did
         if(Greenfoot.mouseClicked(startButton)){
             music.stop(); // stops the title screen music
-            Greenfoot.setWorld(new CasinoWorld());
+            Greenfoot.setWorld(new SettingsWorld());
         }
     }
     // Play song when the game starts

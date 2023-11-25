@@ -150,6 +150,10 @@ public class CasinoWorld extends World
             addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(399,245,-20)}),399,245);            
             progressLevel++;
         }
+        if(progressLevel >= 30 && 200 == (HorizontalBar.casinoProfit*100)/casinoTarget){
+            music.stop();
+            Greenfoot.setWorld(new EndScreen(true));
+        }
     }
     /*
     private boolean emptyGame(){
