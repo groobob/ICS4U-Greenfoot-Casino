@@ -28,7 +28,7 @@ public class TitleScreen extends World
         bg = new GreenfootImage ("titlescreenpixel.png");
         setBackground(bg);
         // Create new buttons for the variables
-        startButton = new Button("START", 90, 255, 255, 255, 255, 20, 147);
+        startButton = new Button("START", 90, 255, 255, 0, 255, 20, 147);
 
         //title
         //title = new Button("Title", 150, 255, 255, 255, 255, 20, 147);

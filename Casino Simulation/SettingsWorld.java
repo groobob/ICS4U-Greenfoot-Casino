@@ -2,10 +2,11 @@ import greenfoot.*;
 import java.util.*;
 
 public class SettingsWorld extends World {
-    private int casinoTarget; // casino Target
+    private static int casinoTarget; // casino Target
     private int vipGamblerSpawnRate; // VIP gambler spawn rate
     private int vipGamblerStarting; // VIP gambler starting money
     private int cheaterGamblerSpawnRate; // cheater gambler spawn rate
+    private Button startButton;
 
     private Text valueText1;
     private Text valueText2;
@@ -19,7 +20,7 @@ public class SettingsWorld extends World {
         vipGamblerStarting = 7500;
         cheaterGamblerSpawnRate = 25;
 
-        Slider slider1 = new Slider(1, 50, 550, 10000, 100000, casinoTarget);
+        Slider slider1 = new Slider(1, 50, 550, 10000, 1000000, casinoTarget);
         Slider slider2 = new Slider(2, 50, 550, 1, 49, vipGamblerSpawnRate);
         Slider slider3 = new Slider(3, 50, 550, 5000, 10000, vipGamblerStarting);
         Slider slider4 = new Slider(4, 50, 550, 1, 49, cheaterGamblerSpawnRate);
@@ -45,10 +46,26 @@ public class SettingsWorld extends World {
         showText("VIP Gambler Spawn Rate", 440, 497);
         showText("VIP Gambler Starting Money", 440, 577);
         showText("Cheater Gambler Spawn Rate", 440, 647);
+        
+        //button
+        startButton = new Button("START", 90, 255, 0, 0, 0, 20, 147);
+
+        //title
+        //title = new Button("Title", 150, 255, 255, 255, 255, 20, 147);
+        
+        // Add buttons to the world
+        addObject(startButton, 625, 200);
     }
 
     private int calculateSliderXPosition(Slider slider, int value) {
         return slider.getSliderMinX() + (int)((value - slider.getRangeMin()) * (double)(slider.getSliderMaxX() - slider.getSliderMinX()) / (slider.getRangeMax() - slider.getRangeMin()));
+    }
+    
+    public void act(){
+        if(Greenfoot.mouseClicked(startButton)){
+            //music.stop(); // stops the title screen music
+            Greenfoot.setWorld(new CasinoWorld());
+        }
     }
 
     public void updateVar(int sliderID, int value) {
@@ -70,5 +87,9 @@ public class SettingsWorld extends World {
                 valueText4.changeText(String.valueOf(value));
                 break;
         }
+    }
+    
+    public static int updateCasinoTarget(){
+        return casinoTarget;
     }
 }
