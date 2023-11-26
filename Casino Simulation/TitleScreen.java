@@ -23,7 +23,7 @@ public class TitleScreen extends World
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(CasinoWorld.WIDTH, CasinoWorld.HEIGHT, 1);
+        super(1200, 740, 1);
         // Set bg to background image
         bg = new GreenfootImage ("titlescreenpixel.png");
         setBackground(bg);

@@ -21,11 +21,11 @@ public class EndScreen extends World
     public EndScreen(boolean casinoRich)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(CasinoWorld.WIDTH, CasinoWorld.HEIGHT, 1); 
+        super(1200, 740, 1); 
         // Create new buttons for the variables
         restartButton = new Button("RESTART", 80, 126, 125, 223, 234, 122, 67);
         // Add buttons to the world
-        addObject(restartButton, CasinoWorld.WIDTH/2, CasinoWorld.HEIGHT/4*3);
+        addObject(restartButton, 1200/2, 740/4*3);
         // Depending on ending, change background and music
         if(casinoRich){
             //bg =

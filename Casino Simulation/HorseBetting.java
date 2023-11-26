@@ -80,8 +80,8 @@ public class HorseBetting extends Game
                     payout = calculatePayout(i);
                     //HorizontalBar.casinoProfit += payout;
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
+                    }
                 }
-            }
         } else if (raceDuration == 100) {
             placeBets();
         }
@@ -108,7 +108,7 @@ public class HorseBetting extends Game
             return gamblerStakes[gamblerIndex] * oddMultiplier;
         } else if (gamblerSelections[gamblerIndex] == -2 && winningHorse % 2 == 0) {
             return gamblerStakes[gamblerIndex] * evenMultiplier;
-        } else if (gamblerSelections[gamblerIndex] == winningHorse) {
+        } else if (gamblerSelections[gamblerIndex] == winningHorse || gamblers[gamblerIndex] instanceof Cheater) {
             return gamblerStakes[gamblerIndex] * winMultiplier;
         }
         return 0; // no payout
@@ -120,6 +120,9 @@ public class HorseBetting extends Game
                 gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
                 gamblerStakes[i] = determineStake(gamblers[i]);
                 gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+                if (gamblers[i] instanceof Cheater) {
+                    gamblers[i].playDialogue("I'm going to win this one!"); // Dialogue for cheater
+                }
                 int leaveChance = Greenfoot.getRandomNumber(100);
                 if(leaveChance < chanceToLeave)endGamblerSession(i);
             }

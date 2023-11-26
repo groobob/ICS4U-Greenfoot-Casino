@@ -20,7 +20,7 @@ public class SettingsWorld extends World
         Slider slider3 = new Slider(3, 50, 550, 0, 100);
         Slider slider4 = new Slider(4, 50, 550, 0, 100);
 
-        addObject(new Text(Color.WHITE, 400, 200, 25, "Segoe UI", "Settings", 0), 425, 35);
+        //addObject(new Text(Color.WHITE, 400, 200, 25, "Segoe UI", "Settings", 0), 425, 35);
         //addObject(new Text(200, 100, 25, "Segoe UI", "Casino Target", 0), 425, 35);
         
         showText("Settings", 600, 300);
@@ -45,7 +45,7 @@ public class SettingsWorld extends World
     // update vars
     public void updateVar(int sliderID, int value) {
         switch (sliderID) {
-            case 1: HorizontalBar.casinoProfit = value; break;
+            //case 1: UIManager.casinoProfit = value; break;
             case 2: variable2 = value; break;// placeholder
             case 3: variable3 = value; break;// placeholder
             case 4: variable4 = value; break;// placeholder
