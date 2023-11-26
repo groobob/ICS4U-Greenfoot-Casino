@@ -107,38 +107,38 @@ public class CasinoWorld extends World
         }
     }
     static class ActorContent implements Comparable <ActorContent> {
-    private Actor actor;
-    private int xx, yy;
-    public ActorContent(Actor actor, int xx, int yy){
-        this.actor = actor;
-        this.xx = xx;
-        this.yy = yy;
+        private Actor actor;
+        private int xx, yy;
+        public ActorContent(Actor actor, int xx, int yy){
+            this.actor = actor;
+            this.xx = xx;
+            this.yy = yy;
+        }
+    
+        public void setLocation (int x, int y){
+            xx = x;
+            yy = y;
+        }
+    
+        public int getX() {
+            return xx;
+        }
+    
+        public int getY() {
+            return yy;
+        }
+    
+        public Actor getActor(){
+            return actor;
+        }
+    
+        public String toString () {
+            return "Actor: " + actor + " at " + xx + ", " + yy;
+        }
+    
+        public int compareTo (ActorContent a){
+            return this.getY() - a.getY();
+        }
+    
     }
-
-    public void setLocation (int x, int y){
-        xx = x;
-        yy = y;
-    }
-
-    public int getX() {
-        return xx;
-    }
-
-    public int getY() {
-        return yy;
-    }
-
-    public Actor getActor(){
-        return actor;
-    }
-
-    public String toString () {
-        return "Actor: " + actor + " at " + xx + ", " + yy;
-    }
-
-    public int compareTo (ActorContent a){
-        return this.getY() - a.getY();
-    }
-
-}
 }
