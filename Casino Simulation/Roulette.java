@@ -78,10 +78,16 @@ public class Roulette extends Game
             makeBet();
         }
         else if(actsSpinning>120)setImage(ImageManager.getImage("roulette",(actsSpinning-120)/17+1));
-        actsSpinning++;
-        
+        if(peoplePlaying())actsSpinning++;
+        else {
+            setImage(ImageManager.getImage("roulette",1));
+            actsSpinning=0;
+        }
     }
-    
+    private boolean peoplePlaying(){
+        for(int i = 0; i<gamblers.length; i++)if(gamblers[i]!=null&&gamblers[i].isPlaying())return true;
+        return false;
+    }
     private int spinWheel(){
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);

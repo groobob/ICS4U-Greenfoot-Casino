@@ -18,7 +18,7 @@ public class CasinoWorld extends World
         SpotManager.resetIndex();
         ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
-        ImageManager.addImages("gambler",11,4,9);
+        ImageManager.addImages("gambler",14,4,9);
         ImageManager.addImages("betting",12);
         ImageManager.addImages("roulette",12);
         addObject(new Entrance(),600,600);

@@ -69,7 +69,7 @@ public abstract class Gambler extends Actor {
         else if(getOneObjectAtOffset(1,1,Insane.class)!=null){
             SpotManager.getGames()[target.getGameIndex()].endGamblerSession(target.getSpotIndex());
             playing=false;
-            playDialogue((Greenfoot.getRandomNumber(2)==0?"Get away from me.":"Personal space..."),25);
+            playDialogue((Greenfoot.getRandomNumber(2)==0?"Get away from me.":"Personal space..."));
         }
     }
     protected void exit(){

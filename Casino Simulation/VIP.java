@@ -10,7 +10,7 @@ public class VIP extends Gambler {
         return 0;//prideful
     }
     public VIP(){
-        character=Greenfoot.getRandomNumber(1)+11;
+        character=Greenfoot.getRandomNumber(2)+11;
         money=Greenfoot.getRandomNumber(20001)+10000;
     }
     public void act() {
