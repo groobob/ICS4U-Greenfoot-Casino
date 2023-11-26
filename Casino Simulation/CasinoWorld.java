@@ -13,7 +13,6 @@ public class CasinoWorld extends World
     {    
         super(1200, 740, 1, false); 
         setBackground("casinobg.png");
-        System.out.println("---");
         Greenfoot.setSpeed(50);
         SpotManager.resetIndex();
         // GAMES
