@@ -18,4 +18,6 @@ comment6.params=
 comment6.target=void\ placeBets()
 comment7.params=g
 comment7.target=int\ determineStake(Gambler)
-numComments=8
+comment8.params=gamblerIndex
+comment8.target=void\ endGamblerSession(int)
+numComments=9

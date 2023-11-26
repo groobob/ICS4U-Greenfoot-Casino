@@ -40,6 +40,7 @@ public class HorseBetting extends Game
     private final int oddMultiplier = 2;
     private final int evenMultiplier = 2;
     private double betPercentage;
+    private int chanceToLeave;
     
       /**
        * * <h2>Constructor</h2>
@@ -55,6 +56,7 @@ public class HorseBetting extends Game
         raceDuration = 0;
         gamblerSelections = new int[gamblers.length]; 
         gamblerStakes = new int[gamblers.length];
+        chanceToLeave = 30;
     }
     
     /**
@@ -118,6 +120,8 @@ public class HorseBetting extends Game
                 gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
                 gamblerStakes[i] = determineStake(gamblers[i]);
                 gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+                int leaveChance = Greenfoot.getRandomNumber(100);
+                if(leaveChance < chanceToLeave)endGamblerSession(i);
             }
         }
         startRace();
@@ -127,4 +131,10 @@ public class HorseBetting extends Game
         betPercentage = (double)(Greenfoot.getRandomNumber(20) + 5) / 100;
         return (int)(g.getMoney() * betPercentage);
     }
+    protected void endGamblerSession(int gamblerIndex){
+        gamblers[gamblerIndex].stopPlaying();
+        gamblers[gamblerIndex] = null;
+    }
 }
+
+
