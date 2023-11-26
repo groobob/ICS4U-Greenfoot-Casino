@@ -13,13 +13,21 @@ public class SettingsWorld extends World {
     private static int vipGamblerStartingMoney; // VIP gambler starting money
     private static int ordinaryStartingMoney; // VIP gambler starting money
     private static int cheaterGamblerSpawnRate; // cheater gambler spawn rate
+    
+    private static int slotsWinRate; // slots win rate
+    private static int rouletteStyle;//roulette style
     private Button startButton;
+    private Button rouletteEuropean;
+    private Button rouletteAmerican;
+    private Button rouletteSands;
 
     private Text valueText1;
     private Text valueText2;
     private Text valueText3;
     private Text valueText4;
     private Text valueText5;
+    private Text valueText6;
+    private Text valueText7;
     
     // ordinary starting money: 
     // vip starting money: 
@@ -33,13 +41,15 @@ public class SettingsWorld extends World {
         vipGamblerStartingMoney = 7500;
         cheaterGamblerSpawnRate = 1;
         ordinaryStartingMoney = 1;
+        rouletteStyle = 38;
 
         Slider slider1 = new Slider(1, 50, 550, 10000, 1000000, casinoTarget);
         Slider slider2 = new Slider(2, 50, 550, 1, 25, vipGamblerSpawnRate);
         Slider slider3 = new Slider(3, 50, 550, 5000, 10000, vipGamblerStartingMoney);
         Slider slider4 = new Slider(4, 50, 550, 1, 25, cheaterGamblerSpawnRate);
         Slider slider5 = new Slider(5, 50, 550, 1, 5000, ordinaryStartingMoney);
-
+        Slider slider6 = new Slider(6, 50, 550, 1, 99, slotsWinRate);
+        
         addObject(slider1, calculateSliderXPosition(slider1, casinoTarget), 417);
         valueText1 = new Text(12, "Arial", String.valueOf(casinoTarget));
         addObject(valueText1, 680, 417);
@@ -60,6 +70,9 @@ public class SettingsWorld extends World {
         valueText5 = new Text(12, "Arial", String.valueOf(ordinaryStartingMoney));
         addObject(valueText5, 680, 727);
         
+        addObject(slider6, calculateSliderXPosition(slider6, slotsWinRate), 200);
+        valueText6 = new Text(12, "Arial", String.valueOf(slotsWinRate));
+        addObject(valueText6, 680, 200);
 
         showText("Settings", 600, 300);
         showText("Casino Target", 440, 417);
@@ -67,15 +80,21 @@ public class SettingsWorld extends World {
         showText("VIP Gambler Starting Money", 440, 577);
         showText("Cheater Gambler Spawn Rate", 440, 647);
         showText("Ordinary Gambler Spawn Rate", 440, 727);
+        showText("slots", 440, 200);
         
         //button
         startButton = new Button("START", 90, 255, 0, 0, 0, 20, 147);
-
+        rouletteEuropean = new Button("European ", 30, 255, 0, 0, 0, 20, 147);
+        rouletteAmerican = new Button("American ", 30, 255, 0, 0, 0, 20, 147);
+        rouletteSands = new Button("Sands",30, 255, 0, 0, 0, 20, 147);
         //title
         //title = new Button("Title", 150, 255, 255, 255, 255, 20, 147);
         
         // Add buttons to the world
         addObject(startButton, 625, 200);
+        addObject(rouletteEuropean, 700, 250);
+        addObject(rouletteAmerican, 700, 270);
+        addObject(rouletteSands, 700, 290);
     }
 
     private int calculateSliderXPosition(Slider slider, int value) {
@@ -86,6 +105,15 @@ public class SettingsWorld extends World {
         if(Greenfoot.mouseClicked(startButton)){
             //music.stop(); // stops the title screen music
             Greenfoot.setWorld(new CasinoWorld());
+        }
+        if(Greenfoot.mouseClicked(rouletteEuropean)){
+            rouletteStyle = 37;
+        }
+        if(Greenfoot.mouseClicked(rouletteAmerican)){
+            rouletteStyle = 38;
+        }
+        if(Greenfoot.mouseClicked(rouletteSands)){
+            rouletteStyle = 39;
         }
     }
 
@@ -111,6 +139,10 @@ public class SettingsWorld extends World {
                 ordinaryStartingMoney = value;
                 valueText5.changeText(String.valueOf(value));
                 break;
+            case 6: 
+                slotsWinRate = value;
+                valueText6.changeText(String.valueOf(value));
+                break;
         }
     }
     
@@ -132,5 +164,13 @@ public class SettingsWorld extends World {
     
     public static int getVIPStartMoney(){
         return vipGamblerStartingMoney;
+    }
+    public static int getSlotsRate(){
+        return slotsWinRate;
+    }
+    
+    public static int getRouletteStyle(){
+        System.out.println(rouletteStyle);
+        return rouletteStyle;
     }
 }

@@ -42,7 +42,7 @@ public class Roulette extends Game
     
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
-        numberOfPockets = 38;
+        numberOfPockets = SettingsWorld.getRouletteStyle();
         currentlySpinning = false;
         actsSpinning = 0;
         // Chance to leave in percent
