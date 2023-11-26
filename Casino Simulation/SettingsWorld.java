@@ -99,17 +99,17 @@ public class SettingsWorld extends World {
         
         //button
         startButton = new Button("START", 40, 255, 255, 255, 255, 0, 0);
-        rouletteEuropean = new Button("European ", 30, 255, 0, 0, 0, 20, 147);
-        rouletteAmerican = new Button("American ", 30, 255, 0, 0, 0, 20, 147);
-        rouletteSands = new Button("Sands",30, 255, 0, 0, 0, 20, 147);
+        rouletteEuropean = new Button("European ", 30,0, 0, 0, 255, 0, 0);
+        rouletteAmerican = new Button("American ", 30,0, 0, 0, 255, 0, 0);
+        rouletteSands = new Button("Sands",30,0, 0, 0, 255, 0, 0);
         //title
         //title = new Button("Title", 150, 255, 255, 255, 255, 20, 147);
         
         // Add buttons to the world
        addObject(startButton, 623, 719);
-        //addObject(rouletteEuropean, 700, 250);
-        //addObject(rouletteAmerican, 700, 270);
-        //addObject(rouletteSands, 700, 290);
+        addObject(rouletteEuropean, 763, 372);
+        addObject(rouletteAmerican, 762, 349);
+        addObject(rouletteSands, 739, 397);
     }
 
     private int calculateSliderXPosition(Slider slider, int value) {
