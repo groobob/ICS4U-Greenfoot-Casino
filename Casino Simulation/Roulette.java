@@ -8,7 +8,7 @@ import java.util.*;  // (ArrayList)
  * on even or odd to actually earn money. People with less skill will blindly pick
  * a number, hoping to win.
  * 
- * The roulette spins every  few hundred or so acts.
+ * The roulette spins every few hundred or so acts.
  * 
  * @author David Guo
  * @version 1.2 11/23/2023

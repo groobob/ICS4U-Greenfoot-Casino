@@ -104,9 +104,10 @@ public class Blackjack extends Game
         while(hand <= 11)hand += hit(hand);
         // A bunch of if statements to determine if the player will continue hitting
         if(skill < 10)hand+=hit(hand);
-        if(hand <= 13 && dealersHand > 13 && skill > 30)hand += hit(hand);
-        if(hand <= 16 && dealersHand > 16 && skill > 45)hand += hit(hand);
-        if(hand <= 18 && dealersHand > 18 && skill > 60)hand += hit(hand);
+        if(skill < 30)hand+=hit(hand);
+        if(hand <= 13 && dealersHand > 13 && skill > 60)hand += hit(hand);
+        if(hand <= 16 && dealersHand > 16 && skill > 75)hand += hit(hand);
+        if(hand <= 18 && dealersHand > 18 && skill > 90)hand += hit(hand);
         return hand;
     }
     // An imitation of hitting, aka drawing a card (equal chance for all 13 different cards)
