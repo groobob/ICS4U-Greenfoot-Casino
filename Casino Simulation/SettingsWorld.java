@@ -189,12 +189,10 @@ public class SettingsWorld extends World {
     }
     
     public static int getRouletteStyle(){
-        System.out.println(rouletteStyle);
         return rouletteStyle;
     }
     
     public static int getNumberOfHorses(){
-        System.out.println(numberOfHorses);
         return numberOfHorses;
     }
 }
