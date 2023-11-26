@@ -4,6 +4,7 @@ class.Entrance.image=casinofrontwall.png
 class.HorseBetting.image=betting_1.png
 class.Poker.image=pokertable.png
 class.Roulette.image=roulette_1_1.png
+class.SettingsWorld.image=settingsworld.png
 class.Slider.image=sliderhandle.png
 class.SlotMachines.image=slots_1.png
 class.TitleScreen.image=settingsworldbg.png
