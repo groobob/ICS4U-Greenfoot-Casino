@@ -12,6 +12,7 @@ public abstract class Game extends Actor
     protected int actNumber;
     private int len;
     protected boolean[] reserved;
+    protected int t=0;//transparency
     public Game(SpotManager.Spot[] spots){
         this.spots=spots;
         len=spots.length;
@@ -25,6 +26,13 @@ public abstract class Game extends Actor
             isNew=true;
             SpotManager.addGame(this);
         }
+    }
+    public void act(){
+        if(t<255){
+            t+=3;
+            getImage().setTransparency(t);
+        }
+        else getImage().setTransparency(255);
     }
     public Gambler[] getGamblers(){
         return gamblers;

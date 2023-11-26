@@ -58,6 +58,7 @@ public class Roulette extends Game
      */
     public void act()
     {
+        super.act();
         playGame();        
     }
     
@@ -77,9 +78,13 @@ public class Roulette extends Game
         } else if (actsSpinning == 120){
             makeBet();
         }
-        else if(actsSpinning>120)setImage(ImageManager.getImage("roulette",(actsSpinning-120)/17+1));
+        else if(actsSpinning>120){
+            ImageManager.getImage("roulette",(actsSpinning-120)/17+1).setTransparency(t);
+            setImage(ImageManager.getImage("roulette",(actsSpinning-120)/17+1));
+        }
         if(peoplePlaying())actsSpinning++;
         else {
+            ImageManager.getImage("roulette",1).setTransparency(t);
             setImage(ImageManager.getImage("roulette",1));
             actsSpinning=0;
         }

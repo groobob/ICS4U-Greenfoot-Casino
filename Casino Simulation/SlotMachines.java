@@ -18,11 +18,13 @@ public class SlotMachines extends Game {
         playCounter = 0;
     }
     public void act() {
+        super.act();
         playGameCycle();
     }
     private void playGameCycle() {
         if(gamblers[0]!=null&&gamblers[0].isPlaying()) {
             if(delay%6==0&&delay!=0){
+                ImageManager.getImage("slots",delay/6+1).setTransparency(t);
                 setImage(ImageManager.getImage("slots",delay/6+1));
                 if(delay==114)winMoney();
                 else if(delay==12)deductGameCost();
@@ -40,6 +42,7 @@ public class SlotMachines extends Game {
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
+            ImageManager.getImage("slotsidle").setTransparency(t);
             setImage(ImageManager.getImage("slotsidle"));
         }
     }

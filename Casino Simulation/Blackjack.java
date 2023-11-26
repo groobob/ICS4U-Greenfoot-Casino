@@ -56,6 +56,7 @@ public class Blackjack extends Game
      */
     public void act()
     {
+        super.act();
         dealTime--;
         if(dealTime <= 0)revealCards();
         if(dealTime == timeBetweenDeals/2)dealCards();
