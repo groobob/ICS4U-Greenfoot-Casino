@@ -8,7 +8,7 @@ public abstract class Gambler extends Actor {
     protected int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,animationStep=0,mostRecentDirection=1;
     protected boolean playing = false, flag = false, toSpot = false, isNew=false;
     protected int money,character,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50);
-    protected boolean leaving=false, vip=false;
+    protected boolean leaving=false, enthusiast=false;
     private SpotManager.DetailedSpot target;
     public abstract int checkBehaviour();
     public void addedToWorld(World w){
@@ -16,7 +16,6 @@ public abstract class Gambler extends Actor {
             isNew=true;
             target = SpotManager.attemptTarget(this);
             if(target==null)getWorld().removeObject(this);
-            //(!SpotManager.attemptTarget(this))getWorld().removeObject(this);
         }
     }
     public void playMoneyEffect(int money) {
@@ -64,7 +63,10 @@ public abstract class Gambler extends Actor {
             } 
             else exit();
         }
-        else if(getOneObjectAtOffset(1,1,VIP.class)!=null)SpotManager.getGames()[target.getGameIndex()].endGamblerSession(target.getSpotIndex());
+        else if(getOneObjectAtOffset(1,1,SlotEnthusiast.class)!=null){
+            SpotManager.getGames()[target.getGameIndex()].endGamblerSession(target.getSpotIndex());
+            playing=false;
+        }
     }
     protected void exit(){
         tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));
@@ -98,7 +100,7 @@ public abstract class Gambler extends Actor {
     public int getLuck(){
         return luck;
     }
-    public boolean isVIP(){
-        return vip;
+    public boolean isEnthusiast(){
+        return enthusiast;
     }
 }

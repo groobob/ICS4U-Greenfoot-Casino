@@ -121,7 +121,7 @@ public class SpotManager
         if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return null;//leave when no money or 20% chance
         Spot targetSpot=null;
         int targetGameIndex=-1, targetSpotIndex=-1;
-        for (int i = 0; i < numberOfGames; i++) {
+        for (int i = 0; i < 10; i++) {
             Spot curSpot=null;
             Gambler[] currentGameGamblers=games[i].getGamblers();
             int len = currentGameGamblers.length, curSpotIndex=-1;
