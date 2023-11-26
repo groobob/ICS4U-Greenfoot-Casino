@@ -8,7 +8,7 @@ import java.util.*;  // (ArrayList)
  * on even or odd to actually earn money. People with less skill will blindly pick
  * a number, hoping to win.
  * 
- * The roulette spins every few hundred or so acts.
+ * The roulette spins every  few hundred or so acts.
  * 
  * @author David Guo
  * @version 1.2 11/23/2023
@@ -42,7 +42,8 @@ public class Roulette extends Game
     
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
-        numberOfPockets = SettingsWorld.getRouletteStyle();
+        setImage(ImageManager.getImage("roulette",1));
+        numberOfPockets = 38;
         currentlySpinning = false;
         actsSpinning = 0;
         // Chance to leave in percent
@@ -62,6 +63,7 @@ public class Roulette extends Game
     
     private void playGame(){
         if(actsSpinning > 300){ // 600 acts -> 5 seconds to spin
+            setImage(ImageManager.getImage("roulette",1));
             actsSpinning = 0;
             currentlySpinning = false;
             for(int i = 0; i < gamblers.length; i++){
@@ -72,12 +74,20 @@ public class Roulette extends Game
                     if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
-        } else if (actsSpinning == 100){
+        } else if (actsSpinning == 120){
             makeBet();
         }
-        actsSpinning++;
+        else if(actsSpinning>120)setImage(ImageManager.getImage("roulette",(actsSpinning-120)/17+1));
+        if(peoplePlaying())actsSpinning++;
+        else {
+            setImage(ImageManager.getImage("roulette",1));
+            actsSpinning=0;
+        }
     }
-    
+    private boolean peoplePlaying(){
+        for(int i = 0; i<gamblers.length; i++)if(gamblers[i]!=null&&gamblers[i].isPlaying())return true;
+        return false;
+    }
     private int spinWheel(){
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);

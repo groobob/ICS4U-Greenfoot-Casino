@@ -8,19 +8,20 @@ public abstract class Gambler extends Actor {
     protected int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,animationStep=0,mostRecentDirection=1;
     protected boolean playing = false, flag = false, toSpot = false, isNew=false;
     protected int money,character,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50);
-    protected boolean leaving=false, vip=false;
+    protected boolean leaving=false, insane=false;
+    private SpotManager.DetailedSpot target;
     public abstract int checkBehaviour();
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
-            if(!SpotManager.attemptTarget(this))getWorld().removeObject(this);
+            target = SpotManager.attemptTarget(this);
+            if(target==null)getWorld().removeObject(this);
         }
     }
     public void playMoneyEffect(int money) {
         if(money==0)return;
         this.money+=money;
         UIManager.incrementCasinoProfit(-money);
-        //UIManager.incrementGamblerWL(money>0);
         getWorld().addObject(new Message((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
     public void playMoneyEffect(int money, boolean incrementCasinoProfits) {
@@ -33,16 +34,19 @@ public abstract class Gambler extends Actor {
     public void playDialogue(String text){
         getWorld().addObject(new Message(text,Color.BLACK,200,3),getX(),getY()-30);
     }
+    public void playDialogue(String text, int size){
+        getWorld().addObject(new Message(text,Color.WHITE,100,3,16),getX(),getY()-30);
+    }
     public void act() {
         if (!playing) {
             if(++animationStep==45)animationStep=0;
             if(Math.abs(tx-getX())>2){
-                setImage(ImageManager.getImage("ordinary",character,(Integer.signum(tx-getX())==-1?2:4),animationStep/5+1));
+                setImage(ImageManager.getImage("gambler",character,(Integer.signum(tx-getX())==-1?2:4),animationStep/5+1));
                 mostRecentDirection=(Integer.signum(tx-getX())==-1?2:4);
                 setLocation(getX()+speed*Integer.signum(tx-getX()),getY());
             }
             else if (Math.abs(ty-getY())>5){
-                setImage(ImageManager.getImage("ordinary",character,(Integer.signum(ty-getY())==-1?1:3),animationStep/5+1));
+                setImage(ImageManager.getImage("gambler",character,(Integer.signum(ty-getY())==-1?1:3),animationStep/5+1));
                 mostRecentDirection=(Integer.signum(ty-getY())==-1?1:3);
                 setLocation(getX(),getY()+speed*Integer.signum(ty-getY()));
             }
@@ -55,15 +59,24 @@ public abstract class Gambler extends Actor {
             } 
             else if(!toSpot) {
                 playing=true;
-                setImage(ImageManager.getImage("ordinary",character,mostRecentDirection,1));
+                setImage(ImageManager.getImage("gambler",character,mostRecentDirection,1));
                 toSpot=true;
                 flag=false;
             } 
-            else if(!leaving&&SpotManager.attemptTarget(this)) {
-                toSpot=false;
-                flag=false;
+            else if(!leaving) {
+                target = SpotManager.attemptTarget(this);
+                if(target!=null){
+                    toSpot=false;
+                    flag=false;
+                }
+                else exit();
             } 
             else exit();
+        }
+        else if(getOneObjectAtOffset(1,1,Insane.class)!=null){
+            SpotManager.getGames()[target.getGameIndex()].endGamblerSession(target.getSpotIndex());
+            playing=false;
+            playDialogue((Greenfoot.getRandomNumber(2)==0?"Get away from me.":"Personal space..."));
         }
     }
     protected void exit(){
@@ -98,7 +111,7 @@ public abstract class Gambler extends Actor {
     public int getLuck(){
         return luck;
     }
-    public boolean isVIP(){
-        return vip;
+    public boolean isInsane(){
+        return insane;
     }
 }

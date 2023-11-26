@@ -10,7 +10,7 @@ public class Cheater extends Gambler {
         return 1;//cheating
     }
     public Cheater(){
-        character=Greenfoot.getRandomNumber(5)+1;//same as ordinary because cheaters want to blend in.
+        character=Greenfoot.getRandomNumber(10)+1;//same as ordinary because cheaters want to blend in.
         money=Greenfoot.getRandomNumber(2001)+1000;
         skill=100;
         luck=100;

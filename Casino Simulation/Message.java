@@ -21,6 +21,14 @@ public class Message extends Actor {
         this.lifespan=lifespan;
         this.leviatingSpeed=leviatingSpeed;
     }
+    public Message(String text, Color color, int lifespan, int leviatingSpeed, int size) {
+        GreenfootImage img = new GreenfootImage(text, size, color, new Color(0, 0, 0, 0));
+        setImage(img);
+        value=text;
+        startingLifespan=lifespan;
+        this.lifespan=lifespan;
+        this.leviatingSpeed=leviatingSpeed;
+    }
     public void act() {
         update();
     }

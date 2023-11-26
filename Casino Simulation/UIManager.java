@@ -12,7 +12,9 @@ public class UIManager extends Actor
     private static Text[] textBoxes = new Text[4];
     private boolean isNew=false;
     public UIManager(int casinoTarget){
+        setImage("ui.png");
         this.casinoTarget=casinoTarget;
+        casinoProfit=0;
     }
     public void addedToWorld(World w){
         if(!isNew){
