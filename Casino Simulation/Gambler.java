@@ -23,6 +23,13 @@ public abstract class Gambler extends Actor {
         //UIManager.incrementGamblerWL(money>0);
         getWorld().addObject(new Message((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
+    public void playMoneyEffect(int money, boolean incrementCasinoProfits) {
+        if(money==0)return;
+        this.money+=money;
+        if(incrementCasinoProfits)UIManager.incrementCasinoProfit(-money);
+        //UIManager.incrementGamblerWL(money>0);
+        getWorld().addObject(new Message((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
+    }
     public void playDialogue(String text){
         getWorld().addObject(new Message(text,Color.BLACK,200,3),getX(),getY()-30);
     }

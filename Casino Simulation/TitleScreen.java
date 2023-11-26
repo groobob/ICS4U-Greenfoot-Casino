@@ -34,7 +34,7 @@ public class TitleScreen extends World
         //title = new Button("Title", 150, 255, 255, 255, 255, 20, 147);
         
         // Add buttons to the world
-        addObject(startButton, 625, 200);
+        addObject(startButton, 625, 600);
         //addObject(title, 0, 0);
         // Assign the variable to the sound file name in folder & adjust volume
         music = new GreenfootSound("stmatthewpassion.mp3");

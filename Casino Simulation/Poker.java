@@ -105,7 +105,7 @@ public class Poker extends Game
         if(moneyBet < minBet){
             endGamblerSession(gamblerIndex);
         } else {
-            gamblers[gamblerIndex].playMoneyEffect(-moneyBet);
+            gamblers[gamblerIndex].playMoneyEffect(-moneyBet, false);
             pot += moneyBet-rakeProfit;
             UIManager.incrementCasinoProfit(rakeProfit);
         }
