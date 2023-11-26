@@ -8,6 +8,9 @@ import java.util.*;
  * @version 1.0 11/24/2023
  */
 public class SettingsWorld extends World {
+    // Store Title Screen
+    private TitleScreen ts;
+    // Settings Variables
     private static int casinoTarget; // casino Target
     private static int vipGamblerSpawnRate; // VIP gambler spawn rate
     private static int vipGamblerStartingMoney; // VIP gambler starting money
@@ -36,10 +39,10 @@ public class SettingsWorld extends World {
     // ordinary starting money: 
     // vip starting money: 
 
-    public SettingsWorld() {    
+    public SettingsWorld(TitleScreen ts) {    
         super(1200, 740, 1);
         setBackground("settingsworld.png");
-        
+        this.ts = ts;
         // initial values
         casinoTarget = 10000; 
         vipGamblerSpawnRate = 1;
@@ -118,7 +121,7 @@ public class SettingsWorld extends World {
     
     public void act(){
         if(Greenfoot.mouseClicked(startButton)){
-            //music.stop(); // stops the title screen music
+            ts.getMusic().stop(); // stops the title screen music
             Greenfoot.setWorld(new CasinoWorld());
         }
         if(Greenfoot.mouseClicked(rouletteEuropean)){
@@ -197,4 +200,13 @@ public class SettingsWorld extends World {
         System.out.println(numberOfHorses);
         return numberOfHorses;
     }
+    
+    // Play song when the game starts
+    public void started() {
+        ts.getMusic().playLoop();
+    }
+    // Pause song if they stop the program
+    public void stopped() {
+        ts.getMusic().pause();
+    } 
 }

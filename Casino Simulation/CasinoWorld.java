@@ -9,6 +9,7 @@ import java.util.*;
 public class CasinoWorld extends World
 {
     int delay=1;//temp 
+    private GreenfootSound casinoJazz;
     public CasinoWorld()
     {    
         super(1200, 740, 1, false); 
@@ -57,6 +58,10 @@ public class CasinoWorld extends World
         addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
         addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),780,196);
         addObject(new UIManager(123456),600,60);
+        // Music
+        casinoJazz = new GreenfootSound("CasinoJazz.mp3");
+        casinoJazz.setVolume(60);
+        casinoJazz.playLoop();
     }
     public static void zSort (ArrayList<Actor> actorsToSort, World world){
         ArrayList<ActorContent> acList = new ArrayList<ActorContent>();
@@ -75,37 +80,46 @@ public class CasinoWorld extends World
             world.addObject(actor, a.getX(), a.getY());
         }
     }
+    // Play song when the game starts
+    public void started() {
+        casinoJazz.playLoop();
+    }
+    // Pause song if they stop the program
+    public void stopped() {
+        casinoJazz.pause();
+    }
     static class ActorContent implements Comparable <ActorContent> {
-    private Actor actor;
-    private int xx, yy;
-    public ActorContent(Actor actor, int xx, int yy){
-        this.actor = actor;
-        this.xx = xx;
-        this.yy = yy;
+        private Actor actor;
+        private int xx, yy;
+        public ActorContent(Actor actor, int xx, int yy){
+            this.actor = actor;
+            this.xx = xx;
+            this.yy = yy;
+        }
+    
+        public void setLocation (int x, int y){
+            xx = x;
+            yy = y;
+        }
+    
+        public int getX() {
+            return xx;
+        }
+    
+        public int getY() {
+            return yy;
+        }
+    
+        public Actor getActor(){
+            return actor;
+        }
+    
+        public String toString () {
+            return "Actor: " + actor + " at " + xx + ", " + yy;
+        }
+        public int compareTo (ActorContent a){
+            return this.getY() - a.getY();
+        }
+        
     }
-
-    public void setLocation (int x, int y){
-        xx = x;
-        yy = y;
-    }
-
-    public int getX() {
-        return xx;
-    }
-
-    public int getY() {
-        return yy;
-    }
-
-    public Actor getActor(){
-        return actor;
-    }
-
-    public String toString () {
-        return "Actor: " + actor + " at " + xx + ", " + yy;
-    }
-    public int compareTo (ActorContent a){
-        return this.getY() - a.getY();
-    }
-}
 }

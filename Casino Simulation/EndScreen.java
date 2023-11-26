@@ -40,7 +40,7 @@ public class EndScreen extends World
         // Checks if the player has clicked restart and puts them into the game if they did
         if(Greenfoot.mouseClicked(restartButton)){
             //music.stop(); // stops the title screen music
-            Greenfoot.setWorld(new SettingsWorld());
+            Greenfoot.setWorld(new SettingsWorld(new TitleScreen()));
         }
     }
     
