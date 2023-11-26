@@ -53,6 +53,24 @@ public class SpotManager
             return compensate;
         }
     }
+    public static class DetailedSpot{
+        private SpotManager.Spot spot;
+        private int gameIndex, spotIndex;
+        public DetailedSpot(SpotManager.Spot spot, int gameIndex, int spotIndex){
+            this.spot=spot;
+            this.gameIndex=gameIndex;
+            this.spotIndex=spotIndex;
+        }
+        public SpotManager.Spot getSpot(){
+            return spot;
+        }
+        public int getGameIndex(){
+            return gameIndex;
+        }
+        public int getSpotIndex(){
+            return spotIndex;
+        }
+    }
     /**
      * <p><strong>static void addGame(Game g)</strong> - Adds a game to the <code>games</code> array. <br>
      * <strong>@param g</strong> - The <code>Game</code> object to be added.</p>
@@ -65,20 +83,20 @@ public class SpotManager
      * <strong>@param gb</strong> - The <code>Gambler</code> object for which a spot is being found for. <br>
      * <strong>@return boolean</strong> - Returns <code>true</code> if a spot is found and assigned, otherwise <code>false</code>.</p>
      */
-    public static boolean attemptTarget(Gambler gb){
-        if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return false;//leave when no money or 20% chance
+    //^change return
+    public static DetailedSpot attemptTarget(Gambler gb){
+        if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return null;//leave when no money or 20% chance
         Spot targetSpot=null;
         int targetGameIndex=-1, targetSpotIndex=-1;
         for (int i = 0; i < numberOfGames; i++) {
             Spot curSpot=null;
-            Spot[] currentGameSpots=games[i].getSpots();
             Gambler[] currentGameGamblers=games[i].getGamblers();
             int len = currentGameGamblers.length, curSpotIndex=-1;
             //see if the seat being looked at is empty(currentGameGamblers[j]==null). If it is see if gambler is already eyeing a spot:
             //if yes then there is 50% of eyeing the current spot over the previously eyed spot
             //if no then the gambler will eye the current spot
-            for(int j = 0; j<len; j++)if(currentGameGamblers[j]==null&&(curSpot==null||(curSpot!=null&&Greenfoot.getRandomNumber(2)==0))){
-                curSpot=currentGameSpots[j];
+            for(int j = 0; j<len; j++)if(currentGameGamblers[j]==null&&!games[i].hasReservation(j)&&(curSpot==null||(curSpot!=null&&Greenfoot.getRandomNumber(2)==0))){
+                curSpot=games[i].getSpots()[j];
                 curSpotIndex=j;
             }
             //if no spot is found in this particular game(game[i]) or just played in this exact spot then continue trying to find avaliable spot. 
@@ -93,27 +111,26 @@ public class SpotManager
         }
         //if the gambler is not thinking about targetting anything then returns false which makes gambler leave
         //otherwise the gambler gets the values that will guide him/her to the spot being targetted and immediately start traveling there.
-        if(targetSpot==null)return false;
+        if(targetSpot==null)return null;
         else{
             gb.target(targetSpot.getHorizontal(),targetSpot.getVertical(),targetSpot.getCompensate());
             games[targetGameIndex].placeGambler(gb,targetSpotIndex);
-            return true;
+            return new DetailedSpot(targetSpot,targetGameIndex,targetSpotIndex);
         }
     }
-    public static VIP.DetailedSpot absoluteTarget(Gambler gb){
+    public static DetailedSpot absoluteTarget(Gambler gb){
         if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return null;//leave when no money or 20% chance
         Spot targetSpot=null;
         int targetGameIndex=-1, targetSpotIndex=-1;
-        for (int i = 0; i < numberOfGames; i++) {
+        for (int i = 0; i < 10; i++) {
             Spot curSpot=null;
-            Spot[] currentGameSpots=games[i].getSpots();
             Gambler[] currentGameGamblers=games[i].getGamblers();
             int len = currentGameGamblers.length, curSpotIndex=-1;
             //see if gambler is already eyeing a spot:
             //if yes then there is 50% of eyeing the current spot over the previously eyed spot
             //if no then the gambler will eye the current spot
-            for(int j = 0; j<len; j++)if((curSpot==null||(curSpot!=null&&Greenfoot.getRandomNumber(2)==0))){
-                curSpot=currentGameSpots[j];
+            for(int j = 0; j<len; j++)if(!games[i].hasReservation(j)&&(curSpot==null||(curSpot!=null&&Greenfoot.getRandomNumber(2)==0))){
+                curSpot=games[i].getSpots()[j];
                 curSpotIndex=j;
             }
             //if no spot is found in this particular game(game[i]) or just played in this exact spot then continue trying to find avaliable spot. 
@@ -126,8 +143,11 @@ public class SpotManager
                 targetSpot=curSpot;
             }
         }
-        //otherwise the gambler starts moving towards targetted spot
+        if(targetSpot==null)return null;
+        //gambler starts moving towards targetted spot
+        //add reversation to targeteed spot
+        games[targetGameIndex].addReservation(targetSpotIndex);
         gb.target(targetSpot.getHorizontal(),targetSpot.getVertical(),targetSpot.getCompensate());
-        return new VIP.DetailedSpot(targetSpot,targetGameIndex,targetSpotIndex);
+        return new DetailedSpot(targetSpot,targetGameIndex,targetSpotIndex);
     }
 }

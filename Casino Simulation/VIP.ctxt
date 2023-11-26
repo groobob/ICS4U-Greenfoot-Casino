@@ -1,12 +1,10 @@
 #BlueJ class context
 comment0.target=VIP
-comment0.text=\r\n\ VIP\ gambler.\ Special\ privileges.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/25\r\n
-comment1.params=w
-comment1.target=void\ addedToWorld(greenfoot.World)
+comment0.text=\r\n\ Cheating\ gambler.\ Wins\ too\ much.\ Special\ interactions\ ensue\ after\ being\ caught.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
+comment1.params=
+comment1.target=int\ checkBehaviour()
 comment2.params=
-comment2.target=int\ checkBehaviour()
+comment2.target=VIP()
 comment3.params=
-comment3.target=VIP()
-comment4.params=
-comment4.target=void\ act()
-numComments=5
+comment3.target=void\ act()
+numComments=4

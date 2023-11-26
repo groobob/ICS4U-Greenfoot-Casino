@@ -13,55 +13,25 @@ public class CasinoWorld extends World
     {    
         super(1200, 740, 1, false); 
         setBackground("casinobg.png");
+        System.out.println("---");
         Greenfoot.setSpeed(50);
         SpotManager.resetIndex();
-        // GAMES
-        //slots__________________________________
-        // POSITION COORDINATES
-        //slots___________________________________
-        //addObject(new SlotMachines(new station[]{new station(58,244,-20,0)}),58,244);
-        /*
-        stationGroupCoords.add(new pos[]{new pos(58,244,-20)});
-        stationGroupCoords.add(new pos[]{new pos(141,245,-20)});
-        stationGroupCoords.add(new pos[]{new pos(224,244,-20)});
-        stationGroupCoords.add(new pos[]{new pos(307,241,-20)});
-        stationGroupCoords.add(new pos[]{new pos(386,242,-20)});
-        
-        stationGroupCoords.add(new pos[]{new pos(57,354,-20)});
-        stationGroupCoords.add(new pos[]{new pos(140,353,-20)});
-        stationGroupCoords.add(new pos[]{new pos(224,349,-20)});
-        stationGroupCoords.add(new pos[]{new pos(304,349,-20)});
-        stationGroupCoords.add(new pos[]{new pos(387,347,-20)});
-        */
-        //tempPlaces.add(new pos(58,244,-20));
-        //tempPlaces.add(new pos(141,245,-20));
-        //tempPlaces.add(new pos(224,244,-20));
-        //tempPlaces.add(new pos(307,241,-20));
-        //tempPlaces.add(new pos(386,242,-20));
-        
-        //tempPlaces.add(new pos(57,354,-20));
-        //tempPlaces.add(new pos(140,353,-20));
-        //tempPlaces.add(new pos(224,349,-20));
-        //tempPlaces.add(new pos(304,349,-20));
-        //tempPlaces.add(new pos(387,347,-20));
-        //____________________________________________
         ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
-        ImageManager.addImages("ordinary",5,4,9);
+        ImageManager.addImages("gambler",14,4,9);
         ImageManager.addImages("betting",12);
-        addObject(new Entrance(),600,600);//temp
+        ImageManager.addImages("roulette",12);
+        addObject(new Entrance(),600,600);
         prepare();
         setPaintOrder(Message.class,Text.class);
     }
     public void act(){
         if(--delay==0){
             delay=Greenfoot.getRandomNumber(120)+60;
-            //pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
-            //Game tempGame=null;
-            //if(emptyGame())
-            int random = Greenfoot.getRandomNumber(100)+1;
-            if(random<SettingsWorld.getVIPSpawnRate())addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else if(random<SettingsWorld.getCheaterSpawnRate()+SettingsWorld.getVIPSpawnRate())addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            int random = Greenfoot.getRandomNumber(20);
+            if(random>17)addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else if(random>15)addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else if(random>11)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
             else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
         }
         zSort((ArrayList<Actor>)(getObjects(Actor.class)), this);
@@ -86,7 +56,7 @@ public class CasinoWorld extends World
         addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);
         addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
         addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),780,196);
-        addObject(new UIManager(SettingsWorld.getCasinoTarget()),600,60);
+        addObject(new UIManager(123456),600,60);
     }
     public static void zSort (ArrayList<Actor> actorsToSort, World world){
         ArrayList<ActorContent> acList = new ArrayList<ActorContent>();
@@ -106,37 +76,36 @@ public class CasinoWorld extends World
         }
     }
     static class ActorContent implements Comparable <ActorContent> {
-        private Actor actor;
-        private int xx, yy;
-        public ActorContent(Actor actor, int xx, int yy){
-            this.actor = actor;
-            this.xx = xx;
-            this.yy = yy;
-        }
-    
-        public void setLocation (int x, int y){
-            xx = x;
-            yy = y;
-        }
-    
-        public int getX() {
-            return xx;
-        }
-    
-        public int getY() {
-            return yy;
-        }
-    
-        public Actor getActor(){
-            return actor;
-        }
-    
-        public String toString () {
-            return "Actor: " + actor + " at " + xx + ", " + yy;
-        }
-    
-        public int compareTo (ActorContent a){
-            return this.getY() - a.getY();
-        }
+    private Actor actor;
+    private int xx, yy;
+    public ActorContent(Actor actor, int xx, int yy){
+        this.actor = actor;
+        this.xx = xx;
+        this.yy = yy;
     }
+
+    public void setLocation (int x, int y){
+        xx = x;
+        yy = y;
+    }
+
+    public int getX() {
+        return xx;
+    }
+
+    public int getY() {
+        return yy;
+    }
+
+    public Actor getActor(){
+        return actor;
+    }
+
+    public String toString () {
+        return "Actor: " + actor + " at " + xx + ", " + yy;
+    }
+    public int compareTo (ActorContent a){
+        return this.getY() - a.getY();
+    }
+}
 }
