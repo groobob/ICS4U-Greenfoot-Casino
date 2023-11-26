@@ -13,14 +13,18 @@ public class SettingsWorld extends World {
     private static int vipGamblerStartingMoney; // VIP gambler starting money
     private static int ordinaryStartingMoney; // VIP gambler starting money
     private static int cheaterGamblerSpawnRate; // cheater gambler spawn rate
+    private static int numberOfHorses; // # horses for horsebetting
     
     private static int slotsWinRate; // slots win rate
     private static int rouletteStyle;//roulette style
-    private Button startButton;
+    private Button startButton; // start button
+    
+    // the types of roulette
     private Button rouletteEuropean;
     private Button rouletteAmerican;
     private Button rouletteSands;
-
+    
+    // text value
     private Text valueText1;
     private Text valueText2;
     private Text valueText3;
@@ -42,6 +46,7 @@ public class SettingsWorld extends World {
         cheaterGamblerSpawnRate = 1;
         ordinaryStartingMoney = 1;
         rouletteStyle = 38;
+        numberOfHorses = 7;
 
         Slider slider1 = new Slider(1, 50, 550, 10000, 1000000, casinoTarget);
         Slider slider2 = new Slider(2, 50, 550, 1, 25, vipGamblerSpawnRate);
@@ -49,6 +54,7 @@ public class SettingsWorld extends World {
         Slider slider4 = new Slider(4, 50, 550, 1, 25, cheaterGamblerSpawnRate);
         Slider slider5 = new Slider(5, 50, 550, 1, 5000, ordinaryStartingMoney);
         Slider slider6 = new Slider(6, 50, 550, 1, 99, slotsWinRate);
+        Slider slider7 = new Slider(7, 50, 550, 7, 20, numberOfHorses);
         
         addObject(slider1, calculateSliderXPosition(slider1, casinoTarget), 417);
         valueText1 = new Text(12, "Arial", String.valueOf(casinoTarget));
@@ -73,6 +79,10 @@ public class SettingsWorld extends World {
         addObject(slider6, calculateSliderXPosition(slider6, slotsWinRate), 200);
         valueText6 = new Text(12, "Arial", String.valueOf(slotsWinRate));
         addObject(valueText6, 680, 200);
+        
+        addObject(slider7, calculateSliderXPosition(slider7, numberOfHorses), 220);
+        valueText7 = new Text(12, "Arial", String.valueOf(numberOfHorses));
+        addObject(valueText7, 680, 220);
 
         showText("Settings", 600, 300);
         showText("Casino Target", 440, 417);
@@ -81,6 +91,8 @@ public class SettingsWorld extends World {
         showText("Cheater Gambler Spawn Rate", 440, 647);
         showText("Ordinary Gambler Spawn Rate", 440, 727);
         showText("slots", 440, 200);
+        showText("# horses", 440, 220);
+        
         
         //button
         startButton = new Button("START", 90, 255, 0, 0, 0, 20, 147);
@@ -143,6 +155,10 @@ public class SettingsWorld extends World {
                 slotsWinRate = value;
                 valueText6.changeText(String.valueOf(value));
                 break;
+            case 7: 
+                numberOfHorses = value;
+                valueText7.changeText(String.valueOf(value));
+                break;
         }
     }
     
@@ -172,5 +188,10 @@ public class SettingsWorld extends World {
     public static int getRouletteStyle(){
         System.out.println(rouletteStyle);
         return rouletteStyle;
+    }
+    
+    public static int getNumberOfHorses(){
+        System.out.println(numberOfHorses);
+        return numberOfHorses;
     }
 }
