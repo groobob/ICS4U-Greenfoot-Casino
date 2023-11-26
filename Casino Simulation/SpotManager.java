@@ -83,6 +83,7 @@ public class SpotManager
      * <strong>@param gb</strong> - The <code>Gambler</code> object for which a spot is being found for. <br>
      * <strong>@return boolean</strong> - Returns <code>true</code> if a spot is found and assigned, otherwise <code>false</code>.</p>
      */
+    //^change return
     public static DetailedSpot attemptTarget(Gambler gb){
         if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return null;//leave when no money or 20% chance
         Spot targetSpot=null;
