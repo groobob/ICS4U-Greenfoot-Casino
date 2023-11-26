@@ -107,7 +107,7 @@ public class Poker extends Game
         } else {
             gamblers[gamblerIndex].playMoneyEffect(-moneyBet);
             pot += moneyBet-rakeProfit;
-            HorizontalBar.casinoProfit += rakeProfit;
+            UIManager.incrementCasinoProfit(rakeProfit);
         }
     }
     

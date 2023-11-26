@@ -3,58 +3,16 @@ import java.util.*;
 /**
  * Write a description of class Game here.
  * 
- * @author Jimmy Zhu, Dorsa Rohani, David Guo
- * @version 1.0 11/24/2023
- * 
- * 
- * 
- * Program features include:
- * => Gamblers 
- *   -> Ordinary people walk into the casino ready to spend their hard earned cash in order to get rich
- * => Slot machines where gamblers can pay a flat fee for a chance to win big
- * => Blackjack where gamblers play against an imaginary dealer
- * => Horse betting where people can bet on their favourite horses
- * => Roulette where the roulette rolls for a number and everyone who bets on it wins big (or they can be on even/odd)
- * => Poker where gamblers play against each other. The casino takes a cut and a single player wins the pot
- * => One things for sure... the house always wins. Unless it doesn't.
- *   -> Rich Ending -> Casino reaches a certain level or wealth
- *   -> Poor Ending -> Casino goes bankrupt before it can get big
- * 
- * Credit:
- * => Code
- *   -> Button and TextSizeFinder [Alex Li]
- *   
- * => Visuals
- *   -> PFC Sprite Creator [All credits on credit google doc in our google folder]
- *   -> All Game Sprits [Richard Zhang]
- *   -> Casino World Background [Richard Zhang]
- *   
- * => Music & SFX
- *   -> TitleScreen Background Music [KingsCollegeChoir on Youtube]
- *   -> CasinoWorld Background Music [Alternative Jazz Lounge - Topic on Youtube]
- *   -> Kaching, Failfare, Slots Rolling SFX [pixabay]
- * 
+ * @author (your name) 
+ * @version (a version number or a date)
  */
 public class CasinoWorld extends World
 {
-    // FINAL VARIABLES TO WIDTH AND HEIGHT TO BE CONSISTENT THROUGHOUT ALL WORLDS
-    public static final int WIDTH = 1200;
-    public static final int HEIGHT = 740;
     int delay=1;//temp 
-    private int progressLevel = 0;
-    int casinoTarget = 100;
-    public static int numGames = 20; // number of games tracker for spotmanager
-    // Music
-    private GreenfootSound music;
     public CasinoWorld()
     {    
-        super(WIDTH, HEIGHT, 1, false); 
+        super(1200, 740, 1, false); 
         setBackground("casinobg.png");
-        // Music
-        music = new GreenfootSound("CasinoJazz.mp3");
-        music.setVolume(50);
-        music.playLoop();
-        // Misc.
         System.out.println("---");
         Greenfoot.setSpeed(50);
         SpotManager.resetIndex();
@@ -90,8 +48,11 @@ public class CasinoWorld extends World
         //____________________________________________
         ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
+        ImageManager.addImages("ordinary",5,4,9);
+        ImageManager.addImages("betting",12);
         addObject(new Entrance(),600,600);//temp
         prepare();
+        setPaintOrder(Message.class,Text.class);
     }
     public void act(){
         if(--delay==0){
@@ -99,104 +60,85 @@ public class CasinoWorld extends World
             //pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
             //Game tempGame=null;
             //if(emptyGame())
-            addObject(new Gambler(),(Greenfoot.getRandomNumber(2)==0?1250:-50),700+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(40):Greenfoot.getRandomNumber(40)));
+            int random = Greenfoot.getRandomNumber(20);
+            //if(random>17)addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            if(random>12)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
         }
-        
-        // simulation progression (games added as casino gets richer)
-        if(progressLevel==0 && 10 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(141,245,-20)}),141,245);
-            progressLevel++;
-        }
-        if(progressLevel==1 && 20 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames+=2;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(140,353,-20)}),140,353);
-            progressLevel++;
-            
-            // add horsebetting
-            addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),781,187);
-
-        }
-        if(progressLevel==2 && 30 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames+=2;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(224,244,-20)}),224,244);
-            progressLevel++;
-            
-            //add blackjack
-            addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
-
-        }
-        if(progressLevel==3 && 40 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(223,353,-20)}),223,353);
-            progressLevel++;
-            
-        }
-        if(progressLevel==4 && 50 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames+=2;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(306,245,-20)}),306,245);
-            progressLevel++;
-            
-            // add roulette
-            addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
-
-        }
-        if(progressLevel==5 && 60 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(306,354,-20)}),306,354);
-            progressLevel++;
-        }
-        if(progressLevel==6 && 70 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames+=2;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(399,245,-20)}),399,245); 
-            progressLevel++;
-            
-            // add poker        
-            addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);
-        }
-        if(progressLevel==7 && 80 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(399,354,-20)}),399,354);            
-            progressLevel++;
-            
-        }
-        if(progressLevel==8 && 90 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            numGames++;
-            addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(399,245,-20)}),399,245);            
-            progressLevel++;
-        }
-        if(progressLevel >= 30 && 200 == (HorizontalBar.casinoProfit*100)/casinoTarget){
-            music.stop();
-            Greenfoot.setWorld(new EndScreen(true));
-        }
+        zSort((ArrayList<Actor>)(getObjects(Actor.class)), this);
     }
-    /*
-    private boolean emptyGame(){
-        for(Game gt : gs)if(gt.openSpots())return true;
-        return false;
-    }
-    */
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        // initial slot machines
-        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(58,244,-20)}),58,244);
-        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(57,354,-20)}),57,354);
-        
-        addObject(new HorizontalBar(),600,60);
-        
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(80,250,-20)}),80,225);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(160,250,-20)}),160,225);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(240,250,-20)}),240,225);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(320,250,-20)}),320,225);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(400,250,-20)}),400,225);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(80,350,-20)}),80,325);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(160,350,-20)}),160,325);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(240,350,-20)}),240,325);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(320,350,-20)}),320,325);
+        addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(400,350,-20)}),400,325);
+        addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1152,241,-120), new SpotManager.Spot(1148,290,-80), new SpotManager.Spot(1116,320,-45), new SpotManager.Spot(1068,335,-30), new SpotManager.Spot(1014,330,-40), new SpotManager.Spot(976,302,-60)}),1060,270);
+        addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);
+        addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);
+        addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),780,196);
+        addObject(new UIManager(123456),600,60);
     }
-    
-    // Play song when the game starts
-    public void started() {
-        music.playLoop();
+    public static void zSort (ArrayList<Actor> actorsToSort, World world){
+        ArrayList<ActorContent> acList = new ArrayList<ActorContent>();
+        // Create a list of ActorContent objects and populate it with all Actors sent to be sorted
+        for (Actor a : actorsToSort){
+            acList.add (new ActorContent(a,a.getX(),a.getY()));
+        }    
+        // Sort the Actor, using the ActorContent comparitor (compares by y coordinate)
+        Collections.sort(acList);
+        // Replace the Actors from the ActorContent list into the World, inserting them one at a time
+        // in the desired paint order (in this case lowest y value first, so objects further down the 
+        // screen will appear in "front" of the ones above them).
+        for (ActorContent a : acList){
+            Actor actor  = a.getActor();
+            world.removeObject(actor);
+            world.addObject(actor, a.getX(), a.getY());
+        }
     }
-    // Pause song if they stop the program
-    public void stopped() {
-        music.pause();
+    static class ActorContent implements Comparable <ActorContent> {
+    private Actor actor;
+    private int xx, yy;
+    public ActorContent(Actor actor, int xx, int yy){
+        this.actor = actor;
+        this.xx = xx;
+        this.yy = yy;
     }
-    
+
+    public void setLocation (int x, int y){
+        xx = x;
+        yy = y;
+    }
+
+    public int getX() {
+        return xx;
+    }
+
+    public int getY() {
+        return yy;
+    }
+
+    public Actor getActor(){
+        return actor;
+    }
+
+    public String toString () {
+        return "Actor: " + actor + " at " + xx + ", " + yy;
+    }
+
+    public int compareTo (ActorContent a){
+        return this.getY() - a.getY();
+    }
+
+}
 }
