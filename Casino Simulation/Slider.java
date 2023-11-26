@@ -30,37 +30,53 @@ public class Slider extends Actor {
     private int rangeMin;    // min value of the slider
     private int rangeMax;    // max value of the slider
 
-    public Slider(int id, int minX, int maxX, int minRange, int maxRange) {
+    public Slider(int id, int minX, int maxX, int minRange, int maxRange, int initialValue) {
         this.sliderID = id;
         this.sliderMinX = minX;
         this.sliderMaxX = maxX;
         this.rangeMin = minRange;
         this.rangeMax = maxRange;
-        //setImage(new GreenfootImage("image.png")); // Placeholder image
+        setValue(initialValue);
+        // setImage(...); // Set the image if needed
     }
 
-    /**
-     * <p><strong>void act()</strong></p>
-     * <ul>
-     *     <li>Handles the slider's interaction with the mouse, updating its position and value accordingly.</li>
-     * </ul>
-     * 
-     */
     public void act() {
         if (Greenfoot.mouseDragged(this)) {
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            setLocation(mouse.getX(), getY());
-            value = calculateValue(mouse.getX());
+            int clampedX = Math.min(Math.max(mouse.getX(), sliderMinX), sliderMaxX);
+            setLocation(clampedX, getY());
+            value = calculateValue(clampedX);
             ((SettingsWorld)getWorld()).updateVar(sliderID, value);
         }
     }
 
+    public void setValue(int newValue) {
+        value = Math.min(Math.max(newValue, rangeMin), rangeMax);
+        // No setLocation call here
+    }
+
     private int calculateValue(int xPosition) {
-        // calculate slider's position (as fraction) of its total possible movement range
         double fraction = (double)(xPosition - sliderMinX) / (sliderMaxX - sliderMinX);
-        fraction = Math.min(Math.max(fraction, 0), 1); // makes sure fraction is between 0 and 1
+        fraction = Math.min(Math.max(fraction, 0), 1); // ensures fraction is between 0 and 1
         value = (int)(rangeMin + (fraction * (rangeMax - rangeMin)));
-    
         return value;
     }
+
+    // Getter methods
+    public int getRangeMin() {
+        return rangeMin;
+    }
+
+    public int getRangeMax() {
+        return rangeMax;
+    }
+
+    public int getSliderMinX() {
+        return sliderMinX;
+    }
+
+    public int getSliderMaxX() {
+        return sliderMaxX;
+    }
 }
+
