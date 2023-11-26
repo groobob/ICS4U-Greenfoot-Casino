@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=SettingsWorld
-comment0.text=\r\n\ main\ screen\r\n\ \r\n\ @author\:\ dorsa\r\n
 comment1.params=
 comment1.target=SettingsWorld()
 comment2.params=slider\ value
 comment2.target=int\ calculateSliderXPosition(Slider,\ int)
-comment3.params=sliderID\ value
-comment3.target=void\ updateVar(int,\ int)
-numComments=4
+comment3.params=
+comment3.target=void\ act()
+comment4.params=sliderID\ value
+comment4.target=void\ updateVar(int,\ int)
+comment5.params=
+comment5.target=int\ updateCasinoTarget()
+numComments=6
