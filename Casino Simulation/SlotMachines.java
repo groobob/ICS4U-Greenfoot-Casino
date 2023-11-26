@@ -48,7 +48,7 @@ public class SlotMachines extends Game {
         //HorizontalBar.casinoProfit += cost;
     }
     public void winMoney() {
-        if (Greenfoot.getRandomNumber(10) == 0) {  // 10% chance to win
+        if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win
         //if (Greenfoot.getRandomNumber(2)==0) {
             actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
             //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);

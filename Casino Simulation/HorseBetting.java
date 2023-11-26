@@ -51,7 +51,7 @@ public class HorseBetting extends Game
        */
     public HorseBetting(SpotManager.Spot[] spots) {
         super(spots);
-        numberOfHorses = 7; // 7 horses in the race
+        numberOfHorses = SettingsWorld.getNumberOfHorses(); // # horses
         raceInProgress = false;
         raceDuration = 0;
         gamblerSelections = new int[gamblers.length]; 
