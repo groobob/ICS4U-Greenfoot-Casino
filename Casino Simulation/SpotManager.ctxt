@@ -1,13 +1,17 @@
 #BlueJ class context
 comment0.target=SpotManager
-comment0.text=\r\n\ Class\ that\ manages\ spots.\r\n\ <p>\r\n\ Guide\ gamblers\ to\ spots.\r\n\ Allows\ easy\ creation\ of\ spots.\r\n\ Keeps\ track\ of\ games\ and\ therefore\ their\ spots.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/20\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p><strong>SpotManager</strong>\ is\ a\ class\ designed\ to\ manage\ gaming\ spots\ within\ a\ casino\ environment\ in\ Greenfoot.</p>\r\n\ <p>It\ is\ responsible\ for\ tracking\ and\ assigning\ spots\ to\ gamblers\ in\ various\ games,\ maintaining\ a\ list\ of\ games,\ and\ managing\ spot\ assignments.</p>\r\n\ \r\n\ <h3>Usage\:</h3>\r\n\ <p>Use\ SpotManager\ to\ handle\ the\ allocation\ of\ gamblers\ to\ games\ within\ a\ casino\ environment.\ It\ is\ recommended\ to\ set\ up\ and\ manage\ games\ through\ this\ class.</p>\r\n\ \r\n\ <h3>Class\ Fields\:</h3>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>numberOfGames</strong>\ -\ The\ total\ number\ of\ games\ in\ the\ casino,\ synchronized\ with\ <code>CasinoWorld.numGames</code>.</li>\r\n\ \ \ \ \ <li><strong>games</strong>\ -\ An\ array\ of\ <code>Game</code>\ objects\ representing\ each\ game\ in\ the\ casino.</li>\r\n\ \ \ \ \ <li><strong>i</strong>\ -\ An\ index\ used\ for\ adding\ games\ to\ the\ <code>games</code>\ array.</li>\r\n\ </ul>\r\n\ \r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/20\r\n
 comment1.params=
 comment1.target=void\ resetIndex()
-comment1.text=\r\nResets\ index.\ Needed\ because\ it's\ static\ so\ it\ doesn't\ automatically\ reset\ when\ simulation\ is\ reset.\r\n\r\n
-comment2.params=g
-comment2.target=void\ addGame(Game)
-comment2.text=\r\nAdd\ game\r\n
-comment3.params=gb
-comment3.target=boolean\ attemptTarget(Gambler)
-comment3.text=\r\nTargets\ random\ empty\ spot\r\n
-numComments=4
+comment1.text=\r\n\ <p><strong>static\ void\ resetIndex()</strong>\ -\ Resets\ the\ index\ for\ adding\ new\ games\ to\ the\ <code>games</code>\ array.</p>\r\n
+comment2.params=
+comment2.target=Game[]\ getGames()
+comment3.params=g
+comment3.target=void\ addGame(Game)
+comment3.text=\r\n\ <p><strong>static\ void\ addGame(Game\ g)</strong>\ -\ Adds\ a\ game\ to\ the\ <code>games</code>\ array.\ <br>\r\n\ <strong>@param\ g</strong>\ -\ The\ <code>Game</code>\ object\ to\ be\ added.</p>\r\n
+comment4.params=gb
+comment4.target=boolean\ attemptTarget(Gambler)
+comment4.text=\r\n\ <p><strong>static\ boolean\ attemptTarget(Gambler\ gb)</strong>\ -\ Attempts\ to\ find\ an\ available\ spot\ for\ a\ <code>Gambler</code>\ and\ assign\ it.\ <br>\r\n\ <strong>@param\ gb</strong>\ -\ The\ <code>Gambler</code>\ object\ for\ which\ a\ spot\ is\ being\ found\ for.\ <br>\r\n\ <strong>@return\ boolean</strong>\ -\ Returns\ <code>true</code>\ if\ a\ spot\ is\ found\ and\ assigned,\ otherwise\ <code>false</code>.</p>\r\n
+comment5.params=gb
+comment5.target=VIP.DetailedSpot\ absoluteTarget(Gambler)
+numComments=6

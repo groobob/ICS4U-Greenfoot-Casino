@@ -6,10 +6,13 @@ import java.util.*;  // (ArrayList)
  * 
  * Casinos make money from poker tables by taking in a "rake", or a percentage of the players
  * winnings. Due to this, although the amount that poker tables make is quite little, it is a
- * very safe source of income for the casino.\
+ * very safe source of income for the casino.
  * 
  * A minimum of 2 players is required for the game to start
  * Huge price to play, huge payouts -> One winner, a ton of losers
+ * Winner of the game is the one with the highest skill stat at the table
+ * Poker is known to be one of the most skill-based gambling games since it is played
+ * against other players, not the house
  * 
  * @author David Guo
  * @version 1.2 11/23/2023
@@ -35,7 +38,7 @@ public class Poker extends Game
         // Players must bet a minimum of this number per hand
         minBet = 10;
         // Chance for a player to leave the game after a pot is paid out in %
-        leaveChance = 25;
+        leaveChance = 20;
         // Rake is a percentage in decimal form. Most commonly from 2%-10
         rake = 0.05;
         // Pot is worth 0 at the start
@@ -81,13 +84,13 @@ public class Poker extends Game
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
                     int randomChance = Greenfoot.getRandomNumber(100);
-                    if(randomChance < leaveChance)leaveTable(i);
+                    if(randomChance < leaveChance)endGamblerSession(i);
                 }
             }
         } else if(delay <= 0){
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
-                    increasePot(gamblers[i]);
+                    increasePot(i);
                 }
             }
             delay = maxDelay;
@@ -96,25 +99,21 @@ public class Poker extends Game
         delay--;
     }
     
-    private void increasePot(Gambler g){
-        int moneyBet =  getMoneyBet(g);
+    private void increasePot(int gamblerIndex){
+        int moneyBet =  getMoneyBet(gamblers[gamblerIndex]);
         int rakeProfit = (int)(moneyBet*rake);
         if(moneyBet < minBet){
-            g.stopPlaying();
+            endGamblerSession(gamblerIndex);
         } else {
-            g.playMoneyEffect(-moneyBet);
+            gamblers[gamblerIndex].playMoneyEffect(-moneyBet);
             pot += moneyBet-rakeProfit;
-            //HorizontalBar.casinoProfit += rakeProfit;
+            UIManager.incrementCasinoProfit(rakeProfit);
         }
     }
     
-    private void leaveTable(int gIndex){
-        gamblers[gIndex].stopPlaying();
-        gamblers[gIndex] = null;
-    }
-    
     private void payout(Gambler g){
-        g.playMoneyEffect(pot);
+        // In order to prevent playMoneyEffect printing +0
+        if(pot != 0)g.playMoneyEffect(pot);
         pot = 0;
     }
     
@@ -132,7 +131,7 @@ public class Poker extends Game
         }
         return currPlayers;
     }
-    // Problem: money is too low
+    
     private int getMoneyBet(Gambler g){
         // Gamblers will bet somewhere between 5-25% of their total money
         double randomPercentBet = (double)(Greenfoot.getRandomNumber(20)+5)/100;

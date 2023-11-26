@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Author: Dorsa Rohani
  */
 public class SlotMachines extends Game {
-    private static final int cost = 5;
+    private static final int cost = 100;
     private static final int minWinAmount = 100;
     private static final int maxWinAmount = 500;
     private int maxPlays = Greenfoot.getRandomNumber(5)+3;
@@ -30,9 +30,9 @@ public class SlotMachines extends Game {
             if(++delay<132)return;
             playCounter++;
             delay=0;
-            if(playCounter>=maxPlays){
-                if(Greenfoot.getRandomNumber(3)==0&&gamblers[0].checkCheating()==1)gamblers[0].playDialogue((Greenfoot.getRandomNumber(2)==0?"I got caught.":"I messed up."));
-                endGamblerSession();
+            if(playCounter>=maxPlays||gamblers[0].getMoney()-cost<=0){
+                if(Greenfoot.getRandomNumber(3)==0&&gamblers[0].checkBehaviour()==1)gamblers[0].playDialogue((Greenfoot.getRandomNumber(2)==0?"I got caught.":"I messed up."));
+                endGamblerSession(0);
             }
         }
         else{
@@ -56,10 +56,5 @@ public class SlotMachines extends Game {
             gamblers[0].playMoneyEffect(winAmount);
        // }
     }
-    
-    private void endGamblerSession() {
-        gamblers[0].stopPlaying();
-        gamblers[0] = null;
-        //playCounter = 0; // reset play counter for next gambler
-    }
+
 }

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Cheater
-comment0.text=\r\n\ Cheater\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
+comment0.text=\r\n\ Cheating\ gambler.\ Wins\ too\ much.\ Special\ interactions\ ensue\ after\ being\ caught.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
 comment1.params=
-comment1.target=int\ checkCheating()
+comment1.target=int\ checkBehaviour()
 comment2.params=
 comment2.target=Cheater()
 comment3.params=

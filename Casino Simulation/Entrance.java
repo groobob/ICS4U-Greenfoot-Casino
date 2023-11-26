@@ -15,7 +15,7 @@ public class Entrance extends Actor
     boolean up=true;
     public void act()
     {
-                MouseInfo mouse = Greenfoot.getMouseInfo();
+        MouseInfo mouse = Greenfoot.getMouseInfo();
         if(mouse!=null){
             if(Greenfoot.isKeyDown("f")&&up){
                 System.out.println(mouse.getX()+","+mouse.getY());

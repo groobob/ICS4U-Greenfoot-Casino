@@ -40,7 +40,7 @@ public class UIManager extends Actor
         gamblerLoss += num;
         updateText();
     }
-    public static void incrementcasinoProfit(int num)
+    public static void incrementCasinoProfit(int num)
     {
         casinoProfit += num;
         updateText();

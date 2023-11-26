@@ -1,12 +1,12 @@
 import greenfoot.*; 
 /**
- * Ordinary gambler
- * @Jimmy Zhu
- * @11/23
+ * Ordinary gambler. Nothing special.
+ * @author Jimmy Zhu
+ * @version 11/23
  */
 public class Ordinary extends Gambler {
-    public int checkCheating(){
-        return -1;
+    public int checkBehaviour(){
+        return -1;//nothing out of the ordinary
     }
     public Ordinary(){
         character=Greenfoot.getRandomNumber(5)+1;

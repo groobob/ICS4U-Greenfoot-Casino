@@ -17,8 +17,6 @@ public class Roulette extends Game
 {
     // Declare class variables, some of which may be available for customization
     
-    // Roulette Table sprite
-    GreenfootImage rouletteTable;
     // The number of pockets depends on the type of roulette:
     // 37 pockets in French or European style roulette
     // 38 pockets in American roulette
@@ -48,11 +46,7 @@ public class Roulette extends Game
         currentlySpinning = false;
         actsSpinning = 0;
         // Chance to leave in percent
-        chanceToLeave = 5;
-        // Set the class to the image
-        //rouletteTable = new GreenfootImage("TestRoulette.gif");
-        //rouletteTable.scale(80,60);
-        //setImage(rouletteTable);
+        chanceToLeave = 30;
         // Initlize arraylist of gamblers
         gamblerBets = new int[gamblers.length]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
         moneyBets = new int[gamblers.length];
@@ -72,9 +66,10 @@ public class Roulette extends Game
             currentlySpinning = false;
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
-                    gamblers[i].playMoneyEffect(calculateEarned(i));
+                    // In order to prevent playMoneyEffect printing +0
+                    if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
                     int leaveChance = Greenfoot.getRandomNumber(100);
-                    
+                    if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
         } else if (actsSpinning == 100){
@@ -83,17 +78,12 @@ public class Roulette extends Game
         actsSpinning++;
     }
     
-    private void spinWheel(){
+    private int spinWheel(){
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);
         // Change numbers above 36 to 0
         if(randomPocket == 37 || randomPocket == 38)randomPocket = 0;
-        
-        for(int i = 0; i < gamblers.length; i++){
-            if(gamblers[i] != null && gamblers[i].isPlaying()){
-                calculateEarned(i);
-            }
-        }
+        return randomPocket;
     }
     
     public int calculateEarned(int gamblerIndex){
@@ -108,10 +98,6 @@ public class Roulette extends Game
         
     }
     
-    private void clearWheel(){
-        // -1 will be used to represent undecided
-        pocketNum = -1;
-    }
     // When gamblers are ready to make their bet before the wheel starts spinning
     private void makeBet(){
         for(int i = 0; i < gamblers.length; i++){
@@ -127,7 +113,7 @@ public class Roulette extends Game
                 gamblers[i].playMoneyEffect(-moneyBets[i]);
             }
         }
-        spinWheel();
+        pocketNum = spinWheel();
     }
     
     private int getMoneyBet(Gambler g){

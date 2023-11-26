@@ -5,11 +5,11 @@ import greenfoot.*;
  * @1118
  */
 public abstract class Gambler extends Actor {
-    private int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,animationStep=0,mostRecentDirection=1;
-    private boolean playing = false, flag = false, toSpot = false, isNew=false;
+    protected int speed = Greenfoot.getRandomNumber(3)+3,tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)),fx=0, ty=0, yToSpot=0,animationStep=0,mostRecentDirection=1;
+    protected boolean playing = false, flag = false, toSpot = false, isNew=false;
     protected int money,character,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50);
-    protected boolean leaving=false;
-    public abstract int checkCheating();
+    protected boolean leaving=false, vip=false;
+    public abstract int checkBehaviour();
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
@@ -19,8 +19,8 @@ public abstract class Gambler extends Actor {
     public void playMoneyEffect(int money) {
         if(money==0)return;
         this.money+=money;
-        UIManager.incrementcasinoProfit(-money);
-        UIManager.incrementGamblerWL(money>0);
+        UIManager.incrementCasinoProfit(-money);
+        //UIManager.incrementGamblerWL(money>0);
         getWorld().addObject(new Message((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
     public void playDialogue(String text){
@@ -52,16 +52,17 @@ public abstract class Gambler extends Actor {
                 toSpot=true;
                 flag=false;
             } 
-            else if(SpotManager.attemptTarget(this)&&!leaving) {
+            else if(!leaving&&SpotManager.attemptTarget(this)) {
                 toSpot=false;
                 flag=false;
             } 
-            else{
-                tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));
-                ty=690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));
-                fx=(Greenfoot.getRandomNumber(2)==0?1250:-50);
-            }
+            else exit();
         }
+    }
+    protected void exit(){
+        tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));
+        ty=690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));
+        fx=(Greenfoot.getRandomNumber(2)==0?1250:-50);
     }
     public void target(int x, int y, int compensate){
         if(Math.abs(ty+yToSpot-y)>25)tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));
@@ -89,5 +90,8 @@ public abstract class Gambler extends Actor {
     }
     public int getLuck(){
         return luck;
+    }
+    public boolean isVIP(){
+        return vip;
     }
 }

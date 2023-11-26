@@ -20,6 +20,7 @@ public class HorseBetting extends Game
     private final int oddMultiplier = 2;
     private final int evenMultiplier = 2;
     private double betPercentage;
+    private int chanceToLeave;
     private int animationStep=0;
     
     public HorseBetting(SpotManager.Spot[] spots) {
@@ -29,6 +30,7 @@ public class HorseBetting extends Game
         raceDuration = 0;
         gamblerSelections = new int[gamblers.length]; 
         gamblerStakes = new int[gamblers.length];
+        chanceToLeave = 30;
     }
 
     public void act() {
@@ -44,8 +46,10 @@ public class HorseBetting extends Game
             for (int i = 0; i < gamblers.length; i++) {
                 if (gamblers[i] != null && gamblers[i].isPlaying()) {
                     payout = calculatePayout(i);
-                    //HorizontalBar.casinoProfit += payout;
+                    UIManager.incrementCasinoProfit(payout);
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
+                    int leaveChance = Greenfoot.getRandomNumber(100);
+                    if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
         } else if (raceDuration == 100) {
@@ -84,5 +88,10 @@ public class HorseBetting extends Game
     private int determineStake(Gambler g) {
         betPercentage = (double)(Greenfoot.getRandomNumber(20) + 5) / 100;
         return (int)(g.getMoney() * betPercentage);
+    }
+    
+    protected void endGamblerSession(int gamblerIndex){
+        gamblers[gamblerIndex].stopPlaying();
+        gamblers[gamblerIndex] = null;
     }
 }
