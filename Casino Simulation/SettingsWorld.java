@@ -38,6 +38,7 @@ public class SettingsWorld extends World {
 
     public SettingsWorld() {    
         super(1200, 740, 1);
+        setBackground("settingsworldbg.png");
         
         // initial values
         casinoTarget = 10000; 
@@ -48,50 +49,50 @@ public class SettingsWorld extends World {
         rouletteStyle = 38;
         numberOfHorses = 7;
 
-        Slider slider1 = new Slider(1, 50, 550, 10000, 1000000, casinoTarget);
-        Slider slider2 = new Slider(2, 50, 550, 1, 25, vipGamblerSpawnRate);
-        Slider slider3 = new Slider(3, 50, 550, 5000, 10000, vipGamblerStartingMoney);
-        Slider slider4 = new Slider(4, 50, 550, 1, 25, cheaterGamblerSpawnRate);
-        Slider slider5 = new Slider(5, 50, 550, 1, 5000, ordinaryStartingMoney);
-        Slider slider6 = new Slider(6, 50, 550, 1, 99, slotsWinRate);
-        Slider slider7 = new Slider(7, 50, 550, 7, 20, numberOfHorses);
+        Slider slider1 = new Slider(1, 708, 865, 10000, 1000000, casinoTarget);
+        Slider slider2 = new Slider(2, 708, 591, 1, 25, vipGamblerSpawnRate);
+        Slider slider3 = new Slider(3, 708, 549, 5000, 10000, vipGamblerStartingMoney);
+        Slider slider4 = new Slider(4, 708, 637, 1, 25, cheaterGamblerSpawnRate);
+        Slider slider5 = new Slider(5, 708, 503, 1, 5000, ordinaryStartingMoney);
+        Slider slider6 = new Slider(6, 702, 269, 1, 99, slotsWinRate);
+        Slider slider7 = new Slider(7, 708, 312, 7, 20, numberOfHorses);
         
-        addObject(slider1, calculateSliderXPosition(slider1, casinoTarget), 417);
+        addObject(slider1, calculateSliderXPosition(slider1, casinoTarget), 219);
         valueText1 = new Text(12, "Arial", String.valueOf(casinoTarget));
-        addObject(valueText1, 680, 417);
+        addObject(valueText1, 905, 217);
 
-        addObject(slider2, calculateSliderXPosition(slider2, vipGamblerSpawnRate), 497);
+        addObject(slider2, calculateSliderXPosition(slider2, vipGamblerSpawnRate), 591);
         valueText2 = new Text(12, "Arial", String.valueOf(vipGamblerSpawnRate));
-        addObject(valueText2, 680, 497);
+        addObject(valueText2, 905, 591);
 
-        addObject(slider3, calculateSliderXPosition(slider3, vipGamblerStartingMoney), 577);
+        addObject(slider3, calculateSliderXPosition(slider3, vipGamblerStartingMoney), 549);
         valueText3 = new Text(12, "Arial", String.valueOf(vipGamblerStartingMoney));
-        addObject(valueText3, 680, 577);
+        addObject(valueText3, 905, 549);
 
-        addObject(slider4, calculateSliderXPosition(slider4, cheaterGamblerSpawnRate), 647);
+        addObject(slider4, calculateSliderXPosition(slider4, cheaterGamblerSpawnRate), 637);
         valueText4 = new Text(12, "Arial", String.valueOf(cheaterGamblerSpawnRate));
-        addObject(valueText4, 680, 647);
+        addObject(valueText4, 905, 637);
         
-        addObject(slider5, calculateSliderXPosition(slider5, ordinaryStartingMoney), 727);
+        addObject(slider5, calculateSliderXPosition(slider5, ordinaryStartingMoney), 503);
         valueText5 = new Text(12, "Arial", String.valueOf(ordinaryStartingMoney));
-        addObject(valueText5, 680, 727);
+        addObject(valueText5, 905, 503);
         
-        addObject(slider6, calculateSliderXPosition(slider6, slotsWinRate), 200);
+        addObject(slider6, calculateSliderXPosition(slider6, slotsWinRate), 269);
         valueText6 = new Text(12, "Arial", String.valueOf(slotsWinRate));
-        addObject(valueText6, 680, 200);
+        addObject(valueText6, 905, 269);
         
-        addObject(slider7, calculateSliderXPosition(slider7, numberOfHorses), 220);
+        addObject(slider7, calculateSliderXPosition(slider7, numberOfHorses), 312);
         valueText7 = new Text(12, "Arial", String.valueOf(numberOfHorses));
-        addObject(valueText7, 680, 220);
+        addObject(valueText7, 905, 312);
 
-        showText("Settings", 600, 300);
-        showText("Casino Target", 440, 417);
-        showText("VIP Gambler Spawn Rate", 440, 497);
-        showText("VIP Gambler Starting Money", 440, 577);
-        showText("Cheater Gambler Spawn Rate", 440, 647);
-        showText("Ordinary Gambler Spawn Rate", 440, 727);
-        showText("slots", 440, 200);
-        showText("# horses", 440, 220);
+        //showText("Settings", 600, 300);
+        //showText("Casino Target", 440, 417);
+        //showText("VIP Gambler Spawn Rate", 440, 497);
+        //showText("VIP Gambler Starting Money", 440, 577);
+        //showText("Cheater Gambler Spawn Rate", 440, 647);
+        //showText("Ordinary Gambler Spawn Rate", 440, 727);
+        //showText("slots", 440, 200);
+        //showText("# horses", 440, 220);
         
         
         //button
@@ -103,10 +104,10 @@ public class SettingsWorld extends World {
         //title = new Button("Title", 150, 255, 255, 255, 255, 20, 147);
         
         // Add buttons to the world
-        addObject(startButton, 625, 200);
-        addObject(rouletteEuropean, 700, 250);
-        addObject(rouletteAmerican, 700, 270);
-        addObject(rouletteSands, 700, 290);
+       // addObject(startButton, 625, 200);
+        //addObject(rouletteEuropean, 700, 250);
+        //addObject(rouletteAmerican, 700, 270);
+        //addObject(rouletteSands, 700, 290);
     }
 
     private int calculateSliderXPosition(Slider slider, int value) {
