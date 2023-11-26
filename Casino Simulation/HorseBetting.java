@@ -89,9 +89,9 @@ public class HorseBetting extends Game
         betPercentage = (double)(Greenfoot.getRandomNumber(20) + 5) / 100;
         return (int)(g.getMoney() * betPercentage);
     }
-    
+    /*
     protected void endGamblerSession(int gamblerIndex){
         gamblers[gamblerIndex].stopPlaying();
         gamblers[gamblerIndex] = null;
-    }
+    }*/
 }

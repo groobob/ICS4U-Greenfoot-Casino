@@ -36,6 +36,7 @@ public class SlotMachines extends Game {
             }
         }
         else{
+            //if(!gamblers[0].isPlaying()&&!reserved[0])gamblers[0]=null;
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;

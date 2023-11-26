@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Ordinary
-comment0.text=\r\n\ Class\ that\ manages\ spots.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
+comment0.text=\r\n\ Ordinary\ gambler.\ Nothing\ special.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
 comment1.params=
 comment1.target=int\ checkBehaviour()
 comment2.params=

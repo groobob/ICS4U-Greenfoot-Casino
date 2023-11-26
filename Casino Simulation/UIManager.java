@@ -13,6 +13,7 @@ public class UIManager extends Actor
     private boolean isNew=false;
     public UIManager(int casinoTarget){
         this.casinoTarget=casinoTarget;
+        casinoProfit=0;
     }
     public void addedToWorld(World w){
         if(!isNew){

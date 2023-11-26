@@ -9,18 +9,20 @@ public abstract class Gambler extends Actor {
     protected boolean playing = false, flag = false, toSpot = false, isNew=false;
     protected int money,character,skill=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50),luck=(int)Math.round(Math.pow(((1/13.58)*(Greenfoot.getRandomNumber(100)-49)),3)+50);
     protected boolean leaving=false, vip=false;
+    private SpotManager.DetailedSpot target;
     public abstract int checkBehaviour();
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
-            if(!SpotManager.attemptTarget(this))getWorld().removeObject(this);
+            target = SpotManager.attemptTarget(this);
+            if(target==null)getWorld().removeObject(this);
+            //(!SpotManager.attemptTarget(this))getWorld().removeObject(this);
         }
     }
     public void playMoneyEffect(int money) {
         if(money==0)return;
         this.money+=money;
         UIManager.incrementCasinoProfit(-money);
-        //UIManager.incrementGamblerWL(money>0);
         getWorld().addObject(new Message((Integer.signum(money)==-1?"-$":"+$")+Math.abs(money),(Integer.signum(money)==-1?Color.RED:Color.GREEN)), getX(),getY()-30);
     }
     public void playDialogue(String text){
@@ -52,12 +54,17 @@ public abstract class Gambler extends Actor {
                 toSpot=true;
                 flag=false;
             } 
-            else if(!leaving&&SpotManager.attemptTarget(this)) {
-                toSpot=false;
-                flag=false;
+            else if(!leaving) {
+                target = SpotManager.attemptTarget(this);
+                if(target!=null){
+                    toSpot=false;
+                    flag=false;
+                }
+                else exit();
             } 
             else exit();
         }
+        else if(getOneObjectAtOffset(1,1,VIP.class)!=null)SpotManager.getGames()[target.getGameIndex()].endGamblerSession(target.getSpotIndex());
     }
     protected void exit(){
         tx=600+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20));

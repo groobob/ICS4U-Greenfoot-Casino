@@ -11,14 +11,14 @@ public abstract class Game extends Actor
     private boolean isNew=false;
     protected int actNumber;
     private int len;
-    protected int[] reservedSpots;
+    protected boolean[] reserved;
     public Game(SpotManager.Spot[] spots){
         this.spots=spots;
         len=spots.length;
         gamblers=new Gambler[len];
         actNumber = 0;
         gamblers=new Gambler[spots.length];
-        reservedSpots = new int[len];
+        reserved = new boolean[len];
     }
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
@@ -36,9 +36,10 @@ public abstract class Game extends Actor
         gamblers[spotNumber]=g;
     }
     protected void endGamblerSession(int i) {
-        if(gamblers[i].isVIP())reservedSpots[i]--;
+        if(gamblers[i]==null)return;
+        if(gamblers[i].isVIP())removeReservation(i);
         gamblers[i].stopPlaying();
-        if(reservedSpots[i]==0)gamblers[i] = null;
+        gamblers[i] = null;
     }
     public void absolutePlaceGambler(Gambler g, int spotNumber){
         if(gamblers[spotNumber]==null)gamblers[spotNumber]=g;
@@ -48,15 +49,19 @@ public abstract class Game extends Actor
         }
     }
     public boolean isSpotTaken(int spotNumber){
-        return gamblers[spotNumber]!=null&&gamblers[spotNumber].isPlaying();
+        return gamblers[spotNumber]!=null;
+    }
+    public boolean isSomeonePlaying(int spotNumber){
+        if(gamblers[spotNumber]==null)return false;
+        return gamblers[spotNumber].isPlaying();
     }
     public void removeReservation(int spotNumber){
-        reservedSpots[spotNumber]--;
+        reserved[spotNumber]=false;
     }
     public void addReservation(int spotNumber){
-        reservedSpots[spotNumber]++;
+        reserved[spotNumber]=true;
     }
-    public int getReservationCount(int i){
-        return reservedSpots[i];
+    public boolean hasReservation(int i){
+        return reserved[i];
     }
 }

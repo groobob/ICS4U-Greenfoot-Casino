@@ -50,6 +50,7 @@ public class CasinoWorld extends World
         ImageManager.addImages("slots",22);
         ImageManager.addImages("ordinary",5,4,9);
         ImageManager.addImages("betting",12);
+        ImageManager.addImages("VIP",1,4,9);
         addObject(new Entrance(),600,600);//temp
         prepare();
         setPaintOrder(Message.class,Text.class);
@@ -61,8 +62,9 @@ public class CasinoWorld extends World
             //Game tempGame=null;
             //if(emptyGame())
             int random = Greenfoot.getRandomNumber(20);
-            //if(random>17)addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            if(random>12)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            if(random>10)//17
+            addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            //else if(random>12)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
             else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
         }
         zSort((ArrayList<Actor>)(getObjects(Actor.class)), this);
@@ -135,10 +137,8 @@ public class CasinoWorld extends World
     public String toString () {
         return "Actor: " + actor + " at " + xx + ", " + yy;
     }
-
     public int compareTo (ActorContent a){
         return this.getY() - a.getY();
     }
-
 }
 }
