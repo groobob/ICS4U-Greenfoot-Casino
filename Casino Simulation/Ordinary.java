@@ -10,7 +10,7 @@ public class Ordinary extends Gambler {
     }
     public Ordinary(){
         character=Greenfoot.getRandomNumber(5)+1;
-        money=Greenfoot.getRandomNumber(2001)+1000;
+        money=SettingsWorld.getOrdinaryStartMoney();
     }
     public void act() {
         super.act();

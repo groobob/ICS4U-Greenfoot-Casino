@@ -1,29 +1,44 @@
 import greenfoot.*; 
 import java.util.*;
 
+/**
+ * Settings  world.
+ * 
+ * @author Dorsa Rohani
+ * @version 1.0 11/24/2023
+ */
 public class SettingsWorld extends World {
     private static int casinoTarget; // casino Target
-    private int vipGamblerSpawnRate; // VIP gambler spawn rate
-    private int vipGamblerStarting; // VIP gambler starting money
-    private int cheaterGamblerSpawnRate; // cheater gambler spawn rate
+    private static int vipGamblerSpawnRate; // VIP gambler spawn rate
+    private static int vipGamblerStartingMoney; // VIP gambler starting money
+    private static int ordinaryStartingMoney; // VIP gambler starting money
+    private static int cheaterGamblerSpawnRate; // cheater gambler spawn rate
     private Button startButton;
 
     private Text valueText1;
     private Text valueText2;
     private Text valueText3;
     private Text valueText4;
+    private Text valueText5;
+    
+    // ordinary starting money: 
+    // vip starting money: 
 
     public SettingsWorld() {    
         super(1200, 740, 1);
+        
+        // initial values
         casinoTarget = 10000; 
-        vipGamblerSpawnRate = 25;
-        vipGamblerStarting = 7500;
-        cheaterGamblerSpawnRate = 25;
+        vipGamblerSpawnRate = 1;
+        vipGamblerStartingMoney = 7500;
+        cheaterGamblerSpawnRate = 1;
+        ordinaryStartingMoney = 1;
 
         Slider slider1 = new Slider(1, 50, 550, 10000, 1000000, casinoTarget);
-        Slider slider2 = new Slider(2, 50, 550, 1, 49, vipGamblerSpawnRate);
-        Slider slider3 = new Slider(3, 50, 550, 5000, 10000, vipGamblerStarting);
-        Slider slider4 = new Slider(4, 50, 550, 1, 49, cheaterGamblerSpawnRate);
+        Slider slider2 = new Slider(2, 50, 550, 1, 25, vipGamblerSpawnRate);
+        Slider slider3 = new Slider(3, 50, 550, 5000, 10000, vipGamblerStartingMoney);
+        Slider slider4 = new Slider(4, 50, 550, 1, 25, cheaterGamblerSpawnRate);
+        Slider slider5 = new Slider(5, 50, 550, 1, 5000, ordinaryStartingMoney);
 
         addObject(slider1, calculateSliderXPosition(slider1, casinoTarget), 417);
         valueText1 = new Text(12, "Arial", String.valueOf(casinoTarget));
@@ -33,19 +48,25 @@ public class SettingsWorld extends World {
         valueText2 = new Text(12, "Arial", String.valueOf(vipGamblerSpawnRate));
         addObject(valueText2, 680, 497);
 
-        addObject(slider3, calculateSliderXPosition(slider3, vipGamblerStarting), 577);
-        valueText3 = new Text(12, "Arial", String.valueOf(vipGamblerStarting));
+        addObject(slider3, calculateSliderXPosition(slider3, vipGamblerStartingMoney), 577);
+        valueText3 = new Text(12, "Arial", String.valueOf(vipGamblerStartingMoney));
         addObject(valueText3, 680, 577);
 
         addObject(slider4, calculateSliderXPosition(slider4, cheaterGamblerSpawnRate), 647);
         valueText4 = new Text(12, "Arial", String.valueOf(cheaterGamblerSpawnRate));
         addObject(valueText4, 680, 647);
+        
+        addObject(slider5, calculateSliderXPosition(slider5, ordinaryStartingMoney), 727);
+        valueText5 = new Text(12, "Arial", String.valueOf(ordinaryStartingMoney));
+        addObject(valueText5, 680, 727);
+        
 
         showText("Settings", 600, 300);
         showText("Casino Target", 440, 417);
         showText("VIP Gambler Spawn Rate", 440, 497);
         showText("VIP Gambler Starting Money", 440, 577);
         showText("Cheater Gambler Spawn Rate", 440, 647);
+        showText("Ordinary Gambler Spawn Rate", 440, 727);
         
         //button
         startButton = new Button("START", 90, 255, 0, 0, 0, 20, 147);
@@ -79,17 +100,37 @@ public class SettingsWorld extends World {
                 valueText2.changeText(String.valueOf(value));
                 break;
             case 3:
-                vipGamblerStarting = value;
+                vipGamblerStartingMoney = value;
                 valueText3.changeText(String.valueOf(value));
                 break;
             case 4:
                 cheaterGamblerSpawnRate = value;
                 valueText4.changeText(String.valueOf(value));
                 break;
+            case 5: 
+                ordinaryStartingMoney = value;
+                valueText5.changeText(String.valueOf(value));
+                break;
         }
     }
     
-    public static int updateCasinoTarget(){
+    public static int getCasinoTarget(){
         return casinoTarget;
+    }
+    
+    public static int getVIPSpawnRate(){
+        return vipGamblerSpawnRate;
+    }
+    
+    public static int getCheaterSpawnRate(){
+        return cheaterGamblerSpawnRate;
+    }
+    
+    public static int getOrdinaryStartMoney(){
+        return ordinaryStartingMoney;
+    }
+    
+    public static int getVIPStartMoney(){
+        return vipGamblerStartingMoney;
     }
 }
