@@ -16,55 +16,22 @@ public class CasinoWorld extends World
         System.out.println("---");
         Greenfoot.setSpeed(50);
         SpotManager.resetIndex();
-        // GAMES
-        //slots__________________________________
-        // POSITION COORDINATES
-        //slots___________________________________
-        //addObject(new SlotMachines(new station[]{new station(58,244,-20,0)}),58,244);
-        /*
-        stationGroupCoords.add(new pos[]{new pos(58,244,-20)});
-        stationGroupCoords.add(new pos[]{new pos(141,245,-20)});
-        stationGroupCoords.add(new pos[]{new pos(224,244,-20)});
-        stationGroupCoords.add(new pos[]{new pos(307,241,-20)});
-        stationGroupCoords.add(new pos[]{new pos(386,242,-20)});
-        
-        stationGroupCoords.add(new pos[]{new pos(57,354,-20)});
-        stationGroupCoords.add(new pos[]{new pos(140,353,-20)});
-        stationGroupCoords.add(new pos[]{new pos(224,349,-20)});
-        stationGroupCoords.add(new pos[]{new pos(304,349,-20)});
-        stationGroupCoords.add(new pos[]{new pos(387,347,-20)});
-        */
-        //tempPlaces.add(new pos(58,244,-20));
-        //tempPlaces.add(new pos(141,245,-20));
-        //tempPlaces.add(new pos(224,244,-20));
-        //tempPlaces.add(new pos(307,241,-20));
-        //tempPlaces.add(new pos(386,242,-20));
-        
-        //tempPlaces.add(new pos(57,354,-20));
-        //tempPlaces.add(new pos(140,353,-20));
-        //tempPlaces.add(new pos(224,349,-20));
-        //tempPlaces.add(new pos(304,349,-20));
-        //tempPlaces.add(new pos(387,347,-20));
-        //____________________________________________
         ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
         ImageManager.addImages("gambler",11,4,9);
         ImageManager.addImages("betting",12);
         ImageManager.addImages("roulette",12);
-        addObject(new Entrance(),600,600);//temp
+        addObject(new Entrance(),600,600);
         prepare();
         setPaintOrder(Message.class,Text.class);
     }
     public void act(){
         if(--delay==0){
             delay=Greenfoot.getRandomNumber(120)+60;
-            //pos p = tempPlaces.get(Greenfoot.getRandomNumber(tempPlaces.size()));
-            //Game tempGame=null;
-            //if(emptyGame())
             int random = Greenfoot.getRandomNumber(20);
-            if(random>10)//17
-            addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else if(random>12)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            if(random>17)addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else if(random>15)addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else if(random>11)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
             else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
         }
         zSort((ArrayList<Actor>)(getObjects(Actor.class)), this);

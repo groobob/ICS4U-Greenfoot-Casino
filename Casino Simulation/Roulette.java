@@ -39,10 +39,10 @@ public class Roulette extends Game
     private final int NUMBER_PAYOUT = 36;
     private final int ODD_PAYOUT = 2;
     private final int EVEN_PAYOUT = 2;
-    private int animationStep=0;
     
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
+        setImage(ImageManager.getImage("roulette",1));
         numberOfPockets = 38;
         currentlySpinning = false;
         actsSpinning = 0;
@@ -63,6 +63,7 @@ public class Roulette extends Game
     
     private void playGame(){
         if(actsSpinning > 300){ // 600 acts -> 5 seconds to spin
+            setImage(ImageManager.getImage("roulette",1));
             actsSpinning = 0;
             currentlySpinning = false;
             for(int i = 0; i < gamblers.length; i++){
@@ -76,9 +77,7 @@ public class Roulette extends Game
         } else if (actsSpinning == 120){
             makeBet();
         }
-        else if(actsSpinning>120){
-            setImage(ImageManager.getImage("roulette",actsSpinning/12+1));
-        }
+        else if(actsSpinning>120)setImage(ImageManager.getImage("roulette",(actsSpinning-120)/17+1));
         actsSpinning++;
         
     }

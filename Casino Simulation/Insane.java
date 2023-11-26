@@ -25,7 +25,7 @@ public class Insane extends Gambler
         return 0;//prideful
     }
     public Insane(){
-        character=1;
+        character=Greenfoot.getRandomNumber(1)+13;
         money=Greenfoot.getRandomNumber(20001)+10000;
         insane=true;
     }
