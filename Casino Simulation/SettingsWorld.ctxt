@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=SettingsWorld
-comment0.text=\r\n\ main\ screen\r\n\ \r\n\ @author\:\ dorsa\r\n
 comment1.params=
 comment1.target=SettingsWorld()
 comment2.params=slider\ value
