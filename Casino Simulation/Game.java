@@ -37,7 +37,7 @@ public abstract class Game extends Actor
     }
     protected void endGamblerSession(int i) {
         if(gamblers[i]==null)return;
-        if(gamblers[i].isEnthusiast())removeReservation(i);
+        if(gamblers[i].isInsane())removeReservation(i);
         gamblers[i].stopPlaying();
         gamblers[i] = null;
     }

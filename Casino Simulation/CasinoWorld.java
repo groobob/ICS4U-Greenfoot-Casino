@@ -48,9 +48,9 @@ public class CasinoWorld extends World
         //____________________________________________
         ImageManager.addImages("slotsidle");
         ImageManager.addImages("slots",22);
-        ImageManager.addImages("ordinary",5,4,9);
+        ImageManager.addImages("gambler",11,4,9);
         ImageManager.addImages("betting",12);
-        ImageManager.addImages("vip",1,4,9);
+        ImageManager.addImages("roulette",12);
         addObject(new Entrance(),600,600);//temp
         prepare();
         setPaintOrder(Message.class,Text.class);
@@ -63,7 +63,7 @@ public class CasinoWorld extends World
             //if(emptyGame())
             int random = Greenfoot.getRandomNumber(20);
             if(random>10)//17
-            addObject(new SlotEnthusiast(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
             else if(random>12)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
             else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
         }

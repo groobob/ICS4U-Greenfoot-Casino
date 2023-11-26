@@ -39,6 +39,7 @@ public class Roulette extends Game
     private final int NUMBER_PAYOUT = 36;
     private final int ODD_PAYOUT = 2;
     private final int EVEN_PAYOUT = 2;
+    private int animationStep=0;
     
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
@@ -72,10 +73,14 @@ public class Roulette extends Game
                     if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
-        } else if (actsSpinning == 100){
+        } else if (actsSpinning == 120){
             makeBet();
         }
+        else if(actsSpinning>120){
+            setImage(ImageManager.getImage("roulette",actsSpinning/12+1));
+        }
         actsSpinning++;
+        
     }
     
     private int spinWheel(){

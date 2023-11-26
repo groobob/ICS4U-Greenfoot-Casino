@@ -9,7 +9,7 @@ public class Ordinary extends Gambler {
         return -1;//nothing out of the ordinary
     }
     public Ordinary(){
-        character=Greenfoot.getRandomNumber(5)+1;
+        character=Greenfoot.getRandomNumber(10)+1;
         money=Greenfoot.getRandomNumber(2001)+1000;
     }
     public void act() {

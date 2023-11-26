@@ -145,6 +145,7 @@ public class SpotManager
         }
         if(targetSpot==null)return null;
         //gambler starts moving towards targetted spot
+        //add reversation to targeteed spot
         games[targetGameIndex].addReservation(targetSpotIndex);
         gb.target(targetSpot.getHorizontal(),targetSpot.getVertical(),targetSpot.getCompensate());
         return new DetailedSpot(targetSpot,targetGameIndex,targetSpotIndex);
