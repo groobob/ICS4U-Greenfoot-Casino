@@ -34,7 +34,7 @@ public class HorseBetting extends Game
     private int animationStep=0; // step of the animation
     
     // cheater dialogue bank
-    private final String[] cheaterDialogues = {
+    private final String[] dialogues = {
         "I have a special feeling about this one... Watch and learn!",
         "Time to make some easy money!",
         "Let's see if my lucky charm works today.",
@@ -142,10 +142,8 @@ public class HorseBetting extends Game
                 gamblerStakes[i] = determineStake(gamblers[i]);
                 gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
     
-                if (gamblers[i] instanceof Cheater) {
-                    int dialogueIndex = Greenfoot.getRandomNumber(cheaterDialogues.length);
-                    gamblers[i].playDialogue(cheaterDialogues[dialogueIndex]);
-                }
+                int dialogueIndex = Greenfoot.getRandomNumber(dialogues.length);
+                gamblers[i].playDialogue(dialogues[dialogueIndex]);
             }
         }
         startRace();

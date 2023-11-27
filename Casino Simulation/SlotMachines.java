@@ -12,10 +12,14 @@ public class SlotMachines extends Game {
     private int playCounter; // counter for number of plays
     private int winAmount;
     private int actuallyWinningMoney;
+    private int winChance = SettingsWorld.getSlotsRate();
+    private int randomChance = Greenfoot.getRandomNumber(100) + 1;
 
     public SlotMachines(SpotManager.Spot[] spots) {
         super(spots);
         playCounter = 0;
+        winChance = SettingsWorld.getSlotsRate();
+        randomChance = Greenfoot.getRandomNumber(100) + 1;
     }
     public void act() {
         if(t<255)t+=3;
@@ -58,8 +62,8 @@ public class SlotMachines extends Game {
         UIManager.incrementMoneySpent(cost);
     }
     public void winMoney() {
-        if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win
-            actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
+        if (randomChance <= winChance) {  // Winning condition based on winChance
+            actuallyWinningMoney = Greenfoot.getRandomNumber(500) + 10;
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
             SoundManager.playSound("kaching");
