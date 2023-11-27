@@ -6,11 +6,11 @@ import java.util.*;  // (ArrayList)
  * 
  * Players verse the dealer based on who has the highest hand without passing 21.
  * Players will lose their bet if they bust.
- * If they tie, they will go even
+ * If they tie, they will go even.
  * If they win, they will double their bet.
  * 
- * Players decide when to hit based on their skill level
- * Dealer hits until 17 or above
+ * Players decide when to hit based on their skill level.
+ * Dealer hits until 17 or above.
  * 
  * <p>=============== Experimental Data ===============</p>
  * 
