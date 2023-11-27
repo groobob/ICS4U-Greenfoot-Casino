@@ -20,7 +20,7 @@ public class SlotMachines extends Game {
         SoundManager.addSound(5, "kaching", "mp3");
     }
     public void act() {
-        super.act();
+        if(t<255)t+=3;
         playGameCycle();
     }
     private void playGameCycle() {
@@ -49,8 +49,9 @@ public class SlotMachines extends Game {
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
-            ImageManager.getImage("slotsidle").setTransparency(t);
-            setImage(ImageManager.getImage("slotsidle"));
+            GreenfootImage gfi = new GreenfootImage("slotsidle.png");
+            gfi.setTransparency(t);
+            setImage(gfi);
         }
     }
     
