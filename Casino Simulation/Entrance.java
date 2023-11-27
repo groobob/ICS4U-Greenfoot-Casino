@@ -1,16 +1,24 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The entrance to the casino, has some utility actions which help find coordinates
- * 
+ * <html>
+ * <body>
+ * <h1>Entrance Class</h1>
+ * <p>This class extends <em>Actor</em> and represents the entrance to the casino in a Greenfoot game. It includes utility actions to assist in finding coordinates within the game world.</p>
+ *
+ * <h2>Class Attributes:</h2>
+ * <ul>
+ *     <li><strong>up:</strong> A boolean flag to manage key press states.</li>
+ * </ul>
+ *
  * @author Jimmy Zhu & David Guo
  * @version 1.0 11/18/2023
  */
 public class Entrance extends Actor
 {
     /**
-     * Act - do whatever the Thing2 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * <h3>void act()</h3>
+     * <p>Called during each action step in the game environment. Handles key press events for utility purposes.</p>
      */
     boolean up=true;
     public void act()
