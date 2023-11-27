@@ -11,9 +11,11 @@ public class Insane extends Gambler
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
+            //attempts to target, if unable then remove as would do nothing
             going=SpotManager.absoluteTarget(this);
             if(going==null)getWorld().removeObject(this);
             else{
+                //see if someone already there if yes let them continue playing until insane(this instance is playing)
                 if(!SpotManager.getGames()[going.getGameIndex()].isSpotTaken(going.getSpotIndex())&&!SpotManager.getGames()[going.getGameIndex()].isSomeonePlaying(going.getSpotIndex())){
                     alreadyPlaced=true;
                     SpotManager.getGames()[going.getGameIndex()].absolutePlaceGambler(this,going.getSpotIndex());
