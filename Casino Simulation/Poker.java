@@ -85,7 +85,7 @@ public class Poker extends Game
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
                     int randomChance = Greenfoot.getRandomNumber(100);
-                    if(randomChance < leaveChance)endGamblerSession(i);
+                    if(gamblers[i].getMoney()<=0||randomChance < leaveChance)endGamblerSession(i);
                 }
             }
         } else if(delay <= 0){

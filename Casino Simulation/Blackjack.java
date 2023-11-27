@@ -95,7 +95,7 @@ public class Blackjack extends Game
                 // If neither, it is a tie. Therefore no money earned/lost
                 // Chance for gambler to leave
                 int leaveChance = Greenfoot.getRandomNumber(100);
-                if(leaveChance < chanceToLeave)endGamblerSession(i);
+                if(gamblers[i].getMoney()<=0||leaveChance < chanceToLeave)endGamblerSession(i);
             }
             // Reset some variables for next round
             handValues[i] = 0;

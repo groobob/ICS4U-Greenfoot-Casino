@@ -84,7 +84,7 @@ public class HorseBetting extends Game
                         UIManager.incrementGamblerWL(true);
                     }
                     int leaveChance = Greenfoot.getRandomNumber(100);
-                    if(leaveChance < chanceToLeave)endGamblerSession(i);
+                    if(gamblers[i].getMoney()<=0||leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
         } else if (raceDuration == 100) {

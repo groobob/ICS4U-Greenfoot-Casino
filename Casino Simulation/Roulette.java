@@ -74,7 +74,7 @@ public class Roulette extends Game
                     // In order to prevent playMoneyEffect printing +0
                     if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
                     int leaveChance = Greenfoot.getRandomNumber(100);
-                    if(leaveChance < chanceToLeave)endGamblerSession(i);
+                    if(gamblers[i].getMoney()<=0||leaveChance < chanceToLeave)endGamblerSession(i);
                 }
             }
         } else if (actsSpinning == 120){
