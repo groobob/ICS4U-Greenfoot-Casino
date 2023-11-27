@@ -2,27 +2,38 @@ import greenfoot.*;  // (world, actor, greenfootImage, greenfoot and mouseInfo)
 import java.util.*;
 
 /**
- * Horsebetting game
+ * <html>
+ * <body>
+ * <p><strong>HorseBetting</strong> is a subclass of <em>Game</em> that simulates the experience of betting on horse races within the Greenfoot framework.</p>
+ * <p>This class manages the race dynamics, betting process, payouts, and interaction with gamblers.</p>
+ *
+ * <h3>Class Fields:</h3>
+ * <ul>
+ *     <li><strong>raceDuration, numberOfHorses, etc.</strong> - Variables that manage the state and mechanics of the horse betting game.</li>
+ * </ul>
  * 
- * @author: dorsa
- * @version 1.2 11-23-2023
+ * @author: Dorsa Rohani
+ * @version: 11/24/2023
+ * </body>
+ * </html>
  */
 public class HorseBetting extends Game
 {
-    private int raceDuration;
-    private int numberOfHorses;
-    private int winningHorse;
-    private int payout;
-    private boolean raceInProgress;
-    private int[] gamblerSelections;
-    private int[] gamblerStakes;
-    private final int winMultiplier = 5;
-    private final int oddMultiplier = 2;
-    private final int evenMultiplier = 2;
-    private double betPercentage;
-    private int chanceToLeave;
-    private int animationStep=0;
+    private int raceDuration; // race duration
+    private int numberOfHorses; // number of horses
+    private int winningHorse; // winning horse
+    private int payout; // money payout
+    private boolean raceInProgress; // if race is in progress or not
+    private int[] gamblerSelections; // gambler selections array
+    private int[] gamblerStakes; // the stakes of the gamblers
+    private final int winMultiplier = 5; // multiplier of winning
+    private final int oddMultiplier = 2; // multiplier of odd
+    private final int evenMultiplier = 2; //multiplier of even
+    private double betPercentage; // percentage of bet
+    private int chanceToLeave; // chance to leave
+    private int animationStep=0; // step of the animation
     
+    // cheater dialogue bank
     private final String[] cheaterDialogues = {
         "I have a special feeling about this one... Watch and learn!",
         "Time to make some easy money!",
@@ -31,6 +42,13 @@ public class HorseBetting extends Game
         "Feeling lucky today, let's bet big!"
     };
     
+    /**
+     * <h3>Constructor:</h3>
+     * <p>Initializes the horse betting game with a set of spots for gamblers.</p>
+     * <ul>
+     *     <li><strong>@param spots</strong> - An array of <code>SpotManager.Spot</code> objects representing the locations for the game.</li>
+     * </ul>
+     */
     public HorseBetting(SpotManager.Spot[] spots) {
         super(spots);
         numberOfHorses = 7; // 7 horses in the race
@@ -41,6 +59,9 @@ public class HorseBetting extends Game
         chanceToLeave = 30;
     }
 
+    /**
+     * <p><strong>void act()</strong> - Called periodically to execute the game's logic. Manages the race and betting cycle.</p>
+     */
     public void act() {
         super.act();
         if(++animationStep==60)animationStep=0;
@@ -90,6 +111,14 @@ public class HorseBetting extends Game
         }
     }
     
+    /**
+     * <p><strong>int calculatePayout(int gamblerIndex)</strong> - Calculates the payout for a gambler based on their bet and race outcome.</p>
+     * <ul>
+     *     <li><strong>@param gamblerIndex</strong> - Index of the gambler in the gamblers array.</li>
+     *     <li><strong>@return int</strong> - The calculated payout amount.</li>
+     * </ul>
+     * 
+     */
     public int calculatePayout(int gamblerIndex) {
         if (gamblerSelections[gamblerIndex] == -1 && winningHorse % 2 == 1) {
             return gamblerStakes[gamblerIndex] * oddMultiplier;
@@ -102,21 +131,20 @@ public class HorseBetting extends Game
     }
     
     private void placeBets() {
-    for (int i = 0; i < gamblers.length; i++) {
-        if (gamblers[i] != null && gamblers[i].isPlaying()) {
-            gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
-            gamblerStakes[i] = determineStake(gamblers[i]);
-            gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
-
-            if (gamblers[i] instanceof Cheater) {
-                int dialogueIndex = Greenfoot.getRandomNumber(cheaterDialogues.length);
-                gamblers[i].playDialogue(cheaterDialogues[dialogueIndex]);
+        for (int i = 0; i < gamblers.length; i++) {
+            if (gamblers[i] != null && gamblers[i].isPlaying()) {
+                gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+                gamblerStakes[i] = determineStake(gamblers[i]);
+                gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+    
+                if (gamblers[i] instanceof Cheater) {
+                    int dialogueIndex = Greenfoot.getRandomNumber(cheaterDialogues.length);
+                    gamblers[i].playDialogue(cheaterDialogues[dialogueIndex]);
+                }
             }
         }
+        startRace();
     }
-    startRace();
-}
-
     
     private int determineStake(Gambler g) {
         betPercentage = (double)(Greenfoot.getRandomNumber(20) + 5) / 100;
