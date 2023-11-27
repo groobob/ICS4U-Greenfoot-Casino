@@ -60,11 +60,11 @@ public class SlotMachines extends Game {
     private void cheaterCaughtDialogue(){
         switch(Greenfoot.getRandomNumber(5))
         {
-        	case 0: gamblers[0].playDialogue("How did you know!?!"); break;
-            	case 1: gamblers[0].playDialogue("%$&# this."); break;
-        	case 2: gamblers[0].playDialogue("I wasn't doing anything sus."); break;
-        	case 3: gamblers[0].playDialogue("Uh oh."); break;
-        	case 4: gamblers[0].playDialogue("My friend told me they had no security!"); break;
+            case 0: gamblers[0].playDialogue("How did you know!?!"); break;
+            case 1: gamblers[0].playDialogue("%$&# this."); break;
+            case 2: gamblers[0].playDialogue("I wasn't doing anything sus."); break;
+            case 3: gamblers[0].playDialogue("Uh oh."); break;
+            case 4: gamblers[0].playDialogue("My friend told me they had no security!"); break;
         }
     }
     private void deductGameCost() {
