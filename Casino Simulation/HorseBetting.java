@@ -50,6 +50,9 @@ public class HorseBetting extends Game
                     payout = calculatePayout(i);
                     UIManager.incrementCasinoProfit(payout);
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
+                    if (gamblers[i] instanceof Cheater) {
+                        gamblers[i].playDialogue("Let's see how this race goes... I've got a feeling!");
+                    }
                     int leaveChance = Greenfoot.getRandomNumber(100);
                     if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
@@ -62,7 +65,22 @@ public class HorseBetting extends Game
     
     private void startRace() {
         raceInProgress = true;
-        winningHorse = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+        boolean cheaterPlaying = false;
+        int cheaterSelection = -1;
+    
+        for (int i = 0; i < gamblers.length; i++) {
+            if (gamblers[i] instanceof Cheater && gamblers[i].isPlaying()) {
+                cheaterPlaying = true;
+                cheaterSelection = gamblerSelections[i];
+                break;
+            }
+        }
+    
+        if (cheaterPlaying) {
+            winningHorse = cheaterSelection;//ensure cheater wins
+        } else {
+            winningHorse = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+        }
     }
     
     public int calculatePayout(int gamblerIndex) {
@@ -82,6 +100,10 @@ public class HorseBetting extends Game
                 gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
                 gamblerStakes[i] = determineStake(gamblers[i]);
                 gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+    
+                if (gamblers[i] instanceof Cheater) {
+                    gamblers[i].playDialogue("I have a feeling on this one... Watch and learn!");
+                }
             }
         }
         startRace();
