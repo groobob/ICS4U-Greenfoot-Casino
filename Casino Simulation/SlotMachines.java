@@ -12,22 +12,12 @@ public class SlotMachines extends Game {
     private int playCounter; // counter for number of plays
     private int winAmount;
     private int actuallyWinningMoney;
-    private int winCounter;
-    
-    private final String[] cheaterDialogues = {
-        "Easy money, as always!",
-        "The slots are all mine today!",
-        "Looks like luck is on my side again!",
-        "Winning feels almost too easy!",
-        "I have the magic touch on these machines!"
-    };
 
     public SlotMachines(SpotManager.Spot[] spots) {
         super(spots);
         playCounter = 0;
-        winCounter=0;
         // SFX
-        SoundManager.addSound(5, "kaching", "mp3", 40);
+        SoundManager.addSound(5, "kaching", "mp3");
     }
     public void act() {
         super.act();
@@ -50,7 +40,6 @@ public class SlotMachines extends Game {
             }
         }
         else{
-            //if(!gamblers[0].isPlaying()&&!reserved[0])gamblers[0]=null;
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
@@ -61,28 +50,13 @@ public class SlotMachines extends Game {
     
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
-        //HorizontalBar.casinoProfit += cost;
-    }
-    private void incrementWinCounter() {
-        winCounter++;
-    }
-    private  boolean shouldCelebrate() {
-        return winCounter % 5 == 0;
     }
     public void winMoney() {
-        if (gamblers[0] instanceof Cheater || Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {
-            actuallyWinningMoney = Greenfoot.getRandomNumber(500) + 10;
+        if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win
+            actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
             SoundManager.playSound("kaching");
-    
-            if (gamblers[0] instanceof Cheater) {
-                incrementWinCounter();
-                if (shouldCelebrate()) {
-                    int dialogueIndex = Greenfoot.getRandomNumber(cheaterDialogues.length);
-                    gamblers[0].playDialogue(cheaterDialogues[dialogueIndex]);
-                }
-            }
         }
     }
 }
