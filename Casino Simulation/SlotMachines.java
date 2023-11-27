@@ -42,10 +42,11 @@ public class SlotMachines extends Game {
             if(++delay<132)return;
             playCounter++;
             delay=0;
-            if(playCounter>=maxPlays||gamblers[0].getMoney()-cost<=0){
-                if(Greenfoot.getRandomNumber(3)==0&&gamblers[0].checkBehaviour()==1)gamblers[0].playDialogue((Greenfoot.getRandomNumber(2)==0?"I got caught.":"I messed up."));
+            if(Greenfoot.getRandomNumber(3)==0&&gamblers[0].checkBehaviour()==1){
+                cheaterCaughtDialogue();
                 endGamblerSession(0);
             }
+            else if(playCounter>=maxPlays||gamblers[0].getMoney()-cost<=0)endGamblerSession(0);
         }
         else{
             delay=0;
@@ -56,7 +57,16 @@ public class SlotMachines extends Game {
             setImage(gfi);
         }
     }
-    
+    private void cheaterCaughtDialogue(){
+        switch(Greenfoot.getRandomNumber(5))
+        {
+        	case 0: gamblers[0].playDialogue("How did you know!?!"); break;
+            	case 1: gamblers[0].playDialogue("%$&# this."); break;
+        	case 2: gamblers[0].playDialogue("I wasn't doing anything sus."); break;
+        	case 3: gamblers[0].playDialogue("Uh oh."); break;
+        	case 4: gamblers[0].playDialogue("My friend told me they had no security!"); break;
+        }
+    }
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
         UIManager.incrementMoneySpent(cost);
