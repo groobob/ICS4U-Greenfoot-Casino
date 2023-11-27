@@ -74,7 +74,7 @@ public class SoundManager
         for(int i = 0; i<n; i++)q.add(new GreenfootSound(name));
         return q;
     }
-        //adds n copies of a GreenFootSound denoted by name. This time vol is customizable
+    //adds n copies of a GreenFootSound denoted by name. This time vol is customizable
     private static Queue<GreenfootSound> createFilledQueue(int n, String name, int vol){
         Queue<GreenfootSound> q = new LinkedList<GreenfootSound>();
         for(int i = 0; i<n; i++){
