@@ -54,12 +54,15 @@ public class CasinoWorld extends World
     public void act(){
         if(--delay==0){
             delay=Greenfoot.getRandomNumber(120)+60;
-            int random = Greenfoot.getRandomNumber(20);
-            //VIP:2/20 chance. Insane: 2/20 chance. Cheater: 4/20 chance. Ordinary: 12/20 chance.
-            if(random>17)addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else if(random>15)addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else if(random>11)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            int random = Greenfoot.getRandomNumber(100);
+            if(random>100-SettingsWorld.getVIPSpawnRate())addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else if(random>100-SettingsWorld.getCheaterSpawnRate()-SettingsWorld.getVIPSpawnRate())addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else {
+                //10% chance of non-VIP non-Cheater being Insane
+                random = Greenfoot.getRandomNumber(10);
+                if(random==0)addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+                else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            }
         }
         if(placed!=14&&UIManager.getCasinoProfit()/2>UIManager.getCasinoTarget()*0.05){//if not all placed and current profit is 2x 5% of target 
             placed++;

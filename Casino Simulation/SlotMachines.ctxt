@@ -1,21 +1,14 @@
 #BlueJ class context
 comment0.target=SlotMachines
-comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p><strong>SlotMachines</strong>\ class\ extends\ <em>Game</em>\ and\ simulates\ slot\ machine\ gameplay\ within\ the\ Greenfoot\ framework.</p>\r\n\ <p>It\ manages\ slot\ machine\ interactions\ with\ gamblers,\ including\ betting,\ the\ play\ cycle,\ wins,\ and\ losses.</p>\r\n\ \r\n\ <h3>Class\ Fields\:</h3>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>cost,\ minWinAmount,\ maxWinAmount</strong>\ -\ Constants\ defining\ the\ gameplay\ economics.</li>\r\n\ \ \ \ \ <li><strong>playCounter,\ winAmount,\ etc.</strong>\ -\ Variables\ tracking\ gameplay\ state\ and\ outcomes.</li>\r\n\ </ul>\r\n\ \r\n\ @author\:\ Dorsa\ Rohani\r\n\ @version\:\ 11/24/2023\r\n
+comment0.text=\r\n\ The\ slot\ machines\r\n\ Author\:\ Dorsa\ Rohani\r\n
 comment1.params=spots
 comment1.target=SlotMachines(SpotManager.Spot[])
-comment1.text=\r\n\ <h3>Constructor\:</h3>\r\n\ <p>Initializes\ the\ slot\ machine\ with\ a\ set\ of\ spots\ for\ gamblers.</p>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>@param\ spots</strong>\ -\ An\ array\ of\ <code>SpotManager.Spot</code>\ objects\ representing\ the\ locations\ for\ the\ game.</li>\r\n\ </ul>\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ <p><strong>void\ act()</strong>\ -\ Called\ periodically\ to\ execute\ the\ slot\ machine's\ logic.</p>\r\n
 comment3.params=
 comment3.target=void\ playGameCycle()
 comment4.params=
 comment4.target=void\ deductGameCost()
 comment5.params=
-comment5.target=void\ incrementWinCounter()
-comment6.params=
-comment6.target=boolean\ shouldCelebrate()
-comment7.params=
-comment7.target=void\ winMoney()
-comment7.text=\r\n\ <p><strong>void\ winMoney()</strong>\ -\ Handles\ the\ logic\ for\ winning\ money\ on\ the\ slot\ machine.\ Calculates\ and\ awards\ win\ amounts,\ plays\ sound\ effects,\ and\ manages\ cheater-specific\ behavior.</p>\r\n
-numComments=8
+comment5.target=void\ winMoney()
+numComments=6
