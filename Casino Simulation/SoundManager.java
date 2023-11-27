@@ -58,6 +58,16 @@ public class SoundManager
     public static void addSound(int maxSimultaneousActive, String name, String type){
         sounds.put(name,createFilledQueue(maxSimultaneousActive,name+"."+type));
     }
+    /**
+     * <p><strong>static void addSound(int maxSimultaneousActive, String name, String type)</strong> - Adds a sound effect to the sound manager. <br>
+     * <strong>@param maxSimultaneousActive</strong> - The maximum number of simultaneous active instances of the sound.<br>
+     * <strong>@param name</strong> - The name of the sound.<br>
+     * <strong>@param type</strong> - The file type of the sound (e.g., "wav", "mp3").<br>
+     * <strong>@param type</strong> - The sound volume percentage (e.g., "wav", "mp3").</p>
+     */
+    public static void addSound(int maxSimultaneousActive, String name, String type, int vol){
+        sounds.put(name,createFilledQueue(maxSimultaneousActive,name+"."+type));
+    }
     //adds n copies of a GreenFootSound denoted by name
     private static Queue<GreenfootSound> createFilledQueue(int n, String name){
         Queue<GreenfootSound> q = new LinkedList<GreenfootSound>();
