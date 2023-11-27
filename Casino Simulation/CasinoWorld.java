@@ -54,7 +54,7 @@ public class CasinoWorld extends World
                 case 9:addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(240,350,-20)}),240,325);break;
                 case 10:addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(320,350,-20)}),320,325);break;
                 case 11:addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(400,350,-20)}),400,325);break;
-                case 12:addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1150,290,-80), new SpotManager.Spot(1115,320,-45), new SpotManager.Spot(1070,335,-30), new SpotManager.Spot(1015,330,-40), new SpotManager.Spot(985,300,-60), new SpotManager.Spot(970,270,-120)}),1060,270);break;
+                case 12:addObject(new Roulette(new SpotManager.Spot[]{new SpotManager.Spot(1150,290,-80), new SpotManager.Spot(1115,320,-45), new SpotManager.Spot(1070,335,-30), new SpotManager.Spot(1015,330,-40), new SpotManager.Spot(98,300,-60), new SpotManager.Spot(970,270,-120)}),1060,270);break;
                 case 13:addObject(new Poker(new SpotManager.Spot[]{new SpotManager.Spot(920,525,0), new SpotManager.Spot(940,440,55), new SpotManager.Spot(1000,435,50), new SpotManager.Spot(1050,435,50), new SpotManager.Spot(1130,460,75)}),1020,500);break;
                 case 14:addObject(new Blackjack(new SpotManager.Spot[]{new SpotManager.Spot(80,445,70), new SpotManager.Spot(130,445,70), new SpotManager.Spot(180,445,70), new SpotManager.Spot(230,445,70), new SpotManager.Spot(270,480,0), new SpotManager.Spot(270,520,0)}),155,500);break;
             }
