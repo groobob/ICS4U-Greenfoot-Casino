@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CasinoWorld
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Game\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ BIG\ COMMENT\ HERE\r\n\ \r\n\ @author\ Richard\ Zhang,\ Jimmy\ Zhu,\ David\ Guo,\ Dorsa\ Rohani\r\n\ @version\ 1.1\ 11/26/2023\r\n
 comment1.params=
 comment1.target=CasinoWorld()
 comment2.params=
@@ -8,10 +8,10 @@ comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ prepare()
 comment3.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
-comment4.params=actorsToSort\ world
-comment4.target=void\ zSort(java.util.ArrayList,\ greenfoot.World)
+comment4.params=
+comment4.target=void\ started()
 comment5.params=
-comment5.target=void\ started()
-comment6.params=
-comment6.target=void\ stopped()
+comment5.target=void\ stopped()
+comment6.params=actorsToSort\ world
+comment6.target=void\ zSort(java.util.ArrayList,\ greenfoot.World)
 numComments=7

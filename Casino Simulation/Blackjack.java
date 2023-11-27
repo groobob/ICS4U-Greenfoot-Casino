@@ -109,7 +109,6 @@ public class Blackjack extends Game
         if(hand <= 13 && skill > 40 && Greenfoot.getRandomNumber(g.getLuck())>50)hand += hit(hand);
         if(hand <= 16 && dealersHand > 16 && Greenfoot.getRandomNumber(g.getLuck())>50)hand += hit(hand);
         if(hand <= 17 && dealersHand > 17 && skill > 90 && Greenfoot.getRandomNumber(2)==0)hand += hit(hand);
-        System.out.println(hand);
         return hand;
     }
     // An imitation of hitting, aka drawing a card (equal chance for all 13 different cards)
