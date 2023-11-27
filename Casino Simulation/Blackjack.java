@@ -90,6 +90,8 @@ public class Blackjack extends Game
                 // Did they win?
                 else if(handValues[i] > dealersHand){
                     gamblers[i].playMoneyEffect(gBet);
+                    if(gBet > 0 && Greenfoot.getRandomNumber(2) == 0) gamblers[i].playDialogue(winDialogues[Greenfoot.getRandomNumber(winDialogues.length)]);
+                    else if(Greenfoot.getRandomNumber(2) == 0) gamblers[i].playDialogue(loseDialogues[Greenfoot.getRandomNumber(loseDialogues.length)]);
                     UIManager.incrementGamblerWL(true);
                 }
                 // If neither, it is a tie. Therefore no money earned/lost

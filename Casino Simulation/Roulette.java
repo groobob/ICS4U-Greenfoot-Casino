@@ -61,7 +61,7 @@ public class Roulette extends Game
     public void act()
     {
         super.act();
-        playGame();        
+        playGame();
     }
     
     private void playGame(){
@@ -72,7 +72,13 @@ public class Roulette extends Game
             for(int i = 0; i < gamblers.length; i++){
                 if(gamblers[i] != null && gamblers[i].isPlaying()){
                     // In order to prevent playMoneyEffect printing +0
-                    if(calculateEarned(i)!=0)gamblers[i].playMoneyEffect(calculateEarned(i));
+                    int earnings = calculateEarned(i);
+                    if(earnings!=0)
+                    {
+                        gamblers[i].playMoneyEffect(earnings);
+                        if(earnings > 0 && Greenfoot.getRandomNumber(2) == 0) gamblers[i].playDialogue(winDialogues[Greenfoot.getRandomNumber(winDialogues.length)]);
+                        else if(Greenfoot.getRandomNumber(2) == 0) gamblers[i].playDialogue(loseDialogues[Greenfoot.getRandomNumber(loseDialogues.length)]);
+                    }
                     int leaveChance = Greenfoot.getRandomNumber(100);
                     if(gamblers[i].getMoney()<=0||leaveChance < chanceToLeave)endGamblerSession(i);
                 }

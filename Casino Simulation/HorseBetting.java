@@ -143,7 +143,7 @@ public class HorseBetting extends Game
                 gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
     
                 int dialogueIndex = Greenfoot.getRandomNumber(dialogues.length);
-                gamblers[i].playDialogue(dialogues[dialogueIndex]);
+                if(Greenfoot.getRandomNumber(3) == 0) gamblers[i].playDialogue(dialogues[dialogueIndex]);
             }
         }
         startRace();

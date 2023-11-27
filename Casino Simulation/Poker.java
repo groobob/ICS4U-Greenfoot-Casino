@@ -115,7 +115,11 @@ public class Poker extends Game
     
     private void payout(Gambler g){
         // In order to prevent playMoneyEffect printing +0
-        if(pot != 0)g.playMoneyEffect(pot);
+        if(pot != 0)
+        {
+            g.playMoneyEffect(pot);
+            if(Greenfoot.getRandomNumber(2) == 0) g.playDialogue(winDialogues[Greenfoot.getRandomNumber(winDialogues.length)]);
+        }
         pot = 0;
         UIManager.incrementGamblerWL(true);
     }

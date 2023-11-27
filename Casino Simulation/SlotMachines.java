@@ -76,6 +76,8 @@ public class SlotMachines extends Game {
             actuallyWinningMoney = Greenfoot.getRandomNumber(500) + 10;
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
+            if(winAmount > 0 && Greenfoot.getRandomNumber(4) == 0) gamblers[0].playDialogue(winDialogues[Greenfoot.getRandomNumber(winDialogues.length)]);
+            else if(Greenfoot.getRandomNumber(4) == 0) gamblers[0].playDialogue(loseDialogues[Greenfoot.getRandomNumber(loseDialogues.length)]);
             SoundManager.playSound("kaching");
         }
     }

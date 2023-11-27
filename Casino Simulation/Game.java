@@ -27,6 +27,25 @@ public abstract class Game extends Actor
     private int len;
     protected boolean[] reserved;
     protected int t=0;//transparency
+    protected final String[] winDialogues = {
+        "Woohoo!",
+        "Yippee!",
+        "Microchance my &%$!",
+        "Too Easy! :)",
+        "Bringing home the riches!",
+        "No way!",
+        ":)"
+    };
+    protected final String[] loseDialogues = {
+        "%$#&!",
+        "WHAT THE %$&#!",
+        "I am very calm.",
+        ":(",
+        "This can't be real!",
+        "My life savings...",
+        "Wow! I can't believe that just happened!",
+        "bruh"
+    };
     
     /**
      * <h2>Constructor:</h2>
