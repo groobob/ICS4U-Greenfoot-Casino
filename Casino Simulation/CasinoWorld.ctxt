@@ -1,14 +1,19 @@
 #BlueJ class context
 comment0.target=CasinoWorld
-comment0.text=\r\n\ BIG\ COMMENT\ HERE\r\n\ \r\n\ @author\ Richard\ Zhang,\ Jimmy\ Zhu,\ David\ Guo,\ Dorsa\ Rohani\r\n\ @version\ 1.1\ 11/26/2023\r\n
+comment0.text=\r\n\ BIG\ COMMENT\ HERE\r\n\ \r\n\ <html>\r\n\ <body>\r\n\ <h1>CasinoWorld\ Class</h1>\r\n\ <p>This\ class\ extends\ <em>World</em>\ and\ represents\ the\ main\ game\ world\ for\ a\ casino\ game\ in\ Greenfoot.\ It\ handles\ the\ initialization\ of\ the\ game\ world,\ including\ setting\ up\ the\ environment,\ managing\ game\ elements,\ and\ controlling\ the\ game's\ music.</p>\r\n\r\n\ <h2>Class\ Attributes\:</h2>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>delay\:</strong>\ Controls\ the\ spawning\ of\ new\ characters.</li>\r\n\ \ \ \ \ <li><strong>placed\:</strong>\ Tracks\ the\ number\ of\ items\ placed\ in\ the\ world.</li>\r\n\ \ \ \ \ <li><strong>casinoJazz\:</strong>\ Background\ music\ for\ the\ casino\ world.</li>\r\n\ </ul>\r\n\r\n\ @author\ Richard\ Zhang,\ Jimmy\ Zhu,\ David\ Guo,\ Dorsa\ Rohani\r\n\ @version\ 1.1\ 11/26/2023\r\n
 comment1.params=
 comment1.target=CasinoWorld()
+comment1.text=\r\n\ <h2>Constructor\:</h2>\r\n\ <p>Sets\ up\ the\ casino\ world,\ including\ background,\ music,\ and\ initial\ game\ elements.</p>\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ <h3>void\ act()</h3>\r\n\ <p>Manages\ the\ spawning\ of\ new\ characters\ and\ game\ elements\ based\ on\ certain\ conditions.</p>\r\n
 comment3.params=
 comment3.target=void\ started()
+comment3.text=\r\n\ <h3>void\ started()</h3>\r\n\ <p>Plays\ the\ casino\ background\ music\ in\ a\ loop\ when\ the\ game\ starts.</p>\r\n
 comment4.params=
 comment4.target=void\ stopped()
+comment4.text=\r\n\ <h3>void\ stopped()</h3>\r\n\ <p>Pauses\ the\ casino\ background\ music\ when\ the\ game\ is\ stopped.</p>\r\n\r\n
 comment5.params=actorsToSort\ world
 comment5.target=void\ zSort(java.util.ArrayList,\ greenfoot.World)
+comment5.text=\r\n\ <h3>static\ void\ zSort(ArrayList<Actor>\ actorsToSort,\ World\ world)</h3>\r\n\ <p>Sorts\ actors\ in\ the\ world\ based\ on\ their\ y-coordinate\ to\ simulate\ depth.</p>\r\n\ <p><strong>Parameters\:</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>actorsToSort\ (ArrayList<Actor>)\:</strong>\ The\ list\ of\ actors\ to\ be\ sorted.</li>\r\n\ \ \ \ \ <li><strong>world\ (World)\:</strong>\ The\ world\ where\ the\ actors\ are\ located.</li>\r\n\ </ul>\r\n\r\n
 numComments=6
