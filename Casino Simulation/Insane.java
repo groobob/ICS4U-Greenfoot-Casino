@@ -62,21 +62,21 @@ public class Insane extends Gambler
         if(!playing) {
             //5(frame every 5 acts)*9(9 frames)=45
             if(++animationStep==45)animationStep=0;
-            if(Math.abs(tx-getX())>2){//if x not at target(wiggle room of 2)
-                setImage(ImageManager.getImage("gambler",character,(Integer.signum(tx-getX())==-1?2:4),animationStep/5+1));//animates
-                mostRecentDirection=(Integer.signum(tx-getX())==-1?2:4);
-                setLocation(getX()+speed*Integer.signum(tx-getX()),getY());
+            if(Math.abs(targetX-getX())>2){//if x not at target(wiggle room of 2)
+                setImage(ImageManager.getImage("gambler",character,(Integer.signum(targetX-getX())==-1?2:4),animationStep/5+1));//animates
+                mostRecentDirection=(Integer.signum(targetX-getX())==-1?2:4);
+                setLocation(getX()+speed*Integer.signum(targetX-getX()),getY());
             }
-            else if (Math.abs(ty-getY())>5){//if y not at target(wiggle room of 5)
-                setImage(ImageManager.getImage("gambler",character,(Integer.signum(ty-getY())==-1?1:3),animationStep/5+1));//animates
-                mostRecentDirection=(Integer.signum(ty-getY())==-1?1:3);
-                setLocation(getX(),getY()+speed*Integer.signum(ty-getY()));
+            else if (Math.abs(targetY-getY())>5){//if y not at target(wiggle room of 5)
+                setImage(ImageManager.getImage("gambler",character,(Integer.signum(targetY-getY())==-1?1:3),animationStep/5+1));//animates
+                mostRecentDirection=(Integer.signum(targetY-getY())==-1?1:3);
+                setLocation(getX(),getY()+speed*Integer.signum(targetY-getY()));
             }
-            else if (tx!=fx)tx=fx;//now target x is final target x. Already when to first target now go to fx.
-            else if (tx==1250||tx==-50)getWorld().removeObject(this);//if offscreen remove
+            else if (targetX!=finalTargetX)targetX=finalTargetX;//now target x is final target x. Already when to first target now go to fx.
+            else if (targetX==1250||targetX==-50)getWorld().removeObject(this);//if offscreen remove
             else if(!flag) {
-                if(!toSpot)ty+=yToSpot;//if toSpot is positive(already played the game) then ty(target y) is adjusted accordingly and if negative(have not played the game) it is adjusted accordingly
-                else ty-=yToSpot;
+                if(!toSpot)targetY+=yToSpot;//if toSpot is positive(already played the game) then ty(target y) is adjusted accordingly and if negative(have not played the game) it is adjusted accordingly
+                else targetY-=yToSpot;
                 flag=true;//to prevent this else if block of code from immediately running again
             } 
             else if(!toSpot) {//at this point gambler is on the game. If toSpot is false it means that this section of code has not been run before, so run it.
