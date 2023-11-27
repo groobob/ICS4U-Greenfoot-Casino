@@ -1,12 +1,15 @@
 #BlueJ class context
 comment0.target=Insane
-comment0.text=\r\n\ VIP\ gambler.\ Special\ privileges.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/25\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <h1>Insane\ Class</h1>\r\n\ <p>This\ class\ extends\ the\ <em>Gambler</em>\ class\ and\ represents\ a\ VIP\ gambler\ with\ special\ privileges\ in\ a\ Greenfoot\ game.\ The\ Insane\ class\ has\ unique\ behaviors\ and\ interactions\ within\ the\ game\ world.</p>\r\n\r\n\ <h2>Class\ Attributes\:</h2>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>going\:</strong>\ The\ targeted\ spot\ for\ the\ Insane\ gambler.</li>\r\n\ \ \ \ \ <li><strong>alreadyPlaced\:</strong>\ A\ flag\ indicating\ whether\ the\ gambler\ has\ already\ been\ placed\ in\ a\ spot.</li>\r\n\ </ul>\r\n\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/25\r\n
 comment1.params=w
 comment1.target=void\ addedToWorld(greenfoot.World)
 comment2.params=
 comment2.target=int\ checkBehaviour()
+comment2.text=\ \r\n\ <h3>int\ checkBehaviour()</h3>\r\n\ <p>Returns\ an\ integer\ representing\ the\ behavior\ of\ the\ Insane\ gambler.</p>\r\n\ <p><strong>Return\:</strong>\ int\ -\ Indicates\ prideful\ behavior\ (returns\ 0).</p>\r\n
 comment3.params=
 comment3.target=Insane()
+comment3.text=\r\n\ <h2>Constructor\:</h2>\r\n\ <p>Initializes\ a\ new\ Insane\ instance\ with\ unique\ characteristics,\ including\ a\ high\ amount\ of\ money.</p>\r\n
 comment4.params=
 comment4.target=void\ act()
+comment4.text=\r\n\r\n\ <h3>void\ act()</h3>\r\n\ <p>Executes\ the\ Insane\ gambler's\ actions\ during\ each\ step\ of\ the\ game\ environment.\ Manages\ their\ movement\ and\ interaction\ with\ the\ gaming\ spots.</p>\r\n
 numComments=5
