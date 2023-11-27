@@ -39,7 +39,7 @@ public class SettingsWorld extends World {
     // ordinary starting money: 
     // vip starting money: 
 
-    public SettingsWorld(TitleScreen ts) {    
+    public SettingsWorld() {    
         super(1200, 740, 1);
         setBackground("settingsworld.png");
         this.ts = ts;

@@ -16,6 +16,8 @@ public class SlotMachines extends Game {
     public SlotMachines(SpotManager.Spot[] spots) {
         super(spots);
         playCounter = 0;
+        // SFX
+        SoundManager.addSound(5, "kaching", "mp3");
     }
     public void act() {
         super.act();
@@ -59,6 +61,7 @@ public class SlotMachines extends Game {
             //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
+            SoundManager.playSound("kaching");
        // }
         }
     }

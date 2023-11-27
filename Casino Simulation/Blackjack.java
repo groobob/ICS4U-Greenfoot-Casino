@@ -106,9 +106,11 @@ public class Blackjack extends Game
         // A bunch of if statements to determine if the player will continue hitting
         if(skill < 10)hand+=hit(hand);
         if(skill < 30)hand+=hit(hand);
+        // To help lucky players
         if(hand <= 13 && skill > 40 && Greenfoot.getRandomNumber(g.getLuck())>50)hand += hit(hand);
-        if(hand <= 16 && dealersHand > 16 && Greenfoot.getRandomNumber(g.getLuck())>50)hand += hit(hand);
-        if(hand <= 17 && dealersHand > 17 && skill > 90 && Greenfoot.getRandomNumber(2)==0)hand += hit(hand);
+        if(hand <= 14 && skill > 60 && Greenfoot.getRandomNumber(g.getLuck())>50)hand += hit(hand);
+        // To help our cheaters
+        if(hand <= 15 && dealersHand > 15 && skill > 99 && Greenfoot.getRandomNumber(2)==0)hand += hit(hand);
         return hand;
     }
     // An imitation of hitting, aka drawing a card (equal chance for all 13 different cards)

@@ -114,7 +114,7 @@ public class Poker extends Game
     
     private void payout(Gambler g){
         // In order to prevent playMoneyEffect printing +0
-        if(pot != 0)g.playMoneyEffect(pot);
+        if(pot != 0)g.playMoneyEffect(pot, false);
         pot = 0;
     }
     

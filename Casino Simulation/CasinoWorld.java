@@ -29,7 +29,7 @@ public class CasinoWorld extends World
         ImageManager.addImages("roulette",12);
         addObject(new Entrance(),600,600);
         addObject(new HorseBetting(new SpotManager.Spot[]{new SpotManager.Spot(740,285,-80), new SpotManager.Spot(798,280,-80), new SpotManager.Spot(877,275,-80), new SpotManager.Spot(758+2*48,255,-80), new SpotManager.Spot(710+48,250,-80), new SpotManager.Spot(710,245,-80), new SpotManager.Spot(678,265,-80)}),780,196);
-        addObject(new UIManager(123456),600,60);
+        addObject(new UIManager(SettingsWorld.getCasinoTarget()),600,60);
         setPaintOrder(Message.class,Text.class);
     }
     public void act(){

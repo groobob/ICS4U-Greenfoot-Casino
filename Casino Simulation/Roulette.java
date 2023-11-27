@@ -36,9 +36,9 @@ public class Roulette extends Game
     private int[] moneyBets;
     
     // Payout multiplier values
-    private final int NUMBER_PAYOUT = 36;
-    private final int ODD_PAYOUT = 2;
-    private final int EVEN_PAYOUT = 2;
+    private final double NUMBER_PAYOUT = 30;
+    private final double ODD_PAYOUT = 2.0;
+    private final double EVEN_PAYOUT = 2.0;
     
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
@@ -103,11 +103,11 @@ public class Roulette extends Game
     
     public int calculateEarned(int gamblerIndex){
         if(gamblerBets[gamblerIndex] == -1 && pocketNum % 2 == 1){
-            return moneyBets[gamblerIndex] * ODD_PAYOUT;
-        } else if(gamblerBets[gamblerIndex] == -2 && pocketNum % 2 == 0){
-            return moneyBets[gamblerIndex] * EVEN_PAYOUT;
+            return (int)(moneyBets[gamblerIndex] * ODD_PAYOUT);
+        } else if(gamblerBets[gamblerIndex] == -2 && pocketNum % 2 == 0 & pocketNum != 0){
+            return (int)(moneyBets[gamblerIndex] * EVEN_PAYOUT);
         } else if(gamblerBets[gamblerIndex] == pocketNum){
-            return moneyBets[gamblerIndex] * NUMBER_PAYOUT;
+            return (int)(moneyBets[gamblerIndex] * NUMBER_PAYOUT);
         }
         return 0;
         
