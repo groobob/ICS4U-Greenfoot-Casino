@@ -51,6 +51,8 @@ public class Roulette extends Game
         // Initlize arraylist of gamblers
         gamblerBets = new int[gamblers.length]; // the number the gambler bets on (-1 is odd, -2 is even ,0 is for 0 and it's variants)
         moneyBets = new int[gamblers.length];
+        // SFX
+        SoundManager.addSound(1, "Chatter", "wav", 90);
     }
     /**
      * Act - do whatever the Roulette wants to do. This method is called whenever
@@ -94,6 +96,7 @@ public class Roulette extends Game
         return false;
     }
     private int spinWheel(){
+        SoundManager.playSound("Chatter");
         currentlySpinning = true;
         int randomPocket = Greenfoot.getRandomNumber(numberOfPockets);
         // Change numbers above 36 to 0
