@@ -8,15 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Entrance extends Actor
 {
-    /**
-     * Act - do whatever the Thing2 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     boolean up=true;
     public void act()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(mouse!=null){
+            //pressing f only prints once before pressing g
             if(Greenfoot.isKeyDown("f")&&up){
                 System.out.println(mouse.getX()+","+mouse.getY());
                 up=false;

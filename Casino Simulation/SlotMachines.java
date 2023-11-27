@@ -40,7 +40,6 @@ public class SlotMachines extends Game {
             }
         }
         else{
-            //if(!gamblers[0].isPlaying()&&!reserved[0])gamblers[0]=null;
             delay=0;
             playCounter=0;
             maxPlays = Greenfoot.getRandomNumber(5)+3;
@@ -51,18 +50,13 @@ public class SlotMachines extends Game {
     
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
-        //HorizontalBar.casinoProfit += cost;
     }
     public void winMoney() {
         if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win
-        //if (Greenfoot.getRandomNumber(2)==0) {
             actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
-            //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
-            //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
             SoundManager.playSound("kaching");
-       // }
         }
     }
 }
