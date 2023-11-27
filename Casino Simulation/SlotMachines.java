@@ -27,7 +27,7 @@ public class SlotMachines extends Game {
         playCounter = 0;
         winCounter=0;
         // SFX
-        SoundManager.addSound(5, "kaching", "mp3");
+        SoundManager.addSound(5, "kaching", "mp3", 40);
     }
     public void act() {
         super.act();
