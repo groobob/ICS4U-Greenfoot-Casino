@@ -37,8 +37,8 @@ public class Roulette extends Game
     
     // Payout multiplier values
     private final double NUMBER_PAYOUT = 30;
-    private final double ODD_PAYOUT = 1.9;
-    private final double EVEN_PAYOUT = 1.9;
+    private final double ODD_PAYOUT = 2.0;
+    private final double EVEN_PAYOUT = 2.0;
     
     public Roulette(SpotManager.Spot[] spots) {
         super(spots);
