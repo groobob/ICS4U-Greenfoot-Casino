@@ -33,6 +33,12 @@ public class UIManager extends Actor
         textBoxes[2].changeText(casinoProfit + "");
         textBoxes[3].changeText(gamblerWins + "/" + gamblerLosses);
     }
+    public static int getCasinoProfit(){
+        return casinoProfit;
+    }
+    public static int getCasinoTarget(){
+        return casinoProfit;
+    }
     public static void attachText(Text text, int type)
     {
         textBoxes[type] = text;

@@ -54,13 +54,13 @@ public class SettingsWorld extends World {
         slotsWinRate = 1;
         vipGamblerStartingMoney = 5000;
 
-        Slider slider1 = new Slider(1, 708, 822, 10000, 1000000, casinoTarget);
-        Slider slider2 = new Slider(2, 708, 822, 1, 25, vipGamblerSpawnRate);
-        Slider slider3 = new Slider(3, 708, 822, 5000, 10000, vipGamblerStartingMoney);
-        Slider slider4 = new Slider(4, 708, 822, 1, 25, cheaterGamblerSpawnRate);
-        Slider slider5 = new Slider(5, 708, 822, 1, 5000, ordinaryStartingMoney);
-        Slider slider6 = new Slider(6, 708, 822, 1, 99, slotsWinRate);
-        Slider slider7 = new Slider(7, 708, 822, 7, 20, numberOfHorses);
+        Slider slider1 = new Slider(1, 698, 831, 10000, 1000000, casinoTarget);
+        Slider slider2 = new Slider(2, 698, 831, 1, 25, vipGamblerSpawnRate);
+        Slider slider3 = new Slider(3, 698, 831, 5000, 10000, vipGamblerStartingMoney);
+        Slider slider4 = new Slider(4, 698, 831, 1, 25, cheaterGamblerSpawnRate);
+        Slider slider5 = new Slider(5, 698, 831, 1, 5000, ordinaryStartingMoney);
+        Slider slider6 = new Slider(6, 698, 831, 1, 99, slotsWinRate);
+        Slider slider7 = new Slider(7, 698, 831, 7, 20, numberOfHorses);
         
         addObject(slider1, calculateSliderXPosition(slider1, casinoTarget), 219);
         valueText1 = new Text(12, "Arial", String.valueOf(casinoTarget));
@@ -192,12 +192,10 @@ public class SettingsWorld extends World {
     }
     
     public static int getRouletteStyle(){
-        System.out.println(rouletteStyle);
         return rouletteStyle;
     }
     
     public static int getNumberOfHorses(){
-        System.out.println(numberOfHorses);
         return numberOfHorses;
     }
     

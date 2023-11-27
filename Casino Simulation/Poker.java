@@ -58,6 +58,7 @@ public class Poker extends Game
      */
     public void act()
     {
+        super.act();
         playersAtTable = getPlayersAtTable();
         if(playersAtTable > 1){
             playHand();

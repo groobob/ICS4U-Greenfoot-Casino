@@ -27,10 +27,11 @@ public class SpotManager
     private static Game[] games = new Game[numberOfGames];
     private static int i=0;
     /**
-     * <p><strong>static void resetIndex()</strong> - Resets the index for adding new games to the <code>games</code> array.</p>
+     * <p><strong>static void resetIndex()</strong> - Resets the condition.</p>
      */
-    public static void resetIndex(){
+    public static void reset(){
         i=0;
+        games = new Game[numberOfGames];
     }
     public static Game[] getGames(){
         return games;
@@ -89,6 +90,8 @@ public class SpotManager
         Spot targetSpot=null;
         int targetGameIndex=-1, targetSpotIndex=-1;
         for (int i = 0; i < numberOfGames; i++) {
+            //if no game in this index dont search
+            if(games[i]==null)continue;
             Spot curSpot=null;
             Gambler[] currentGameGamblers=games[i].getGamblers();
             int len = currentGameGamblers.length, curSpotIndex=-1;
@@ -122,7 +125,9 @@ public class SpotManager
         if(gb.getMoney()<=0||Greenfoot.getRandomNumber(5)==0)return null;//leave when no money or 20% chance
         Spot targetSpot=null;
         int targetGameIndex=-1, targetSpotIndex=-1;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 11; i++) {
+            //if no game in this index dont search
+            if(games[i]==null)continue;
             Spot curSpot=null;
             Gambler[] currentGameGamblers=games[i].getGamblers();
             int len = currentGameGamblers.length, curSpotIndex=-1;
