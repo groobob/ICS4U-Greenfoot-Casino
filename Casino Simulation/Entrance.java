@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Thing2 here.
+ * The entrance to the casino, has some utility actions which help find coordinates
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jimmy Zhu & David Guo
+ * @version 1.0 11/18/2023
  */
 public class Entrance extends Actor
 {

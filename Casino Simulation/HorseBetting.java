@@ -34,7 +34,9 @@ public class HorseBetting extends Game
     }
 
     public void act() {
+        super.act();
         if(++animationStep==60)animationStep=0;
+        ImageManager.getImage("betting",animationStep/5+1).setTransparency(t);
         setImage(ImageManager.getImage("betting",animationStep/5+1));
         conductRace();        
     }

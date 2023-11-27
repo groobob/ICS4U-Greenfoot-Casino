@@ -2,8 +2,8 @@
 comment0.target=SpotManager
 comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p><strong>SpotManager</strong>\ is\ a\ class\ designed\ to\ manage\ gaming\ spots\ within\ a\ casino\ environment\ in\ Greenfoot.</p>\r\n\ <p>It\ is\ responsible\ for\ tracking\ and\ assigning\ spots\ to\ gamblers\ in\ various\ games,\ maintaining\ a\ list\ of\ games,\ and\ managing\ spot\ assignments.</p>\r\n\ \r\n\ <h3>Usage\:</h3>\r\n\ <p>Use\ SpotManager\ to\ handle\ the\ allocation\ of\ gamblers\ to\ games\ within\ a\ casino\ environment.\ It\ is\ recommended\ to\ set\ up\ and\ manage\ games\ through\ this\ class.</p>\r\n\ \r\n\ <h3>Class\ Fields\:</h3>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>numberOfGames</strong>\ -\ The\ total\ number\ of\ games\ in\ the\ casino,\ synchronized\ with\ <code>CasinoWorld.numGames</code>.</li>\r\n\ \ \ \ \ <li><strong>games</strong>\ -\ An\ array\ of\ <code>Game</code>\ objects\ representing\ each\ game\ in\ the\ casino.</li>\r\n\ \ \ \ \ <li><strong>i</strong>\ -\ An\ index\ used\ for\ adding\ games\ to\ the\ <code>games</code>\ array.</li>\r\n\ </ul>\r\n\ \r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/20\r\n
 comment1.params=
-comment1.target=void\ resetIndex()
-comment1.text=\r\n\ <p><strong>static\ void\ resetIndex()</strong>\ -\ Resets\ the\ index\ for\ adding\ new\ games\ to\ the\ <code>games</code>\ array.</p>\r\n
+comment1.target=void\ reset()
+comment1.text=\r\n\ <p><strong>static\ void\ resetIndex()</strong>\ -\ Resets\ the\ condition.</p>\r\n
 comment2.params=
 comment2.target=Game[]\ getGames()
 comment3.params=g

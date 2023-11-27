@@ -58,6 +58,7 @@ public class Poker extends Game
      */
     public void act()
     {
+        super.act();
         playersAtTable = getPlayersAtTable();
         if(playersAtTable > 1){
             playHand();
@@ -105,7 +106,7 @@ public class Poker extends Game
         if(moneyBet < minBet){
             endGamblerSession(gamblerIndex);
         } else {
-            gamblers[gamblerIndex].playMoneyEffect(-moneyBet);
+            gamblers[gamblerIndex].playMoneyEffect(-moneyBet, false);
             pot += moneyBet-rakeProfit;
             UIManager.incrementCasinoProfit(rakeProfit);
         }
