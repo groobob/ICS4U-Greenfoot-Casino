@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Entrance
-comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <h1>Entrance\ Class</h1>\r\n\ <p>This\ class\ extends\ <em>Actor</em>\ and\ represents\ the\ entrance\ to\ the\ casino\ in\ a\ Greenfoot\ game.\ It\ includes\ utility\ actions\ to\ assist\ in\ finding\ coordinates\ within\ the\ game\ world.</p>\r\n\r\n\ <h2>Class\ Attributes\:</h2>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>up\:</strong>\ A\ boolean\ flag\ to\ manage\ key\ press\ states.</li>\r\n\ </ul>\r\n\r\n\ @author\ Jimmy\ Zhu\ &\ David\ Guo\r\n\ @version\ 1.0\ 11/18/2023\r\n
+comment0.text=\r\n\ The\ entrance\ to\ the\ casino,\ has\ some\ utility\ actions\ which\ help\ find\ coordinates\r\n\ \r\n\ @author\ Jimmy\ Zhu\ &\ David\ Guo\r\n\ @version\ 1.0\ 11/18/2023\r\n
 comment1.params=
 comment1.target=void\ act()
 numComments=2

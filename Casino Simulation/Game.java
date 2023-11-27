@@ -101,10 +101,10 @@ public abstract class Game extends Actor
      * </ul>
      */
     protected void endGamblerSession(int i) {
-        if(gamblers[i]==null)return;
-        if(gamblers[i].isInsane())removeReservation(i);
-        gamblers[i].stopPlaying();
-        gamblers[i] = null;
+        if(gamblers[i]==null)return;//if no gambler then does nothing
+        if(gamblers[i].isInsane())removeReservation(i);//if is insane remove reservation
+        gamblers[i].stopPlaying();//stop playing
+        gamblers[i] = null;//set current placed info 0
     }
     /**
      * <h3>void absolutePlaceGambler(Gambler g, int spotNumber)</h3>

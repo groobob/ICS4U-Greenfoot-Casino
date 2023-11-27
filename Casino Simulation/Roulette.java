@@ -106,14 +106,17 @@ public class Roulette extends Game
     
     public int calculateEarned(int gamblerIndex){
         if(gamblerBets[gamblerIndex] == -1 && pocketNum % 2 == 1){
+            UIManager.incrementGamblerWL(true);
             return (int)(moneyBets[gamblerIndex] * ODD_PAYOUT);
         } else if(gamblerBets[gamblerIndex] == -2 && pocketNum % 2 == 0 & pocketNum != 0){
+            UIManager.incrementGamblerWL(true);
             return (int)(moneyBets[gamblerIndex] * EVEN_PAYOUT);
         } else if(gamblerBets[gamblerIndex] == pocketNum){
+            UIManager.incrementGamblerWL(true);
             return (int)(moneyBets[gamblerIndex] * NUMBER_PAYOUT);
         }
+        UIManager.incrementGamblerWL(false);
         return 0;
-        
     }
     
     // When gamblers are ready to make their bet before the wheel starts spinning
@@ -129,6 +132,7 @@ public class Roulette extends Game
                 // Give all players a bet
                 moneyBets[i] = getMoneyBet(gamblers[i]);
                 gamblers[i].playMoneyEffect(-moneyBets[i]);
+                UIManager.incrementGamblerLoss(moneyBets[i]);
             }
         }
         pocketNum = spinWheel();

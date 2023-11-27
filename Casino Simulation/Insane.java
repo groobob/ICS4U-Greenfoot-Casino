@@ -60,26 +60,27 @@ public class Insane extends Gambler
     public void act()
     {
         if(!playing) {
+            //5(frame every 5 acts)*9(9 frames)=45
             if(++animationStep==45)animationStep=0;
-            if(Math.abs(tx-getX())>2){
-                setImage(ImageManager.getImage("gambler",character,(Integer.signum(tx-getX())==-1?2:4),animationStep/5+1));
+            if(Math.abs(tx-getX())>2){//if x not at target(wiggle room of 2)
+                setImage(ImageManager.getImage("gambler",character,(Integer.signum(tx-getX())==-1?2:4),animationStep/5+1));//animates
                 mostRecentDirection=(Integer.signum(tx-getX())==-1?2:4);
                 setLocation(getX()+speed*Integer.signum(tx-getX()),getY());
             }
-            else if (Math.abs(ty-getY())>5){
-                setImage(ImageManager.getImage("gambler",character,(Integer.signum(ty-getY())==-1?1:3),animationStep/5+1));
+            else if (Math.abs(ty-getY())>5){//if y not at target(wiggle room of 5)
+                setImage(ImageManager.getImage("gambler",character,(Integer.signum(ty-getY())==-1?1:3),animationStep/5+1));//animates
                 mostRecentDirection=(Integer.signum(ty-getY())==-1?1:3);
                 setLocation(getX(),getY()+speed*Integer.signum(ty-getY()));
             }
-            else if (tx!=fx)tx=fx;
-            else if (tx==1250||tx==-50)getWorld().removeObject(this);
+            else if (tx!=fx)tx=fx;//now target x is final target x. Already when to first target now go to fx.
+            else if (tx==1250||tx==-50)getWorld().removeObject(this);//if offscreen remove
             else if(!flag) {
-                if(!toSpot)ty+=yToSpot;
+                if(!toSpot)ty+=yToSpot;//if toSpot is positive(already played the game) then ty(target y) is adjusted accordingly and if negative(have not played the game) it is adjusted accordingly
                 else ty-=yToSpot;
-                flag=true;
+                flag=true;//to prevent this else if block of code from immediately running again
             } 
-            else if(!toSpot) {
-                if(!alreadyPlaced)SpotManager.getGames()[going.getGameIndex()].absolutePlaceGambler(this,going.getSpotIndex());
+            else if(!toSpot) {//at this point gambler is on the game. If toSpot is false it means that this section of code has not been run before, so run it.
+                if(!alreadyPlaced)SpotManager.getGames()[going.getGameIndex()].absolutePlaceGambler(this,going.getSpotIndex());//if insane not already placed in game, then place
                 playing=true;
                 setImage(ImageManager.getImage("gambler",character,mostRecentDirection,1));
                 toSpot=true;
@@ -88,14 +89,14 @@ public class Insane extends Gambler
             } 
             else if(!leaving) {
                 going=SpotManager.absoluteTarget(this);
-                if(going!=null){
-                    //SpotManager.getGames()[going.getGameIndex()].addReservation(going.getSpotIndex());
+                if(going!=null){//got another target
+                    //see if someone already there if yes let them continue playing until insane(this instance is playing)
                     if(!SpotManager.getGames()[going.getGameIndex()].isSpotTaken(going.getSpotIndex())&&!SpotManager.getGames()[going.getGameIndex()].isSomeonePlaying(going.getSpotIndex())){
                         alreadyPlaced=true;
                         SpotManager.getGames()[going.getGameIndex()].absolutePlaceGambler(this,going.getSpotIndex());
                     }
-                    toSpot=false;
-                    flag=false;
+                    toSpot=false;//false so particular section of code can run again
+                    flag=false;//false so particular section of code can run again
                 }
                 else exit();
             } 

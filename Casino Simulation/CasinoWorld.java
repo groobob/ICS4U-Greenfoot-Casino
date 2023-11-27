@@ -32,9 +32,8 @@ public class CasinoWorld extends World
         super(1200, 740, 1, false); 
         setBackground("casinobg.png");
         // Music
-        casinoJazz = new GreenfootSound("CasinoJazz.mp3");
-        casinoJazz.setVolume(50);
-        casinoJazz.playLoop();
+        SoundManager.addSound(1,"CasinoJazz","mp3",50);
+        SoundManager.playLooped("CasinoJazz");
         // Other
         Greenfoot.setSpeed(50);
         SpotManager.reset();
@@ -55,15 +54,19 @@ public class CasinoWorld extends World
     public void act(){
         if(--delay==0){
             delay=Greenfoot.getRandomNumber(120)+60;
-            int random = Greenfoot.getRandomNumber(20);
-            if(random>17)addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else if(random>15)addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else if(random>11)addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
-            else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            int random = Greenfoot.getRandomNumber(100);
+            if(random>100-SettingsWorld.getVIPSpawnRate())addObject(new VIP(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else if(random>100-SettingsWorld.getCheaterSpawnRate()-SettingsWorld.getVIPSpawnRate())addObject(new Cheater(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            else {
+                //10% chance of non-VIP non-Cheater being Insane
+                random = Greenfoot.getRandomNumber(10);
+                if(random==0)addObject(new Insane(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+                else addObject(new Ordinary(),(Greenfoot.getRandomNumber(2)==0?1250:-50),690+(Greenfoot.getRandomNumber(2)==0?-Greenfoot.getRandomNumber(20):Greenfoot.getRandomNumber(20)));
+            }
         }
-        if(placed!=14&&UIManager.getCasinoProfit()/2>UIManager.getCasinoTarget()*0.05){
+        if(placed!=14&&UIManager.getCasinoProfit()/2>UIManager.getCasinoTarget()*0.05){//if not all placed and current profit is 2x 5% of target 
             placed++;
-            UIManager.incrementCasinoProfit((int)(UIManager.getCasinoTarget()*-0.05));
+            UIManager.incrementCasinoProfit((int)(UIManager.getCasinoTarget()*-0.05));//remove cost which is 5% of target 
             switch(placed){
                 case 2:addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(80,250,-20)}),80,225);break;
                 case 3:addObject(new SlotMachines(new SpotManager.Spot[]{new SpotManager.Spot(160,250,-20)}),160,225);break;
