@@ -13,8 +13,8 @@ import greenfoot.*;
  *     <li><strong>textBoxes (Text[]):</strong> An array of Text objects for displaying statistics.</li>
  * </ul>
  * 
- * @author Richard Zhu
- * @version 11/20
+ * @author Richard Zhang, Jimmy Zhu
+ * @version 1.1 11/24/2023
  */
 public class UIManager extends Actor
 {

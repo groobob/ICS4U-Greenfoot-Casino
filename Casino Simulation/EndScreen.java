@@ -39,10 +39,11 @@ public class EndScreen extends World
         restartButton = new Button("RESTART", 80, 126, 125, 223, 234, 122, 67);
         // Add buttons to the world
         addObject(restartButton, 1200/2, 740/4*3);
+        
         // Depending on ending, change background and music
         if(casinoRich){
-            //bg =
-            //music =
+            bg = new GreenfootImage("wealthending.png");
+            music = new GreenfootSound("");
         } else {
             // bg =
             // music =
@@ -56,8 +57,8 @@ public class EndScreen extends World
     public void act(){
         // Checks if the player has clicked restart and puts them into the game if they did
         if(Greenfoot.mouseClicked(restartButton)){
-            //music.stop(); // stops the title screen music
-            Greenfoot.setWorld(new SettingsWorld());
+            music.stop(); // stops the title screen music
+            Greenfoot.setWorld(new TitleScreen());
         }
     }
 
@@ -67,7 +68,7 @@ public class EndScreen extends World
      */
     // Play song when the game starts
     public void started() {
-        //music.playLoop();
+        music.playLoop();
     }
     
     /**
@@ -76,6 +77,6 @@ public class EndScreen extends World
      */
     // Pause song if they stop the program
     public void stopped() {
-        //music.pause();
+        music.pause();
     }
 }
