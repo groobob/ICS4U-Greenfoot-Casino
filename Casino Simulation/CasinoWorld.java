@@ -1,7 +1,53 @@
 import greenfoot.*;// imports Actor, World, Greenfoot, GreenfootImage
 import java.util.*;
 /**
- * BIG COMMENT HERE
+ * Welcome to MICROCHANCE CASINO
+ * 
+ * We here at MICROCHANCE CASINO pride ourselves on our diverse gaming facilities     
+ * equipped to ensure the maximum enjoyment for our gambling clients.
+ * 
+ * Program features include:
+ * => Games
+ *   -> Slot Machines 
+ *   -> Poker
+ *   -> Blackjack
+ *   -> Horse Betting
+ *   -> Roulette
+ *   
+ * => Gamblers
+ *   -> Ordinary
+ *   -> Cheater
+ *   -> VIP
+ *   -> Insane
+ * 
+ * => Misc.
+ *   -> UI Bar [Has four functions]
+ *   -> Money Effect [So you can see why you shouldn't gamble]
+ *   -> Speech [WOW, so many different dialogues!]
+ *   
+ * Known Bugs:
+ * => N/A
+ * 
+ * Credit:
+ * => Code
+ *   -> Button and TextSizeFinder classes [Alex Li]
+ *   
+ * => Visuals
+ *   -> All Gambler Variants [LPC Sprite Creator, refer to Google Doc]
+ *   -> All Games [Richard Zhang]
+ *   -> Horse GIF []
+ *   -> Title Screen, Settings Screen, End Screen [Richard Zhang]
+ *   -> UIManager [Richard Zhang]
+ *   
+ * => Music & SFX
+ *   -> Background Title Music [KingsCollegeChoir]
+ *   -> Background Casino Music [Alternative Jazz Lounge - Topic]
+ *   -> Roulette Kaching [pixabay]
+ *   -> Roulette SFX [Scratch]
+ *
+ * 150+ hours of simulation development!
+ * Hope you enjoyed our simulation.
+ *
  * 
  * <html>
  * <body>
