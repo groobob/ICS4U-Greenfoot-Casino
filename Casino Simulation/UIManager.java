@@ -38,6 +38,11 @@ public class UIManager extends Actor
         gamblerWins = 0;
         
     }
+    public void act() {
+        if(casinoProfit < 0) setImage(ImageManager.getImage("ui1"));
+        else if(casinoProfit < casinoTarget / 2) setImage(ImageManager.getImage("ui2"));
+        else setImage(ImageManager.getImage("ui3"));
+    }
     /**
      * <h3>addedToWorld(World w)</h3>
      * <p>Initializes the UIManager when added to the world and creates Text objects for displaying statistics.</p>

@@ -16,8 +16,6 @@ public class SlotMachines extends Game {
     public SlotMachines(SpotManager.Spot[] spots) {
         super(spots);
         playCounter = 0;
-        // SFX
-        SoundManager.addSound(5, "kaching", "mp3");
     }
     public void act() {
         if(t<255)t+=3;
