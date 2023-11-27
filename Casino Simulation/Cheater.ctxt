@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=Cheater
-comment0.text=\r\n\ Cheating\ gambler.\ Wins\ too\ much.\ Special\ interactions\ ensue\ after\ being\ caught.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <p>This\ class\ extends\ the\ <em>Gambler</em>\ class\ and\ represents\ a\ cheating\ gambler\ in\ a\ Greenfoot\ game.\ Cheaters\ have\ unique\ behavior\ and\ interactions,\ especially\ when\ they\ are\ caught\ cheating.</p>\r\n\ <h2>Class\ Attributes\:</h2>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>Static\ variables\:</strong>\ Include\ casino\ target,\ gambler\ loss,\ casino\ profit,\ gambler\ wins,\ gambler\ losses,\ and\ text\ boxes\ for\ display.</li>\r\n\ \ \ \ \ <li><strong>isNew\:</strong>\ A\ flag\ to\ check\ if\ the\ object\ is\ newly\ added\ to\ the\ world.</li>\r\n\ </ul>\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
 comment1.params=
 comment1.target=int\ checkBehaviour()
 comment2.params=
 comment2.target=Cheater()
+comment2.text=\r\n\ <h2>Constructor\:</h2>\r\n\ <p>Initializes\ a\ new\ instance\ of\ UIManager\ with\ a\ specified\ casino\ target\ and\ sets\ up\ the\ initial\ UI.</p>\r\n\ <p><strong>Parameters\:</strong></p>\r\n\ <ul>\r\n\ \ \ \ \ <li><strong>casinoTarget\ (int)\:</strong>\ The\ target\ amount\ for\ the\ casino.</li>\r\n\ </ul>\r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ <h3>void\ act()</h3>\r\n\ <p>Executes\ the\ Cheater's\ actions\ during\ each\ step\ of\ the\ game\ environment,\ relying\ on\ the\ superclass's\ act\ method.</p>\r\n
 numComments=4

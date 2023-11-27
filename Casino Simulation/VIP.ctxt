@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=VIP
-comment0.text=\r\n\ Cheating\ gambler.\ Wins\ too\ much.\ Special\ interactions\ ensue\ after\ being\ caught.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <h1>VIP\ Class</h1>\r\n\ <p>This\ class\ extends\ the\ <em>Gambler</em>\ class\ and\ represents\ a\ VIP\ gambler\ in\ a\ Greenfoot\ game.\ The\ VIP\ class\ embodies\ a\ gambler\ with\ special\ status,\ characterized\ by\ prideful\ behavior\ and\ a\ substantial\ amount\ of\ money.</p>\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
 comment1.params=
 comment1.target=int\ checkBehaviour()
+comment1.text=\r\n\ <h3>int\ checkBehaviour()</h3>\r\n\ <p>Returns\ an\ integer\ representing\ the\ behavior\ of\ the\ VIP\ gambler.</p>\r\n\ <p><strong>Return\:</strong>\ int\ -\ Indicates\ prideful\ behavior\ (returns\ 0).</p>\r\n
 comment2.params=
 comment2.target=VIP()
+comment2.text=\r\n\ <h2>Constructor\:</h2>\r\n\ <p>Initializes\ a\ new\ VIP\ instance\ with\ distinct\ characteristics\ and\ a\ significant\ amount\ of\ money.</p>\r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ <h3>void\ act()</h3>\r\n\ <p>Executes\ the\ VIP\ gambler's\ actions\ during\ each\ step\ of\ the\ game\ environment,\ leveraging\ the\ superclass's\ act\ method.</p>\r\n
 numComments=4

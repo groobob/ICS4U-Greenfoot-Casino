@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=Ordinary
-comment0.text=\r\n\ Ordinary\ gambler.\ Nothing\ special.\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
+comment0.text=\r\n\ <html>\r\n\ <body>\r\n\ <h1>Ordinary\ Class</h1>\r\n\ <p>This\ class\ extends\ the\ <em>Gambler</em>\ class\ and\ represents\ an\ ordinary\ gambler\ in\ a\ Greenfoot\ game.\ The\ Ordinary\ class\ embodies\ a\ standard\ gambler\ with\ no\ special\ attributes\ or\ behaviors.</p>\r\n\ @author\ Jimmy\ Zhu\r\n\ @version\ 11/23\r\n
 comment1.params=
 comment1.target=int\ checkBehaviour()
+comment1.text=\r\n\ <h3>int\ checkBehaviour()</h3>\r\n\ <p>Returns\ an\ integer\ representing\ the\ behavior\ of\ the\ Ordinary\ gambler.</p>\r\n\ <p><strong>Return\:</strong>\ int\ -\ Indicates\ normal\ behavior\ (returns\ -1).</p>\r\n\r\n
 comment2.params=
 comment2.target=Ordinary()
+comment2.text=\r\n\ <h2>Constructor\:</h2>\r\n\ <p>Initializes\ a\ new\ Ordinary\ instance\ with\ typical\ characteristics\ and\ a\ moderate\ amount\ of\ money.</p>\r\n\r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ <h3>void\ act()</h3>\r\n\ <p>Executes\ the\ Ordinary\ gambler's\ actions\ during\ each\ step\ of\ the\ game\ environment,\ using\ the\ superclass's\ act\ method.</p>\r\n
 numComments=4

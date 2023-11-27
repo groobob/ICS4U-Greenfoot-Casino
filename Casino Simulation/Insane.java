@@ -1,6 +1,16 @@
 import greenfoot.*;
 /**
- * VIP gambler. Special privileges.
+ * <html>
+ * <body>
+ * <h1>Insane Class</h1>
+ * <p>This class extends the <em>Gambler</em> class and represents a VIP gambler with special privileges in a Greenfoot game. The Insane class has unique behaviors and interactions within the game world.</p>
+ *
+ * <h2>Class Attributes:</h2>
+ * <ul>
+ *     <li><strong>going:</strong> The targeted spot for the Insane gambler.</li>
+ *     <li><strong>alreadyPlaced:</strong> A flag indicating whether the gambler has already been placed in a spot.</li>
+ * </ul>
+ *
  * @author Jimmy Zhu
  * @version 11/25
  */
@@ -8,6 +18,7 @@ public class Insane extends Gambler
 {
     private SpotManager.DetailedSpot going;
     private boolean alreadyPlaced=false;
+
     public void addedToWorld(World w){
         if(!isNew){//prevent z sort problems
             isNew=true;
@@ -23,14 +34,29 @@ public class Insane extends Gambler
             }
         }
     }
+    /** 
+     * <h3>int checkBehaviour()</h3>
+     * <p>Returns an integer representing the behavior of the Insane gambler.</p>
+     * <p><strong>Return:</strong> int - Indicates prideful behavior (returns 0).</p>
+     */
     public int checkBehaviour(){
         return 0;//prideful
     }
+    
+    /**
+     * <h2>Constructor:</h2>
+     * <p>Initializes a new Insane instance with unique characteristics, including a high amount of money.</p>
+     */
     public Insane(){
         character=Greenfoot.getRandomNumber(2)+13;
         money=Greenfoot.getRandomNumber(20001)+10000;
         insane=true;
     }
+    /**
+     *
+     * <h3>void act()</h3>
+     * <p>Executes the Insane gambler's actions during each step of the game environment. Manages their movement and interaction with the gaming spots.</p>
+     */
     public void act()
     {
         if(!playing) {
