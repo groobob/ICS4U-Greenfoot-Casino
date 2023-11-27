@@ -79,7 +79,7 @@ public class UIManager extends Actor
      * </ul>
      */
     public static int getCasinoTarget(){
-        return casinoProfit;
+        return casinoTarget;
     }
     /**
      * <h3>attachText(Text text, int type)</h3>

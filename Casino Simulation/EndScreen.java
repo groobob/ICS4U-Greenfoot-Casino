@@ -39,15 +39,17 @@ public class EndScreen extends World
         restartButton = new Button("RESTART", 80, 126, 125, 223, 234, 122, 67);
         // Add buttons to the world
         addObject(restartButton, 1200/2, 740/4*3);
-        
+        // Add music
+        music = new GreenfootSound("stmatthewpassion.mp3");
+        music.setVolume(40);
+        music.playLoop();
         // Depending on ending, change background and music
         if(casinoRich){
             bg = new GreenfootImage("wealthending.png");
-            music = new GreenfootSound("");
         } else {
-            // bg =
-            // music =
+            bg = new GreenfootImage("bankruptending.png");
         }
+        setBackground(bg);
     }
     
     /**
