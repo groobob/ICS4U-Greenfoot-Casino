@@ -12,10 +12,20 @@ public class SlotMachines extends Game {
     private int playCounter; // counter for number of plays
     private int winAmount;
     private int actuallyWinningMoney;
+    private int winCounter;
+    
+    private final String[] cheaterDialogues = {
+        "Easy money, as always!",
+        "The slots are all mine today!",
+        "Looks like luck is on my side again!",
+        "Winning feels almost too easy!",
+        "I have the magic touch on these machines!"
+    };
 
     public SlotMachines(SpotManager.Spot[] spots) {
         super(spots);
         playCounter = 0;
+        winCounter=0;
         // SFX
         SoundManager.addSound(5, "kaching", "mp3");
     }
@@ -53,16 +63,26 @@ public class SlotMachines extends Game {
         gamblers[0].playMoneyEffect(-cost);
         //HorizontalBar.casinoProfit += cost;
     }
+    private void incrementWinCounter() {
+        winCounter++;
+    }
+    private  boolean shouldCelebrate() {
+        return winCounter % 5 == 0;
+    }
     public void winMoney() {
-        if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win
-        //if (Greenfoot.getRandomNumber(2)==0) {
-            actuallyWinningMoney=Greenfoot.getRandomNumber(500)+10;
-            //winAmount = minWinAmount + Greenfoot.getRandomNumber(maxWinAmount - minWinAmount + 1);
-            //gamblers[0].playMoneyEffect(gamblers[0], Greenfoot.getRandomNumber(2) == 0, winAmount);
+        if (gamblers[0] instanceof Cheater || Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {
+            actuallyWinningMoney = Greenfoot.getRandomNumber(500) + 10;
             winAmount = actuallyWinningMoney;
             gamblers[0].playMoneyEffect(winAmount);
             SoundManager.playSound("kaching");
-       // }
+    
+            if (gamblers[0] instanceof Cheater) {
+                incrementWinCounter();
+                if (shouldCelebrate()) {
+                    int dialogueIndex = Greenfoot.getRandomNumber(cheaterDialogues.length);
+                    gamblers[0].playDialogue(cheaterDialogues[dialogueIndex]);
+                }
+            }
         }
     }
 }
