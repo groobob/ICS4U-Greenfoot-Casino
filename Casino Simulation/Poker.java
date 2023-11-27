@@ -105,6 +105,7 @@ public class Poker extends Game
         int rakeProfit = (int)(moneyBet*rake);
         if(moneyBet < minBet){
             endGamblerSession(gamblerIndex);
+            UIManager.incrementGamblerWL(false);
         } else {
             gamblers[gamblerIndex].playMoneyEffect(-moneyBet);
             pot += moneyBet-rakeProfit;
@@ -116,6 +117,7 @@ public class Poker extends Game
         // In order to prevent playMoneyEffect printing +0
         if(pot != 0)g.playMoneyEffect(pot);
         pot = 0;
+        UIManager.incrementGamblerWL(true);
     }
     
     //private void endGamblerSession(int gamblerIndex) {

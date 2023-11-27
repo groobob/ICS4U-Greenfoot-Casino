@@ -28,8 +28,14 @@ public class SlotMachines extends Game {
             if(delay%6==0&&delay!=0){
                 ImageManager.getImage("slots",delay/6+1).setTransparency(t);
                 setImage(ImageManager.getImage("slots",delay/6+1));
-                if(delay==114)winMoney();
-                else if(delay==12)deductGameCost();
+                if(delay==114){
+                    winMoney();
+                    UIManager.incrementGamblerWL(true);
+                }
+                else if(delay==12){
+                    deductGameCost();
+                    UIManager.incrementGamblerWL(false);
+                }
             }
             if(++delay<132)return;
             playCounter++;
@@ -50,6 +56,7 @@ public class SlotMachines extends Game {
     
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
+        UIManager.incrementGamblerLoss(cost);
     }
     public void winMoney() {
         if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win

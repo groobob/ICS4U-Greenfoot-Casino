@@ -81,6 +81,7 @@ public class HorseBetting extends Game
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
                     if (gamblers[i] instanceof Cheater) {
                         gamblers[i].playDialogue("Let's see how this race goes... I've got a feeling!");
+                        UIManager.incrementGamblerWL(true);
                     }
                     int leaveChance = Greenfoot.getRandomNumber(100);
                     if(leaveChance < chanceToLeave)endGamblerSession(i);
@@ -121,12 +122,16 @@ public class HorseBetting extends Game
      */
     public int calculatePayout(int gamblerIndex) {
         if (gamblerSelections[gamblerIndex] == -1 && winningHorse % 2 == 1) {
+            UIManager.incrementGamblerWL(true);
             return gamblerStakes[gamblerIndex] * oddMultiplier;
         } else if (gamblerSelections[gamblerIndex] == -2 && winningHorse % 2 == 0) {
+            UIManager.incrementGamblerWL(true);
             return gamblerStakes[gamblerIndex] * evenMultiplier;
         } else if (gamblerSelections[gamblerIndex] == winningHorse) {
+            UIManager.incrementGamblerWL(true);
             return gamblerStakes[gamblerIndex] * winMultiplier;
         }
+        UIManager.incrementGamblerWL(false);
         return 0; // no payout
     }
     

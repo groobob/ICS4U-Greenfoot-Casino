@@ -101,7 +101,7 @@ public class UIManager extends Actor
      * <ul>
      *     <li><strong>num (int):</strong> The number to increment the total gambler losses by.</li>
      * </ul>
-     */
+     */ 
     public static void incrementGamblerLoss(int num)
     {
         gamblerLoss += num;
