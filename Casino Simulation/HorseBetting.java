@@ -23,6 +23,14 @@ public class HorseBetting extends Game
     private int chanceToLeave;
     private int animationStep=0;
     
+    private final String[] cheaterDialogues = {
+        "I have a special feeling about this one... Watch and learn!",
+        "Time to make some easy money!",
+        "Let's see if my lucky charm works today.",
+        "I've got a winning streak going, can't stop now!",
+        "Feeling lucky today, let's bet big!"
+    };
+    
     public HorseBetting(SpotManager.Spot[] spots) {
         super(spots);
         numberOfHorses = 7; // 7 horses in the race
@@ -50,6 +58,9 @@ public class HorseBetting extends Game
                     payout = calculatePayout(i);
                     UIManager.incrementCasinoProfit(payout);
                     gamblers[i].playMoneyEffect(payout - gamblerStakes[i]); // amount of bet
+                    if (gamblers[i] instanceof Cheater) {
+                        gamblers[i].playDialogue("Let's see how this race goes... I've got a feeling!");
+                    }
                     int leaveChance = Greenfoot.getRandomNumber(100);
                     if(leaveChance < chanceToLeave)endGamblerSession(i);
                 }
@@ -62,7 +73,21 @@ public class HorseBetting extends Game
     
     private void startRace() {
         raceInProgress = true;
-        winningHorse = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+        boolean cheaterPlaying = false;
+        int cheaterSelection = -1;
+    
+        for (int i = 0; i < gamblers.length; i++) {
+            if (gamblers[i] instanceof Cheater && gamblers[i].isPlaying()) {
+                cheaterPlaying = true;
+                cheaterSelection = gamblerSelections[i];
+                break;
+            }
+        }
+        if (cheaterPlaying) {
+            winningHorse = cheaterSelection;//ensure cheater wins
+        } else {
+            winningHorse = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+        }
     }
     
     public int calculatePayout(int gamblerIndex) {
@@ -77,15 +102,21 @@ public class HorseBetting extends Game
     }
     
     private void placeBets() {
-        for (int i = 0; i < gamblers.length; i++) {
-            if (gamblers[i] != null && gamblers[i].isPlaying()) {
-                gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
-                gamblerStakes[i] = determineStake(gamblers[i]);
-                gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+    for (int i = 0; i < gamblers.length; i++) {
+        if (gamblers[i] != null && gamblers[i].isPlaying()) {
+            gamblerSelections[i] = Greenfoot.getRandomNumber(numberOfHorses) + 1;
+            gamblerStakes[i] = determineStake(gamblers[i]);
+            gamblers[i].playMoneyEffect(-gamblerStakes[i]); // gamblers' bets
+
+            if (gamblers[i] instanceof Cheater) {
+                int dialogueIndex = Greenfoot.getRandomNumber(cheaterDialogues.length);
+                gamblers[i].playDialogue(cheaterDialogues[dialogueIndex]);
             }
         }
-        startRace();
     }
+    startRace();
+}
+
     
     private int determineStake(Gambler g) {
         betPercentage = (double)(Greenfoot.getRandomNumber(20) + 5) / 100;

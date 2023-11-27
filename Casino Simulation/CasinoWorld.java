@@ -14,7 +14,6 @@ public class CasinoWorld extends World
     {    
         super(1200, 740, 1, false); 
         setBackground("casinobg.png");
-        System.out.println("---");
         // Music
         casinoJazz = new GreenfootSound("CasinoJazz.mp3");
         casinoJazz.setVolume(50);
