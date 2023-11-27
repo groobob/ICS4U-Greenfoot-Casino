@@ -13,7 +13,7 @@ public class TitleScreen extends World
     // Buttons which highlight when hovered over
     private Button startButton;
     // MP3 file for the title screen music
-    private GreenfootSound music;
+    private static GreenfootSound music;
     
     private Button title;
     /**
@@ -46,7 +46,7 @@ public class TitleScreen extends World
     public void act(){
         // checks if the player has clicked play and puts them into the game if they did
         if(Greenfoot.mouseClicked(startButton)){
-            Greenfoot.setWorld(new SettingsWorld(this));
+            Greenfoot.setWorld(new SettingsWorld());
         }
     }
     // Play song when the game starts
@@ -58,7 +58,7 @@ public class TitleScreen extends World
         music.pause();
     }
     // Getter method for the music
-    public GreenfootSound getMusic(){
+    public static GreenfootSound getMusic(){
         return music;
     }
 }
