@@ -132,7 +132,7 @@ public class Roulette extends Game
                 // Give all players a bet
                 moneyBets[i] = getMoneyBet(gamblers[i]);
                 gamblers[i].playMoneyEffect(-moneyBets[i]);
-                UIManager.incrementGamblerLoss(moneyBets[i]);
+                UIManager.incrementMoneySpent(moneyBets[i]);
             }
         }
         pocketNum = spinWheel();

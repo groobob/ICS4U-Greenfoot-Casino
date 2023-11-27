@@ -18,7 +18,7 @@ import greenfoot.*;
  */
 public class UIManager extends Actor
 {
-    private static int casinoTarget = 0, gamblerLoss = 0, casinoProfit = 0, gamblerWins = 0, gamblerLosses = 0;
+    private static int casinoTarget = 0, moneySpent = 0, casinoProfit = 0, gamblerWins = 0, gamblerLosses = 0;
     private static Text[] textBoxes = new Text[4];
     private boolean isNew=false;
     /**
@@ -33,6 +33,10 @@ public class UIManager extends Actor
         setImage("ui.png");
         this.casinoTarget=casinoTarget;
         casinoProfit=0;
+        moneySpent = 0;
+        gamblerLosses = 0;
+        gamblerWins = 0;
+        
     }
     /**
      * <h3>addedToWorld(World w)</h3>
@@ -55,7 +59,7 @@ public class UIManager extends Actor
     private static void updateText()
     {
         textBoxes[0].changeText(casinoTarget + "");
-        textBoxes[1].changeText(gamblerLoss + "");
+        textBoxes[1].changeText(moneySpent + "");
         textBoxes[2].changeText(casinoProfit + "");
         textBoxes[3].changeText(gamblerWins + "/" + gamblerLosses);
     }
@@ -102,9 +106,9 @@ public class UIManager extends Actor
      *     <li><strong>num (int):</strong> The number to increment the total gambler losses by.</li>
      * </ul>
      */ 
-    public static void incrementGamblerLoss(int num)
+    public static void incrementMoneySpent(int num)
     {
-        gamblerLoss += num;
+        moneySpent += num;
         updateText();
     }
     /**

@@ -57,7 +57,7 @@ public class SlotMachines extends Game {
     
     private void deductGameCost() {
         gamblers[0].playMoneyEffect(-cost);
-        UIManager.incrementGamblerLoss(cost);
+        UIManager.incrementMoneySpent(cost);
     }
     public void winMoney() {
         if (Greenfoot.getRandomNumber(SettingsWorld.getSlotsRate()) == 0) {  // 10% chance to win

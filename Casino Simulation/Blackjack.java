@@ -85,7 +85,7 @@ public class Blackjack extends Game
                 if(handValues[i] > 21 || handValues[i] < dealersHand){
                     gamblers[i].playMoneyEffect(-gBet);
                     UIManager.incrementGamblerWL(false);
-                    UIManager.incrementGamblerLoss(gBet);
+                    UIManager.incrementMoneySpent(gBet);
                 }
                 // Did they win?
                 else if(handValues[i] > dealersHand){
