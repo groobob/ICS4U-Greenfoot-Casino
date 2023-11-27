@@ -23,7 +23,7 @@ public class VIP extends Gambler {
      */
     public VIP(){
         character=Greenfoot.getRandomNumber(2)+11;
-        money=Greenfoot.getRandomNumber(20001)+10000;
+        money=SettingsWorld.getVIPStartMoney();
     }
     /**
      * <h3>void act()</h3>
