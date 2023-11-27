@@ -1,8 +1,10 @@
 import greenfoot.*;
 /**
- * Game superclass
- * @author Jimmy Zhu
- * @version 1122
+ * Game superclass which will be uses by all subclasses. Spot manager is used in all classes
+ * in order to allow gamblers to "attach" themselves to the game.
+ * 
+ * @author Jimmy Zhu, David Guo
+ * @version 1.0 11/22/2023
  */
 public abstract class Game extends Actor
 {
